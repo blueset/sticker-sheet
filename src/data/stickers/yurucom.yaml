@@ -1,0 +1,14 @@
+x: -60
+y: 430
+width: 156 # 1126
+height: 100 # 759
+rotation: 10
+image: /stickers/yurucom.png
+title:
+  en: Yuru Computer Kagaku Radio
+  zh-Hans: 《Yuru Computer 科学 Radio》
+  ja: 『ゆるコンピュータ科学ラジオ』
+description:
+  en: I listen to [**Yuru Computer Kagaku Radio**](https://www.youtube.com/channel/UCpLu0KjNy616-E95gPx7LZg).
+  zh-Hans: 订阅了播客[**《Yuru Computer 科学 Radio》**](https://www.youtube.com/channel/UCpLu0KjNy616-E95gPx7LZg)。
+  ja: "[**『ゆるコンピュータ科学ラジオ』**](https://www.youtube.com/channel/UCpLu0KjNy616-E95gPx7LZg)を聞いてます。"

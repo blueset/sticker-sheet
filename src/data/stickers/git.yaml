@@ -1,0 +1,22 @@
+x: 430
+y: 65
+width: 100
+height: 100
+rotation: -10
+image: /stickers/git-plain.svg
+clipPath: polygon(45% 0%, 55% 0%, 100% 45%, 100% 55%, 55% 100% , 45% 100%, 0% 55%, 0% 45%)
+title:
+  en: Git
+description:
+  en: |
+    I use [**Git**](https://git-scm.com) both for work and personal projects.
+
+    [Git Logo](https://git-scm.com/downloads/logos) by [Jason Long](https://twitter.com/jasonlong) is licensed under [<Abbr title="Creative Commons Attribution 3.0 Unported License">🅭🅯 3.0</Abbr>](https://creativecommons.org/licenses/by/3.0/).
+  zh-Hans: |
+    我在工作和个人项目中都使用 [**Git**](https://git-scm.com)。
+
+    [Git Logo](https://git-scm.com/downloads/logos) 由 [Jason Long](https://twitter.com/jasonlong) 创作，采用 [<Abbr title="知识共享署名 3.0 未本地化许可协议">🅭🅯 3.0</Abbr>](https://creativecommons.org/licenses/by/3.0/) 许可协议。
+  ja: |
+    [**Git**](https://git-scm.com) を仕事でもプライベートプロジェクトでも使用しています。
+
+    [Git logo](https://git-scm.com/downloads/logos) by [Jason Long](https://twitter.com/jasonlong)、ライセンス：[<Abbr title="クリエイティブ・コモンズ 表示 3.0 非移植ライセンス">🅭🅯 3.0</Abbr>](https://creativecommons.org/licenses/by/3.0/)。

@@ -1,0 +1,87 @@
+x: -215
+y: -240
+width: 100
+height: 100
+rotation: 0
+image: /stickers/dark.svg
+clipPath: circle(50% at 50% 50%)
+title:
+  en: Dark mode
+  zh-Hans: 暗色模式
+  ja: ダークモード
+description:
+  en: |
+    export function DarkModeButton() {
+      const { useTheme } = _provideComponents();
+      const { setTheme } = useTheme();
+      return <Button className="dark:hidden" style={{ width: "100%" }} onClick={() => setTheme("dark")}>Try out dark mode</Button>
+    }
+
+    I prefer using **dark mode** on screens.
+
+    <div className="hidden dark:block">Looks like you’re using dark mode too, yay!</div>
+    <DarkModeButton />
+
+    <style>{`
+      .hidden {
+        display: none;
+      }
+
+      html.dark .dark\\:block {
+        display: block;
+      }
+
+      html.dark .dark\\:hidden {
+        display: none;
+      }
+    `}</style>
+  zh-Hans: |
+    export function DarkModeButton() {
+      const { useTheme } = _provideComponents();
+      const { setTheme } = useTheme();
+      return <Button className="dark:hidden" style={{ width: "100%" }} onClick={() => setTheme("dark")}>试试深色模式</Button>
+    }
+
+    偏好在屏幕上使用**深色模式**。
+
+    <div className="hidden dark:block">好耶，看起来你也在用深色模式！</div>
+    <DarkModeButton />
+
+    <style>{`
+      .hidden {
+        display: none;
+      }
+
+      html.dark .dark\\:block {
+        display: block;
+      }
+
+      html.dark .dark\\:hidden {
+        display: none;
+      }
+    `}</style>
+  ja: |
+    export function DarkModeButton() {
+      const { useTheme } = _provideComponents();
+      const { setTheme } = useTheme();
+      return <Button className="dark:hidden" style={{ width: "100%" }} onClick={() => setTheme("dark")}>ダークモードを試す</Button>
+    }
+
+    画面では**ダークモード**設定が使われています。
+
+    <div className="hidden dark:block">あなたもダークモードを使ってるようですね、やった！</div>
+    <DarkModeButton />
+
+    <style>{`
+      .hidden {
+        display: none;
+      }
+
+      html.dark .dark\\:block {
+        display: block;
+      }
+
+      html.dark .dark\\:hidden {
+        display: none;
+      }
+    `}</style>

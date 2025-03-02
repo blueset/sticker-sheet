@@ -1,0 +1,33 @@
+x: -605
+y: -65
+width: 75
+height: 75
+rotation: 0
+image: /stickers/internet.svg
+clipPath: circle(50% at 50% 50%)
+title:
+  en: Open Internet
+  zh-Hans: 开放互联网
+  ja: オープンインターネット
+description:
+  en: |
+    I believe in an **open Internet** and avoid contributing contents exclusively to walled gardens.
+
+    > A **closed platform**, **walled garden**, or **closed ecosystem** is a software system wherein
+    > the carrier or service provider has control over applications, content, and media, and restricts
+    > convenient access to non-approved applicants or content. This is in contrast to an open platform, 
+    > wherein consumers generally have unrestricted access to applications and content.
+    >
+    > — [Wikipedia](https://en.wikipedia.org/wiki/Closed_platform)
+  zh-Hans: |
+    我相信**开放互联网**，并避免将内容独家贡献给「围墙花园」。
+
+    > **封闭平台**（closed platform），或称**围墙花园**（walled garden），是指一种软件系统，其中的电信运营商或服务供应商拥有控制应用、内容与媒体的能力，并能限制未经允许的应用或内容被轻易接取。与封闭平台相对的是开放平台，该平台允许消费者不受限制地接取应用、内容等。
+    >
+    > — [维基百科](https://zh.wikipedia.org/wiki/%E5%B0%81%E9%96%89%E5%B9%B3%E8%87%BA)
+  ja: |
+    **オープンインターネット**を信じ、ウォールドガーデンに独占的にコンテンツを提供するのを避けます。
+
+    > **ウォールドガーデン**とは、デジタルマーケティングの文脈で、特定のプラットフォームやエコシステム内で閉じられた環境を指します。これは、プラットフォーム提供者が独自のルール、データ、広告プラットフォームを維持し、他のデータや広告プロバイダーからのアクセスを制限することが一般的です。
+    >
+    > — [デジマール](https://digimarl.com/tips/detail/10921)

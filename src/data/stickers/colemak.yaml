@@ -1,0 +1,17 @@
+x: -65
+y: -260
+width: 181
+height: 100
+rotation: -10
+image: /stickers/colemak.svg
+title:
+  en: Colemak
+description:
+  en: |
+    A proud user of [**Colemak**](https://colemak.com) keyboard layout. I’m glad to see that it’s finally pre-installed in all major OSes.
+  zh-Hans: |
+    [**Colemak**](https://colemak.com) 键盘布局的忠实用户。很高兴看到它终于被预装在所有主流操作系统中了。
+
+    另见「[Rime 星空键道 27C](https://github.com/xkjd27/rime_jd27c)」，一个为 Colemak 优化的音形码输入方案。
+  ja: |
+    [**Colemak**](https://colemak.com) キーボードレイアウトの愛用者です。ついに主要 OS に標準搭載されるようになって嬉しく思います。

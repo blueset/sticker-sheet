@@ -1,0 +1,69 @@
+x: 550
+y: 345
+width: 100
+height: 50
+rotation: -25
+content:
+  en: |
+    <div style={{
+      width: "100%",
+      height: "100%",
+      backgroundColor: "light-dark(#566D77, #D8DFE3)",
+      color: "light-dark(#D8DFE3, #566D77)",
+      borderRadius: "10px",
+      padding: "10px",
+      textAlign: "center",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      fontVariantNumeric: "tabular-nums",
+      fontSize: "25px",
+      fontWeight: "600"
+    }}>
+      文 a 字
+    </div>
+title:
+  en: East Asian Spacing
+  zh-Hans: 中西文间留白
+  ja: 和文・欧文間のスペース
+description:
+  en: |
+    I’ll add spacing between East Asian and non-East Asian characters, until all major OS/UI text render engines support it.
+
+    Read more about this in [Unicode Technical Report #59 East Asian Spacing](https://www.unicode.org/reports/tr59/).
+
+    An incomplete list of rendering engine support (as of Early 2025):
+    * ✅ Apple (CoreText)
+    * ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)
+    * ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)
+    * 🔲 Firefox
+    * 🔲 Windows (DirectWrite)
+    * 🔲 GTK+ (Pango)
+    * 🔲 Android
+  zh-Hans: |
+    直到所有主要的操作系统/用户界面文本渲染引擎都支持之前，我会在中西文文本之间加空。
+
+    请参阅[《中文排版需求・横排的中、西文混排配置》](https://www.w3.org/TR/clreq/#mixed_text_composition_in_horizontal_writing_mode)、[《Unicode 技术报告 #59 东亚文字间距》](https://www.unicode.org/reports/tr59/)。
+
+    部分渲染引擎支持列表（截至 2025 年初）：
+    * ✅ Apple (CoreText)
+    * ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)
+    * ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)
+    * 🔲 Firefox
+    * 🔲 Windows (DirectWrite)
+    * 🔲 GTK+ (Pango)
+    * 🔲 Android
+  ja: |
+    主要な OS/UI テキストレンダリングエンジンが対応するまで、和文と欧文の間にスペースを入れます。
+
+    [『日本語組版処理の要件・プロポーショナルな​欧字を用いた​和欧文混植処理』](https://www.w3.org/TR/jlreq/#handling_of_western_text_in_japanese_text_using_proportional_western_fonts)、[『Unicode 技術報告 #59 東アジア字間』](https://www.unicode.org/reports/tr59/)をご覧ください。
+
+    一部レンダリングエンジンの対応状況（2025 年初現在）：
+    * ✅ Apple (CoreText)
+    * ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)
+    * ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)
+    * 🔲 Firefox
+    * 🔲 Windows (DirectWrite)
+    * 🔲 GTK+ (Pango)
+    * 🔲 Android

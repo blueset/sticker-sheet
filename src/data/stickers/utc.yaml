@@ -1,0 +1,22 @@
+x: -210
+y: -355
+width: 100
+height: 108
+rotation: -10
+image: /stickers/utc.svg
+clipPath: circle(50% at 50% 50%)
+title:
+  en: UTC
+description:
+  en: |
+    I prefer using **UTC** over GMT.
+
+    Hello, my friend from UTC{new Date().getTimezoneOffset() > 0 ? '-' : '+'}{Math.abs(new Date().getTimezoneOffset() / 60).toString()}!
+  zh-Hans: |
+    惯用 **UTC** 而不是 GMT。
+
+    你好，来自 UTC{new Date().getTimezoneOffset() > 0 ? '-' : '+'}{Math.abs(new Date().getTimezoneOffset() / 60).toString()} 的朋友！
+  ja: |
+    GMT より **UTC** を使います。
+
+    UTC{new Date().getTimezoneOffset() > 0 ? '-' : '+'}{Math.abs(new Date().getTimezoneOffset() / 60).toString()} から来た友よ、こんにちは！

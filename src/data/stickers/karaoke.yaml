@@ -1,0 +1,24 @@
+x: 570
+y: -310
+width: 470
+height: 100
+rotation: 10
+image: /stickers/karaoke.svg
+clipPath: polygon(0% 46.05%, 0% 0%, 84.33% 0%, 84.33% 46.05%, 100% 46.05%, 100% 100%, 46.05% 100%, 46.05% 46.05%)
+title:
+  en: Karaoke subtitles
+  zh-Hans: 卡拉 OK 歌词字幕
+  ja: カラオケ歌詞字幕
+description:
+  en: |
+    I like to watch **karaoke subtitles** while listening to songs.
+
+    And I made a karaoke-style lyrics display in the [Lyricova Jukebox](https://jukebox.1a23.studio).
+  zh-Hans: |
+    喜欢在听歌时看**卡拉 OK 歌词字幕**。
+
+    因此在 [Lyricova Jukebox](https://jukebox.1a23.studio) 中制作了卡拉 OK 风格的歌词显示。
+  ja: |
+    歌を聴きながら**カラオケ歌詞字幕**を見るのが好きです。
+
+    [Lyricova Jukebox](https://jukebox.1a23.studio) でニコカラ風の歌詞表示を作りました。

@@ -1,0 +1,28 @@
+x: 345
+y: 185
+width: 225
+height: 75
+rotation: -20
+image: /stickers/regex.svg
+title:
+  en: Apprentice RegEx magician
+  zh-Hans: 见习正则魔法师
+  ja: 見習い RegEx 魔法使い
+description:
+  en: |
+    An apprentice [RegEx](https://en.wikipedia.org/wiki/Regular_expression "Regular Expression") magician summons a cat to walk on my keyboard. 
+    (via [Garabato Kid](https://twitter.com/garabatokid/status/1147063121678389253))
+
+    The regex above matches a social media handle and capture it in match group 1. 
+    By [rayfranco](https://stackoverflow.com/a/13398311/1989455), <Abbr title="Creative Commons Attribution-ShareAlike 3.0">🅭 🅯⊜ 3.0</Abbr>, [Explanation](https://regexr.com/89ius).
+  zh-Hans: |
+    见习[正则](https://zh.wikipedia.org/wiki/正则表达式 "正则表达式")魔法师召唤了一只猫在我的键盘上爬。
+    （来自 [Garabato Kid](https://twitter.com/garabatokid/status/1147063121678389253)）
+
+    上面的正则表达式可以匹配社交媒体用户名并将其捕获到第 1 个匹配组中。
+    作者：[rayfranco](https://stackoverflow.com/a/13398311/1989455)，<Abbr title="知识共享 署名-相同方式共享 3.0">🅭 🅯⊜ 3.0</Abbr>，[详细说明](https://regexr.com/89ius)。
+  ja: |
+    見習い [RegEx](https://ja.wikipedia.org/wiki/正規表現 "正規表現") 魔法使いが、猫を召喚してキーボードの上を歩かせました。（出典：[Garabato Kid](https://twitter.com/garabatokid/status/1147063121678389253)）
+
+    上記の正規表現は、ソーシャルメディアのハンドルネームを一致させ、マッチグループ 1 に捕捉します。
+    制作：[rayfranco](https://stackoverflow.com/a/13398311/1989455)、<Abbr title="クリエイティブ・コモンズ 表示-継承 3.0">🅭 🅯⊜ 3.0</Abbr>、[説明](https://regexr.com/89ius)。

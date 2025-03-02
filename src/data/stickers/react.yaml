@@ -1,0 +1,22 @@
+x: 270
+y: 20
+width: 75
+height: 75
+rotation: 10
+clipPath: ellipse(50% 50% at 50% 50%)
+image: /stickers/react.svg
+title:
+  en: React
+description:
+  en: |
+    I write stuff using [**React**](https://react.dev) a lot, including this website.
+
+    [Logo](https://raw.githubusercontent.com/facebook/react/main/fixtures/dom/public/react-logo.svg), licensed under MIT license.
+  zh-Hans: |
+    我写了很多东西使用 [**React**](https://react.dev)，包括这个网站。
+
+    [Logo](https://raw.githubusercontent.com/facebook/react/main/fixtures/dom/public/react-logo.svg)，授权：MIT。
+  ja: |
+    このウェブサイトを含め、[**React**](https://react.dev) でたくさんのものを書いています。
+
+    [Logo](https://raw.githubusercontent.com/facebook/react/main/fixtures/dom/public/react-logo.svg)、ライセンス：MIT。

@@ -1,0 +1,22 @@
+x: 445
+y: -30
+width: 185
+height: 50
+rotation: -10
+image: /stickers/next-js.svg
+clipPath: polygon(11.99% 0%, 18.06% 27.75%, 18.06% 0%, 86.52% 0%, 86.52% 35.09%, 100% 42%, 100% 100%, 0% 100%, 0% 0%)
+title:
+  en: Next.js
+description:
+  en: |
+    This page is built with [**Next.js**](https://nextjs.org/).
+
+    Logo used following [Vercel Geist Branding Guidelines](https://vercel.com/geist/brands#usage).
+  zh-Hans: |
+    本页面使用 [**Next.js**](https://nextjs.org/) 构建。
+
+    Logo 使用遵循 [Vercel Geist 品牌使用指南](https://vercel.com/geist/brands#usage)。
+  ja: |
+    このページは [**Next.js**](https://nextjs.org/) で構築されています。
+
+    ロゴは [Vercel Geist ブランドガイドライン](https://vercel.com/geist/brands#usage)に従って使用されています。

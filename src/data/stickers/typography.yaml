@@ -1,0 +1,14 @@
+x: 260
+y: 305
+width: 206
+height: 75
+rotation: 5
+image: /stickers/typography.svg
+title:
+  en: Design and typography
+  zh-Hans: 设计和字体排印
+  ja: デザインとタイポグラフィ
+description:
+  en: I enjoy **designing and typography**.
+  zh-Hans: 爱好**设计和字体排印**。
+  ja: デザインとタイポグラフィに興味があります。

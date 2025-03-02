@@ -1,0 +1,32 @@
+x: -60
+y: 190
+width: 100
+height: 100
+rotation: -10
+image: /stickers/en.svg
+clipPath: path('M46.8429 99.3774C33.6086 97.3547 21.4409 90.1189 12.6834 80.3595C0.756345
+  67.0679 -2.35103 48.5881 4.72184 33.2483C8.96476 24.0461 18.7969 13.3899 27.5686
+  8.48439C45.2687 -1.414 65.4639 -1.46475 78.5931 8.21098C92.4678 18.4362 100.005
+  36.0076 99.977 58.3634C99.9593 71.9952 97.0774 80.6291 90.2365 87.8623C83.7749 94.6945
+  75.5857 98.6062 63.1289 99.6831C58.905 100.048 56.4432 100.215 54.2349 100.17C52.0319
+  100.126 50.0698 99.8706 46.8429 99.3774Z')
+title:
+  en: English language
+  zh-Hans: 英语
+  ja: 英語
+description:
+  en: |
+    I have a _near native speaker_ knowledge of **English**
+    (based on the assumption that a native speaker might not be necessarily fluent in the language either).
+
+    IELTS Academic 8.0 overall in 2017, 
+    received education instructed in English for 7+ years, 
+    and worked in an English-speaking environment for 4+ years and counting.
+  zh-Hans: |
+    **英语**准母语水平（假设母语者也不一定能流利说英语）。
+
+    2017 年取得 IELTS 学术类 8.0 分，接受 7 年以上英语教育，在英语环境中工作了 4 年以上。
+  ja: |
+    準母語レベルの**英語**話者です、ただし本物の母語話者でも母語を常時に流暢に話せるとは限りません。
+
+    2017 年で IELTS アカデミック 8.0 点を取得し、7 年以上の英語教育を受け、4 年以上英語で仕事をしています。

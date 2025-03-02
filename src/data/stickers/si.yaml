@@ -1,0 +1,26 @@
+x: -335
+y: -155
+width: 150
+height: 150
+rotation: 0
+image: /stickers/si.svg
+clipPath: circle(50% at 50% 50%)
+title:
+  en: SI units
+  zh-Hans: 国际单位制
+  ja: SI 単位系
+description:
+  en: |
+    When I have a choice wnd when no computation is needed, I prefer to use **SI units** and degree celsius.
+
+    Exceptions include when I have to compare numbers with something I can’t change, 
+    like speed signs on roads and weight plates in gyms.
+  zh-Hans: |
+    在有选择且不需要计算的情况下，我更喜欢使用**国际单位制**和摄氏度。
+
+    例外情况包括需要与一些无法改变的数值做对比时，比如道路上的限速标志和健身房里的配重片重量。
+  ja: |
+    選択肢があり、かつ計算の必要がない場合は、**SI 単位系**と摂氏温度を使います。
+
+    ただし、道路標識の速度表示やジムのウェイトプレートの重量など、
+    変更できない数値と比較する必要がある場合は例外です。

@@ -1,0 +1,22 @@
+x: 450
+y: -105
+width: 66
+height: 75
+rotation: -5
+image: /stickers/vscode.svg
+clipPath: polygon(27.75% 27.75%, 54.69% 0%, 100% 0%, 100% 100%, 54.69% 100%, 27.75% 75%, 0% 87%, 0% 13%)
+title:
+  en: Visual Studio Code
+description:
+  en: |
+    I use [**Visual Studio Code**](https://code.visualstudio.com/) a lot.
+
+    Logo used along the [Visual Studio Code Branding Guidelines](https://code.visualstudio.com/brand).
+  zh-Hans: |
+    常用 [**Visual Studio Code**](https://code.visualstudio.com/)。
+
+    Logo 使用遵循 [Visual Studio Code 品牌指南](https://code.visualstudio.com/brand)。
+  ja: |
+    [**Visual Studio Code**](https://code.visualstudio.com/) をよく使います。
+
+    ロゴは [Visual Studio Code ブランドガイドライン](https://code.visualstudio.com/brand)に従って使用されています。

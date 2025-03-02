@@ -1,0 +1,60 @@
+x: 435
+y: -195
+width: 200
+height: 100
+rotation: 0
+clipPath: polygon(0% 0%, 75% 0%, 75% 33%, 100% 33%, 100% 100%, 0% 100%)
+content:
+  en: |
+    <div style={{
+      height: "100%",
+      aspectRatio: "1 / 1",
+      border: "2px solid light-dark(black, white)",
+      backgroundColor: "light-dark(white, black)",
+      color: "light-dark(black, white)",
+      lineHeight: "1",
+      fontSize: "27px",
+      textAlign: "start",
+      position: "relative",
+      wordBreak: "keep-all",
+    }}>
+      <span style={{
+        position: "absolute", 
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        left: 10,
+        top: 0,
+        bottom: 0,
+      }}>CSS<br />IS<br /><span style={{ fontWeight: "600" }}>AWESOME</span></span>
+    </div>
+  ja: |
+    <div style={{
+      height: "100%",
+      aspectRatio: "3 / 2",
+      borderRadius: "10px",
+      border: "2px solid light-dark(black, white)",
+      backgroundColor: "light-dark(white, black)",
+      color: "light-dark(black, white)",
+      lineHeight: "1",
+      fontSize: "27px",
+      textAlign: "start",
+      position: "relative",
+      wordBreak: "keep-all",
+    }}>
+      <span style={{
+        position: "absolute", 
+        left: 27,
+        top: 15,
+      }}><span style={{ fontWeight: "600" }}>CSS<br /></span><small>完全に理解した</small></span>
+    </div>
+title:
+  en: CSS is awesome
+  ja: CSS 完全に理解した
+description:
+  en: |
+    Yes, [CSS is awesome](https://css-tricks.com/css-is-awesome/).
+  zh-Hans: |
+    是的，[CSS is awesome](https://css-tricks.com/css-is-awesome/)。
+  ja: |
+    そう、[CSS 完全に理解した](https://x.com/ikeji/status/1174570034196140033)。

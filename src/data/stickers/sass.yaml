@@ -1,0 +1,26 @@
+x: 300
+y: -50
+width: 98
+height: 75
+rotation: 20
+image: /stickers/sass.svg
+clipPath: polygon(33.08% 0%, 63.85% 0%, 75% 26%, 100% 52%, 100% 84%, 31.54% 100%, 0% 100%, 0% 17%)
+title:
+  en: Sass
+description:
+  en: |
+    I write stuff in [**Sass**](https://sass-lang.com) sometimes, especially in SCSS,
+    despite most of the main reasons why I chose SCSS (nested syntax, variables, etc.)
+    are now already available in CSS.
+
+    [Logo by Sass-lang](https://sass-lang.com/styleguide/brand), licensed under <Abbr title=" Creative Commons Attribution-NonCommercial-ShareAlike 3.0">🅭 🅯🄏⊜ 3.0</Abbr>.
+  zh-Hans: |
+    我有时会用 [**Sass**](https://sass-lang.com) 写代码，特别是使用 SCSS 语法，
+    尽管我当初选择 SCSS 的主要原因（嵌套语法、变量等）现在的 CSS 都已经支持了。
+
+    [Logo by Sass-lang](https://sass-lang.com/styleguide/brand)，以 <Abbr title=" Creative Commons Attribution-NonCommercial-ShareAlike 3.0">🅭 🅯🄏⊜ 3.0</Abbr> 协议授权。
+  ja: |
+    [**Sass**](https://sass-lang.com) でコードを書くことがあります。特に SCSS 形式をよく使いますが、
+    SCSS を選んだ主な理由（ネスト構文や変数など）のほとんどは、今では CSS でも使えるようになっています。
+
+    [Logo by Sass-lang](https://sass-lang.com/styleguide/brand)、ライセンス: <Abbr title="  Creative Commons Attribution-NonCommercial-ShareAlike 3.0">🅭 🅯🄏⊜ 3.0</Abbr>。

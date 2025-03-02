@@ -1,0 +1,35 @@
+x: -400
+y: -10
+width: 375
+height: 75
+rotation: -10
+image: /stickers/gif.svg
+title:
+  en: GIF is /dʒɪf/
+  zh-Hans: GIF 读作 /dʒɪf/
+  ja: GIF と書いて /dʒɪf/ と読む
+description:
+  en: |
+    I pronounce **GIF** as /dʒɪf/, as its creator Steve Wilhite did.
+
+    > **Creator of the GIF says it is pronounced “Jif”**  
+    > The creator of the GIF file format has sparked a lively debate on Twitter
+    > after announcing that it must be pronounced “Jif”.
+    >
+    > — [The Telegraph](https://www.telegraph.co.uk/technology/10072420/Creator-of-the-GIF-says-it-is-pronounced-Jif.html), 22 May 2013
+  zh-Hans: |
+    我把 **GIF** 读作 /dʒɪf/，和其创造者 Steve Wilhite 一样。
+
+    > **GIF 的创造者表示它应读作「Jif」**  
+    > GIF 文件格式的创造者在宣布这个缩写应该读作「Jif」后，
+    > 在 Twitter 上引发了一场热烈的讨论。
+    >
+    > — [电讯报](https://www.telegraph.co.uk/technology/10072420/Creator-of-the-GIF-says-it-is-pronounced-Jif.html)，2013 年 5 月 22 日
+  ja: |
+    **GIF** を /dʒɪf/ と発音します、開発者の Steve Wilhite と同じく。
+
+    > **GIF の開発者「発音は“Jif”」と主張**  
+    > GIF ファイル形式の開発者が“Jif”と発音すべきだと発表し、
+    > Twitter 上で活発な議論が巻き起こりました。
+    >
+    > — [テレグラフ紙](https://www.telegraph.co.uk/technology/10072420/Creator-of-the-GIF-says-it-is-pronounced-Jif.html)、2013 年 5 月 22 日付

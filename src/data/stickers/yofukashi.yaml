@@ -1,0 +1,15 @@
+x: -395
+y: 390
+width: 135
+height: 200
+rotation: -5
+image: /stickers/yofukashi.png
+clipPath: polygon(83.86% 64.05%, 100% 64.29%, 99.44% 81.55%, 75.35% 81.55%, 66.48% 89.33%, 48.71% 92.51%, 44.61% 100%, 6.89% 100%, 14% 44.44%, 0% 44.44%, 0% 28.46%, 14% 4.49%, 37.14% 14.4%, 42.22% 0%, 75.56% 0%, 75.56% 47.51%)
+title:
+  en: Monday Lateshow
+  zh-Hans: 《月曜夜未央》
+  ja: 『月曜から夜ふかし』
+description:
+  en: I watch **Monday Lateshow**.
+  zh-Hans: 我在追看综艺节目[**《月曜夜未央》**](https://zh.wikipedia.org/wiki/月曜夜未央)。
+  ja: "[**『月曜から夜ふかし』**](https://ja.wikipedia.org/wiki/月曜から夜ふかし)を見てます。"

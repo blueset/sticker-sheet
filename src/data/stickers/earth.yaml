@@ -1,0 +1,26 @@
+x: 120
+y: -200
+width: 172
+height: 172
+image: /stickers/earth.png
+clipPath: circle(50%)
+title:
+  en: A native Terran
+  zh-Hans: 蓝星人
+  ja: ワレワレハ チキュウジンダ
+description:
+  en: |
+    A proud **native Terran**.
+
+    Copied from [Wikipedia/Template:User Native Terran](https://en.wikipedia.org/wiki/Template:User_Native_Terran).
+    [Photo of Earth](https://visibleearth.nasa.gov/images/57723/the-blue-marble) from NASA, in Public Domain.
+  zh-Hans: |
+    一个自豪的**蓝星人**。
+
+    引用自 [Wikipedia/Template:User Native Terran](https://en.wikipedia.org/wiki/Template:User_Native_Terran)。
+    [地球的照片](https://visibleearth.nasa.gov/images/57723/the-blue-marble)来自 NASA，公共领域。
+  ja: |
+    言われるまでもなく**地球人**です。
+
+    [Wikipedia/Template:User Native Terran](https://en.wikipedia.org/wiki/Template:User_Native_Terran) による。
+    [地球の写真](https://visibleearth.nasa.gov/images/57723/the-blue-marble)は NASA により提供、パブリックドメイン。

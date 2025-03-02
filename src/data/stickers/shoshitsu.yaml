@@ -1,0 +1,51 @@
+x: -620
+y: 165
+width: 139 # 292
+height: 250 # 527
+rotation: -15
+image: /stickers/shoshitsu.svg
+clipPath: polygon(47.85% 24.09%, 38.8% 17.63%, 38.99% 8.13%, 47.85% 0%, 100% 0%, 100% 28.59%, 90.88% 36.67%, 78.03% 45.62%, 91.75% 54.17%, 84.42% 62.64%, 84.71% 76.01%, 61.14% 79%, 67.78% 92.95%, 60.27% 100%, 44.95% 100%, 37.23% 95.79%, 25.34% 100%, 0% 100%, 0% 78.41%, 10.62% 77.46%, 4.79% 55.11%, 10.62% 43.71%, 38.8% 43.71%)
+title:
+  en: The End of Hatsune Miku
+  zh-Hans: 《初音未来的消失》
+  ja: 『初音ミクの消失』
+description:
+  en: |
+    My favorite Vocaloid composition is ***the End of Hatsune Miku*** (also known as *the Disappearance of Hatsune Miku*), both the songs and the albums.
+
+    The songs:
+
+    - “Remake”, [YouTube](https://www.youtube.com/watch?v=VWVtIg5cdDU).
+    - “Long version”, [NicoVideo](https://www.nicovideo.jp/watch/sm2937784).
+    - The “Original”, [NicoVideo](https://www.nicovideo.jp/watch/sm1476648).
+
+    The albums:
+
+    - “Disappearance” ([Wayback Machine](https://web.archive.org/web/20201125042036/http://hatsunemikushoushitsu.com/))
+    - [“Real and Repeat”](https://shoushitsu-re.tumblr.com/)
+  zh-Hans: |
+    主推 Vocaloid 作品**《初音未来的消失》**，包括单曲和专辑。
+
+    单曲：
+
+    - 重制版：[YouTube](https://www.youtube.com/watch?v=VWVtIg5cdDU)
+    - 完整版：[NicoVideo](https://www.nicovideo.jp/watch/sm2937784)
+    - 原版：[NicoVideo](https://www.nicovideo.jp/watch/sm1476648)
+
+    专辑：
+
+    - 《消失》([Wayback Machine](https://web.archive.org/web/20201125042036/http://hatsunemikushoushitsu.com/))
+    - [《Real and Repeat》](https://shoushitsu-re.tumblr.com/)
+  ja: |
+    いち押しのボカロ作品は楽曲もアルバムもあわせて **『初音ミクの消失』** です。
+
+    楽曲：
+
+    - 「リメイク」：[YouTube](https://www.youtube.com/watch?v=VWVtIg5cdDU) 。
+    - 「ロングバージョン」：[ニコニコ動画](https://www.nicovideo.jp/watch/sm2937784)。
+    - 「オリジナル」：[ニコニコ動画](https://www.nicovideo.jp/watch/sm1476648)。
+
+    アルバム：
+
+    - 『消失』([Wayback Machine](https://web.archive.org/web/20201125042036/http://hatsunemikushoushitsu.com/))
+    - [『Real and Repeat』](https://shoushitsu-re.tumblr.com/)

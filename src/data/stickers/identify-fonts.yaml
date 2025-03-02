@@ -1,0 +1,24 @@
+x: -490
+y: -95
+width: 132
+height: 75
+rotation: -10
+image: /stickers/font-distinct.svg
+# clipPath: circle(50% at 50% 50%)
+title:
+  en: Identifying typefaces
+  zh-Hans: 区分字体
+  ja: フォントを見分ける
+description:
+  en: |
+    I can **identify** a limited selection popular computer typefaces (or even fonts) by sight.
+
+    The sticker illustrates the differences between <span style={{color: "light-dark(magenta, pink)"}}>Arial</span> and <span style={{color: "light-dark(blue, cyan)"}}>Helvetica</span>.
+  zh-Hans: |
+    我可以通过观察**区分**少数一部分常见的电脑字体。
+
+    这张贴纸展示了 <span style={{color: "light-dark(magenta, pink)"}}>Arial</span> 和 <span style={{color: "light-dark(blue, cyan)"}}>Helvetica</span> 之间的区别。
+  ja: |
+    ごく一部の常用**フォントを見分ける**ことができます。
+
+    このステッカーは、<span style={{color: "light-dark(magenta, pink)"}}>Arial</span> と <span style={{color: "light-dark(blue, cyan)"}}>Helvetica</span> の違いを示しています。

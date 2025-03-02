@@ -1,0 +1,15 @@
+x: -245
+y: 400
+width: 173
+height: 100 # 759
+rotation: 0
+image: /stickers/yurugengo.png
+clipPath: polygon(0% 32.53%, 12.64% 21.45%, 12.64% 4.34%, 90.83% 0%, 100% 8.92%, 97.5% 47.23%, 90.83% 50.82%, 97.5% 68.67%, 95.05% 84.81%, 92.45% 85.22%, 88% 99.76%, 80.13% 99.76%, 69.57% 88.81%, 57.78% 100%, 48.33% 100%, 44.08% 85.71%, 36.22% 94.24%, 23.19% 86.07%, 20.62% 78.2%, 16.86% 71.91%, 7.85% 70.71%, 5.53% 66.17%, 0% 50.6%)
+title:
+  en: Yuru Gengo-gaku Radio
+  zh-Hans: 《Yuru 言語学 Radio》
+  ja: 『ゆる言語学ラジオ』
+description:
+  en: I listen to [**Yuru Gengo-gaku Radio**](https://yurugengo.com/).
+  zh-Hans: 订阅了播客[**《Yuru 言語学 Radio》**](https://yurugengo.com/)。
+  ja: "[**『ゆる言語学ラジオ』**](https://yurugengo.com/)を聞いてます。"

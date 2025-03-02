@@ -1,0 +1,74 @@
+x: 205
+y: 95
+width: 200
+height: 110
+rotation: 20
+image: /stickers/dumbbell.svg
+clipPath: polygon(0% 12.84%, 34.37% 0%, 34.37% 34.37%, 65.63% 34.37%, 65.67% 0%, 100%
+  14.09%, 100% 84.64%, 65.56% 100%, 65.67% 65.67%, 34.37% 65.67%, 34.37% 100%, 0%
+  83.22%)
+title:
+  en: Workout
+  zh-Hans: 健身
+  ja: 筋トレ
+description:
+  en: |
+    <a href="https://labs.1a23.com/gymrun/card.svg" target="_blank"><img src="https://labs.1a23.com/gymrun/card.svg" alt="Check out my recent workout" style={{ width: "100%", marginTop: 0 }} /></a>
+
+    <Large style={{ marginBlockStart: 10, marginBlockEnd: 10 }}>Check out my recent workouts</Large>
+
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", marginBlockEnd: "1em"}}>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderStartEndRadius: 0, borderEndEndRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg">Equipment units</Link>
+      </Button>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg?unit=kg">Metric (kg)</Link>
+      </Button>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderStartStartRadius: 0, borderEndStartRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg?unit=lbs">U.S. Customary (lbs)</Link>
+      </Button>
+    </div>
+
+    <Button asChild variant="outline"><Link target="_blank" href="https://github.com/blueset/gymrun" style={{ width: "100%" }}>GitHub</Link></Button>
+
+    [Heavy dumbbell equipment icon isolated created by studiogstock](https://www.freepik.com/free-vector/heavy-dumbbell-equipment-icon-isolated_169501845.htm) on `www.freepik.com`.
+  zh-Hans: |
+    <a href="https://labs.1a23.com/gymrun/card.svg" target="_blank"><img src="https://labs.1a23.com/gymrun/card.svg" alt="最近的健身记录" style={{ width: "100%", marginTop: 0 }} /></a>
+
+    <Large style={{ marginBlockStart: 10, marginBlockEnd: 10 }}>最近的健身记录</Large>
+
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", marginBlockEnd: "1em"}}>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderStartEndRadius: 0, borderEndEndRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg">器械单位</Link>
+      </Button>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg?unit=kg">公制（千克）</Link>
+      </Button>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderStartStartRadius: 0, borderEndStartRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg?unit=lbs">美制（磅）</Link>
+      </Button>
+    </div>
+
+    <Button asChild variant="outline"><Link target="_blank" href="https://github.com/blueset/gymrun" style={{ width: "100%" }}>GitHub</Link></Button>
+
+    [由 studiogstock 创作的 Heavy dumbbell equipment icon isolated](https://www.freepik.com/free-vector/heavy-dumbbell-equipment-icon-isolated_169501845.htm) 来自 `www.freepik.com`。
+  ja: |
+    <a href="https://labs.1a23.com/gymrun/card.svg" target="_blank"><img src="https://labs.1a23.com/gymrun/card.svg" alt="最近の筋トレをチェック" style={{ width: "100%", marginTop: 0 }} /></a>
+
+    <Large style={{ marginBlockStart: 10, marginBlockEnd: 10 }}>最近の筋トレ</Large>
+
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", marginBlockEnd: "1em"}}>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderStartEndRadius: 0, borderEndEndRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg">マシーンでの単位</Link>
+      </Button>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg?unit=kg">メートル法（kg）</Link>
+      </Button>
+      <Button asChild variant="outline">
+        <Link target="_blank" style={{ borderStartStartRadius: 0, borderEndStartRadius: 0 }} href="https://labs.1a23.com/gymrun/card.svg?unit=lbs">米式（ポンド）</Link>
+      </Button>
+    </div>
+
+    <Button asChild variant="outline"><Link target="_blank" href="https://github.com/blueset/gymrun" style={{ width: "100%" }}>GitHub</Link></Button>
+
+    [studiogstock 制作の Heavy dumbbell equipment icon isolated](https://www.freepik.com/free-vector/heavy-dumbbell-equipment-icon-isolated_169501845.htm) は `www.freepik.com` からの提供です。

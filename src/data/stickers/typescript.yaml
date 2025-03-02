@@ -1,0 +1,21 @@
+x: 175
+y: -45
+width: 100
+height: 100
+rotation: 5
+image: /stickers/typescript.svg
+title:
+  en: TypeScript
+description:
+  en: |
+    I use [**TypeScript**](https://www.typescriptlang.org) in all of my recent JS web projects and also at work. [See my TypeScript projects](https://github.com/blueset?tab=repositories&q=TypeScript).
+
+    [TypeScript Logo](https://www.typescriptlang.org/branding/) by Microsoft. Released under CC BY 4.0.
+  zh-Hans: |
+    我在最近的所有 JS 网页项目中使用 [**TypeScript**](https://www.typescriptlang.org)，工作中也经常使用。[我的 TypeScript 项目](https://github.com/blueset?tab=repositories&q=TypeScript)。
+
+    [TypeScript Logo](https://www.typescriptlang.org/branding/) 来自 Microsoft。授权为 CC BY 4.0。
+  ja: |
+    最近のすべての JS ウェブプロジェクトと仕事で [**TypeScript**](https://www.typescriptlang.org) を使用しています。[TypeScript で作ったもろもろ](https://github.com/blueset?tab=repositories&q=TypeScript)。
+
+    [TypeScript Logo](https://www.typescriptlang.org/branding/) by Microsoft。ライセンス：CC BY 4.0。

@@ -1,0 +1,24 @@
+x: -250
+y: 195
+width: 100
+height: 100
+rotation: -10
+image: /stickers/vocaloid.svg
+clipPath: polygon(100% 0%, 100% 30.69%, 69.76% 100%, 30.95% 100%, 0% 30.69%, 0% 0%)
+title:
+  en: Vocaloid* enjoyer
+  zh-Hans: 术力口*厨
+  ja: ボカロ*大好き
+description:
+  en: |
+    I have [a library](https://jukebox.1a23.studio) of 1,300+ <strong>Vocaloid</strong>* songs and their derivatives.
+
+    <small>\* Including Vocaloid, UTAU, CeVIO, Neutrino, Synthesizer V, and other vocal synthesizing technologies.</small>
+  zh-Hans: |
+    有一个包含 1300+ 首 <strong>Vocaloid</strong>* 歌曲及其衍生作品的[曲库](https://jukebox.1a23.studio)。
+
+    <small>\* 包括 Vocaloid、UTAU、CeVIO、Neutrino、Synthesizer V 和其他歌声合成技术。</small>
+  ja: |
+    1300 曲以上の<strong>ボーカロイド</strong>*楽曲とその派生作品が入ってる[プレイリスト](https://jukebox.1a23.studio)を持っています。
+
+    <small>\* Vocaloid をはじめ、UTAU、CeVIO、Neutrino、Synthesizer V、など他の歌声合成技術を含む。</small>

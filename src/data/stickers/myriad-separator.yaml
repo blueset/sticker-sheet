@@ -1,0 +1,39 @@
+x: -585
+y: -155
+width: 200
+height: 50
+rotation: -15
+content:
+  en: |
+    <div style={{
+      width: "100%",
+      height: "100%",
+      backgroundColor: "light-dark(#14146b, #b9bde3)",
+      color: "light-dark(#b9bde3, #14146b)",
+      borderRadius: "10px",
+      padding: "10px",
+      textAlign: "center",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      fontVariantNumeric: "tabular-nums",
+      fontSize: "25px",
+      fontWeight: "600",
+      whiteSpace: "nowrap",
+    }}>
+      12,3456,7890
+    </div>
+title:
+  en: Myriad separator
+  zh-Hans: 万位分割符
+  ja: 4 桁区切り
+description:
+  en: |
+    I use **myriad decimal separators** in CJK contexts.
+  zh-Hans: |
+    在中日韩语语境中使用**万位分隔符**。
+
+    [了解详情](https://blog.1a23.com/2020/04/01/shuzi-zhao-yu-wanwei-fengefu/)。
+  ja: |
+    日中韓文脈では **4 桁区切り**を使います。

@@ -1,0 +1,15 @@
+x: -395
+y: 215
+width: 200
+height: 50
+rotation: 5
+image: /stickers/quizknock.svg
+title:
+  en: QuizKnock
+description:
+  en: |
+    I subscribed to **[QuizKnock](https://quizknock.com/)**’s [YouTube Channel](https://www.youtube.com/channel/UCQ_MqAw18jFTlBB-f8BP7dw/featured).
+  zh-Hans: |
+    我订阅了 **[QuizKnock](https://quizknock.com/)** 的 [YouTube 频道](https://www.youtube.com/channel/UCQ_MqAw18jFTlBB-f8BP7dw/featured)。
+  ja: |
+    **[QuizKnock](https://quizknock.com/)** の [YouTube チャンネル](https://www.youtube.com/channel/UCQ_MqAw18jFTlBB-f8BP7dw/featured)を登録しました。

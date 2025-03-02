@@ -1,0 +1,100 @@
+x: -225
+y: 300
+width: 250
+height: 75
+rotation: -5
+content:
+  en: |
+    <div style={{
+      width: '100%',
+      height: '100%',
+      borderRadius: '10px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#f3f3f3',
+      color: '#333',
+      fontFamily: `Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif`,
+      textTransform: 'uppercase',
+      lineHeight: 1.3,
+      textAlign: 'start',
+    }}>Do not dumb here.<br />Not dumb area here.</div>
+  zh-Hans: |
+    <div style={{
+      width: '100%',
+      height: '100%',
+      borderRadius: '10px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '0.2rem',
+      backgroundColor: '#000',
+      color: '#fff',
+      fontFamily: 'Segoe UI, Microsoft YaHei, sans-serif',
+      fontWeight: 300,
+    }}><div style={{ fontSize: '0.7rem'}}>安装 Windows 10 Technical Preview</div><div style={{ fontSize: '1rem'}}>你的电脑将重启多次。坐和放宽</div></div>
+  ja: |
+    <div style={{
+      width: '100%',
+      height: '100%',
+      borderRadius: '10px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#000',
+      color: '#fff',
+      fontFamily: 'sans-serif',
+      fontSize: '1.5rem',
+      fontWeight: 600,
+    }}>極度乾燥<span style={{ color: '#FF5100' }}>(しなさい)</span></div>
+title:
+  en: Typos and weird translations
+  zh-Hans: 错别字和糟糕的翻译
+  ja: 誤字と変な翻訳
+description:
+  en: |
+    > <span lang="ja">ここにゴミを<br />捨てないで下さい</span>
+    >
+    > DO NOT DUMB HERE.<br />NOT DUMB AREA HERE.
+    >
+    > <Small>(Please do not dump garbage here.)</Small>
+    >
+    > Found on [Reddit](https://www.reddit.com/r/engrish/comments/e0uf86/im_thinking_i_need_this_made_into_a_tshirt/)
+
+    I collect poorly carried out internationalization (i18n), localization (l10n), and translation of software user interfaces at [i18n fails](https://i18nfails.1a23.studio/).
+
+    My sources for all kinds of weird translations:
+
+    - [Twitter 中華業者商品画像bot @Rhkya](https://twitter.com/Rhkya)
+    - [Twitter 中國の怪レい日本语bot @correctJP](https://twitter.com/correctJP)
+    - [Reddit /r/engrish](https://www.reddit.com/r/engrish)
+    - [Engrish.com](https://www.engrish.com/)
+    - [Telegram 生草翻译 @TranslationGrass](https://t.me/translationgrass)
+  zh-Hans: |
+    > <span style={{ fontFamily: 'Segoe UI, Microsoft YaHei, sans-serif', fontWeight: 300 }}>安装 Windows 10 Technical Preview</span><br />
+    > <span style={{ fontFamily: 'Segoe UI, Microsoft YaHei, sans-serif', fontWeight: 300 }}>你的电脑将重启多次。<del>坐和放宽</del> 请坐下来放松片刻</span>
+    >
+    > [微软式中文 – 萌娘百科](https://zh.moegirl.org.cn/微软式中文)
+
+    我在 [i18n fails](https://i18nfails.1a23.studio/) 收集软件界面中国际化（i18n）、本地化（l10n）和翻译失败的各种例子。
+
+    收集错别字和糟糕翻译的来源：
+
+    - [Twitter 中華業者商品画像bot @Rhkya](https://twitter.com/Rhkya)
+    - [Twitter 中國の怪レい日本语bot @correctJP](https://twitter.com/correctJP)
+    - [Reddit /r/engrish](https://www.reddit.com/r/engrish)
+    - [Engrish.com](https://www.engrish.com/)
+    - [Telegram 生草翻译 @TranslationGrass](https://t.me/translationgrass)
+  ja: |
+    [<ruby>Superdry®<rp>(</rp><rt>極度乾燥(しなさい)</rt><rp>)</rp></ruby> – Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97_(%E6%9C%8D%E9%A3%BE%E4%BC%81%E6%A5%AD))
+
+    ソフトウェア UI の国際化（i18n）、ローカライゼーション（l10n）、翻訳の失敗を [i18n fails](https://i18nfails.1a23.studio/) にて集めています。
+
+    変な翻訳を集めるサイト：
+
+    - [Twitter 中華業者商品画像bot @Rhkya](https://twitter.com/Rhkya)
+    - [Twitter 中國の怪レい日本语bot @correctJP](https://twitter.com/correctJP)
+    - [Reddit /r/engrish](https://www.reddit.com/r/engrish)
+    - [Engrish.com](https://www.engrish.com/)
+    - [Telegram 生草翻译 @TranslationGrass](https://t.me/translationgrass)

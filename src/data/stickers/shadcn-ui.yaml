@@ -1,0 +1,15 @@
+x: 360
+y: 405
+width: 75
+height: 75
+rotation: -5
+image: /stickers/shadcn-ui.svg
+title:
+  en: shadcn/ui
+description:
+  en: |
+    This page uses [**shadcn/ui**](https://ui.shadcn.com/) as the UI library.
+  zh-Hans: |
+    本页面使用 [**shadcn/ui**](https://ui.shadcn.com/) 作为 UI 组件库。
+  ja: |
+    このページは UI ライブラリ [**shadcn/ui**](https://ui.shadcn.com/) を利用しています。

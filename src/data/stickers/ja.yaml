@@ -1,0 +1,41 @@
+x: 170
+y: 190
+width: 100
+height: 100
+rotation: 10
+image: /stickers/ja.svg
+clipPath: path('M46.8429 99.3774C33.6086 97.3547 21.4409 90.1189 12.6834 80.3595C0.756345
+  67.0679 -2.35103 48.5881 4.72184 33.2483C8.96476 24.0461 18.7969 13.3899 27.5686
+  8.48439C45.2687 -1.414 65.4639 -1.46475 78.5931 8.21098C92.4678 18.4362 100.005
+  36.0076 99.977 58.3634C99.9593 71.9952 97.0774 80.6291 90.2365 87.8623C83.7749 94.6945
+  75.5857 98.6062 63.1289 99.6831C58.905 100.048 56.4432 100.215 54.2349 100.17C52.0319
+  100.126 50.0698 99.8706 46.8429 99.3774Z')
+title:
+  en: Japanese language
+  zh-Hans: 日语
+  ja: 日本語
+description:
+  en: |
+    I’m a intermediate-advanced **Japanese** speaker. 
+    I have never learnt Japanese properly from bottom up before, and 
+    and never taken a widely recognized Japanese language test.
+
+    Skill-wise, I can read a Japanese-Japanese dictionary with
+    barely any problem. I listen to songs, watch TV shows and YouTube 
+    videos in Japanese with mostly no problem. I’m capable of using
+    Japanese to carry out conversations during sightseeing trips in Japan.
+  zh-Hans: |
+    能够较为熟练的使用**日语**。我从未系统地从基础开始学习过日语，
+    也没有参加过任何广受认可的日语考试。
+
+    就能力而言，我阅读日–日词典基本没有什么障碍。
+    我可以比较顺畅地听懂日语歌曲、看日语电视节目和 YouTube 视频。
+    能在日本旅游时全程使用日语交流。
+  ja: |
+    中上級レベルの**日本語**話者です。
+    だがこれまで日本語を体系的に基礎から学んだことはなく、
+    一般的な日本語能力試験も受けたことがありません。
+
+    能力的には、国語辞典をほぼ問題なく読むことができます。
+    日本語の歌や、テレビ番組、YouTube の動画もほとんど理解できますが。
+    日本観光中にフル日本語で会話をすることもできます。

@@ -1,0 +1,22 @@
+x: 350
+y: 80
+width: 75
+height: 75
+rotation: -10
+image: /stickers/kotlin-plain.svg
+clipPath: polygon(0% 0%, 100% 0%, 100% 20%, 70% 50%, 100% 80%, 100% 100%, 0% 100%)
+title:
+  en: Kotlin
+description:
+  en: |
+    I wrote something in [**Kotlin™**](https://kotlinlang.org) recently (2025). [See my Kotlin projects](https://github.com/blueset?tab=repositories&q=Kotlin).
+
+    [Logo](https://kotlinlang.org/docs/kotlin-brand-assets.html) used following the [Kotlin Brand Usage Guidelines](https://kotlinfoundation.org/guidelines/).
+  zh-Hans: |
+    最近（2025 年）用 [**Kotlin™**](https://kotlinlang.org) 写了一些东西。[我的 Kotlin 项目](https://github.com/blueset?tab=repositories&q=Kotlin)。
+
+    [Logo](https://kotlinlang.org/docs/kotlin-brand-assets.html) 使用遵循 [Kotlin 品牌使用指南](https://kotlinfoundation.org/guidelines/)。
+  ja: |
+    最近（2025 年）[**Kotlin™**](https://kotlinlang.org) で何か書いてみました。[Kotlin で作ったもろもろ](https://github.com/blueset?tab=repositories&q=Kotlin)。
+
+    [ロゴ](https://kotlinlang.org/docs/kotlin-brand-assets.html)は [Kotlin ブランド使用ガイドライン](https://kotlinfoundation.org/guidelines/)に従って使用しています。

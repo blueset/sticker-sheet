@@ -1,0 +1,20 @@
+x: -110
+y: -140
+width: 280
+height: 110
+rotation: -10
+image: /stickers/contoso.svg
+clipPath:
+  polygon(13% 0, 0 0, 0 100%, 35% 100%, 35% 75%, 100% 75%, 100% 10%, 35% 10%,
+  35% 0)
+title:
+  en: A software engineer
+  zh-Hans: 软件工程师
+  ja: ソフトウェアエンジニア
+description:
+  en:
+    I’m a **software engineer** at [Contoso Inc.](https://www.contoso.com), or so
+    I think. 🤔
+  zh-Hans: 我在 [Contoso Inc.](https://www.contoso.com) 担任**软件工程师**，至少我这么以为。🤔
+  ja: |
+    [Contoso Inc.](https://www.contoso.com) で**ソフトウェアエンジニア**を勤めています。少なくともそうとは思っています。🤔

@@ -1,0 +1,14 @@
+x: 470
+y: 260
+width: 180
+height: 100
+rotation: -5
+image: /stickers/code-liga.svg
+title:
+  en: Code ligatures
+  zh-Hans: 代码连字
+  ja: コードリガチャ
+description:
+  en: I prefer using **code ligatures** in code editors.
+  zh-Hans: 偏好在代码编辑器中使用**代码连字**。
+  ja: コードエディタで**コードリガチャ**を使います。

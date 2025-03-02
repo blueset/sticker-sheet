@@ -1,0 +1,33 @@
+x: -150
+y: 90
+width: 111
+height: 250
+rotation: -15
+image: /stickers/kagami.svg
+clipPath:
+  polygon(52.87% 0%, 100.9% 0%, 100% 22.62%, 81.44% 22.48%, 87.99% 72.8%,
+  60.38% 73.68%, 60.38% 85.93%, 48.36% 85.93%, 49.55% 100%, 0% 100%, 0% 80.48%, 7.06%
+  75.38%, 7.06% 5.92%, 52.53% 6.39%)
+title:
+  en:
+    Everything believed is just a mirror reflecting ones wishful delusions one after
+    another.
+  zh-Hans: 深信的一切，都不过是将自己一厢情愿的妄想反复映照出的镜子。
+  ja: 信じたものは、都合のいい妄想を繰り返し映し出す鏡。
+description:
+  en: |
+    <h3 lang="ja" className="scroll-m-20 text-2xl font-semibold tracking-tight text-balance break-auto-phrase">信じたものは、都合のいい妄想を繰り返し映し出す鏡。</h3>
+
+    <p className="leading-7 mt-6" lang="en">What I believed is just a mirror reflecting my wishful delusions one after another.</p>
+    <p className="leading-7 mt-6" lang="zh-hans">深信的一切，都不过是将自己一厢情愿的妄想反复映照出的镜子。​</p>
+    <p className="leading-7 mt-6" lang="ru">В то, что я верила, Было лишь плодом фантазии, Отраженной в бесконечности путей, зеркал сплетений.</p>
+    <p className="leading-7 mt-6" lang="ko">믿은 것은 보고 싶은 망상만을 계속해서 비추는 거울.</p>
+    <p className="leading-7 mt-6" lang="fr">Ce en quoi j’ai cru une fantaisie réconfortante se répètae à l’infini dans le miroir.</p>
+    <p className="leading-7 mt-6" lang="th">สิ่งที่ฉันเชื่อมั่น ความฝันอบอุ่น เกิดชํัวไม่รู้จบอยู่ในเงากระจก.</p>
+    <p className="leading-7 mt-6" lang="vi">Những gì tôi tin tưởng, chỉ còn là ảo ảnh đẹp đẽ cứ lặp đi lặp lại, phản chiếu trên tấm gương kia.</p>
+    <p className="leading-7 mt-6" lang="de">Mein Glaube ist nur ein Spiegel, reflektiert meine wiederkehrende Wahnvorstellung von einer perfekten Welt.</p>
+    <p className="leading-7 mt-6" lang="it">Ciò in cui credevo, una confortante fantasia si ripete infinitamente nello specchio.</p>
+    <p className="leading-7 mt-6" lang="es">Todo lo que creía no es mas que una fantasía que se repite como en un espejo.</p>
+    <p className="leading-7 mt-6" lang="pl">Uwierzyłam w pocieszające fantazje powtarzające się bez końca w lustrze.</p>
+    <p className="leading-7 mt-6" lang="id">Keyakinanku hanyalah sebuah cermin, mencerminkan ilusi yang berulang-ulang di dunia yang sempurna.</p>
+    <p className="leading-7 mt-6" lang="08n">Fula spawnaw, lu rì’ìrtut a wìntxu nìleyn ronsrel mek letì’awpo nik.</p>

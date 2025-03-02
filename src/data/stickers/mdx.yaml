@@ -1,0 +1,15 @@
+x: 565
+y: -120
+width: 123
+height: 50
+rotation: 10
+image: /stickers/mdx.svg
+title:
+  en: MDX
+description:
+  en: |
+    Content of this page is written in [**MDX**](https://mdxjs.com/).
+  zh-Hans: |
+    本页面内容使用 [**MDX**](https://mdxjs.com/) 编写。
+  ja: |
+    このページのコンテンツは [**MDX**](https://mdxjs.com/) で書かれています。

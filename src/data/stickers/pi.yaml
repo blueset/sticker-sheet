@@ -1,0 +1,50 @@
+x: -320
+y: -295
+width: 100
+height: 100
+rotation: 10
+image: /stickers/pi.svg
+clipPath: circle(50% at 50% 50%)
+title:
+  en: π
+description:
+  en: |
+    I can remember **the decimal of π** up to 62 decimal place…
+
+    ```
+    3.14 1592 6535 8979 3238 4626 4338 3279 
+    5028 8419 7169 3993 7510 5820 4749 4459...
+    ```
+
+    …thanks to [this song](https://www.nicovideo.jp/watch/sm5508506).
+  zh-Hans: |
+    我可以记住 **π 的小数点后 62 位**…
+
+    ```
+    3.14 1592 6535 8979 3238 4626 4338 3279
+    5028 8419 7169 3993 7510 5820 4749 4459...
+    ```
+
+    …归功于[这首歌](https://www.nicovideo.jp/watch/sm5508506)。
+  ja: |
+    **π** の小数点以下 62 桁を覚えています。
+
+    ```
+    3.14 1592 6535 8979 3238 4626 4338 3279
+    5028 8419 7169 3993 7510 5820 4749 4459...
+    ```
+
+    [この曲](https://www.nicovideo.jp/watch/sm5508506)のおかげです。
+
+    export function Nums(props) {
+      const digitMap = {
+        '0': 'ｾﾞﾛ', '1': 'ｲﾁ', '2': 'ﾆｰ', '3': 'ｻﾝ', '4': 'ﾖﾝ',
+        '5': 'ｺﾞｰ', '6': 'ﾛｸ', '7': 'ﾅﾅ', '8': 'ﾊﾁ', '9': 'ｷｭｰ',
+        ' ': ' ', '.': 'ﾃﾝ',
+      };
+      return ["♪ ", ...props.children.split('').map(digit => digitMap[digit]).map((mapped, idx) => mapped.length > 2 ? <span className="pi-2-3" key={idx}>{mapped}</span> : mapped)];
+    }
+
+    <Muted style={{ fontSize: "12px", marginTop: "12px" }}>♪ ﾄﾝ ﾄﾝ ﾄﾝ ｶﾁｰﾝ<br /><Nums>3.14 1592 6535 8979</Nums><br /><Nums>3238 4626 4338 3279</Nums><br /><Nums>5028 8419 7169 3993</Nums><br /><Nums>7510 5820 4749 4459</Nums>……</Muted>
+
+    <style>{`.pi-2-3 { display: inline-block; scale: 66.67% 1; width: 1ic; transform-origin: center left; white-space: pre; }`}</style>

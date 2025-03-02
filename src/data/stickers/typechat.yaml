@@ -1,0 +1,14 @@
+x: -485
+y: 115
+width: 100
+height: 100
+rotation: -10
+image: /stickers/typechat.png
+title:
+  en: TypeChat
+  zh-Hans: 《字谈字畅》
+  ja: TypeChat
+description:
+  en: I subscribed to [**TypeChat**](https://www.thetype.com/typechat/), a podcast.
+  zh-Hans: 订阅了播客[《字谈字畅》](https://www.thetype.com/typechat/)。
+  ja: "[**『TypeChat』**](https://ja.wikipedia.org/wiki/字談字暢)ポッドキャストを聞いてます。"

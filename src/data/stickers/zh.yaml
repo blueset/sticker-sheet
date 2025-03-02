@@ -1,0 +1,28 @@
+x: 55
+y: 170
+width: 100
+height: 100
+rotation: 5
+image: /stickers/zh.svg
+clipPath: path('M46.8429 99.3774C33.6086 97.3547 21.4409 90.1189 12.6834 80.3595C0.756345
+  67.0679 -2.35103 48.5881 4.72184 33.2483C8.96476 24.0461 18.7969 13.3899 27.5686
+  8.48439C45.2687 -1.414 65.4639 -1.46475 78.5931 8.21098C92.4678 18.4362 100.005
+  36.0076 99.977 58.3634C99.9593 71.9952 97.0774 80.6291 90.2365 87.8623C83.7749 94.6945
+  75.5857 98.6062 63.1289 99.6831C58.905 100.048 56.4432 100.215 54.2349 100.17C52.0319
+  100.126 50.0698 99.8706 46.8429 99.3774Z')
+title:
+  en: Chinese language
+  zh-Hans: 中文
+  ja: 中国語
+description:
+  en: |
+    I’m a native speaker of **Chinese**. I can read equally well in simplified and traditional Chinese.
+    I can write (with pen) most common simplified and some traditional Chinese characters.
+    I am aware of the term difference used across different regions, and I try to use them accordingly.
+  zh-Hans: |
+    **中文**是我的母语。简体字和繁體字认读能力相仿。会写大部分常用简体字和一小部分繁體字。
+    我了解中文在不同地区的用语会有区别，并会尝试着迎合这种区别。
+  ja: |
+    **中国語**は母国語です。簡体字と繁体字の読み書き能力は同じです。
+    よく使う簡体字のほとんどと、ごく一部の繁体字を書けます。
+    中国語の地域差を理解していて、話し相手に合わせようとしています。

@@ -1,0 +1,54 @@
+x: 0
+y: 0
+width: 200
+height: 200
+image: /stickers/eana.svg
+clipPath: circle(50%)
+title:
+  en: Hi, I’m Eana Hufwe!
+  zh-Hans: 你好，我是 Eana Hufwe！
+  ja: どうも、Eana Hufwe です！
+description:
+  en: |
+    **Eana Hufwe** is my ~~name~~ pseudonym I go with online.
+    The name is in [lì’fya LeNa’vi](https://en.wikipedia.org/wiki/Na%27vi_language),
+    that language from _Avatar_.
+
+    * _ean_ means blue;
+    * _-a_ is adjective marker; and
+    * _hufwe_ means wind.
+
+    Check out some of the links below!
+
+    <div style={{ display: "flex", gap: "10px", marginTop: 10, flexDirection: "column" }}>
+      <Button asChild><Link target="_blank" href="https://1a23.com">1A23 Studio</Link></Button>
+      <Button asChild variant="outline"><Link target="_blank" href="https://blog.1a23.com">1A23 Blog</Link></Button>
+    </div>
+  zh-Hans: |
+    **Eana Hufwe** 是我的网名。语言来自《阿凡达》里的 [lì’fya LeNa’vi](https://wuu.wikipedia.org/wiki/%E7%BA%B3%E7%BB%B4%E8%AF%AD)。
+
+    * _ean_ 是蓝色；
+    * _-a_ 是形容词修饰标记；
+    * _hufwe_ 是风。
+
+    欢迎来下面的地方逛逛！
+
+    <div style={{ display: "flex", gap: "10px", marginTop: 10, flexDirection: "column" }}>
+      <Button asChild><Link target="_blank" href="https://1a23.com">1A23 Studio</Link></Button>
+      <Button asChild variant="outline"><Link target="_blank" href="https://blog.1a23.com">1A23 Blog</Link></Button>
+    </div>
+  ja: |
+    **Eana Hufwe** は私のハンドルネームで、映画『アバター』の [lì’fya LeNa’vi](https://ja.wikipedia.org/wiki/%E3%83%8A%E3%83%B4%E3%82%A3%E8%AA%9E) という言語から来ています。
+
+    * _ean_ は青；
+    * _-a_ は形容詞限定マーカー；
+    * _hufwe_ は風。
+
+    下のリンクもチェックしてね！
+
+
+    <div style={{ display: "flex", gap: "10px", marginTop: 10, flexDirection: "column" }}>
+      <Button asChild><Link target="_blank" href="https://1a23.com">1A23 Studio</Link></Button>
+      <Button asChild variant="outline"><Link target="_blank" href="https://blog.1a23.com">1A23 Blog</Link></Button>
+    </div>
+

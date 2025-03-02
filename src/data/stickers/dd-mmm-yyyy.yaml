@@ -1,0 +1,35 @@
+x: 225
+y: -290
+width: 180
+height: 50
+rotation: 30
+content:
+  en: |
+    <div style={{
+      width: "100%",
+      height: "100%",
+      backgroundColor: "light-dark(#0b574a, #a4d8d2)",
+      color: "light-dark(#a4d8d2, #0b574a)",
+      borderRadius: "10px",
+      padding: "10px",
+      textAlign: "center",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      fontVariantNumeric: "tabular-nums",
+      fontSize: "25px",
+      fontWeight: "600",
+      whiteSpace: "nowrap",
+    }}>
+      {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+    </div>
+title:
+  en: DD MMM YYYY
+description:
+  en: |
+    I prefer to use **DD MMM YYYY** format in forms written in English.
+  zh-Hans: |
+    在填写英文表格时，我偏好使用 **DD MMM YYYY** 格式的日期。
+  ja: |
+    英語のフォームでは **DD MMM YYYY** 形式をできる限り使っています。

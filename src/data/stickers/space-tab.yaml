@@ -1,0 +1,23 @@
+x: 180
+y: -415
+width: 180
+height: 100
+rotation: 20
+image: /stickers/space-tab.svg
+title:
+  en: Prefer spaces over tabs
+  zh-Hans: 缩进偏好使用空格
+  ja: インデントはスペースで
+description:
+  en: |
+    When writing source code, I prefer using **spaces** over **tabs** for indentation.
+
+    The number of spaces depends on the project and the conventions used.
+  zh-Hans: |
+    在写代码时，我偏好使用**空格**进行缩进。
+
+    空格的数量取决于项目惯例。
+  ja: |
+    ソースコードを書く際、インデントには**スペース**をいます。
+
+    スペースの数は各プロジェクトの慣習によります。

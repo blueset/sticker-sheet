@@ -1,0 +1,22 @@
+x: 370
+y: -90
+width: 66
+height: 75
+rotation: 20
+image: /stickers/cpp.svg
+clipPath: polygon(50% 0%, 100% 20%, 100% 80%, 50% 100%, 0% 80%, 0% 20%)
+title:
+  en: C++
+description:
+  en: |
+    I wrote something in **C++** at work recently (2025).
+
+    [Logo](https://github.com/isocpp/logos) used under license of *the Standard C++ Foundation*.
+  zh-Hans: |
+    最近（2025 年）工作中用 **C++** 写了一些东西。
+
+    [Logo](https://github.com/isocpp/logos) 使用遵循 *the Standard C++ Foundation* 的许可。
+  ja: |
+    最近（2025 年）仕事で **C++** で何か書いてみました。
+
+    [ロゴ](https://github.com/isocpp/logos)は *the Standard C++ Foundation* のライセンスに基づいて使用しています。

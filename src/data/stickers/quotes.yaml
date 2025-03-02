@@ -1,0 +1,44 @@
+x: -25
+y: 305
+width: 128
+height: 100
+rotation: -15
+image: /stickers/quotes.svg
+title:
+  en: “Curly quotes” are the right quotes
+  zh-Hans: “弯引号”才是西文排版中正确的引号
+  ja: “Curly quotes” こそが欧文組版においての正しい引用符
+description:
+  en: |
+    **“Curly quotes”** are the right quotes in typesetting.
+
+    > **Straight quotes** are the two generic vertical quotation marks located near the return key.
+    >
+    > **Curly quotes** are the quotation marks used in good typography.
+    >
+    > — [Typography for Lawyers](https://typographyforlawyers.com/straight-and-curly-quotes)
+
+    For Wikipedia who reluctantly [still enforces the usage of straight quotes](https://en.wikipedia.org/w/index.php?title=MOS:%22&redirect=no),
+    I have [a user script to correct the quotes in articles](https://en.wikipedia.org/wiki/User:Eana_Hufwe/SmartQuote).
+  zh-Hans: |
+    <strong>“弯引号”</strong>才是西文排版中正确的引号。
+
+    > **直引号**（"）是键盘回车键附近的两个通用垂直引号符号。
+    >
+    > **弯引号**（“”）是优质排版中使用的引号。
+    >
+    > — [Typography for Lawyers（律师排版指南）](https://typographyforlawyers.com/straight-and-curly-quotes)
+
+    对于仍然[固守直引号使用](https://en.wikipedia.org/w/index.php?title=MOS:%22&redirect=no)的英文维基百科，
+    我写了一个[用户脚本来修正文章中的引号](https://en.wikipedia.org/wiki/User:Eana_Hufwe/SmartQuote)。
+  ja: |
+    欧文組版では<strong>「curly quotes」</strong>こそが正しい引用符です。
+
+    > **Straight quote**（"）は、Enter キー付近にある 2 つの一般的な縦型の引用符のことです。
+    >
+    > **Curly quote**（“”）は、上質な組版で使用される引用符です。
+    >
+    > — [Typography for Lawyers（法律家のための組版術）](https://typographyforlawyers.com/straight-and-curly-quotes)
+
+    [まだストレートクォートの使用にこだわっている](https://en.wikipedia.org/w/index.php?title=MOS:%22&redirect=no)英語版ウィキペディアのために、
+    [記事内の引用符を修正するユーザースクリプト](https://en.wikipedia.org/wiki/User:Eana_Hufwe/SmartQuote)を作成しました。

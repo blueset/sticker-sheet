@@ -1,0 +1,16 @@
+x: -435
+y: -230
+width: 113
+height: 75
+rotation: -45
+image: /stickers/icpc.svg
+clipPath: polygon(27.26% 36.39%, 38.8% 17.63%, 54.77% 9.1%, 68.06% 25%, 71.81% 0%, 94.27% 0%, 100% 40.33%, 100% 88.33%, 35.13% 88.33%, 19.37% 100%, 0% 100%, 0% 36.67%)
+title:
+  en: ICPC
+description:
+  en: |
+    I was once a contestant in the **Regional Finals of the International Collegiate Programming Contest (ICPC)**.
+  zh-Hans: |
+    我曾经是**国际大学生程序设计竞赛（ICPC）地区决赛**的参赛者。
+  ja: |
+    かつて**国際大学生プログラミングコンテスト（ICPC）の地区大会**に出場したことがあります。

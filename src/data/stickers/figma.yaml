@@ -1,0 +1,22 @@
+x: 515
+y: 40
+width: 53
+height: 75
+rotation: -15
+image: /stickers/figma.svg
+clipPath: polygon(0% 0%, 100% 0%, 100% 76%, 60% 76%, 60% 100%, 0% 100%)
+title:
+  en: Figma
+description:
+  en: |
+    I use [**Figma**](https://www.figma.com/) a lot.
+
+    Logo used along the [Figma Trademark Guidelines](https://www.figma.com/using-the-figma-brand/).
+  zh-Hans: |
+    常用 [**Figma**](https://www.figma.com/)。
+
+    Logo 使用遵循 [Figma 商标指南](https://www.figma.com/using-the-figma-brand/)。
+  ja: |
+    [**Figma**](https://www.figma.com/) をよく使います。
+
+    ロゴは [Figma 商標ガイドライン](https://www.figma.com/using-the-figma-brand/)に従って使用されています。

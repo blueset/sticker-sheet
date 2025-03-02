@@ -1,0 +1,23 @@
+x: 445
+y: 365
+width: 75
+height: 75
+rotation: -15
+image: /stickers/feed.svg
+title:
+  en: RSS/Atom feed
+  zh-Hans: RSS/Atom 订阅
+  ja: RSS/Atom フィード
+description:
+  en: |
+    I read contents from **RSS/Atom feed** subscriptions.
+
+    [Feed icon](http://feedicons.com/) by the Mozilla Foundation under a MPL/GPL/LGPL tri-license.
+  zh-Hans: |
+    通过 **RSS/Atom 订阅** 阅读内容。
+
+    [Feed 图标](http://feedicons.com/) 由 Mozilla Foundation 在 MPL/GPL/LGPL 三重许可下发布。
+  ja: |
+    **RSS/Atom フィード** でコンテンツを読んでいます。
+
+    [Feed アイコン](http://feedicons.com/) は Mozilla Foundation によって MPL/GPL/LGPL トリライセンスの下で提供されています。

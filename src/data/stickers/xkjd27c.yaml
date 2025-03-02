@@ -1,0 +1,203 @@
+x: -420
+y: -355
+width: 452
+height: 75
+rotation: -35
+image: /stickers/xkjd27c.svg
+title:
+  en: XKJD27C
+  zh-Hans: 星空键道 27C
+  ja: XKJD27C
+description:
+  en: |
+    I use [**XKJD27C**](https://github.com/xkjd27/rime_jd27c), a phonetic-shape-dual input method designed for Colemak layout, to type Simplified Chinese.
+
+    To type 文 (wén), you can enter:
+    
+    export function Key(props) {
+      return <Button variant="outline" size="clear" style={{ display: 'grid', gridTemplateAreas: '"a b" "c d"', gridTemplateRows: '1fr 1fr', justifyContent: 'space-between', padding: '0 0.5rem', width: '4rem', height: '4rem' }}>{props.children}</Button>;
+    }
+
+    <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+    </div>
+
+    Which is a simplified form of:
+
+    <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>一</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>木</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>V</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25, fontSize: '0.6em' }}>土士o</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丿</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>月</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>十o</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+    </div>
+  zh-Hans: |
+    我使用[**星空键道 27C**](https://github.com/xkjd27/rime_jd27c)，一款为 Colemak 键盘布局设计的音形顶功输入方案。
+
+    要输入「文」，你可以输入：
+    
+    export function Key(props) {
+      return <Button variant="outline" size="clear" style={{ display: 'grid', gridTemplateAreas: '"a b" "c d"', gridTemplateRows: '1fr 1fr', justifyContent: 'space-between', padding: '0 0.5rem', width: '4rem', height: '4rem' }}>{props.children}</Button>;
+    }
+
+    <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+    </div>
+
+    或者输入其完整编码：
+
+    <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>一</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>木</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>V</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25, fontSize: '0.6em' }}>土士o</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丿</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>月</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>十o</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+    </div>
+  ja: |
+    [**XKJD27C**](https://github.com/xkjd27/rime_jd27c)という、Colemak 配列向けの発音・字画に基づいた中国語入力方法を使っています。
+
+    「文」（wén）と入力するには、次のように入力します：
+    
+    export function Key(props) {
+      return <Button variant="outline" size="clear" style={{ display: 'grid', gridTemplateAreas: '"a b" "c d"', gridTemplateRows: '1fr 1fr', justifyContent: 'space-between', padding: '0 0.5rem', width: '4rem', height: '4rem' }}>{props.children}</Button>;
+    }
+
+    <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+    </div>
+
+    また、フル形式で入力するには次のように入力します：
+
+    <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>一</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>木</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>V</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25, fontSize: '0.6em' }}>土士o</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丿</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>月</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>十o</span>
+      </Key>
+      <Key>
+        <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>
+        <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>
+        <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>
+        <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>
+      </Key>
+    </div>
