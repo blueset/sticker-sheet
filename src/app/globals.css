@@ -1,4 +1,4 @@
-@import "@silk-hq/components/unlayered-styles" layer(silk);
+@import "@silk-hq/components/unlayered-styles";
 
 @tailwind base;
 @tailwind components;
