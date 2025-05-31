@@ -146,7 +146,7 @@ export function Panel() {
                             variant="ghost"
                             size="icon"
                             aria-label="Close"
-                            className="-mr-4"
+                            className="-mr-2"
                           >
                             <X className="w-8 h-8" />
                           </Button>
