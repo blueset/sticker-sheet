@@ -3,16 +3,14 @@
 import { X } from "lucide-react";
 import { useCanvasStore } from "../store/useCanvasStore";
 import { useShallow } from "zustand/react/shallow";
-import "react-spring-bottom-sheet/dist/style.css";
-import { useMediaQuery, useThrottledCallback } from "@mantine/hooks";
+import { useMediaQuery } from "@mantine/hooks";
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
-import { useCallback, useLayoutEffect, useRef } from "react";
+  Scroll,
+  Sheet,
+  SheetRootProps,
+  SheetViewProps,
+} from "@silk-hq/components";
+import { useCallback, useLayoutEffect, useMemo, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { MDXRenderer } from "./MDXRenderer";
@@ -23,8 +21,11 @@ import { useTranslation } from "react-i18next";
 export const PANEL_HEIGHT = 135;
 export const PANEL_WIDTH = 320;
 export const PANEL_BREAKPOINT = 4096;
-export const PANEL_HEIGHT_SNAPS = [`${PANEL_HEIGHT + 96}px`, 1];
-export const PANEL_WIDTH_SNAPS = [1];
+export const PANEL_HEIGHT_SNAPS = [
+  `${PANEL_HEIGHT + 96}px`,
+  "calc(100vh - 96px)",
+];
+export const PANEL_WIDTH_SNAPS = [`${PANEL_WIDTH}px`];
 
 export function Panel() {
   const { selectedSticker, language, selectSticker } = useCanvasStore(
@@ -46,11 +47,8 @@ export function Panel() {
     });
   }, [selectedSticker]);
 
-  const snapPoints = isMobile ? PANEL_HEIGHT_SNAPS : PANEL_WIDTH_SNAPS;
-  const [activeSnap, setActiveSnap] = useState<string | number | null>(
-    snapPoints[0]
-  );
-  const [mainHasOverflow, setMainHasOverflow] = useState(false);
+  const snapPoints = isMobile ? PANEL_HEIGHT_SNAPS[0] : PANEL_WIDTH_SNAPS[0];
+  const [activeSnap, setActiveSnap] = useState<number>(0);
   const activeSnapRef = useRef<string | number | null>(activeSnap);
   activeSnapRef.current = activeSnap;
   const mainRef = useRef<HTMLDivElement>(null);
@@ -60,150 +58,146 @@ export function Panel() {
   const content = localize(selectedSticker?.content, language);
 
   useEffect(() => {
-    setActiveSnap(snapPoints[0]);
+    setActiveSnap(0);
   }, [snapPoints]);
 
   const toggleActiveSnap = useCallback(() => {
     if (snapPoints.length === 1) return;
     setActiveSnap((prev) => {
       if (!prev) return prev;
-      const index = snapPoints.indexOf(prev);
-      return snapPoints[(index + 1) % snapPoints.length];
+      return (prev + 1) % snapPoints.length;
     });
-  }, [setActiveSnap, snapPoints]);
+  }, [snapPoints.length]);
 
-  const handleWheel = useThrottledCallback(
-    (
-      e: React.WheelEvent<HTMLDivElement>,
-      currentTarget: HTMLDivElement,
-      deltaY: number
-    ) => {
-      if (snapPoints.length === 1) return;
-      if (activeSnapRef.current === 1) {
-        if (currentTarget.scrollTop === 0 && deltaY < 0) {
-          e.preventDefault();
-          setActiveSnap(snapPoints[0]);
-        }
-      } else {
-        e.preventDefault();
-        if (deltaY > 0) {
-          setActiveSnap(1);
-        } else if (deltaY < 0) {
-          selectSticker(null);
-        }
+  const viewRef = useRef<HTMLElement>(null);
+  const travelHandler = useMemo(() => {
+    if (activeSnap !== 2) return undefined;
+
+    const handler: SheetViewProps["onTravel"] = ({ progress }) => {
+      if (!viewRef.current) return;
+
+      // Dismiss the on-screen keyboard.
+      if (progress < 0.999) {
+        viewRef.current.focus();
       }
-    },
-    500
-  );
-
-  const handleThrottledWheel = useCallback(
-    (e: React.WheelEvent<HTMLDivElement>) =>
-      handleWheel(e, e.currentTarget, e.deltaY),
-    [handleWheel]
-  );
-
-  useEffect(() => {
-    const main = mainRef.current;
-    if (!main) return;
-
-    const observer = new ResizeObserver((entries) => {
-      setMainHasOverflow(
-        entries[0].target.scrollHeight > entries[0].target.clientHeight
-      );
-    });
-
-    setTimeout(() => {
-      setMainHasOverflow(main.scrollHeight > main.clientHeight);
-      observer.observe(main);
-    }, 500);
-
-    return () => {
-      observer.disconnect();
     };
-  }, [mainRef.current, selectedSticker?.slug, activeSnap]);
+    return handler;
+  }, [activeSnap]);
 
   return (
-    <Drawer
-      open={!!selectedSticker}
-      onOpenChange={(open) => !open && selectSticker(null)}
-      modal={false}
-      direction={isMobile ? "bottom" : "left"}
-      snapPoints={snapPoints}
-      activeSnapPoint={activeSnap}
-      setActiveSnapPoint={setActiveSnap}
+    <Sheet.Root
+      {...({} as unknown as SheetRootProps)}
+      presented={!!selectedSticker}
+      onPresentedChange={(open) => !open && selectSticker(null)}
+      activeDetent={activeSnap}
+      onActiveDetentChange={setActiveSnap}
     >
-      <DrawerContent
-        direction={isMobile ? "bottom" : "left"}
-        className="max-w-lg mx-auto"
-        style={{
-          width: isMobile ? undefined : `${PANEL_WIDTH}px`,
-        }}
-        ref={panelRef}
-      >
-        {isMobile && (
-          <button
-            className="mx-auto my-4 h-2 w-24 rounded-full bg-muted mx-auto block"
-            onClick={toggleActiveSnap}
-            aria-label={t("togglePanelSize")}
-          />
-        )}
-        <main
-          className={cn(
-            "h-0 grow",
-            activeSnap === 1 && mainHasOverflow && "overflow-y-auto"
-          )}
-          onWheel={handleThrottledWheel}
-          ref={mainRef}
+      <Sheet.Portal>
+        <Sheet.View
+          contentPlacement={isMobile ? "bottom" : "left"}
+          detents={snapPoints}
+          swipeOvershoot={false}
+          nativeEdgeSwipePrevention={true}
+          inertOutside={false}
+          onClickOutside={{
+            dismiss: false,
+            stopOverlayPropagation: false,
+          }}
+          onTravel={travelHandler}
+          ref={viewRef}
         >
-          <DrawerHeader>
-            <DrawerTitle className="flex items-center justify-between">
-              <span className="grow w-0 text-balance break-auto-phrase select-text">
-                {title}
-              </span>
-              <DrawerClose asChild>
-                <Button variant="ghost" size="icon" aria-label="Close">
-                  <X className="w-8 h-8" />
-                </Button>
-              </DrawerClose>
-            </DrawerTitle>
-          </DrawerHeader>
-          <div className="m-4">
-            <div
-              className={cn(
-                "transition-all duration-100 mx-auto overflow-hidden drop-shadow-md max-w-full",
-                activeSnap === 1 && "my-4"
-              )}
-              style={{
-                height: activeSnap === 1 ? selectedSticker?.height : 0,
-                width: selectedSticker?.width ?? 0,
-              }}
-            >
-              {selectedSticker?.image && (
-                <img
-                  src={selectedSticker.image}
-                  alt={title}
-                  className="w-full h-full object-contain"
-                />
-              )}
-              {content && (
-                <div
-                  style={{
-                    height: selectedSticker?.height,
-                    width: selectedSticker?.width,
-                  }}
-                >
-                  <MDXRenderer source={content} />
-                </div>
-              )}
-            </div>
-            {description && (
-              <div className="max-w-none select-text">
-                <MDXRenderer source={description} />
-              </div>
+          <Sheet.Content
+            className="flex flex-col bg-background/75 dark:bg-background/85 backdrop-blur-md mx-auto border rounded-t-[10px] max-w-lg h-[calc(100dvh_-_3em)]"
+            ref={panelRef}
+          >
+            {isMobile && (
+              <button
+                className="block bg-muted mx-auto my-4 rounded-full w-24 h-2"
+                onClick={toggleActiveSnap}
+                aria-label={t("togglePanelSize")}
+              />
             )}
-          </div>
-        </main>
-      </DrawerContent>
-    </Drawer>
+            <Scroll.Root asChild>
+              <Scroll.View
+                scrollGestureTrap={{ yEnd: true }}
+                scrollGesture={activeSnap !== 2 ? false : "auto"}
+                safeArea="layout-viewport"
+                className="flex-1"
+                onScrollStart={{
+                  dismissKeyboard: true,
+                }}
+              >
+                <Scroll.Content>
+                  <main
+                    className={cn(
+                      "h-0 grow"
+                      // activeSnap === 1 && mainHasOverflow && "overflow-y-auto"
+                    )}
+                    // onWheel={handleThrottledWheel}
+                    ref={mainRef}
+                  >
+                    <div className="gap-1.5 grid mx-4 text-left">
+                      <Sheet.Title className="flex justify-between items-center">
+                        <span className="w-0 break-auto-phrase text-balance select-text grow">
+                          {title}
+                        </span>
+                        <Sheet.Trigger asChild action="dismiss">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            aria-label="Close"
+                            className="-mr-4"
+                          >
+                            <X className="w-8 h-8" />
+                          </Button>
+                        </Sheet.Trigger>
+                      </Sheet.Title>
+                    </div>
+                    <div className="m-4">
+                      <div
+                        className={cn(
+                          "drop-shadow-md mx-auto max-w-full overflow-hidden transition-all duration-100",
+                          activeSnap === 2 && "my-4"
+                        )}
+                        style={{
+                          height:
+                            activeSnap === 2
+                              ? selectedSticker?.height
+                              : 0,
+                          width: selectedSticker?.width ?? 0,
+                        }}
+                      >
+                        {selectedSticker?.image && (
+                          <img
+                            src={selectedSticker.image}
+                            alt={title}
+                            className="w-full h-full object-contain"
+                          />
+                        )}
+                        {content && (
+                          <div
+                            style={{
+                              height: selectedSticker?.height,
+                              width: selectedSticker?.width,
+                            }}
+                          >
+                            <MDXRenderer source={content} />
+                          </div>
+                        )}
+                      </div>
+                      {description && (
+                        <div className="max-w-none select-text">
+                          <MDXRenderer source={description} />
+                        </div>
+                      )}
+                    </div>
+                  </main>
+                </Scroll.Content>
+              </Scroll.View>
+            </Scroll.Root>
+          </Sheet.Content>
+        </Sheet.View>
+      </Sheet.Portal>
+    </Sheet.Root>
   );
 }
