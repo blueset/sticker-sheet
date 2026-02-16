@@ -1,0 +1,15 @@
+x: -535
+y: 450
+width: 145
+height: 141
+rotation: -15
+image: /stickers/riddler.svg
+clipPath: polygon(7.82% 5.54%, 82.14% 0%, 100% 0%, 100% 85.33%, 9.42% 100%, 9.11% 82.04%, 7.82% 64.12%, 0% 42.67%, 0% 33.33%, 8.65% 30.45%)
+title:
+  en: Riddler’s Nazotoki Channel
+  zh-Hans: 《Riddler 的 Nazotoki Channel》
+  ja: 『リドラの謎解きチャンネル』
+description:
+  en: I subscribed to [**Riddler’s Nazotoki Channel**](https://www.youtube.com/@RIDDLER_nazo) on YouTube.
+  zh-Hans: 我在 YouTube 上订阅了[**《Riddler 的 Nazotoki Channel》**](https://www.youtube.com/@RIDDLER_nazo)。
+  ja: "YouTube で [**『リドラの謎解きチャンネル』**](https://www.youtube.com/@RIDDLER_nazo)を登録しました。"

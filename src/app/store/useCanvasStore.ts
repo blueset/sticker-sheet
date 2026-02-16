@@ -34,8 +34,8 @@ interface CanvasState {
 
 export const useCanvasStore = create<CanvasState>((set) => ({
   stickers: [],
-  canvasWidth: 2000,
-  canvasHeight: 2000,
+  canvasWidth: 3000,
+  canvasHeight: 3000,
   selectedSticker: null,
   hoveredSticker: null,
   isPanelOpen: false,
