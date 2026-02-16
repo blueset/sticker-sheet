@@ -49,12 +49,15 @@ export function Canvas({
   const timerRef = useRef<number | null>(null);
 
   const handleTransformed = useCallback((ref: ReactZoomPanPinchRef) => {
-    ref.instance.wrapperComponent?.classList.add("zooming");
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
+    const wrapper = ref.instance.wrapperComponent;
+    if (!wrapper) return;
+    if (!wrapper.classList.contains("zooming")) {
+      wrapper.classList.add("zooming");
     }
+    if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = window.setTimeout(() => {
-      ref.instance.wrapperComponent?.classList.remove("zooming");
+      wrapper.classList.remove("zooming");
+      timerRef.current = null;
     }, 100);
   }, []);
 
@@ -91,7 +94,7 @@ export function Canvas({
                 id: "canvasWrapper"
               }}
               // contentClass="relative drop-shadow-md panning:drop-shadow-none zooming:drop-shadow-none" // filter: drop-shadow() has bad perf on mobile (can-hover:drop-shadow-md)
-              contentClass="relative bg-grid-png"
+              contentClass="relative bg-grid-png zooming:will-change-transform"
               contentStyle={{
                 width: canvasWidth,
                 height: canvasHeight,

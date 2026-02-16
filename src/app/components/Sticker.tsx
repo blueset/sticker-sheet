@@ -39,8 +39,10 @@ export function Sticker({
         width: sticker.width,
         height: sticker.height,
         rotate: (sticker.rotation && `${sticker.rotation}deg`) || undefined,
+        contentVisibility: "auto",
+        containIntrinsicSize: `${sticker.width}px ${sticker.height}px`,
       }}
-      className="absolute z-10 drop-shadow-md panning:drop-shadow-none zooming:drop-shadow-none image-rendering-auto" // filter: drop-shadow() has bad perf on mobile (can-hover:drop-shadow-md)
+      className="z-10 absolute drop-shadow-md can-hover:has-[:hover]:scale-110 transition-transform duration-100 image-rendering-auto"
       onClick={(evt) => {
         if (evt.detail === 0) {
           onClick({
@@ -52,7 +54,7 @@ export function Sticker({
       }}
     >
       <div
-        className="w-full h-full can-hover:hover:cursor-pointer can-hover:hover:scale-110 transition-all duration-100"
+        className="w-full h-full can-hover:hover:cursor-pointer"
         style={{
           clipPath: sticker.clipPath,
         }}
