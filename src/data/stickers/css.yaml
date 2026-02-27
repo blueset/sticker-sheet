@@ -14,8 +14,7 @@ description:
 
 
     - [`text-combine-upright: "digits"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)
-    - [`text-spacing: ideograph-alpha ideograph-numeric`](https://www.w3.org/TR/css-text-4/#text-spacing-property)<br />
-      <Muted>**Update Dec 2023**: Chrome 120 supports `text-autospace` and insert space by default behind a flag.</Muted>
+    - <details><summary>[`text-spacing: ideograph-alpha ideograph-numeric`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
     - <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature="mdn-css_properties_word-break_auto-phrase" /></details>
     - <details><summary>[CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)</summary><CanIUse feature="css-anchor-positioning" /></details>
     - <details><summary>[`calc-size()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size)</summary><CanIUse feature="mdn-css_types_calc-size" /></details>
@@ -31,8 +30,7 @@ description:
     具体来说……
 
     - [`text-combine-upright: "digits"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)
-    - [`text-spacing: ideograph-alpha ideograph-numeric`](https://www.w3.org/TR/css-text-4/#text-spacing-property)<br />
-      <Muted>**2023 年 12 月更新**：Chrome 120 在实验性功能中支持 `text-autospace`，插入空格的功能默认隐藏在开关后。</Muted>
+    - [`text-spacing: ideograph-alpha ideograph-numeric`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
     - <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature="mdn-css_properties_word-break_auto-phrase" /></details>
     - <details><summary>[CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)</summary><CanIUse feature="css-anchor-positioning" /></details>
     - <details><summary>[`calc-size()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size)</summary><CanIUse feature="mdn-css_types_calc-size" /></details>
@@ -48,8 +46,7 @@ description:
     具体的には…
 
     - [`text-combine-upright: "digits"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)
-    - [`text-spacing: ideograph-alpha ideograph-numeric`](https://www.w3.org/TR/css-text-4/#text-spacing-property)<br />
-      <Muted>**2023年12月更新**：Chrome 120 では実験的フラグ付きで `text-autospace` をサポートし、空白を挿入できる。フラグは既定でオフ。</Muted>
+    - [`text-spacing: ideograph-alpha ideograph-numeric`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
     - <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature="mdn-css_properties_word-break_auto-phrase" /></details>
     - <details><summary>[CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)</summary><CanIUse feature="css-anchor-positioning" /></details>
     - <details><summary>[`calc-size()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size)</summary><CanIUse feature="mdn-css_types_calc-size" /></details>

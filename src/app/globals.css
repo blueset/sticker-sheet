@@ -74,9 +74,13 @@
     font-feature-settings: 'liga' 1, 'calt' 1, 'ss01' 1, 'ss03' 1;
     &:lang(zh-hans) {
       font-family: InterVariable, var(--font-noto-sans-sc), var(--font-noto-sans-jp), var(--font-cc-symbols);
+      text-autospace: normal;
+      text-autospace: replace;
     }
     &:lang(ja) {
       font-family: InterVariable, var(--font-noto-sans-jp), var(--font-noto-sans-sc), var(--font-cc-symbols);
+      text-autospace: normal;
+      text-autospace: replace;
     }
   }
 }
