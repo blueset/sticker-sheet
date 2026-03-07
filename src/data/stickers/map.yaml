@@ -1,0 +1,29 @@
+x: -150
+y: -495
+width: 120
+height: 93
+rotation: -10
+image: /stickers/map.svg
+title:
+  en: World
+  zh-Hans: 世界
+  ja: 世界
+description:
+  en: |
+    I’ve been to many places around the world. For the purpose of data masking, these are the places I’ve been to, in terms of 2-digit Open Location Code (Plus Codes).
+
+    4P, 4R, 6P, 7P, 84, 8P, 8Q, 9C, 9F.
+
+    <PlusCodeMap codes={['4P', '4R', '6P', '7P', '84', '8P', '8Q', '9C', '9F']} />
+  zh-Hans: |
+    我去过世界上很多地方。为了数据脱敏，这些是我去过的地方，以 2 位数的开放位置码（Plus Codes）表示。
+
+    4P、4R、6P、7P、84、8P、8Q、9C、9F。
+
+    <PlusCodeMap codes={['4P', '4R', '6P', '7P', '84', '8P', '8Q', '9C', '9F']} />
+  ja: |
+    世界のいろんな場所に行ったことがあります。データマスキングのため、行ったことがある場所で、2 桁のオープンロケーションコード（Plus Codes）で表されています。
+
+    4P、4R、6P、7P、84、8P、8Q、9C、9F。
+
+    <PlusCodeMap codes={['4P', '4R', '6P', '7P', '84', '8P', '8Q', '9C', '9F']} />

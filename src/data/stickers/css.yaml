@@ -12,16 +12,14 @@ description:
 
     Namely…
 
-
     - [`text-combine-upright: "digits"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)
-    - <details><summary>[`text-spacing: ideograph-alpha ideograph-numeric`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
+    - <details><summary>[`text-autospace: replace`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
     - <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature="mdn-css_properties_word-break_auto-phrase" /></details>
     - <details><summary>[CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)</summary><CanIUse feature="css-anchor-positioning" /></details>
     - <details><summary>[`calc-size()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size)</summary><CanIUse feature="mdn-css_types_calc-size" /></details>
     - <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />
       <Muted>**Update Jan 2025**: After Safari 18.2, Chrome 133 shipped support of CSS text box.</Muted></summary><BaselineStatus featureId="text-box" /><CanIUse feature="css-text-box-trim" /></details>
-
-    {/* <BaselineStatus featureId="subgrid" /> */}
+    - <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature="css-hanging-punctuation" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) by Javi Aguilar and the CSS-Next Community Group. Released under <Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>.
   zh-Hans: |
@@ -30,14 +28,13 @@ description:
     具体来说……
 
     - [`text-combine-upright: "digits"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)
-    - [`text-spacing: ideograph-alpha ideograph-numeric`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
+    - <details><summary>[`text-autospace: replace`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
     - <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature="mdn-css_properties_word-break_auto-phrase" /></details>
     - <details><summary>[CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)</summary><CanIUse feature="css-anchor-positioning" /></details>
     - <details><summary>[`calc-size()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size)</summary><CanIUse feature="mdn-css_types_calc-size" /></details>
     - <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />
-    <Muted>**2025 年 1 月更新**：Safari 18.2 之后，Chrome 133 开始支持 CSS text box。</Muted></summary><BaselineStatus featureId="text-box" /><CanIUse feature="css-text-box-trim" /></details>
-
-    {/* <BaselineStatus featureId="subgrid" /> */}
+      <Muted>**2025 年 1 月更新**：Safari 18.2 之后，Chrome 133 开始支持 CSS text box。</Muted></summary><BaselineStatus featureId="text-box" /><CanIUse feature="css-text-box-trim" /></details>
+    - <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature="css-hanging-punctuation" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) 来自 Javi Aguilar 和 CSS-Next Community Group。授权：<Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>。
   ja: |
@@ -46,13 +43,12 @@ description:
     具体的には…
 
     - [`text-combine-upright: "digits"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)
-    - [`text-spacing: ideograph-alpha ideograph-numeric`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
+    - <details><summary>[`text-autospace: replace`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-autospace)</summary><CanIUse feature="mdn-css_properties_text-autospace" /></details>
     - <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature="mdn-css_properties_word-break_auto-phrase" /></details>
     - <details><summary>[CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)</summary><CanIUse feature="css-anchor-positioning" /></details>
     - <details><summary>[`calc-size()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size)</summary><CanIUse feature="mdn-css_types_calc-size" /></details>
     - <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />
       <Muted>**2025 年 1 月更新**：Safari 18.2 以降、Chrome 133 が CSS text box をサポート。</Muted></summary><BaselineStatus featureId="text-box" /><CanIUse feature="css-text-box-trim" /></details>
-
-    {/* <BaselineStatus featureId="subgrid" /> */}
+    - <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature="css-hanging-punctuation" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) by Javi Aguilar, CSS-Next Community Group。ライセンス：<Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>。

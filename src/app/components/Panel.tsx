@@ -49,17 +49,20 @@ export function Panel() {
 
   const snapPoints = isMobile ? PANEL_HEIGHT_SNAPS[0] : PANEL_WIDTH_SNAPS[0];
   const [activeSnap, setActiveSnap] = useState<number>(0);
+  const [prevSnapPoints, setPrevSnapPoints] = useState(snapPoints);
+  if (prevSnapPoints !== snapPoints) {
+    setPrevSnapPoints(snapPoints);
+    setActiveSnap(0);
+  }
   const activeSnapRef = useRef<string | number | null>(activeSnap);
-  activeSnapRef.current = activeSnap;
+  useEffect(() => {
+    activeSnapRef.current = activeSnap;
+  }, [activeSnap]);
   const mainRef = useRef<HTMLDivElement>(null);
 
   const title = localize(selectedSticker?.title, language);
   const description = localize(selectedSticker?.description, language);
   const content = localize(selectedSticker?.content, language);
-
-  useEffect(() => {
-    setActiveSnap(0);
-  }, [snapPoints]);
 
   const toggleActiveSnap = useCallback(() => {
     if (snapPoints.length === 1) return;

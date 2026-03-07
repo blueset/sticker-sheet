@@ -25,6 +25,7 @@ import {
 } from "./Typography";
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
+import { PlusCodeMap } from "./PlusCodeMap";
 
 const BaselineStatus = dynamic(
   () =>
@@ -203,6 +204,7 @@ export function MDXRenderer({ source }: { source: string }) {
           BaselineStatus,
           CanIUse,
           useTheme,
+          PlusCodeMap,
         } as unknown as Record<string, FC<unknown>>}
       />
     )

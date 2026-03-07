@@ -54,14 +54,16 @@ export function FollowCursorTooltip() {
   );
 
   const hoveredStickerRef = useRef<StickerType | null>(null);
-  hoveredStickerRef.current = hoveredSticker;
+  useEffect(() => {
+    hoveredStickerRef.current = hoveredSticker;
+  }, [hoveredSticker]);
   const title = localize(hoveredSticker?.title, language);
   const isTouch = useMediaQuery("(pointer: coarse)");
 
   return (
     <Tooltip open={!!hoveredSticker && !isTouch}>
       <TooltipTrigger asChild={true}>
-        <div className="fixed inset-0 pointer-events-none w-screen h-screen" />
+        <div className="fixed inset-0 w-screen h-screen pointer-events-none" />
       </TooltipTrigger>
       <FollowCursorTooltipContent
         title={title}

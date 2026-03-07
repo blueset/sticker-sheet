@@ -9,14 +9,11 @@ const nextConfig: NextConfig = {
     });
     return config;
   },
-  experimental: {
-    turbo: {
-      // resolveExtensions: [".yaml"],
-      rules: {
-        "*.yaml": {
-          loaders: ["yaml-loader"],
-          as: "*.js",
-        },
+  turbopack: {
+    rules: {
+      "*.yaml": {
+        loaders: ["yaml-loader"],
+        as: "*.js",
       },
     },
   },
