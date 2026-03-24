@@ -20,6 +20,7 @@ description:
     - <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />
       <Muted>**Update Jan 2025**: After Safari 18.2, Chrome 133 shipped support of CSS text box.</Muted></summary><BaselineStatus featureId="text-box" /><CanIUse feature="css-text-box-trim" /></details>
     - <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature="css-hanging-punctuation" /></details>
+    - <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature="mdn-css_properties_field-sizing_content" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) by Javi Aguilar and the CSS-Next Community Group. Released under <Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>.
   zh-Hans: |
@@ -35,6 +36,7 @@ description:
     - <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />
       <Muted>**2025 年 1 月更新**：Safari 18.2 之后，Chrome 133 开始支持 CSS text box。</Muted></summary><BaselineStatus featureId="text-box" /><CanIUse feature="css-text-box-trim" /></details>
     - <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature="css-hanging-punctuation" /></details>
+    - <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature="mdn-css_properties_field-sizing_content" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) 来自 Javi Aguilar 和 CSS-Next Community Group。授权：<Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>。
   ja: |
@@ -50,5 +52,6 @@ description:
     - <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />
       <Muted>**2025 年 1 月更新**：Safari 18.2 以降、Chrome 133 が CSS text box をサポート。</Muted></summary><BaselineStatus featureId="text-box" /><CanIUse feature="css-text-box-trim" /></details>
     - <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature="css-hanging-punctuation" /></details>
+    - <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature="mdn-css_properties_field-sizing_content" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) by Javi Aguilar, CSS-Next Community Group。ライセンス：<Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>。
