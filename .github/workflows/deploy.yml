@@ -32,7 +32,7 @@ jobs:
       - run: npm ci
 
       - name: Build data
-        run: npm run yaml
+        run: npm run yaml -- --once
 
       - name: Build site
         run: npm run build

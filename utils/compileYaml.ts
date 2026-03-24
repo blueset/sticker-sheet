@@ -46,6 +46,8 @@ async function monitorStickersDirectory() {
 if (import.meta.main) {
     // Initial construction of the output file
     await constructStickersYaml();
-    // Start monitoring the directory
-    await monitorStickersDirectory();
+    // Start monitoring the directory unless --once is passed
+    if (!Deno.args.includes("--once")) {
+        await monitorStickersDirectory();
+    }
 }
