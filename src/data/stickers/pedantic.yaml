@@ -1,0 +1,39 @@
+x: -175
+y: 515
+width: 250
+height: 63
+rotation: 10
+image: /stickers/pedantic.svg
+clipPath: shape(evenodd from 6.6422% 18.8853%,curve to 9.5314% 15.6514% with 7.2983% 17.6435% / 8.3937% 15.9203%,curve to 17.2813% 28.9648% with 12.9446% 14.8445% / 15.6324% 20.5153%,curve to 23.9296% 15.412% with 18.9458% 20.8973% / 21.4255% 15.4424%,curve to 30.2024% 26.0881% with 26.5988% 15.3796% / 28.8452% 19.7254%,curve to 32.0708% 20.5097% with 30.9041% 23.3547% / 31.6024% 21.5517%,curve to 32.1859% 14.2366% with 32.064% 18.5373% / 32.0771% 16.2881%,curve to 33.3811% 5.3381% with 32.3702% 10.7676% / 32.7691% 7.6925%,curve to 36.2752% 0.7488% with 34.0307% 2.8384% / 34.9334% 0.8864%,curve to 38.8923% 3.5938% with 37.4044% 0.6337% / 38.2444% 1.8691%,curve to 40.692% 14.6235% with 39.8504% 6.1436% / 40.4462% 10.0758%,curve to 40.8221% 20.8344% with 40.8041% 16.6997% / 40.825% 18.9305%,curve to 41.6131% 22.8647% with 41.0777% 21.4585% / 41.3757% 22.2075%,curve to 43.6169% 30.496% with 42.2905% 24.7411% / 43.0006% 27.1124%,curve to 45.2802% 23.6723% with 44.067% 28.0993% / 44.6185% 25.8078%,curve to 56.8756% 25.2883% with 48.7679% 12.4139% / 53.8122% 14.207%,curve to 58.1558% 18.2563% with 57.0973% 22.996% / 57.4876% 20.5979%,curve to 61.7925% 14.1329% with 59.548% 13.3775% / 60.7534% 13.2116%,curve to 63.4685% 17.239% with 62.26% 14.5472% / 63.0197% 16.1985%,curve to 70.5885% 21.4218% with 66.1477% 14.4915% / 68.6722% 16.3305%,curve to 71.7441% 17.8666% with 70.917% 19.9823% / 71.3057% 18.7653%,curve to 71.8168% 14.027% with 71.7497% 16.5197% / 71.7673% 15.2186%,curve to 73.0606% 4.5263% with 71.9775% 10.1668% / 72.3914% 6.9647%,curve to 76.1527% 0.2052% with 73.7029% 2.1868% / 74.6403% 0.1974%,curve to 79.3934% 5.1786% with 77.7813% 0.2144% / 78.7494% 2.5327%,curve to 79.7529% 6.8919% with 79.5246% 5.7179% / 79.6445% 6.2898%,curve to 83.254% -0.0002% with 80.5492% 2.7099% / 81.8216% -0.0002%,curve to 87.6202% 17.1155% with 85.6636% -0.0002% / 87.6202% 7.6685%,curve to 87.3333% 23.2255% with 87.6202% 19.2679% / 87.5186% 21.3279%,curve to 90.725% 16.8642% with 88.2546% 20.4984% / 89.3786% 18.2944%,curve to 99.1207% 28.7643% with 94.2057% 13.1671% / 97.743% 20.5471%,curve to 99.8959% 41.6606% with 99.8345% 33.0212% / 100.0674% 37.5732%,curve to 98.7785% 50.329% with 99.7679% 44.7146% / 99.4325% 47.7353%,curve to 98.8193% 50.4892% with 98.7922% 50.3819% / 98.8057% 50.4356%,curve to 99.949% 61.4244% with 99.5669% 53.4718% / 99.9469% 57.236%,curve to 98.7456% 73.9719% with 99.9508% 65.3367% / 99.5793% 69.8767%,curve to 90.877% 83.978% with 97.342% 80.8655% / 94.4968% 87.0093%,curve to 87.057% 76.6255% with 89.3759% 82.7207% / 88.0941% 80.1165%,curve to 83.4649% 84.6465% with 86.3287% 81.426% / 84.992% 84.6465%,line to 83.0638% 84.6465%,curve to 79.6816% 77.8758% with 81.6734% 84.6465% / 80.4408% 81.9773%,curve to 78.6955% 81.8672% with 79.4079% 79.4839% / 79.0759% 80.8019%,curve to 76.0617% 84.8018% with 78.0376% 83.7097% / 77.1951% 84.9402%,curve to 73.4007% 81.1323% with 74.8912% 84.6585% / 74.0491% 83.217%,curve to 72.9591% 79.4776% with 73.2445% 80.6304% / 73.097% 80.0812%,curve to 72.7201% 80.4271% with 72.882% 79.8129% / 72.8022% 80.1285%,curve to 70.0009% 84.6098% with 72.0947% 82.7052% / 71.2576% 84.3204%,curve to 66.799% 80.4546% with 68.5161% 84.9508% / 67.5174% 83.0341%,curve to 65.691% 73.8483% with 66.3086% 78.694% / 65.9354% 76.4526%,curve to 64.3027% 81.2876% with 65.3742% 77.0082% / 64.9064% 79.5517%,curve to 61.4753% 84.4842% with 63.614% 83.2678% / 62.7119% 84.6451%,curve to 59.095% 81.342% with 60.4665% 84.3536% / 59.7038% 83.1407%,curve to 58.0888% 83.2904% with 58.7925% 82.1517% / 58.4566% 82.8266%,curve to 54.4635% 81.3928% with 57.1195% 84.5131% / 55.8843% 84.7552%,curve to 52.9115% 83.7549% with 54.0485% 82.1807% / 53.4772% 83.1542%,curve to 45.6822% 78.0389% with 50.2159% 86.6182% / 47.6495% 83.9406%,curve to 44.6578% 81.5001% with 45.4% 79.3089% / 45.0594% 80.4765%,curve to 42.4607% 84.3677% with 43.8147% 83.6483% / 43.084% 84.2886%,curve to 40.1498% 81.3716% with 41.752% 84.4573% / 40.7765% 82.6939%,curve to 30.1963% 73.8596% with 36.3382% 88.0852% / 32.5739% 83.5848%,curve to 30.0119% 74.7068% with 30.1373% 74.1448% / 30.0758% 74.4272%,curve to 24.3763% 84.2844% with 28.8684% 79.7007% / 26.7817% 83.9498%,curve to 17.1357% 71.4629% with 21.2396% 84.7207% / 18.7253% 79.3682%,curve to 14.6348% 79.6767% with 16.4823% 74.5225% / 15.6546% 77.311%,curve to 10.9984% 99.3578% with 14.526% 84.6345% / 13.9587% 97.5802%,curve to 7.8941% 97.1136% with 9.5759% 100.212% / 8.596% 98.8559%,curve to 5.9708% 82.6332% with 6.1673% 92.8278% / 5.9738% 84.0832%,curve to 5.9821% 79.8129% with 5.9686% 81.7133% / 5.9742% 80.7165%,curve to 1.6029% 46.2288% with 3.8416% 74.9517% / 1.0469% 62.6153%,curve to 0.0081% 35.2852% with 0.9857% 43.9429% / 0.0945% 39.8887%,curve to 2.5229% 17.7035% with -0.0932% 29.891% / 0.7512% 20.9453%,curve to 6.6422% 18.8853% with 3.506% 15.9048% / 4.8941% 14.9786%,close)
+title:
+  en: pedantic Inc. Podcasts
+  zh-Hans: pedantic Inc. 系列播客
+  ja: 株式会社 pedantic 系列ポッドキャスト
+description:
+  en: |
+    Besides [**Yuru Gengo-gaku Radio**](#yurugengo) and [**Yuru Computer Kagaku Radio**](#yurucom), I also listen to other podcasts from [pedantic Inc.](https://pedantic.jp/)
+
+    - *Yuru Tenmon-gaku Radio* ([Website](https://yurugakuto.com/tenmon), [YouTube](https://www.youtube.com/@yurutenmon))
+    - *Yuru Minzoku-gaku Radio* ([Website](https://yurugakuto.com/minzoku), [YouTube](https://www.youtube.com/@yuruminzoku))
+    - *Hakushi to Dokeshi* ([YouTube](https://www.youtube.com/@hakushi-to-dokeshi))
+    - *Shirokuro Tsukenai Kaigi* ([Website](https://cybozu.co.jp/not-shirokuro/), [YouTube](https://www.youtube.com/@not_shirokuro))
+    - *Bonno Dokomademo* ([YouTube](https://www.youtube.com/@bon-doko))
+    - *pedantic Inc.* ([YouTube](https://www.youtube.com/@pedanticInc))
+  zh-Hans: |
+    除了[**《Yuru 言語学 Radio》**](#yurugengo)和[**《Yuru Computer 科学 Radio》**](#yurucom)，我也收听 [pedantic 株式会社](https://pedantic.jp/) 的其他播客。
+
+    - 《Yuru 天文学 Radio》 ([Website](https://yurugakuto.com/tenmon), [YouTube](https://www.youtube.com/@yurutenmon))
+    - 《Yuru 民俗学 Radio》 ([Website](https://yurugakuto.com/minzoku), [YouTube](https://www.youtube.com/@yuruminzoku))
+    - 《博士 to 道化师》 ([YouTube](https://www.youtube.com/@hakushi-to-dokeshi))
+    - 《白黑 Tsukenai 会议》 ([Website](https://cybozu.co.jp/not-shirokuro/), [YouTube](https://www.youtube.com/@not_shirokuro))
+    - 《烦恼 Dokomademo》 ([YouTube](https://www.youtube.com/@bon-doko))
+    - 《株式会社 pedantic》 ([YouTube](https://www.youtube.com/@pedanticInc))
+  ja: |
+    [『ゆる言語学ラジオ』](#yurugengo)と[『ゆるコンピュータ科学ラジオ』](#yurucom)以外に、[株式会社 pedantic](https://pedantic.jp/) の他のポッドキャストも聞いています。
+
+    - 『ゆる天文学ラジオ』 ([Website](https://yurugakuto.com/tenmon), [YouTube](https://www.youtube.com/@yurutenmon))
+    - 『ゆる民俗学ラジオ』 ([Website](https://yurugakuto.com/minzoku), [YouTube](https://www.youtube.com/@yuruminzoku))
+    - 『博士と道化師』([YouTube](https://www.youtube.com/@hakushi-to-dokeshi))
+    - 『白黒つけない会議』([Website](https://cybozu.co.jp/not-shirokuro/), [YouTube](https://www.youtube.com/@not_shirokuro))
+    - 『煩悩どこまでも』([YouTube](https://www.youtube.com/@bon-doko))
+    - 『株式会社 pedantic』([YouTube](https://www.youtube.com/@pedanticInc))

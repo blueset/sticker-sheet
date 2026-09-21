@@ -22,6 +22,7 @@ description:
     - <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature="mdn-css_properties_field-sizing_content" /></details>
     - <details><summary>[Scroll-driven animations](https://caniuse.com/wf-scroll-driven-animations)</summary><CanIUse feature="mdn-api_scrolltimeline" /></details>
     - <details><summary>[`timeline-trigger`](https://caniuse.com/mdn-css_properties_timeline-trigger)</summary><CanIUse feature="mdn-css_properties_timeline-trigger" /></details>
+    - <details><summary>[CSS3 `attr()` function for all properties](https://caniuse.com/css3-attr)</summary><CanIUse feature="css3-attr" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) by Javi Aguilar and the CSS-Next Community Group. Released under <Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>.
   zh-Hans: |
@@ -39,6 +40,7 @@ description:
     - <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature="mdn-css_properties_field-sizing_content" /></details>
     - <details><summary>[滚动驱动动画](https://caniuse.com/wf-scroll-driven-animations)</summary><CanIUse feature="mdn-api_scrolltimeline" /></details>
     - <details><summary>[`timeline-trigger`](https://caniuse.com/mdn-css_properties_timeline-trigger)</summary><CanIUse feature="mdn-css_properties_timeline-trigger" /></details>
+    - <details><summary>[CSS3 `attr()` 函数使用任意属性](https://caniuse.com/css3-attr)</summary><CanIUse feature="css3-attr" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) 来自 Javi Aguilar 和 CSS-Next Community Group。授权：<Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>。
   ja: |
@@ -56,5 +58,6 @@ description:
     - <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature="mdn-css_properties_field-sizing_content" /></details>
     - <details><summary>[スクロール駆動アニメーション](https://caniuse.com/wf-scroll-driven-animations)</summary><CanIUse feature="mdn-api_scrolltimeline" /></details>
     - <details><summary>[`timeline-trigger`](https://caniuse.com/mdn-css_properties_timeline-trigger)</summary><CanIUse feature="mdn-css_properties_timeline-trigger" /></details>
+    - <details><summary>[CSS3 任意の属性値に対応する `attr()` 関数](https://caniuse.com/css3-attr)</summary><CanIUse feature="css3-attr" /></details>
 
     [logo.css](https://github.com/CSS-Next/logo.css) by Javi Aguilar, CSS-Next Community Group。ライセンス：<Abbr title="CC0 1.0 Universal">🅭🄍 1.0</Abbr>。

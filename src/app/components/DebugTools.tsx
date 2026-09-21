@@ -32,6 +32,9 @@ export default function DebugTools() {
       title: "Canvas",
     });
     pane.registerPlugin(EssentialsPlugin);
+    pane.addButton({ title: "SVG → CSS shape" }).on("click", () => {
+      window.open("/dev/svg-shape", "_blank", "noopener,noreferrer");
+    });
     const s = stickers[0] ?? {
       x: 0,
       y: 0,

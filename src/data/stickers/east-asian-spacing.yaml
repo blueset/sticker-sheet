@@ -33,11 +33,11 @@ description:
 
     Read more about this in [Unicode Technical Report #59 East Asian Spacing](https://www.unicode.org/reports/tr59/).
 
-    An incomplete list of rendering engine support (as of Early 2025):
+    An incomplete list of rendering engine support (as of Mid 2026):
     * ✅ Apple (CoreText)
     * ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)
     * ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)
-    * 🔲 Firefox
+    * ✅ [Firefox (Gecko)](https://bugzilla.mozilla.org/show_bug.cgi?id=1988596)
     * 🔲 Windows (DirectWrite)
     * 🔲 GTK+ (Pango)
     * 🔲 Android
@@ -46,11 +46,11 @@ description:
 
     请参阅[《中文排版需求・横排的中、西文混排配置》](https://www.w3.org/TR/clreq/#mixed_text_composition_in_horizontal_writing_mode)、[《Unicode 技术报告 #59 东亚文字间距》](https://www.unicode.org/reports/tr59/)。
 
-    部分渲染引擎支持列表（截至 2025 年初）：
+    部分渲染引擎支持列表（截至 2026 年中）： 
     * ✅ Apple (CoreText)
     * ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)
     * ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)
-    * 🔲 Firefox
+    * ✅ [Firefox (Gecko)](https://bugzilla.mozilla.org/show_bug.cgi?id=1988596)
     * 🔲 Windows (DirectWrite)
     * 🔲 GTK+ (Pango)
     * 🔲 Android
@@ -59,11 +59,11 @@ description:
 
     [『日本語組版処理の要件・プロポーショナルな​欧字を用いた​和欧文混植処理』](https://www.w3.org/TR/jlreq/#handling_of_western_text_in_japanese_text_using_proportional_western_fonts)、[『Unicode 技術報告 #59 東アジア字間』](https://www.unicode.org/reports/tr59/)をご覧ください。
 
-    一部レンダリングエンジンの対応状況（2025 年初現在）：
+    一部レンダリングエンジンの対応状況（2026 年中現在）：
     * ✅ Apple (CoreText)
     * ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)
     * ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)
-    * 🔲 Firefox
+    * ✅ [Firefox (Gecko)](https://bugzilla.mozilla.org/show_bug.cgi?id=1988596)
     * 🔲 Windows (DirectWrite)
     * 🔲 GTK+ (Pango)
     * 🔲 Android

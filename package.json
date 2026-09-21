@@ -36,6 +36,7 @@
     "react-leaflet": "^5.0.0",
     "react-zoom-pan-pinch": "^3.7.0",
     "remark-gfm": "^4.0.0",
+    "svg-pathdata": "^9.0.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
