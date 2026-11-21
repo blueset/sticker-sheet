@@ -30,10 +30,9 @@ const dropWillChange: SettleStrategy = {
 
 // Keeps the promoted layer through pan-only gestures: the raster at rest is
 // still valid, so it is dropped (and re-rastered) only when the scale changed.
-// The baseline scale is the first transform seen, i.e. the one the page
-// started a gesture from.
-function retoggleOnScaleChange(): SettleStrategy {
-  let rastered: number | null = null;
+// The baseline scale is the initial one, else the first transform seen.
+function retoggleOnScaleChange(initialScale: number | null): SettleStrategy {
+  let rastered = initialScale;
   return {
     name: "retoggle-on-scale-change",
     onGestureStart: (c) => {
@@ -53,11 +52,11 @@ const none: SettleStrategy = {
   onSettle: () => {},
 };
 
-// Fresh state per call; tests and the page each take their own.
-export function createSettleStrategies(): Record<SettleName, SettleStrategy> {
+// Fresh state per call; `initialScale` is the scale at rest before any gesture.
+export function createSettleStrategies(initialScale: number | null = null): Record<SettleName, SettleStrategy> {
   return {
     "drop-will-change": dropWillChange,
-    "retoggle-on-scale-change": retoggleOnScaleChange(),
+    "retoggle-on-scale-change": retoggleOnScaleChange(initialScale),
     none,
   };
 }

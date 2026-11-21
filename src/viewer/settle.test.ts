@@ -50,6 +50,13 @@ describe("settle strategies", () => {
     s.onSettle(ctx(2, layer));
     expect(layer.style.willChange).toBe("transform");
   });
+  it("retoggle-on-scale-change seeded with the initial scale clears on a first, non-zoom-first settle", () => {
+    const s = createSettleStrategies(1)["retoggle-on-scale-change"];
+    const layer = document.createElement("div");
+    s.onGestureStart(ctx(1.5, layer));
+    s.onSettle(ctx(2, layer));
+    expect(layer.style.willChange).toBe("");
+  });
 });
 
 describe("variants", () => {

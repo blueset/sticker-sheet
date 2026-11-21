@@ -187,6 +187,17 @@ html[data-v-bg="gradient"] #canvas {
       var(--large-scale-color) 98px,
       transparent 98px
     ),
+    linear-gradient(-90deg, var(--cross-hair-color) 1px, transparent 1px),
+    linear-gradient(
+      -90deg,
+      transparent 3px,
+      var(--large-scale-color) 3px,
+      var(--large-scale-color) 98px,
+      transparent 98px
+    ),
+    linear-gradient(var(--cross-hair-color) 1px, transparent 1px),
+    var(--large-scale-color);
+  background-size: 10px 10px, 10px 10px, 100px 100px, 100px 100px, 100px 100px,
     100px 100px, 100px 100px, 100px 100px;
 }
 

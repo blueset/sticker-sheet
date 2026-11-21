@@ -23,7 +23,10 @@ export interface Controller {
   setTransform(t: Transform, opts?: { animateMs?: number }): void; // clamped; default animation per rzpp-defaults.md for programmatic moves
   zoomBy(factor: number, anchor?: { x: number; y: number }): void;
   center(): void;
-  onGestureStart(fn: () => void): () => void;
+  onGestureStart(fn: () => void): () => void; // user input only (hold, tooltip, selection)
+  // Every idle -> moving edge, user or programmatic (button zoom, centre,
+  // setTransform): exactly when `data-gesture` appears. Ends with onSettle.
+  onMotionStart(fn: () => void): () => void;
   onChange(fn: (t: Transform) => void): () => void; // at most once per animation frame
   onSettle(fn: (t: Transform) => void): () => void; // gesture and inertia idle for 100 ms
   resize(): void; // recompute bounds
@@ -150,6 +153,7 @@ export function createController(
   const signal = listeners.signal;
 
   const startFns = new Set<() => void>();
+  const motionFns = new Set<() => void>();
   const changeFns = new Set<(t: Transform) => void>();
   const settleFns = new Set<(t: Transform) => void>();
 
@@ -282,8 +286,10 @@ export function createController(
     }
     active = true;
     if (gesture !== kind) {
+      const idleBefore = gesture === null;
       gesture = kind;
       root.dataset.gesture = kind;
+      if (idleBefore) emit(motionFns, undefined);
     }
     if (user && !userActive) {
       userActive = true;
@@ -739,6 +745,7 @@ export function createController(
       animateTo(centerTransform(viewport, content, t.scale), CENTER_MS, "pan");
     },
     onGestureStart: (fn) => subscribe(startFns, fn),
+    onMotionStart: (fn) => subscribe(motionFns, fn),
     onChange: (fn) => subscribe(changeFns, fn),
     onSettle: (fn) => subscribe(settleFns, fn),
     resize: onResize,
@@ -757,6 +764,7 @@ export function createController(
       gesture = null;
       root.removeAttribute("data-gesture");
       startFns.clear();
+      motionFns.clear();
       changeFns.clear();
       settleFns.clear();
       if (window.__viewer === api) delete window.__viewer;
