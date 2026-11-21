@@ -35,11 +35,13 @@ Facts that constrain the design:
 | `light-dark()` in sticker content depends on `color-scheme` on `<html>`, which `next-themes` sets. | The replacement theme mechanism must set `color-scheme` and the `.dark` class before first paint. |
 | Static deploy to GitHub Pages (`output: "export"`, CI runs `deno ... --once`, then `next build`). | No server, no edge. Everything is build-time or client-time. |
 | Descriptions use JSX and `export function` inside MDX, with `_provideComponents()` for `Button`, `useTheme`, `PlusCodeMap` (Leaflet), `CanIUse` (iframe), `BaselineStatus` (web component) and others. | The authoring format (YAML + MDX strings) is a public contract of this repo. It does not change. |
-| The Silk sheet is passed only the first detent (`detents={snapPoints}` is a single string), and `activeSnap !== 2` compares against an index that never occurs. | The current two-stop behaviour is possibly mid-migration. Milestone 0 must run the current app on a phone-sized viewport and record what actually happens. The two-stop spec comes from that run and the owner's description below. |
+| The Silk sheet is passed only the first detent (`detents={snapPoints}` is a single string), `activeSnap !== 2` compares against an index that never occurs, and `scrollGesture` is therefore always `false`. | The current two-stop behaviour looks mid-migration. Milestone 0 runs the current app in a phone-sized viewport and records what happens. The target spec is the one under "Sheet spec" below, and any difference between it and the running app is reported to the owner. |
+| `PANEL_BREAKPOINT` is 4096 px, so the bottom sheet is used on practically every viewport. | The left-side panel only appears on viewports wider than 4096 px. Keep the constant. |
+| Sticker z-order follows `stickers.yaml` order, which comes from `Deno.readDir` and is filesystem-dependent (alphabetical on the owner's NTFS machine, arbitrary on the Linux CI runner). About two dozen sticker bounding boxes overlap. | Z-order needs a deterministic rule (see "Sticker z-order"). |
 
 ## Goals
 
-1. **First render.** All stickers, including dynamic ones, are visible in the first paint. They are in the HTML, positioned and styled with no JS needed, and in the user's saved language and theme. The first paint is centred on the hashed sticker if the URL has `#slug`. Dynamic stickers show their *current* value on the first frame the user sees.
+1. **First render.** Every sticker is in the HTML, positioned, clipped and shadowed with no JS needed, in the user's saved language and theme. Stickers in the initial viewport have their images prioritised, and the rest load immediately after at low priority behind a placeholder (the shadow or silhouette sprite). The first paint is centred on the hashed sticker if the URL has `#slug`. Dynamic stickers show their *current* value on the first frame the user sees (see "Live stickers").
 2. **Pan and zoom.** During a gesture, per-frame work is a single compositor-friendly transform write. React does no work per frame and nothing triggers layout or raster per frame.
 3. **Settle.** When the gesture ends, visible content re-rasters sharp at the new scale (vectors stay vector). A cached, scaled bitmap during the gesture is acceptable.
 4. **Parity.** Every feature in "Feature parity checklist" works as it does today.
@@ -48,7 +50,7 @@ Facts that constrain the design:
 
 Measured in Chromium with mobile emulation, 4× CPU throttle and "Fast 4G", plus desktop, plus the owner's real devices:
 
-- First render: stickers visible by FCP/LCP ≤ 1.5 s on the mobile profile. Critical-path JS ≤ 100 KB gzip, to be validated. Zero layout shift from sticker placement. No JS is needed for first paint of non-live stickers.
+- First render: the stickers in the initial viewport are painted by LCP ≤ 1.5 s on the mobile profile. Critical-path JS ≤ 100 KB gzip, to be validated. Zero layout shift from sticker placement. No JS is needed for first paint of non-live stickers.
 - Pan and zoom: p95 frame time ≤ 16.7 ms on the mobile profile. Main-thread time per frame during a gesture ≈ the transform write only.
 - Settle: crisp re-raster within 150 ms of gesture end, with no blank or flickering stickers.
 - Interaction: sticker hover feedback and sheet-open input delay under 100 ms.
@@ -61,7 +63,7 @@ Measured in Chromium with mobile emulation, 4× CPU throttle and "Fast 4G", plus
 - Dynamic stickers (the 8 with `content`) render with variable content on first render.
 - Drop shadows on stickers that follow the clipped silhouette.
 - Hover on a sticker clips to its shape (browser or equivalent hit-testing), scales to 1.1× with the shadow preserved, shows the pointer cursor (hover-capable devices only).
-- Bottom sheet: details for the selected sticker, two scroll stops on narrow viewports (peek and expanded), a left-side panel on wide viewports. The title, close button, drag handle and expanded-state sticker preview behave as today.
+- Bottom sheet: see "Sheet spec".
 - Content by language (`en`, `zh-Hans`, `ja`) with fallback to `en`, and by theme: sticker titles, `content`, descriptions, and UI strings. The language persists in `localStorage`.
 - Light, dark and system theme. The canvas background pattern has light and dark variants.
 - Hover tooltips on stickers that follow the cursor (hidden on coarse pointers).
@@ -69,6 +71,18 @@ Measured in Chromium with mobile emulation, 4× CPU throttle and "Fast 4G", plus
 - Sheet content: MDX with the full component set (Leaflet `PlusCodeMap`, `CanIUse` embeds, `BaselineStatus`, theme-aware components, `<style>` blocks, `export function` in MDX).
 - Keyboard and a11y: stickers are focusable buttons that open the sheet on Enter/Space; Radix-style controls remain operable by keyboard.
 - Dev tooling (live sticker-placement editor and the SVG→CSS-shape workbench) **(my call)**: kept as dev-only, lazy-loaded tools, ported last. They are outside the performance budgets.
+
+### Sheet spec (my call, derived from the owner's "bottom sheet with details and two scroll stops" and the existing constants)
+
+- Viewports ≤ 4096 px wide: a bottom sheet with two stops. **Peek** is `PANEL_HEIGHT + 96` = 231 px tall (title, close button and the first lines of the description). **Expanded** is `calc(100vh − 96px)`, and the sticker preview and the full description scroll there. The handle button toggles the stops, and dragging snaps between them and dismisses below peek. Content scrolling is enabled only at the expanded stop.
+- Viewports wider than 4096 px: the 320 px left panel, one stop.
+- Selecting a sticker re-centres it in the visible area using the existing offsets (`PANEL_HEIGHT` = 135 px from the bottom on narrow viewports, `PANEL_WIDTH` from the left on wide ones), at the *current* zoom scale.
+- The sheet is not part of the first paint, even on a `#slug` URL. It animates in after load as it does today. The hashed sticker's description chunk is preloaded early from the head script so it opens without waiting.
+- If Milestone 0 shows the running app differs from this (for example a single stop, no scrolling), the plan reports it to the owner before changing the spec.
+
+### Sticker z-order (my call)
+
+Stickers render in a deterministic order: **ascending slug (filename) order**. That matches what the owner's NTFS machine produces today and is stable on any CI. Hover scales a sticker but does not change its z-order, as today. No new schema field. Milestone 0 diffs the baseline screenshot against the deployed order and reports visible differences so the owner can decide whether a `z` field is wanted.
 
 ## Non-goals
 
@@ -99,10 +113,16 @@ Measured in Chromium with mobile emulation, 4× CPU throttle and "Fast 4G", plus
 2. **MDX compiled at build time.** The browser never gets an MDX compiler. Descriptions become per-sticker, per-language lazy chunks, prefetched on hover or idle. Sticker `content` is prerendered to HTML for all languages. Switching language is CSS (`:lang()`), not JS, with the same `en` fallback rule as `localize()`.
 3. **One gesture controller, no React per frame.** Replace `react-zoom-pan-pinch` with a small framework-free controller (pointer events, wheel, pinch, inertia, bounds, animated moves) that writes a single transform. Gesture state lives outside React. Parity with the library's defaults is a test target.
 4. **No live filter on 63 elements.** Shadows are chosen by experiment from: (S1) a pre-baked, pre-blurred alpha sprite per image sticker generated at build time from the actual image-and-clip silhouette, (S2) `box-shadow` for rect and rounded-rect stickers, (S3) live `filter: drop-shadow` kept only for the few stickers where S1 and S2 cannot match (probably the 8 content stickers). The sprite sits inside the same hover-scaled group so the shadow follows the hovered scale as it does today.
-5. **Live (runtime-dependent) stickers.** A sticker is *live* if its output depends on runtime values (`Date`, timers, hooks). Classification **(my call)**: compile and render each content sticker at build time twice with a mocked `Date`. If the two outputs differ it is live. Static content stickers are pure prerendered HTML. Live ones are prerendered *and* hydrated by a tiny runtime that runs before the first user-visible frame. The two candidate mechanisms, to be chosen by measurement in the plan, are (a) a `blocking="render"` module that hydrates only live stickers, and (b) a build-time marker that patches the runtime-dependent text node(s) from a ≈1 KB inline script. Acceptance: no frame shows a stale value; non-live stickers never wait on JS.
-6. **Imperative small UI.** The cursor-following tooltip is one absolutely positioned element updated from `pointermove`, not React state. Hover scale stays CSS (`:has(:hover)` or equivalent).
-7. **Off the critical path.** The Silk sheet, Radix dropdowns/tooltips for the controls, Leaflet, CanIUse and `baseline-status` load lazily (sheet on first open or idle, controls on idle or first interaction). The controls bar can be prerendered as static markup and hydrated on first interaction.
-8. **Fonts and CSS.** Self-host Inter (variable, subset, preloaded, `font-display: swap`). Load cc-icons only if a sticker or description uses it. No render-blocking third-party CSS.
+5. **Live stickers (my call).** A sticker is *live* if its output depends on runtime values (`Date`, timers, hooks). Classification: render each content sticker at build time twice with a mocked `Date`. If the two outputs differ it is live; if the content uses hooks or timers, it is *interactive*. Three tiers:
+   - **Static** content stickers are pure prerendered HTML.
+   - **Date-derived** live stickers (today: `dd-mmm-yyyy`, `yyyy-mm-dd`) are prerendered with the runtime-dependent text wrapped in a marked node. A tiny inline script (≈1 KB) in `<head>`, running before first paint, fills those nodes with the current value (using the sticker's own expression compiled to plain JS). Nothing waits on React.
+   - **Interactive** live stickers (hooks, timers, such as `test-1`'s clock) are prerendered with the sticker box, chrome and layout visible and the live node `visibility: hidden` with its space reserved. A small lazy runtime (Preact-compatible, off the critical path) hydrates them as soon as it loads and shows the live value. For these the concession is a brief absence of the live value, never a stale or wrong one.
+   
+   Acceptance: no frame shows a stale value, and non-live and date-derived stickers never wait on a JS framework. If the owner later wants hook-driven stickers fully visible on the very first frame, that costs the framework on the critical path and is a separate decision.
+6. **Assets (my call, in scope).** Image stickers keep their formats where vectors are required: SVGs stay SVG, optimised losslessly with SVGO and with embedded rasters (`karaoke`, `double-lariat`) re-compressed only visually losslessly. The 7 PNGs may be re-encoded (WebP or AVIF, same pixel dimensions, visually lossless) with `<picture>` fallback. Images carry explicit dimensions, `decoding="async"`, and viewport-priority `fetchpriority`/`loading`. Unused public files (`Bitmap.svg`, `logo.svg`) are left alone and not shipped on any critical path.
+7. **Imperative small UI.** The cursor-following tooltip is one absolutely positioned element updated from `pointermove`, not React state. Hover scale stays CSS (`:has(:hover)` or equivalent).
+8. **Off the critical path.** The Silk sheet, Radix dropdowns/tooltips for the controls, Leaflet, CanIUse and `baseline-status` load lazily (sheet on first open or idle, controls on idle or first interaction). The controls bar can be prerendered as static markup and hydrated on first interaction.
+9. **Fonts and CSS.** Self-host Inter (variable, subset, preloaded, `font-display: swap`). Load cc-icons only if a sticker or description uses it. No render-blocking third-party CSS.
 
 ### Pathway A: lean DOM (baseline for the rewrite; the owner picked this first)
 
@@ -151,6 +171,6 @@ Built in Milestone 0 against the *current* app and reused for every candidate:
 - Which shadow strategy (S1/S2/S3) per sticker, and how the build generates silhouette sprites (headless browser or an image library).
 - How the settle re-raster works (drop `will-change`, layout-scale swap, or another trace-driven option).
 - Culling method and the pattern-background implementation (the existing PNG tile on the transformed layer versus a CSS gradient), judged on traces.
-- The mechanism for live stickers (a or b), module boundaries, naming.
+- Module boundaries, naming, and the exact runtime-fill mechanism for the date-derived and interactive live-sticker tiers.
 - How the sheet is implemented in the lazy island (keep Silk as the default, since it preserves behaviour and is off the critical path).
 - Test and CI details, as long as the build deploys to GitHub Pages.
