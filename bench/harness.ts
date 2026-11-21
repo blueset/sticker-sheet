@@ -46,6 +46,12 @@ export const probeCss = (selectors: { stickers: string; layer: string }) =>
     .replaceAll("{stickers}", selectors.stickers)
     .replaceAll("{layer}", selectors.layer);
 
+// Query appended to the benches' (and settle-crisp.spec's) `page.goto`, e.g.
+// BENCH_QUERY='?v=settle:none' to measure a tuning variant served from a
+// PUBLIC_VARIANTS=1 build. Empty for normal runs.
+export const benchQuery = () => process.env.BENCH_QUERY ?? "";
+export const benchUrl = () => `/${benchQuery()}`;
+
 export function runMeta(
   label: string,
   name: ProfileName,
@@ -71,5 +77,6 @@ export function runMeta(
     ...(process.env.BENCH_PROBE_IMAGES
       ? { probeImages: process.env.BENCH_PROBE_IMAGES }
       : {}),
+    query: benchQuery(),
   };
 }

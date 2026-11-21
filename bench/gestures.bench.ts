@@ -41,6 +41,13 @@
 //   It includes any animation/inertia tail and the page's own settle timers;
 //   it does not prove the final pixels are sharp, only that raster work has
 //   stopped.
+// - crispAfterMotionMs: the same raster end minus the last frame whose
+//   transform changed (motion end), clamped at 0. With motionAfterInputMs
+//   (motion end - last input: the inertia/animation tail),
+//   settleAfterMotionMs (`data-gesture` removal - motion end: the settle
+//   timer) and rasterAfterSettleMs (raster end - that removal) it decomposes
+//   crispAfterMs.
+// - BENCH_QUERY (e.g. '?v=settle:none') is appended to the page URL.
 // - peakHeapMb: maximum CDP Performance.getMetrics JSHeapUsedSize sampled every
 //   100 ms from before the gesture until the trace stops. JS heap only: GPU
 //   textures, decoded images and compositor memory are not included.
@@ -56,6 +63,7 @@ import {
   STICKER_COUNT,
   applyProfile,
   benchEnabled,
+  benchUrl,
   probeCss,
   profileOf,
   runMeta,
@@ -102,13 +110,16 @@ interface GestureState {
   scaleMin: number;
   scaleMax: number;
   maxMove: number;
+  // performance.now() of the last removal of `data-gesture` from the viewer.
+  settledAt: number | null;
   stop: boolean;
 }
 
 // Runs in the page right before the gesture. Self-contained: Playwright
 // serialises it. Returns performance.now() at the trace marker.
-function startRecorder(layerSelector: string): number {
-  const layer = document.querySelector(layerSelector) as Element;
+function startRecorder(selectors: { layer: string; viewer: string }): number {
+  const layer = document.querySelector(selectors.layer) as Element;
+  const viewer = document.querySelector(selectors.viewer) as Element;
   const w = window as unknown as { __g: GestureState };
   const read = () => {
     const m = new DOMMatrix(getComputedStyle(layer).transform);
@@ -125,9 +136,13 @@ function startRecorder(layerSelector: string): number {
     scaleMin: start.scale,
     scaleMax: start.scale,
     maxMove: 0,
+    settledAt: null,
     stop: false,
   };
   w.__g = g;
+  new MutationObserver(() => {
+    if (!viewer.hasAttribute("data-gesture")) g.settledAt = performance.now();
+  }).observe(viewer, { attributes: true, attributeFilter: ["data-gesture"] });
 
   for (const type of [
     "wheel",
@@ -334,7 +349,7 @@ test.describe("gestures", () => {
         await applyProfile(cdp, PROFILES[profile]);
         await cdp.send("Performance.enable");
 
-        await page.goto("/", { waitUntil: "load" });
+        await page.goto(benchUrl(), { waitUntil: "load" });
         await page.waitForFunction(
           ([selector, count]) =>
             document.querySelectorAll(selector as string).length >= (count as number) &&
@@ -369,7 +384,10 @@ test.describe("gestures", () => {
         })();
 
         await browser.startTracing(page, { categories: TRACE_CATEGORIES });
-        const markerPage = await page.evaluate(startRecorder, contract.layer);
+        const markerPage = await page.evaluate(startRecorder, {
+          layer: contract.layer,
+          viewer: contract.viewer,
+        });
 
         await scenario.run({ page, cdp, profile, viewer: viewerBox });
 
@@ -429,6 +447,18 @@ test.describe("gestures", () => {
           analysis.lastRasterEndMs === null
             ? null
             : Math.max(0, analysis.lastRasterEndMs - inputEndTrace);
+        const motionEndTrace = toTrace(g.lastMotionAt);
+        const crispAfterMotionMs =
+          analysis.lastRasterEndMs === null
+            ? null
+            : Math.max(0, analysis.lastRasterEndMs - motionEndTrace);
+        const settledAt =
+          g.settledAt !== null && g.settledAt >= g.lastMotionAt ? g.settledAt : null;
+        const settleAfterMotionMs = settledAt === null ? null : settledAt - g.lastMotionAt;
+        const rasterAfterSettleMs =
+          settledAt === null || analysis.lastRasterEndMs === null
+            ? null
+            : analysis.lastRasterEndMs - toTrace(settledAt);
         const traceEnd = events.reduce(
           (m, e) => Math.max(m, (e.ts + (e.dur ?? 0)) / 1000),
           0
@@ -468,12 +498,18 @@ test.describe("gestures", () => {
           inputDelayMs: g.maxInputDelay,
           scaleChange,
           worstFramesMs: [...deltas].sort((a, b) => b - a).slice(0, 5),
+          crispAfterMotionMs,
+          motionAfterInputMs: g.lastMotionAt - g.lastInputAt,
+          settleAfterMotionMs,
+          rasterAfterSettleMs,
         };
         writeRaw(label, profile, `gesture-${scenario.name}-${run}.json`, result);
         console.log(
           `[${label}/${profile}] ${scenario.name} run ${run}: frames ${result.frames} p95 ${result.p95FrameMs.toFixed(1)} ` +
             `over16 ${result.over16} over33 ${result.over33} busy ${result.mainBusyMs.toFixed(0)} ` +
-            `crisp ${crispAfterMs?.toFixed(0) ?? "null"} heap ${peakHeapMb.toFixed(1)} ` +
+            `crisp ${crispAfterMs?.toFixed(0) ?? "null"} (motion+${crispAfterMotionMs?.toFixed(0) ?? "null"}, ` +
+            `tail ${result.motionAfterInputMs!.toFixed(0)} settle ${settleAfterMotionMs?.toFixed(0) ?? "null"} ` +
+            `raster ${rasterAfterSettleMs?.toFixed(0) ?? "null"}) heap ${peakHeapMb.toFixed(1)} ` +
             `scale x${scaleChange.toFixed(2)} move ${g.maxMove.toFixed(0)}`
         );
         expect(result.frames).toBeGreaterThan(0);

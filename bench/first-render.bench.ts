@@ -52,6 +52,7 @@
 //   TARGET=baseline).
 // - bytes: `Network.loadingFinished.encodedDataLength` (what crossed the wire,
 //   including headers) per CDP resource type, over the whole run.
+// - BENCH_QUERY (e.g. '?v=bg:gradient') is appended to the page URL.
 import { expect, test } from "@playwright/test";
 import type { CDPSession, Page } from "@playwright/test";
 import { contract } from "../tests/contract.ts";
@@ -62,6 +63,7 @@ import {
   STICKER_COUNT,
   applyProfile,
   benchEnabled,
+  benchUrl,
   profileOf,
   runMeta,
   sleep,
@@ -367,7 +369,7 @@ test.describe("first render", () => {
       const reqs = trackNetwork(cdp);
       await routeImageProbe(page);
 
-      await page.goto("/", { waitUntil: "commit" });
+      await page.goto(benchUrl(), { waitUntil: "commit" });
 
       let last: Snapshot | null = null;
       for (;;) {

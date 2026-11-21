@@ -108,6 +108,20 @@ export interface GestureResult {
   scaleChange?: number;
   // The five longest rAF deltas (ms) inside the gesture.
   worstFramesMs?: number[];
+  // Settle decomposition (Task 2.3; absent in older runs). All ms, page clock
+  // mapped to the trace clock where a raster end is involved.
+  // - crispAfterMotionMs: end of the last RasterTask minus the last frame whose
+  //   transform changed, clamped at 0 (null if no raster).
+  // - motionAfterInputMs: last frame whose transform changed minus the last
+  //   input event (the inertia / animation tail).
+  // - settleAfterMotionMs: `data-gesture` removed from the viewer minus that
+  //   last motion frame (the settle timer); null if it was never seen removed.
+  // - rasterAfterSettleMs: end of the last RasterTask minus that removal
+  //   (negative when raster ended before settle); null if either is missing.
+  crispAfterMotionMs?: number | null;
+  motionAfterInputMs?: number;
+  settleAfterMotionMs?: number | null;
+  rasterAfterSettleMs?: number | null;
 }
 
 export interface RunMeta {
@@ -127,6 +141,9 @@ export interface RunMeta {
   probeCss?: string;
   // Set only for the image A/B (BENCH_PROBE_IMAGES = "stub" | "pass").
   probeImages?: string;
+  // BENCH_QUERY appended to the page URL ("" for the plain page). Absent in
+  // runs recorded before it existed.
+  query?: string;
 }
 
 // Playwright, vitest and the CLI are all run from the repository root.
