@@ -7,6 +7,9 @@ import type { ProfileName, RunMeta } from "./results.ts";
 
 export const STICKER_COUNT = 63;
 export const BENCH_RUNS = Number(process.env.BENCH_RUNS ?? 5);
+// First run number. Above 1, earlier runs of the label are kept, so A/B arms
+// can alternate one run per invocation (BENCH_RUNS=1, BENCH_RUN_FROM=1..n).
+export const BENCH_RUN_FROM = Number(process.env.BENCH_RUN_FROM ?? 1);
 
 export const benchEnabled = () => process.env.BENCH === "1";
 
@@ -64,6 +67,9 @@ export function runMeta(
     recordedAt: new Date().toISOString(),
     ...(process.env.BENCH_PROBE_CSS
       ? { probeCss: process.env.BENCH_PROBE_CSS }
+      : {}),
+    ...(process.env.BENCH_PROBE_IMAGES
+      ? { probeImages: process.env.BENCH_PROBE_IMAGES }
       : {}),
   };
 }

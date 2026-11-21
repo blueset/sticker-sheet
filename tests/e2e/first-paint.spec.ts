@@ -190,6 +190,38 @@ test("language fallback with no JS framework", async ({ page }) => {
   await expect(page.getByRole("button", { name: "DD MMM YYYY", exact: true })).toHaveCount(1);
 });
 
+// The viewer entry and every module it statically imports are announced from
+// the head at high priority, so input readiness neither waits behind the
+// sticker images nor pays a second round trip for the entry's imports.
+test("the eager viewer graph is modulepreloaded at high priority from the head", async ({ request }) => {
+  const html = await (await request.get("/")).text();
+  const head = html.slice(0, html.indexOf("</head>"));
+  const entry = /<script type="module" src="([^"]+)"/.exec(html)?.[1];
+  expect(entry, "module entry script").toBeTruthy();
+
+  const eager: string[] = [];
+  const queue = [entry!];
+  while (queue.length) {
+    const file = queue.shift()!;
+    if (eager.includes(file)) continue;
+    eager.push(file);
+    const source = await (await request.get(file)).text();
+    for (const m of source.matchAll(/\bimport\s*(?:[^;()"']*?\bfrom\s*)?"(\.{1,2}\/[^"]+)"/g)) {
+      queue.push(new URL(m[1], new URL(file, "http://x")).pathname);
+    }
+  }
+  expect(eager.length, "the entry has static imports").toBeGreaterThan(1);
+
+  const preloads = Array.from(head.matchAll(/<link\b[^>]*>/g), (m) => m[0]).filter((t) =>
+    /\brel="modulepreload"/.test(t),
+  );
+  for (const file of eager) {
+    const link = preloads.find((t) => t.includes(`href="${file}"`));
+    expect(link, `modulepreload for ${file}`).toBeDefined();
+    expect(link, file).toMatch(/\bfetchpriority="high"/);
+  }
+});
+
 test("no third-party CSS or fonts", async ({ page, baseURL }) => {
   const requests: { url: string; type: string }[] = [];
   page.on("request", (req) => requests.push({ url: req.url(), type: req.resourceType() }));

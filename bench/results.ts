@@ -13,6 +13,13 @@ export interface FirstRenderResult {
   cls: number;
   allStickersPaintedMs: number;
   liveCurrentMs: number | null;
+  // When the viewer entry finished wiring input (see first-render.bench.ts);
+  // null for a build that never exposes the signal (the baseline).
+  inputReadyMs?: number | null;
+  // The eager viewer graph's first request start / last response end
+  // (metrics.ts eagerGraphTiming); null when the build has no such files.
+  entryStartMs?: number | null;
+  entryEndMs?: number | null;
   // Gzip bytes of the script responses that finished before LCP.
   criticalPathJsGzip: number;
   // Libraries (metrics.ts PAYLOAD_MARKERS) found in those scripts.
@@ -118,6 +125,8 @@ export interface RunMeta {
   recordedAt: string;
   // Set only for A/B probe runs (BENCH_PROBE_CSS); absent for normal runs.
   probeCss?: string;
+  // Set only for the image A/B (BENCH_PROBE_IMAGES = "stub" | "pass").
+  probeImages?: string;
 }
 
 // Playwright, vitest and the CLI are all run from the repository root.

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   CRITICAL_JS_BUDGET,
   criticalJsGateValue,
+  eagerGraphTiming,
   gzipBytes,
   payloadMarkers,
   percentile,
@@ -81,6 +82,31 @@ describe("criticalJsGateValue", () => {
 
   it("rejects an empty run list", () => {
     expect(() => criticalJsGateValue("desktop", [])).toThrow();
+  });
+});
+
+describe("eagerGraphTiming", () => {
+  const at = (file: string, startMs: number | null, endMs: number | null) => ({
+    url: `http://localhost:4173/_astro/${file}`,
+    startMs,
+    endMs,
+  });
+
+  it("spans the eager entry and its static imports only", () => {
+    expect(
+      eagerGraphTiming([
+        at("index.astro_astro_type_script_index_0_lang.CF64j2FX.js", 289, 2336),
+        at("appState.B-aHSmqp.js", 2340, 2525),
+        at("preload-helper.DAljqb9w.js", 2341, 2600),
+        at("Controls.abc.js", 100, 3000),
+        at("client.def.js", 914, 2523),
+      ]),
+    ).toEqual({ startMs: 289, endMs: 2600, files: 3 });
+  });
+
+  it("skips entries without timing and is null when nothing matches", () => {
+    expect(eagerGraphTiming([at("appState.x.js", null, 500), at("Sheet.y.js", 1, 2)])).toBeNull();
+    expect(eagerGraphTiming([])).toBeNull();
   });
 });
 

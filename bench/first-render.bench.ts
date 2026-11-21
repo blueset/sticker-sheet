@@ -30,6 +30,16 @@
 //   list, text or attribute), and on every rAF while the date is in
 //   `textContent` but not yet in `innerText`, so a value revealed by an
 //   attribute or a rendering change alone (content-visibility) is not missed.
+// - inputReadyMs: performance.now() at the assignment of `window.__app`,
+//   recorded by an accessor installed at document start. The viewer entry
+//   (src/viewer/main.ts) makes that assignment last, in the same task that
+//   created the controller (pointer, wheel and key listeners), attached the
+//   `[data-action]` click listener and ran initInteractions (tooltip,
+//   selection, hash anchors), so no input can be handled before it and every
+//   input is handled after it. Null for a build without the signal.
+// - entryStartMs / entryEndMs: first request start and last responseEnd of
+//   the eager viewer graph (metrics.ts EAGER_GRAPH_PATTERNS), from resource
+//   timing; null when no file matches.
 // - criticalPathJsGzip: gzip level 9 of the decoded body of every `Script`
 //   response whose resource-timing responseEnd is <= LCP. Inline scripts are
 //   part of the HTML document and are counted under `bytes.html` only.
@@ -43,11 +53,12 @@
 // - bytes: `Network.loadingFinished.encodedDataLength` (what crossed the wire,
 //   including headers) per CDP resource type, over the whole run.
 import { expect, test } from "@playwright/test";
-import type { CDPSession } from "@playwright/test";
+import type { CDPSession, Page } from "@playwright/test";
 import { contract } from "../tests/contract.ts";
 import { PROFILES } from "./profiles.ts";
 import {
   BENCH_RUNS,
+  BENCH_RUN_FROM,
   STICKER_COUNT,
   applyProfile,
   benchEnabled,
@@ -58,6 +69,7 @@ import {
 import {
   CRITICAL_JS_BUDGET,
   criticalJsGateValue,
+  eagerGraphTiming,
   gzipBytes,
   payloadMarkers,
   QUIET_WINDOW_MS,
@@ -87,6 +99,7 @@ interface RecorderState {
   stickerCounts: Array<[number, number]>;
   allPaintedMs: number | null;
   liveMs: number | null;
+  inputReadyMs: number | null;
 }
 
 interface Snapshot extends RecorderState {
@@ -115,8 +128,28 @@ function installRecorder(opts: { stickers: string; count: number }) {
     stickerCounts: [],
     allPaintedMs: null,
     liveMs: null,
+    inputReadyMs: null,
   };
   w.__bench = b;
+
+  // The viewer entry assigns `window.__app` last, in the same task that
+  // attached the controller's pointer/wheel listeners, the `[data-action]`
+  // click listener and the sticker interactions: the first moment it can
+  // handle input. A pass-through accessor records that time exactly.
+  let app: unknown;
+  try {
+    Object.defineProperty(window, "__app", {
+      configurable: true,
+      enumerable: true,
+      get: () => app,
+      set: (v: unknown) => {
+        app = v;
+        if (v !== undefined && b.inputReadyMs === null) b.inputReadyMs = performance.now();
+      },
+    });
+  } catch {
+    // Not definable: inputReadyMs stays null.
+  }
 
   const observe = (type: string, cb: (entries: PerformanceEntry[]) => void) => {
     try {
@@ -311,7 +344,7 @@ test.describe("first render", () => {
 
   const label = benchLabel();
 
-  for (let run = 1; run <= BENCH_RUNS; run++) {
+  for (let run = BENCH_RUN_FROM; run < BENCH_RUN_FROM + BENCH_RUNS; run++) {
     test(`run ${run}`, async ({ page, context, browser }, testInfo) => {
       const profileName = profileOf(testInfo.project.name);
       test.skip(profileName === null, "bench runs on the chromium projects");
@@ -332,6 +365,7 @@ test.describe("first render", () => {
         maxResourceBufferSize: 50 * 1024 * 1024,
       });
       const reqs = trackNetwork(cdp);
+      await routeImageProbe(page);
 
       await page.goto("/", { waitUntil: "commit" });
 
@@ -357,7 +391,8 @@ test.describe("first render", () => {
           snap.lastShiftAt,
           lastLongTaskEnd,
           snap.allPaintedMs ?? 0,
-          snap.liveMs ?? 0
+          snap.liveMs ?? 0,
+          snap.inputReadyMs ?? 0
         );
         const painted = snap.allPaintedMs !== null;
         // The live date is waited for until the deadline; everything else
@@ -437,6 +472,8 @@ test.describe("first render", () => {
         });
       }
 
+      const sortedScripts = scripts.sort((a, b) => (a.endMs ?? 0) - (b.endMs ?? 0));
+      const entry = eagerGraphTiming(sortedScripts);
       const result: FirstRenderResult = {
         fcp,
         lcp: lcp.time,
@@ -444,6 +481,9 @@ test.describe("first render", () => {
         cls: final.cls,
         allStickersPaintedMs: final.allPaintedMs as number,
         liveCurrentMs: final.liveMs,
+        inputReadyMs: final.inputReadyMs,
+        entryStartMs: entry?.startMs ?? null,
+        entryEndMs: entry?.endMs ?? null,
         criticalPathJsGzip: criticalJs,
         criticalPathMarkers: [...criticalMarkers].sort(),
         bytes,
@@ -455,7 +495,7 @@ test.describe("first render", () => {
         cpuProbeMs,
         detail: {
           lcp: { tag: lcp.tag, url: lcp.url, size: lcp.size },
-          scripts: scripts.sort((a, b) => (a.endMs ?? 0) - (b.endMs ?? 0)),
+          scripts: sortedScripts,
           stylesheets: timings
             .filter((t) => timingUrlIsStylesheet(reqs, t.url))
             .map((t) => ({
@@ -481,7 +521,9 @@ test.describe("first render", () => {
       console.log(
         `[${label}/${profileName}] run ${run}: fcp ${fcp.toFixed(0)} lcp ${lcp.time.toFixed(0)} ` +
           `tbt ${result.tbt.toFixed(0)} cls ${result.cls.toFixed(4)} painted ${result.allStickersPaintedMs.toFixed(0)} ` +
-          `live ${result.liveCurrentMs?.toFixed(0) ?? "null"} critJS ${criticalJs} ` +
+          `live ${result.liveCurrentMs?.toFixed(0) ?? "null"} ` +
+          `input ${result.inputReadyMs?.toFixed(0) ?? "null"} entry ${result.entryStartMs ?? "-"}/${result.entryEndMs ?? "-"} ` +
+          `critJS ${criticalJs} ` +
           `markers [${result.criticalPathMarkers?.join(",")}]`
       );
       // Payload gate (Milestone 1 exit), checked after the run is recorded so a
@@ -497,7 +539,7 @@ test.describe("first render", () => {
           expect(criticalJsGateValue("mobile", [criticalJs]), "critical-path JS gzip (B)")
             .toBeLessThanOrEqual(CRITICAL_JS_BUDGET);
           expect(result.criticalPathMarkers, "libraries in critical-path JS").toEqual([]);
-        } else if (run === BENCH_RUNS) {
+        } else if (run === BENCH_RUN_FROM + BENCH_RUNS - 1) {
           const runs = readRaw<FirstRenderResult>(label, profileName, "first-render-").map(
             (r) => r.criticalPathJsGzip
           );
@@ -514,6 +556,34 @@ test.describe("first render", () => {
     if (profileName) writeSummary(label, profileName);
   });
 });
+
+// Image A/B (BENCH_PROBE_IMAGES): "stub" answers every `/stickers/` image
+// request from the harness with a 1x1 image, so sticker images take no
+// bandwidth or connection time; "pass" routes them the same way but lets them
+// through to the server, so both arms pay the same interception cost.
+// Unset: no route at all.
+const STUB_PNG = Buffer.from(
+  "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+  "base64"
+);
+const STUB_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>';
+
+async function routeImageProbe(page: Page): Promise<void> {
+  const mode = process.env.BENCH_PROBE_IMAGES;
+  if (!mode) return;
+  if (mode !== "stub" && mode !== "pass") {
+    throw new Error(`BENCH_PROBE_IMAGES must be "stub" or "pass", got ${mode}`);
+  }
+  await page.route(/\/stickers\/[^?]*\.(svg|png|webp|jpe?g|gif)(\?|$)/, (route) => {
+    if (mode === "pass") return route.fallback();
+    const svg = /\.svg(\?|$)/.test(route.request().url());
+    return route.fulfill({
+      status: 200,
+      contentType: svg ? "image/svg+xml" : "image/png",
+      body: svg ? STUB_SVG : STUB_PNG,
+    });
+  });
+}
 
 function timingUrlIsStylesheet(reqs: Map<string, Tracked>, url: string) {
   return timingUrlIsType(reqs, url, "Stylesheet");

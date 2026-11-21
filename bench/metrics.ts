@@ -49,6 +49,33 @@ export function criticalJsGateValue(profile: "mobile" | "desktop", runs: number[
   return profile === "mobile" ? Math.max(...runs) : percentile(runs, 50);
 }
 
+// The rewrite's eager viewer graph: the `index.astro` module entry (`main`)
+// and its static imports. Matched on the built file names in `dist/_astro`.
+export const EAGER_GRAPH_PATTERNS: RegExp[] = [
+  /\/index\.astro_astro_type_script_[^/]*\.js$/,
+  /\/appState\.[^/]*\.js$/,
+  /\/preload-helper\.[^/]*\.js$/,
+];
+
+// Earliest request start and latest response end of the scripts whose URL
+// matches any pattern; null when none match (e.g. the baseline build).
+export function eagerGraphTiming(
+  scripts: Array<{ url: string; startMs?: number | null; endMs: number | null }>,
+  patterns: RegExp[] = EAGER_GRAPH_PATTERNS
+): { startMs: number; endMs: number; files: number } | null {
+  let startMs = Infinity;
+  let endMs = -Infinity;
+  let files = 0;
+  for (const s of scripts) {
+    if (s.startMs == null || s.endMs == null) continue;
+    if (!patterns.some((p) => p.test(s.url))) continue;
+    files++;
+    startMs = Math.min(startMs, s.startMs);
+    endMs = Math.max(endMs, s.endMs);
+  }
+  return files ? { startMs, endMs, files } : null;
+}
+
 // A long task is a main-thread task over 50 ms, as reported by the `longtask`
 // PerformanceObserver. Tuples are [startMs, durationMs].
 export type LongTask = [number, number];
