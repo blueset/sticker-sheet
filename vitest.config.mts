@@ -9,6 +9,7 @@ export default defineConfig({
   },
   test: {
     environment: "jsdom",
+    globalSetup: ["./src/inline/test-bundles.setup.ts"],
     include: [
       "src/**/*.test.ts",
       "bench/**/*.test.ts",
