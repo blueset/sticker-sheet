@@ -74,7 +74,7 @@ Measured in Chromium with mobile emulation, 4× CPU throttle and "Fast 4G", plus
 
 ### Sheet spec (my call, derived from the owner's "bottom sheet with details and two scroll stops" and the existing constants)
 
-- Viewports ≤ 4096 px wide: a bottom sheet with two stops. **Peek** is `PANEL_HEIGHT + 96` = 231 px tall (title, close button and the first lines of the description). **Expanded** is `calc(100vh − 96px)`, and the sticker preview and the full description scroll there. The handle button toggles the stops, and dragging snaps between them and dismisses below peek. Content scrolling is enabled only at the expanded stop.
+- Viewports ≤ 4096 px wide: a bottom sheet with two stops. **Peek** is `PANEL_HEIGHT + 96` = 231 px tall (title, close button and the first lines of the description). **Expanded** is `calc(100dvh − 3em)` (796 px at 844 px, as measured on the baseline), and the sticker preview and the full description scroll there. The handle button toggles the stops, and dragging snaps between them and dismisses below peek. Content scrolling is enabled only at the expanded stop; a wheel over the content at peek expands the sheet (Silk's default, kept as in the baseline).
 - Viewports wider than 4096 px: the 320 px left panel, one stop.
 - Selecting a sticker re-centres it in the visible area using the existing offsets (`PANEL_HEIGHT` = 135 px from the bottom on narrow viewports, `PANEL_WIDTH` from the left on wide ones), at the *current* zoom scale.
 - The sheet is not part of the first paint, even on a `#slug` URL. It animates in after load as it does today. The hashed sticker's description chunk is preloaded early from the head script so it opens without waiting.
@@ -175,42 +175,32 @@ Built in Milestone 0 against the *current* app and reused for every candidate:
 - How the sheet is implemented in the lazy island (keep Silk as the default, since it preserves behaviour and is off the critical path).
 - Test and CI details, as long as the build deploys to GitHub Pages.
 
-## Baseline-observed differences (ruling: spec kept, owner may reverse)
+## Baseline-observed differences (ruling R8: baseline wins where the spec misread the code; owner may reverse)
 
-Task 0.3 recorded the running baseline's sheet behaviour against a real
-phone-sized viewport (see `docs/superpowers/baseline/sheet-behaviour.md` for
-full evidence, measurements and screenshots). Per the controller's ruling,
-this replaces the "Sheet spec" section's own gate ("If Milestone 0 shows the
-running app differs from this... the plan reports it to the owner before
-changing the spec"): the differences below are recorded here instead of
-pausing for approval, and **the Sheet spec above stays binding** — the
-rewrite targets the spec as written, not the baseline's quirks. The owner may
-reverse this ruling later.
+Task 0.3 recorded the running baseline's sheet behaviour against a
+phone-sized viewport (evidence, measurements and screenshots:
+`docs/superpowers/baseline/sheet-behaviour.md`). In place of the "Sheet spec"
+gate ("the plan reports it to the owner before changing the spec"), the
+differences below were ruled on directly. Where the spec had misread the
+code, the spec now follows the measured baseline, because the goal is parity.
+The owner may reverse any of these later.
 
-1. The baseline's expanded stop measures 796 px tall at 390×844, not the
-   spec's `calc(100vh − 96px)` = 748 px. Root cause: `Sheet.Content`'s fixed
-   CSS height class (`h-[calc(100dvh_-_3em)]`) overrides the unused second
-   detent string. The rewrite should match the spec's 748 px rather than
-   carry this forward, unless the owner says otherwise.
-2. At peek, wheeling over the content does not just fail to scroll — it
-   expands the whole sheet (the wheel gesture falls through to Silk's
-   step/travel mechanism because `scrollGesture` is disabled at peek). The
-   spec's "content scrolling is enabled only at the expanded stop" is
-   satisfied either way (scrolling genuinely does not happen at peek), but a
-   literal "disabled" reimplementation would still differ from this
-   particular baseline side effect.
-3. The design doc's own "what the code does today" table states `activeSnap
-   !== 2` "compares against an index that never occurs". Task 0.3 found this
-   premise is incorrect: Silk's `@silk-hq/components` always auto-appends an
-   extra, reachable detent beyond whatever is passed in `detents`, so index 2
-   is real and is reached by the existing handle click (confirmed by
-   `handleTogglesStops: true` and `scrollsAtExpanded: true`). The 2-stop
-   behaviour described throughout "Sheet spec" is genuine baseline behaviour,
-   not a visual coincidence over broken code.
-
-None of these differences change the Sheet spec itself; they are recorded so
-Task 1.13's Silk reimplementation knows what the unchanged baseline actually
-does versus what it is being asked to build.
+1. **Expanded height.** The baseline's expanded stop is 796 px at 390×844
+   (`calc(100dvh − 3em)`), not `calc(100vh − 96px)` = 748 px. The class
+   `h-[calc(100dvh_-_3em)]` on `Sheet.Content` decides it; the second detent
+   string was never read. *Ruling: adopt the baseline's `calc(100dvh − 3em)`*
+   and the Sheet spec above now says so.
+2. **Wheel at peek.** A wheel over the content at peek expands the sheet
+   (Silk's step gesture) instead of doing nothing. *Ruling: keep it, by using
+   Silk the same way (no custom override).* Scrolling inside the content still
+   happens only at the expanded stop.
+3. **Detent indexes.** The "what the code does today" premise that `activeSnap
+   !== 2` never occurs is incorrect: Silk appends a content-size detent to
+   whatever `detents` holds, so the handle reaches index 2 and `0` means
+   hidden. *Ruling: Task 1.13 passes `detents={[peek]}` as the baseline does
+   and treats `activeDetent` 1 = peek, 2 = expanded, 0 = closed; it steps with
+   Silk's own step action instead of the old `% snapPoints.length`
+   arithmetic (which counted the characters of a string).*
 
 Separately, `docs/superpowers/baseline/z-order.md` found 0 of 39 overlapping
 sticker pairs with a different paint order between the baseline's DOM order

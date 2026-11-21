@@ -60,9 +60,9 @@ skipped on `chromium-desktop`).
 ## Differences vs. the Sheet spec
 
 The Sheet spec is in `docs/superpowers/specs/2026-11-20-render-performance-design.md`,
-section "Sheet spec". Per ruling R5, these differences are recorded here
-instead of gating on `ask_user`; the design doc's end-of-file ruling section
-states the spec stays binding regardless.
+section "Sheet spec" (as originally written). These differences were ruled on
+instead of gating on `ask_user` (ruling R8); the design doc's end-of-file
+section and its "Sheet spec" now follow the measured baseline.
 
 | # | Spec says | Observed | Consequence |
 |---|---|---|---|
@@ -75,12 +75,11 @@ No other differences were found: peek height (231 px), the handle toggling betwe
 
 ### Ruling
 
-Per the controller's ruling R5, the Sheet spec in the design doc **stays
-binding** — none of the four differences above changes the target spec on
-their own. See the design doc's own "Baseline-observed differences" section
-(appended at the end of
-`docs/superpowers/specs/2026-11-20-render-performance-design.md`) for the
-owner-facing summary; the owner may reverse this ruling later.
+Ruling R8: where the spec had misread the code, the baseline's measured
+behaviour wins (expanded stop `calc(100dvh − 3em)`; a wheel at peek expands
+the sheet; Silk's two detents, 1 = peek, 2 = expanded, 0 = hidden). See the
+design doc's "Baseline-observed differences" section for the owner-facing
+summary; the owner may reverse this ruling later.
 
 ## Silk detent-index answer
 
