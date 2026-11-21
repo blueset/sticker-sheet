@@ -5,7 +5,7 @@
 // injects CSS after load (`{stickers}` and `{layer}` expand to the contract
 // selectors), e.g. '{stickers} img{filter:blur(0.5px) !important}' to show
 // that the test fails on a soft sticker.
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type BrowserContext, type Page } from "@playwright/test";
 import pixelmatch from "pixelmatch";
 import { PNG } from "pngjs";
 import { benchUrl, probeCss } from "../../bench/harness.ts";
@@ -44,9 +44,12 @@ async function pickSticker(page: Page): Promise<string> {
   });
 }
 
-test("vector sticker is crisp after a zoom settles", async ({ page, context, browserName, isMobile }) => {
-  test.skip(browserName === "webkit" && isMobile, "mobile WebKit has no mouse wheel input in Playwright");
-  test.setTimeout(60_000);
+const gestureRunning = (page: Page) =>
+  page.evaluate(() => document.getElementById("canvasWrapper")!.hasAttribute("data-gesture"));
+
+// Loads the page, brings the first unrotated SVG sticker to the viewport
+// centre and wheel-zooms about it to about TARGET_SCALE, then waits for settle.
+async function zoomOnSticker(page: Page): Promise<string> {
   await page.goto(benchUrl());
   await expect(page.locator(contract.stickers)).toHaveCount(63);
   await page.waitForFunction(() => [...document.images].every((i) => i.complete && i.naturalWidth > 0));
@@ -55,7 +58,6 @@ test("vector sticker is crisp after a zoom settles", async ({ page, context, bro
   if (css) await page.addStyleTag({ content: css });
 
   const slug = await pickSticker(page);
-  const sticker = page.locator(`button.sticker[data-slug="${slug}"]`);
   // Bring the sticker to the viewport centre at the current scale, then zoom
   // in with the wheel about that point.
   await page.evaluate((s) => {
@@ -82,13 +84,19 @@ test("vector sticker is crisp after a zoom settles", async ({ page, context, bro
     await page.mouse.wheel(0, -Math.min(100, Math.round((TARGET_SCALE - scale) * 1000)));
     await page.waitForTimeout(16);
   }
-  await expect.poll(() => page.evaluate(() => document.getElementById("canvasWrapper")!.hasAttribute("data-gesture"))).toBe(false);
+  await expect.poll(() => gestureRunning(page)).toBe(false);
   await settled(page, 400);
+  return slug;
+}
+
+// Waits for the raster to land, then compares the centre of the sticker to a
+// reference `<img>` drawn at the same size on a blank page at the same DPR.
+async function crispRatio(page: Page, context: BrowserContext, slug: string, what: string): Promise<number> {
   await page.waitForTimeout(500);
   const scale = await page.evaluate(() => window.__viewer!.transform.scale);
   expect(scale).toBeGreaterThan(TARGET_SCALE - 0.1);
 
-  const img = sticker.locator("img");
+  const img = page.locator(`button.sticker[data-slug="${slug}"]`).locator("img");
   const rect = await img.evaluate((el) => {
     const r = el.getBoundingClientRect();
     return { x: r.x, y: r.y, width: r.width, height: r.height };
@@ -124,9 +132,42 @@ test("vector sticker is crisp after a zoom settles", async ({ page, context, bro
 
   const ratio = pixelDiffRatio(settledShot, referenceShot);
   const variant = new URL(page.url()).search;
-  test.info().annotations.push({ type: "crisp", description: `${slug} at x${scale.toFixed(2)}: diff ${ratio.toFixed(4)}` });
+  test.info().annotations.push({ type: "crisp", description: `${what}: ${slug} at x${scale.toFixed(2)}: diff ${ratio.toFixed(4)}` });
   console.log(
-    `[settle-crisp] ${slug} x${scale.toFixed(2)} ${clip.width}x${clip.height} [${variant || "default"}]: diff ratio ${ratio.toFixed(4)}`,
+    `[settle-crisp] ${what}: ${slug} x${scale.toFixed(2)} ${clip.width}x${clip.height} [${variant || "default"}]: diff ratio ${ratio.toFixed(4)}`,
   );
-  expect(ratio).toBeLessThan(0.02);
+  return ratio;
+}
+
+test("vector sticker is crisp after a zoom settles", async ({ page, context, browserName, isMobile }) => {
+  test.skip(browserName === "webkit" && isMobile, "mobile WebKit has no mouse wheel input in Playwright");
+  test.setTimeout(60_000);
+  const slug = await zoomOnSticker(page);
+  expect(await crispRatio(page, context, slug, "zoom")).toBeLessThan(0.02);
+});
+
+// A pan keeps the scale, so the viewer may keep the layer promoted at settle
+// instead of re-rastering it (Task 2.3b): the sticker must still be sharp.
+test("vector sticker stays crisp after a pan at the zoomed scale", async ({ page, context, browserName, isMobile }) => {
+  test.skip(browserName === "webkit" && isMobile, "mobile WebKit has no mouse wheel input in Playwright");
+  test.setTimeout(60_000);
+  const slug = await zoomOnSticker(page);
+  const before = await page.evaluate(() => window.__viewer!.transform);
+  const root = (await page.locator(contract.viewer).boundingBox())!;
+  const from = { x: root.x + root.width / 2, y: root.y + root.height / 2 };
+  await page.mouse.move(from.x, from.y);
+  await page.mouse.down();
+  for (let i = 1; i <= 6; i++) {
+    await page.mouse.move(from.x - 8 * i, from.y - 5 * i);
+    await page.waitForTimeout(16);
+  }
+  // Rest before lifting: no inertia, so the pan ends where it was dropped.
+  await page.waitForTimeout(300);
+  await page.mouse.up();
+  await expect.poll(() => gestureRunning(page)).toBe(false);
+  await settled(page, 400);
+  const after = await page.evaluate(() => window.__viewer!.transform);
+  expect(after.scale).toBe(before.scale);
+  expect(Math.hypot(after.x - before.x, after.y - before.y)).toBeGreaterThan(30);
+  expect(await crispRatio(page, context, slug, "pan")).toBeLessThan(0.02);
 });
