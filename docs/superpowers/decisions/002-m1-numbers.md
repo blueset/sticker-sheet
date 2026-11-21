@@ -61,7 +61,7 @@ How to read the table:
 |---|---|---|
 | LCP ≤ 1.38 s (ruling) / ≤ 1.5 s (spec) | 792 ms median, 844 ms p95, 852 ms worst run | PASS |
 | At least 2× better than baseline | LCP 3.5×, TBT 726 → 0, live 3.5×, all-painted 2.3×, first sticker 3.8×; crisp: pinch 2.5×, wheel-zoom 1.8×, button-zoom 1.0×, drag-inertia 0.59× (worse) | PASS on first render; MISS on settle |
-| Critical JS ≤ 100 KB gzip | 0 B on mobile in all 5 runs; desktop 7,950 B median, 40,697 B max | PASS |
+| Critical JS ≤ 100 KB gzip | After Task 1.15: 7,950 B on mobile in every run (the eager graph, no library markers); desktop 11,697 B median, 107,665 B max (an idle-island race, gated on the median). Task 1.14: 0 B on mobile; desktop 7,950 B median, 40,697 B max | PASS |
 | No Silk / Radix / Leaflet / React DOM / `baseline-status` bytes before LCP | none on mobile in all 5 runs (asserted); desktop showed `radix` in 1 of 5 runs (reported, not asserted) | PASS (mobile) |
 | Zero layout shift | CLS 0 in every run, both profiles | PASS |
 | p95 frame ≤ 16.7 ms | 16.667 ms in every scenario, both profiles | PASS (harness floor; see limits) |
@@ -99,12 +99,13 @@ The gate runs after each first-render run is recorded, unless `BENCH_PAYLOAD_GAT
 - **Desktop, median of the profile's runs:** the last run reads every recorded run and asserts that the median `criticalPathJsGzip` (nearest rank, the same median as `summarize.ts`) is ≤ 102,400 B. The per-run values are still in the raw JSON and the log, and the desktop markers are logged, not asserted.
 
 Tolerance: `criticalPathJsGzip` is race-sensitive, because it counts only scripts whose response ends before LCP.
-- On mobile it read 0 B in all 5 Task 1.14 runs. Even the eager entry finished at ~2.3 s, well after the ~0.8 s LCP (see the per-run table below). **Superseded by Task 1.15:** with the eager graph modulepreloaded it ends at ~0.5 s, before LCP, so mobile now reads 7,950 B (the eager graph, no markers) in every run. Earlier runs read 0 or 421 B depending on whether the deep-link or island chunk finished first. Mobile has no tolerance: a single run over budget, or any marker, fails.
-- On desktop it read 7,950 B (the eager graph) in 4 runs and 40,697 B in 1. In that run `Controls.*.js` (Radix, 29,000 B) ended at 124 ms, the same millisecond as LCP.
+- On mobile it now reads 7,950 B (the eager graph, no library markers) in every run, within the 102,400 B budget: since Task 1.15 the eager graph is modulepreloaded and ends at ~0.5 s, before the ~0.88 s LCP. Mobile has no tolerance: a single run over budget, or any marker, fails.
+- History: in the 5 Task 1.14 runs mobile read 0 B, because the eager entry finished at ~2.3 s, well after the ~0.8 s LCP (per-run table below); runs before that read 0 or 421 B depending on whether the deep-link or island chunk finished first.
+- On desktop (Task 1.14) it read 7,950 B (the eager graph) in 4 runs and 40,697 B in 1; after Task 1.15 it read 107,665 / 7,950 / 7,950 / 40,697 / 11,697 B (median 11,697). In the Task 1.14 40,697 B run `Controls.*.js` (Radix, 29,000 B) ended at 124 ms, the same millisecond as LCP.
 - If all of `client` (56,381 B), `Sheet` (39,282 B), `Controls` and the MDX chunk land before a desktop LCP, that run's total is about 136 KB. Such a run is expected and is not a defect: it is idle hydration finishing before a ~130 ms LCP on an unthrottled host. That is why desktop is gated on the median: one or two racing runs out of five cannot fail it, but a build whose eager path itself exceeded the budget would.
 - For the same reason the desktop marker result is reported, not asserted.
 
-Eager request graph for `/` (from `dist/index.html`; one `<script type="module" src>`, no modulepreload):
+Eager request graph for `/` (from `dist/index.html`; one `<script type="module" src>`, and since Task 1.15 three `<link rel="modulepreload" fetchpriority="high">` in the head, one per file below):
 
 | File | Raw (B) | gzip-9 (B) |
 |---|---|---|
@@ -113,11 +114,11 @@ Eager request graph for `/` (from `dist/index.html`; one `<script type="module" 
 | `preload-helper.DAljqb9w.js` | 2,178 | 1,094 |
 | **Total, 3 requests** | 18,847 | **7,950** |
 
-This is unchanged from Task 1.13.
+The files and sizes are the same as in Task 1.13; Task 1.15 changed only how they are requested (modulepreloaded from the head instead of discovered from `main`), not the chunking.
 
 Recommendation on `preload-helper`: do not spend Milestone 2 effort on inlining it.
 - It is a separate chunk only because the `Sheet` island and the deep-link path share it. Folding it into `main` (Rolldown `advancedChunks`/`manualChunks`) would save one request and about 1 KB.
-- On mobile `main` is requested at ~270–290 ms and ends at ~2.3 s. `appState` and `preload-helper` are static imports discovered only when `main` arrives, so they are requested at ~2.3 s and end at ~2.5–2.6 s (per-run table below). That second hop costs ~0.2–0.3 s, but a `modulepreload` for the two imports would remove it without changing the chunking, and inlining `preload-helper` alone would leave `appState` as the same late hop.
+- Task 1.14 state (history): on mobile `main` was requested at ~270–290 ms and ended at ~2.3 s. `appState` and `preload-helper` were static imports discovered only when `main` arrived, so they were requested at ~2.3 s and ended at ~2.5–2.6 s (per-run table below). That second hop cost ~0.2–0.3 s, but a `modulepreload` for the two imports would remove it without changing the chunking, and inlining `preload-helper` alone would leave `appState` as the same late hop.
 - Our working explanation is that `main`'s ~2 s download is set by bandwidth shared with the 55 sticker images rather than by round trips. **This is inferred, not yet isolated**: it rests on the timings below, not on an experiment. The isolating A/B is Task 1.15 step 2. Revisit the chunking only after that result, and check that the Sheet chunk does not then duplicate the helper.
 - **Task 1.15 update:** the A/B confirmed image contention as the main cause, and the build now emits a `modulepreload` for all three eager files (see Input readiness). The chunking is unchanged and there is no longer a reason to fold `preload-helper` into `main`.
 
@@ -150,25 +151,25 @@ Per-run request timings on mobile, from the committed `bench/results/m1-mobile.j
 | 4 | 277 / 2,283 | 2,292 / 2,463 | 2,293 / 2,601 | 455 / 2,461 | 9 | 744 | 676 | 765 / 2,415 | 767 / 2,507 | 765 / 2,476 |
 | 5 | 285 / 2,338 | 2,344 / 2,512 | 2,344 / 2,587 | 461 / 2,516 | 9 | 800 | 735 | 800 / 2,432 | 802 / 2,509 | 801 / 2,513 |
 
-The JSON does not record when the viewer's module actually executed or when its listeners were attached; the readiness times below are therefore "no earlier than the last eager file's `responseEnd`", not a measured first-input time.
+The table and the bullets below describe the Task 1.14 build (before the modulepreload); for the current state see Input readiness. The JSON does not record when the viewer's module actually executed or when its listeners were attached; the readiness times below are therefore "no earlier than the last eager file's `responseEnd`", not a measured first-input time.
 
 - **First-interaction window.**
   - The viewer entry, which owns pan, zoom and clicks, cannot run before its last eager file arrives at ~2.56–2.60 s (`preload-helper`, table above). The page cannot respond to input until then, even though everything is painted at ~0.8 s.
   - Hydration lands at ~2.7–2.8 s, just after the viewer comes alive, so a user who acts at 2.6–2.8 s can meet one task of up to 52 ms. That is within the 100 ms input-delay budget.
   - The gestures bench starts after load and idle, so it does not measure this window.
-- **Cause: inferred, not yet isolated.** `main` is requested at ~280 ms and takes ~2 s to arrive while all 55 sticker images (734 KB) download in the same window; its end falls 124–186 ms before the last image end in every run, i.e. inside the image download, not before it. That is consistent with the images starving the 6 KB entry on Fast 4G, but no experiment has de-prioritised the images to prove it. The isolating A/B is Task 1.15 step 2.
-- **Not better than the baseline on time to input.** The baseline's first sticker appears at 2,044 ms and it is interactive when it hydrates, so it can respond to input from roughly the moment there is anything to touch. The new build paints at ~0.8 s but cannot respond before ~2.6 s. Time to input readiness is not a spec budget, but this is **not a PASS**: it is owned by plan Task 1.15 ("Input readiness under bandwidth contention", after 1.14, before Milestone 2).
+- **Cause (Task 1.14: inferred, not yet isolated).** `main` is requested at ~280 ms and takes ~2 s to arrive while all 55 sticker images (734 KB) download in the same window; its end falls 124–186 ms before the last image end in every run, i.e. inside the image download, not before it. That is consistent with the images starving the 6 KB entry on Fast 4G, but no experiment has de-prioritised the images to prove it. The isolating A/B is Task 1.15 step 2.
+- **Task 1.14: not better than the baseline on time to input.** The baseline's first sticker appears at 2,044 ms and it is interactive when it hydrates, so it can respond to input from roughly the moment there is anything to touch. The new build paints at ~0.8 s but cannot respond before ~2.6 s. Time to input readiness is not a spec budget, but this is **not a PASS**: it is owned by plan Task 1.15 ("Input readiness under bandwidth contention", after 1.14, before Milestone 2).
 - **Superseded by Task 1.15** (see Input readiness): the cause is now isolated (image contention, plus a smaller import waterfall), the bench measures `inputReadyMs` directly, and with the eager graph modulepreloaded the viewer is ready at 556 ms median on mobile.
 
 ## Bounded idle prefetch (mobile)
 
 - **Sticker images.** All 55 sticker images are requested by the HTML parser before LCP: every one starts by ~0.8 s. They are prerendered `<img>`s, not prefetch.
   - Only 9–12 finish before LCP (54 KB of 734 KB), and the last ends at ~2.5 s.
-  - They share Fast 4G with the eager JS and fonts. We infer that this is why the 6 KB entry takes ~2 s to arrive; that is not yet isolated (Task 1.15 step 2).
+  - They share Fast 4G with the eager JS and fonts. In Task 1.14 this is why the 6 KB entry took ~2 s to arrive; the Task 1.15 A/B confirmed it (see Input readiness).
 - **Description chunks.** Requests to `en.*.js` plus `provider.*.js` start only after hydration and the MDX chunk: the first at ~2.8 s, after LCP, after the last image and after the islands.
   - They then come three at a time, one batch per ~200 ms round trip, 13 requests in all, ending at ~3.6 s.
 - **Result: none of them happens before LCP, and prefetch does not compete with first paint.**
-- The competition that matters is likely images against the eager JS, not prefetch (inferred, not yet isolated).
+- The competition that mattered was images against the eager JS, not prefetch (confirmed by the Task 1.15 A/B; fixed by the modulepreload).
 - On desktop the same sequence completes by ~260 ms, all after LCP except as noted under Payload.
 
 ## Live values (`liveCurrentMs`)
@@ -272,7 +273,7 @@ Results: `i15-ab-stub-mobile.json` / `i15-ab-pass-mobile.json`. Medians: input 9
 - **Image contention is the main cause, about 1.5 s.** With the images stubbed, the whole graph is in by ~0.78 s.
 - **The waterfall is real but secondary.** Even with stubbed images, the imports start ~60 ms after `main` ends and take ~265 ms, then ~125 ms of evaluation before input is ready. In the `pass` arm the imports are requested late and then queue behind the images until ~2.4 s, so the waterfall is what exposes the entry to the contention.
 
-**Levers** (5 runs per profile; decision rule from the Task 1.15 brief: mobile input ≥ 50% better and ≤ 1.5 s, LCP not worse by more than 10% and ≤ 1.38 s, all-painted not worse by more than 10%, desktop LCP not worse, visual at 0.01 unchanged).
+**Levers** (5 runs per profile; decision rule from the Task 1.15 brief: mobile input ≥ 50% better and ≤ 1.5 s, LCP not worse by more than 10% and ≤ 1.38 s, all-painted not worse by more than 15%, desktop LCP not worse by more than 10%, visual `initial` scenes pass at 0.01).
 
 | Lever | Mobile input (median) | Mobile LCP | Mobile all-painted | Desktop LCP | Desktop crit-JS median | Verdict |
 |---|---|---|---|---|---|---|
