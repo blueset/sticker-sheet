@@ -314,12 +314,36 @@ R16). The feel constants stay unchanged (R16c): inertia, `ALIGN_MS`,
 |---|---|---|---|
 | wheel-zoom | crispAfterMotionMs | 215 (9 %) | **118** (7 %) |
 | wheel-zoom | crispAfterMs | 261 | 161 |
-| drag-inertia | crispAfterMs | 920 (3 %) | **83** (no settle raster) |
+| drag-inertia | crispAfterMs | 920 (3 %) | **83** median, one run 234 (p95 234, spread 189 %)¹ |
 | pinch | crispAfterMotionMs | 136 (16 %) | 133 (13 %) |
 | button-zoom | crispAfterMotionMs (10 runs) | 120 (21 %) | 119 (18 %) |
 | button-zoom | input delay (10 runs) | 115 (59 %) | 97 (61 %) |
 
 Frames, over16 counts, heap and raster work are unchanged within spread.
+
+¹ What the drag figure measures:
+
+- **The candidate has no settle raster** after a pan, so the drag
+  `crispAfterMs` now measures the last raster before settle. That is the
+  promotion raster at gesture start (or, in run 1, a raster during the glide),
+  not a timed re-raster after motion.
+- **The control's 920 ms** was the needless settle re-raster.
+- **The candidate runs** were 234, 77, 81, 83 and 84 ms.
+
+- **Cost.**
+  - **The change.** Before this change, the 3000×3000 layer was never
+    promoted at rest: `will-change` came only from `data-gesture` during a
+    gesture. Now, after any pan-only settle, the layer stays promoted
+    (inline `will-change: transform`) until the next gesture that changes
+    the scale. That can be indefinitely.
+  - **What was measured.** `peakHeapMb` (5.4 MB in both builds) is the JS
+    heap only, so it does not show this cost. GPU and compositor memory were
+    not measured. Chromium rasters only the tiles near the viewport, so the
+    cost is probably well below a full 3000×3000 surface. That is an
+    assumption, not a measurement.
+  - **Follow-up if a real-device check shows memory pressure.** Drop the
+    promotion when the page is hidden (`visibilitychange`), on `blur`, or
+    after a long idle. That costs one re-raster the next time.
 
 - **Portable bench.** Wheel-zoom `settleMs` fell from 231 to 122 ms on
   WebKit and from 204 to 111 ms on Firefox. Drag-release is unchanged within
@@ -352,5 +376,5 @@ Frames, over16 counts, heap and raster work are unchanged within spread.
   justify revisiting shadows.
 - **Android Chrome, mid-tier.** Check that the layer stays sharp after a flick.
   Since Task 2.3b a pan no longer re-rasters at settle, which removed the
-  about-1 s blur-to-crisp delay. Also check the GPU memory of the layer that
-  now stays promoted.
+  about-1 s blur-to-crisp delay. Also check GPU and compositor memory while the
+  layer stays promoted at rest (unmeasured; see the Task 2.3b cost note).
