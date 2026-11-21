@@ -17,7 +17,7 @@ Spike: 63 stickers prerendered as positioned DOM (box, `<img>` with `width`/`hei
 | Total JS transferred | 72,990 B | 140,111 B | 439,685 B |
 | HTML transferred (raw on disk) | 10,142 B (35,151) | 13,689 B (81,143 incl. RSC payload) | 35,446 B |
 | Total transferred, all types | 2,395,688 B | 2,466,356 B | n/a |
-| Latest JS response end (any run) | 992 ms | 2,784 ms | n/a |
+| Latest JS response end (any run) | 992 ms | 2,784 ms (slowest single response end across all 5 cold runs; the 756-955 ms figure below is the median-run range) | n/a |
 
 The LCP element is a sticker image (`eana.svg`) in both spikes, so LCP is image-bound and does not separate the stacks. All 63 stickers are visible at FCP in both (one Astro run showed 50). CLS is 0 in both.
 
@@ -61,10 +61,10 @@ export default defineConfig({ output: "static", integrations: [react()], vite: {
 
 - With `providerImportSource`, MDX rewrites the exported function to `let {Button} = _provideComponents() || {}`, which is why `<Button>` inside it resolves. `_provideComponents` is a top-level import, so the user's own call works too.
 - `#mdx-provider` (`.tsx`) exports `useMDXComponents()` returning `{ Button, useTheme }`. `useTheme` toggles `html.dark` and writes `localStorage.theme`.
-- The island loads the description with `import("virtual:mdx/dark/en")` in an effect and renders `m.default`. Each (slug, lang) becomes its own chunk (~1.6 KB for `dark` en), fetched on demand.
+- The island loads the description with `import("virtual:mdx/dark/en")` in an effect and renders `m.default`. Each (slug, lang) becomes its own chunk (~1.6 KB for `dark` en), fetched on demand. Caveat: this per-chunk split was proven for one literal specifier only; it is not guaranteed for a template-literal id like `` import(`virtual:mdx/${slug}/${lang}`) ``, since Rollup/Vite's static chunk-splitting for dynamic `import()` recognises only literal string specifiers. Scale it via a generated manifest of literal per-(slug,lang) imports (as Task 1.5's `Record<slug, Record<lang, () => Promise<...>>>` does), not a template-literal specifier.
 - Page: `<Sheet client:idle />` emits `<astro-island client="idle">` plus a tiny inline idle bootstrap and no `<script src>`. `client.*.js` (react-dom, 213 KB raw) is requested only after idle.
 - Head: `<script is:inline set:html={BOOT} />` and `<style is:inline set:html={CSS} />`. `is:inline` keeps Astro from bundling or deferring them.
-- The spike's island attaches a document click listener when it hydrates, so a click before hydration is lost. The real viewer must own the click path from first paint.
+- The spike's island attaches a document click listener when it hydrates, so a click before hydration is lost. The real viewer must own the click path from first paint: the plan puts sticker click delegation in `src/viewer/interactions.ts` on `#canvas`, outside any island (Task 1.11), and zoom/centre buttons behind `data-action` handled in `main.ts` (Tasks 1.7/1.12), so a click before an island hydrates is never lost in the real build.
 - Bench mechanics: the bench waits for all images to be complete and for the en-GB `dd MMM yyyy` live date, else it runs to the 120 s deadline. Put an inline script right after the canvas markup that fills `[data-live]`.
 
 ## What worked in Next (only needed if Step 4 applies)
