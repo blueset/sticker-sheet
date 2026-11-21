@@ -156,6 +156,35 @@ test("no third-party CSS or fonts", async ({ page, baseURL }) => {
   ).toEqual([]);
 });
 
+// The CJK (Noto Sans SC/JP) faces are large, so `boot-fonts.ts` only requests
+// `cjk-fonts.css` (and the font files it references) once `html[lang]` is
+// something other than "en" (see boot-fonts.ts). These specs guard that
+// property directly: "no third-party CSS or fonts" above only filters by
+// cross-origin `url` and would stay green even if the same-origin CJK
+// stylesheet were requested unconditionally for `en`.
+const isCjkStylesheet = (url: string) => /\/cjk-fonts\.[^/]*\.css(?:\?|$)/.test(url);
+const isNotoCjkFont = (url: string) => /\/noto-sans-(?:jp|sc)-[^/]*\.woff2(?:\?|$)/.test(url);
+
+test("en fresh load requests no CJK stylesheet or font", async ({ page }) => {
+  const requests: string[] = [];
+  page.on("request", (req) => requests.push(req.url()));
+  await page.goto("/", { waitUntil: "networkidle" });
+
+  expect(requests.filter(isCjkStylesheet), "cjk-fonts.css requested for en").toEqual([]);
+  expect(requests.filter(isNotoCjkFont), "a Noto Sans JP/SC file requested for en").toEqual([]);
+});
+
+for (const lang of ["ja", "zh-Hans"] as const) {
+  test(`${lang} via localStorage requests the CJK stylesheet`, async ({ page }) => {
+    await page.addInitScript((l) => localStorage.setItem("language", l), lang);
+    const requests: string[] = [];
+    page.on("request", (req) => requests.push(req.url()));
+    await page.goto("/", { waitUntil: "networkidle" });
+
+    expect(requests.filter(isCjkStylesheet), `cjk-fonts.css requested for ${lang}`).not.toEqual([]);
+  });
+}
+
 test("no layout shift", async ({ page }) => {
   await page.addInitScript(() => {
     const w = window as unknown as { __cls: number; __frames: number; __seen: Record<string, string[]> };
