@@ -92,3 +92,7 @@ astro 7.4.13 (Vite 8.3.8, Rolldown), @astrojs/react 7.1.9, @mdx-js/mdx 3.1.1, js
 - The bench serves the build with `npx serve <dir> -l 4173` and `reuseExistingServer`: check the port is free between runs and give each run a distinct `BENCH_LABEL`, or an earlier `bench/results/<label>-mobile.json` is overwritten. Those summary files are not gitignored; do not commit spike results.
 - `criticalPathJsGzip` is race-sensitive: it only counts scripts finished before LCP. With an image LCP at ~500 ms it reads 0 for any stack that loads JS after paint, so it cannot rank stacks. Report parser-requested JS and total JS beside it in later milestones.
 - In the proof, the controls overlay blocked Playwright clicks on the description button, so the controls sit top-right and the sheet at the bottom.
+
+## Deep-link chunk prefetch (Task 1.13)
+
+The plan has a head script preload the Sheet chunk for a `#slug` deep link. A static `<link rel="modulepreload">` cannot name Vite's hashed chunk, so `src/viewer/deeplink.ts` is a tiny `<script type="module">` in `<head>` instead: when the hash names a sticker it calls `import("../islands/Sheet")` (the same chunk the `client:idle` island loads) and `prefetchDescription(slug, lang)`, so the sheet opens without waiting for idle. It imports no React and no description map.

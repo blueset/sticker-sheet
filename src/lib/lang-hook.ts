@@ -9,3 +9,10 @@ const getServerLanguage = (): Lang => "en";
 export function useLanguage(): Lang {
   return useSyncExternalStore(subscribe, getLanguage, getServerLanguage);
 }
+
+const getSelectedSlug = (): string | null => appStore.getState().selectedSlug;
+const getServerSelectedSlug = (): null => null;
+
+export function useSelectedSlug(): string | null {
+  return useSyncExternalStore(subscribe, getSelectedSlug, getServerSelectedSlug);
+}

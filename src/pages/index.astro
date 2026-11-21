@@ -4,6 +4,7 @@ import interLatin from "@fontsource-variable/inter/files/inter-latin-opsz-normal
 import cjkFontsCss from "../styles/cjk-fonts.css?url";
 import Sticker from "../components/Sticker.astro";
 import Controls from "../islands/Controls";
+import Sheet from "../islands/Sheet";
 import { bundleInline } from "../inline/bundle";
 import { variantCss, variantPlan } from "../lib/lang-css";
 import { LANGS, type Lang } from "../lib/localize";
@@ -48,6 +49,9 @@ const [bootHead, bootFonts, bootView] = await Promise.all([
     <script is:inline data-href={cjkFontsCss} set:html={bootFonts}></script>
     <link rel="preload" as="font" type="font/woff2" href={interLatin} crossorigin />
     <style is:inline set:html={variantCss(LANGS)}></style>
+    <script>
+      import "../viewer/deeplink.ts";
+    </script>
   </head>
   <body class="antialiased overflow-hidden h-dvh w-dvw">
     <div class="h-dvh w-dvw overflow-hidden relative">
@@ -59,6 +63,7 @@ const [bootHead, bootFonts, bootView] = await Promise.all([
         <script is:inline set:html={bootView}></script>
       </div>
       <Controls client:idle />
+      <Sheet client:idle />
     </div>
     <script>
       import "../viewer/main.ts";

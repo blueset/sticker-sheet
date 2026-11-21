@@ -9,7 +9,8 @@ export type UiKey =
   | "zoomIn"
   | "zoomOut"
   | "centerView"
-  | "togglePanelSize";
+  | "togglePanelSize"
+  | "close";
 
 // Ported verbatim (same text, same keys) from the old `i18n.ts` resources.
 const strings: Record<Lang, Record<UiKey, string>> = {
@@ -23,6 +24,7 @@ const strings: Record<Lang, Record<UiKey, string>> = {
     zoomOut: "Zoom out",
     centerView: "Center view",
     togglePanelSize: "Toggle panel size",
+    close: "Close",
   },
   "zh-Hans": {
     changeLanguage: "切换语言",
@@ -34,6 +36,7 @@ const strings: Record<Lang, Record<UiKey, string>> = {
     zoomOut: "缩小",
     centerView: "居中",
     togglePanelSize: "切换面板大小",
+    close: "关闭",
   },
   ja: {
     changeLanguage: "言語を変更",
@@ -45,6 +48,7 @@ const strings: Record<Lang, Record<UiKey, string>> = {
     zoomOut: "縮小",
     centerView: "中央揃え",
     togglePanelSize: "パネルサイズを切り替え",
+    close: "閉じる",
   },
 };
 

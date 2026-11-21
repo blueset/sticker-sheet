@@ -21,12 +21,16 @@ const gestureOf = (page: Page) => page.locator(contract.viewer).getAttribute("da
 
 // Errors a page raised: uncaught exceptions, unhandled rejections and console
 // errors. A blocked request is logged by the browser itself, so those lines
-// (and only those) are filtered out for the tests that block chunks.
+// (and only those) are filtered out for the tests that block chunks. Silk (the
+// sheet) registers a window "unload" listener, which Chromium reports as a
+// permissions-policy console error; that line is always filtered.
+const SILK_UNLOAD = /Permissions policy violation: unload/;
 function watchErrors(page: Page, ignore: RegExp | null = null) {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   page.on("console", (m) => {
     if (m.type() !== "error") return;
+    if (SILK_UNLOAD.test(m.text())) return;
     if (ignore && ignore.test(`${m.text()} ${m.location().url}`)) return;
     errors.push(`console: ${m.text()}`);
   });
