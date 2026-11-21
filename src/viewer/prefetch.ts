@@ -6,6 +6,10 @@ import { isInitialViewport } from "../lib/geometry";
 import type { Lang } from "../lib/localize";
 
 const CANVAS_HALF = 1500;
+// The first view can show nearly every sticker; warming all of them on each
+// load costs battery and data. Bound the idle pass: hover/focus/click cover the rest.
+const IDLE_MAX = 12;
+const IDLE_CONCURRENCY = 3;
 
 type Manifest = typeof import("virtual:sticker-mdx");
 
@@ -14,12 +18,12 @@ const requested = new Set<string>();
 
 // Once per (slug, lang), failures included: a flaky network is not hammered
 // by every hover, and the Sheet's own load is the retry that matters.
-export function prefetchDescription(slug: string, lang: Lang): void {
+export function prefetchDescription(slug: string, lang: Lang): Promise<void> {
   const key = `${slug}\0${lang}`;
-  if (requested.has(key)) return;
+  if (requested.has(key)) return Promise.resolve();
   requested.add(key);
   manifest ??= import("virtual:sticker-mdx");
-  manifest.then((m) => m.description[slug]?.[lang]?.()).catch(() => {});
+  return manifest.then((m) => m.description[slug]?.[lang]?.()).then(() => {}, () => {});
 }
 
 export function whenIdle(fn: () => void): void {
@@ -45,9 +49,19 @@ export function visibleSlugs(canvas: ParentNode, view: { w: number; h: number })
 }
 
 // The idle pass: the deep-linked sticker first (the Sheet opens on it), then
-// whatever the first view shows. Skipped when the user asked to save data.
+// the visible ones nearest the view centre, capped and throttled. Skipped when
+// the user asked to save data.
 export function prefetchVisible(canvas: ParentNode, lang: Lang, selected: string | null): void {
   if (saveData()) return;
-  if (selected) prefetchDescription(selected, lang);
-  for (const slug of visibleSlugs(canvas, { w: innerWidth, h: innerHeight })) prefetchDescription(slug, lang);
+  const near = new Map<string, number>();
+  for (const el of canvas.querySelectorAll<HTMLElement>("button.sticker[data-slug]")) {
+    near.set(el.dataset.slug!, Math.hypot(Number(el.dataset.cx) - CANVAS_HALF, Number(el.dataset.cy) - CANVAS_HALF));
+  }
+  const visible = visibleSlugs(canvas, { w: innerWidth, h: innerHeight }).sort((a, b) => near.get(a)! - near.get(b)!);
+  const queue = [...new Set(selected ? [selected, ...visible] : visible)].slice(0, IDLE_MAX);
+  const next = (): void => {
+    const slug = queue.shift();
+    if (slug) void prefetchDescription(slug, lang).then(next);
+  };
+  for (let i = 0; i < IDLE_CONCURRENCY; i++) next();
 }
