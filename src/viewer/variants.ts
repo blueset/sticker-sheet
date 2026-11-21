@@ -10,9 +10,13 @@ export const VARIANT_DEFAULTS = {
 export type VariantFactor = keyof typeof VARIANT_DEFAULTS;
 export type Variants = Record<VariantFactor, string>;
 
-// `s0` is the only shadow value until the shadow candidates land.
+// shadow: s0 = the live CSS filter (default), s1 = pre-baked sprites
+// (`npm run shadows`), s2 = a box shadow on box-shaped stickers plus the live
+// filter on the rest. s1/s2 exist only in tuning builds (PUBLIC_VARIANTS=1)
+// so the default main bundle stays byte-identical. (Tailwind scans this
+// file: no utility names here.)
 const VALUES: Record<VariantFactor, readonly string[]> = {
-  shadow: ["s0"],
+  shadow: import.meta.env.PUBLIC_VARIANTS === "1" ? ["s0", "s1", "s2"] : ["s0"],
   settle: ["drop-will-change", "retoggle-on-scale-change", "none"],
   cull: ["cv", "none", "explicit"],
   bg: ["png", "gradient"],

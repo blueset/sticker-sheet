@@ -91,6 +91,93 @@ test("the default build ships no variant snippet", () => {
   const html = fs.readFileSync(path.resolve(process.cwd(), process.env.STATIC_DIR ?? "dist", "index.html"), "utf8");
   const head = html.slice(0, html.indexOf("</head>"));
   expect(head.includes("data-v-")).toBe(process.env.PUBLIC_VARIANTS === "1");
+  for (const marker of ["data-sprite", "data-box", "--shadow:", "--box-radius:"]) {
+    expect(html.includes(marker), marker).toBe(process.env.PUBLIC_VARIANTS === "1");
+  }
+});
+
+type ShadowStyle = { slug: string; sprite: boolean; box: boolean; filter: string; boxShadow: string; before: string; beforeBg: string };
+
+const shadowStyles = (page: Page) =>
+  page.evaluate(() =>
+    [...document.querySelectorAll<HTMLElement>(".sticker")].map((el) => {
+      const s = getComputedStyle(el);
+      const b = getComputedStyle(el, "::before");
+      return {
+        slug: el.dataset.slug!,
+        sprite: el.hasAttribute("data-sprite"),
+        box: el.hasAttribute("data-box"),
+        filter: s.filter,
+        boxShadow: s.boxShadow,
+        before: b.content,
+        beforeBg: b.backgroundImage,
+      } satisfies ShadowStyle;
+    }),
+  );
+
+test("shadow s0 (default) is the live filter on every sticker", async ({ page }) => {
+  await page.goto("/");
+  const styles = await shadowStyles(page);
+  expect(styles.length).toBeGreaterThan(0);
+  for (const s of styles) {
+    expect(s.filter, s.slug).toContain("drop-shadow");
+    expect(s.boxShadow, s.slug).toBe("none");
+    expect(s.before, s.slug).toBe("none");
+  }
+});
+
+test("shadow s1 swaps the filter for a sprite on image stickers and keeps it on the rest", async ({ page }) => {
+  test.skip(process.env.PUBLIC_VARIANTS !== "1", "needs a PUBLIC_VARIANTS=1 build");
+  const sprites: string[] = [];
+  page.on("request", (r) => {
+    if (new URL(r.url()).pathname.startsWith("/shadows/")) sprites.push(r.url());
+  });
+  await page.goto("/?v=shadow:s1");
+  const styles = await shadowStyles(page);
+  expect(styles.filter((s) => s.sprite).length).toBeGreaterThan(40);
+  expect(styles.some((s) => !s.sprite)).toBe(true);
+  for (const s of styles) {
+    if (s.sprite) {
+      expect(s.filter, s.slug).toBe("none");
+      expect(s.before, s.slug).toBe('""');
+      expect(s.beforeBg, s.slug).toContain(`/shadows/${s.slug}.webp`);
+    } else {
+      expect(s.filter, s.slug).toContain("drop-shadow");
+      expect(s.before, s.slug).toBe("none");
+    }
+    expect(s.boxShadow, s.slug).toBe("none");
+  }
+  await expect.poll(() => sprites.length).toBeGreaterThan(0);
+});
+
+test("shadow s2 uses box-shadow on box-shaped stickers and the live filter on the rest", async ({ page }) => {
+  test.skip(process.env.PUBLIC_VARIANTS !== "1", "needs a PUBLIC_VARIANTS=1 build");
+  await page.goto("/?v=shadow:s2");
+  const styles = await shadowStyles(page);
+  expect(styles.filter((s) => s.box).length).toBeGreaterThan(0);
+  for (const s of styles) {
+    if (s.box) {
+      expect(s.filter, s.slug).toBe("none");
+      expect(s.boxShadow, s.slug).toMatch(/rgba\(0, 0, 0, 0\.07\) 0px 4px 6px 0px, rgba\(0, 0, 0, 0\.06\) 0px 2px 4px 0px/);
+    } else {
+      expect(s.filter, s.slug).toContain("drop-shadow");
+      expect(s.boxShadow, s.slug).toBe("none");
+    }
+    expect(s.before, s.slug).toBe("none");
+  }
+});
+
+test("the default variant of a PUBLIC_VARIANTS build fetches no shadow sprite", async ({ page }) => {
+  test.skip(process.env.PUBLIC_VARIANTS !== "1", "needs a PUBLIC_VARIANTS=1 build");
+  const sprites: string[] = [];
+  page.on("request", (r) => {
+    if (new URL(r.url()).pathname.startsWith("/shadows/")) sprites.push(r.url());
+  });
+  await page.goto("/?v=shadow:bogus");
+  await page.waitForFunction(() => "__viewer" in window);
+  await page.waitForLoadState("networkidle");
+  expect(await page.evaluate(() => document.documentElement.getAttribute("data-v-shadow"))).toBe("s0");
+  expect(sprites).toEqual([]);
 });
 
 test("PUBLIC_VARIANTS builds set html[data-v-*] before DOMContentLoaded", async ({ page }) => {

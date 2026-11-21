@@ -1,5 +1,8 @@
 ---
 import { webpSibling } from "../../scripts/optimize-assets";
+import type { BoxManifest, ShadowManifest } from "../../scripts/gen-shadows";
+import shadowBoxes from "../data/shadow-boxes.json";
+import shadowSprites from "../data/shadows.json";
 import { isInitialViewport, stickerBox, stickerCenter } from "../lib/geometry";
 import { variantPlan } from "../lib/lang-css";
 import type { Lang } from "../lib/localize";
@@ -32,6 +35,12 @@ const imgProps = {
   fetchpriority: isInitialViewport(sticker) ? "high" : "low",
 } as const;
 
+// Shadow candidates (`?v=shadow:s1|s2`) need per-sticker data; only tuning
+// builds (PUBLIC_VARIANTS=1) emit it, so the default markup is unchanged.
+const variants = process.env.PUBLIC_VARIANTS === "1";
+const sprite = variants ? (shadowSprites as ShadowManifest)[sticker.slug] : undefined;
+const boxRadius = variants ? ((shadowBoxes as BoxManifest)[sticker.slug]?.radius ?? null) : null;
+
 const style = [
   `left:${box.left}px`,
   `top:${box.top}px`,
@@ -39,6 +48,8 @@ const style = [
   `height:${box.height}px`,
   sticker.rotation ? `rotate:${sticker.rotation}deg` : "",
   `contain-intrinsic-size:${box.width}px ${box.height}px`,
+  sprite ? `--shadow:url(/shadows/${sticker.slug}.webp?h=${sprite.hash.slice(0, 8)});--shadow-pad:${sprite.pad}px` : "",
+  boxRadius !== null ? `--box-radius:${boxRadius}px` : "",
 ]
   .filter(Boolean)
   .join(";");
@@ -53,6 +64,8 @@ const style = [
   data-cy={center.y}
   data-titles={JSON.stringify(sticker.title)}
   data-has={content.has.join(" ")}
+  data-sprite={sprite ? "" : undefined}
+  data-box={boxRadius !== null ? "" : undefined}
   tabindex={hidden ? -1 : undefined}
   aria-hidden={hidden ? "true" : undefined}
 >

@@ -1,0 +1,31 @@
+/* Shadow candidates, inlined only in PUBLIC_VARIANTS=1 builds (index.astro).
+   The per-sticker data (`data-sprite`, `--shadow`, `--shadow-pad`, `data-box`,
+   `--box-radius`) comes from `npm run shadows` and is emitted by Sticker.astro
+   in the same builds only. */
+
+/* S1: the pre-baked shadow (box + pad on every side) under the sticker, as a
+   pseudo-element of the same button, so it follows `rotate` and the hover
+   `scale`. `content-visibility: auto` paint-contains the button; the clip
+   margin keeps that containment from cutting the sprite's penumbra. */
+html[data-v-shadow="s1"] .sticker[data-sprite] {
+  filter: none;
+  overflow-clip-margin: var(--shadow-pad);
+}
+
+html[data-v-shadow="s1"] .sticker[data-sprite]::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--shadow-pad));
+  z-index: -1;
+  background: var(--shadow) 0 0 / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+/* S2: `box-shadow` on stickers whose silhouette is their (rounded) box; every
+   other sticker keeps the live filter (S3). A box-shadow blur is twice the
+   drop-shadow deviation. */
+html[data-v-shadow="s2"] .sticker[data-box] {
+  filter: none;
+  border-radius: var(--box-radius);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.07), 0 2px 4px rgb(0 0 0 / 0.06);
+}

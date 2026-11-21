@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { createCull } from "./cull";
 import { createSettleStrategies, type SettleCtx } from "./settle";
 import { applyVariants, parseVariants } from "./variants";
@@ -74,6 +74,27 @@ describe("variants", () => {
     });
     expect(parseVariants("?v=settle:bogus,nope:x,__proto__:y,bg:gradient").bg).toBe("gradient");
     expect(parseVariants("?v=settle:bogus,nope:x,__proto__:y").settle).toBe("drop-will-change");
+  });
+
+  it("accepts the shadow candidates s1 and s2 in tuning builds and falls back on anything else", async () => {
+    vi.stubEnv("PUBLIC_VARIANTS", "1");
+    vi.resetModules();
+    try {
+      const tuning = await import("./variants");
+      expect(tuning.parseVariants("?v=shadow:s1").shadow).toBe("s1");
+      expect(tuning.parseVariants("?v=shadow:s2").shadow).toBe("s2");
+      for (const q of ["?v=shadow:bogus", "?v=shadow:s3", "?v=shadow:S1"]) {
+        expect(tuning.parseVariants(q).shadow).toBe("s0");
+      }
+    } finally {
+      vi.unstubAllEnvs();
+      vi.resetModules();
+    }
+  });
+
+  it("default builds only know shadow s0, so their main bundle stays unchanged", () => {
+    expect(parseVariants("?v=shadow:s1").shadow).toBe("s0");
+    expect(parseVariants("?v=shadow:s2").shadow).toBe("s0");
   });
 
   it("last repeated factor wins", () => {

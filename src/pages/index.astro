@@ -10,6 +10,7 @@ import { variantCss, variantPlan } from "../lib/lang-css";
 import { LANGS, type Lang } from "../lib/localize";
 import { prerenderContent } from "../lib/mdx/prerender";
 import { loadStickers } from "../lib/stickers";
+import shadowVariantsCss from "../styles/shadow-variants.css?raw";
 
 const stickers = loadStickers();
 
@@ -37,6 +38,7 @@ const [bootHead, bootFonts, bootView] = await Promise.all([
 ]);
 // Tuning builds only (PUBLIC_VARIANTS=1): sets html[data-v-*] before first paint.
 const bootVariants = process.env.PUBLIC_VARIANTS === "1" ? await bundleInline("boot-variants") : null;
+const variantStyles = process.env.PUBLIC_VARIANTS === "1" ? shadowVariantsCss : null;
 ---
 
 <!doctype html>
@@ -52,6 +54,7 @@ const bootVariants = process.env.PUBLIC_VARIANTS === "1" ? await bundleInline("b
     <script is:inline data-href={cjkFontsCss} set:html={bootFonts}></script>
     <link rel="preload" as="font" type="font/woff2" href={interLatin} crossorigin />
     <style is:inline set:html={variantCss(LANGS)}></style>
+    {variantStyles && <style is:inline set:html={variantStyles}></style>}
   </head>
   <body class="antialiased overflow-hidden h-dvh w-dvw">
     <div class="h-dvh w-dvw overflow-hidden relative">
