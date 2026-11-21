@@ -1,10 +1,10 @@
 // After a zoom settles, a vector sticker must be re-rastered at the new scale,
 // not left as the stretched bitmap of the scale it was promoted at.
 //
-// BENCH_QUERY (e.g. '?v=settle:none', on a PUBLIC_VARIANTS=1 build) loads a
-// tuning variant; BENCH_PROBE_CSS injects CSS after load (`{layer}` expands to
-// the canvas layer), e.g. '{layer}{will-change:transform !important}' to show
-// that the test catches a layer that is never re-rastered.
+// BENCH_QUERY is appended to the URL (see bench/harness.ts); BENCH_PROBE_CSS
+// injects CSS after load (`{stickers}` and `{layer}` expand to the contract
+// selectors), e.g. '{stickers} img{filter:blur(0.5px) !important}' to show
+// that the test fails on a soft sticker.
 import { expect, test, type Page } from "@playwright/test";
 import pixelmatch from "pixelmatch";
 import { PNG } from "pngjs";
@@ -123,12 +123,7 @@ test("vector sticker is crisp after a zoom settles", async ({ page, context, bro
   await ref.close();
 
   const ratio = pixelDiffRatio(settledShot, referenceShot);
-  const variant = await page.evaluate(() =>
-    [...document.documentElement.attributes]
-      .filter((a) => a.name.startsWith("data-v-"))
-      .map((a) => `${a.name.slice(7)}:${a.value}`)
-      .join(","),
-  );
+  const variant = new URL(page.url()).search;
   test.info().annotations.push({ type: "crisp", description: `${slug} at x${scale.toFixed(2)}: diff ${ratio.toFixed(4)}` });
   console.log(
     `[settle-crisp] ${slug} x${scale.toFixed(2)} ${clip.width}x${clip.height} [${variant || "default"}]: diff ratio ${ratio.toFixed(4)}`,

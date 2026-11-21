@@ -47,7 +47,7 @@
 //   settleAfterMotionMs (`data-gesture` removal - motion end: the settle
 //   timer) and rasterAfterSettleMs (raster end - that removal) it decomposes
 //   crispAfterMs.
-// - BENCH_QUERY (e.g. '?v=settle:none') is appended to the page URL.
+// - BENCH_QUERY (e.g. '#vocaloid') is appended to the page URL.
 // - peakHeapMb: maximum CDP Performance.getMetrics JSHeapUsedSize sampled every
 //   100 ms from before the gesture until the trace stops. JS heap only: GPU
 //   textures, decoded images and compositor memory are not included.

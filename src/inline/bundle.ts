@@ -13,8 +13,6 @@ export async function bundleInline(entry: string): Promise<string> {
     format: "iife",
     write: false,
     legalComments: "none",
-    // Mirrors Vite's static replacement so shared modules (variants.ts) agree.
-    define: { "import.meta.env.PUBLIC_VARIANTS": JSON.stringify(process.env.PUBLIC_VARIANTS ?? "") },
   });
 
   const [output] = result.outputFiles;

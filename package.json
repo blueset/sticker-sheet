@@ -10,8 +10,7 @@
     "check": "astro check",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "optimize-assets": "node scripts/optimize-assets.ts",
-    "shadows": "node scripts/gen-shadows.ts"
+    "optimize-assets": "node scripts/optimize-assets.ts"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.9",

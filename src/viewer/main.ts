@@ -9,9 +9,6 @@ import { createController } from "./controller";
 import "./deeplink";
 import { initInteractions } from "./interactions";
 import { prefetchVisible, whenIdle } from "./prefetch";
-import { createCull } from "./cull";
-import { createSettleStrategies, type SettleCtx, type SettleName } from "./settle";
-import { applyVariants } from "./variants";
 
 declare global {
   interface Window {
@@ -44,22 +41,6 @@ if (root && layer) {
     },
     { passive: true },
   );
-
-  // Tuning variants (see variants.ts); the defaults are the shipped behaviour.
-  const variants = applyVariants(document.documentElement, location.search);
-  // Wired to onMotionStart so programmatic moves (button zoom, centre) count
-  // like the CSS `data-gesture` rule did; the controller's onGestureStart is
-  // user-input only.
-  const settle = createSettleStrategies(viewer.transform.scale)[variants.settle as SettleName];
-  const ctx = (): SettleCtx => ({ root, layer, transform: viewer.transform });
-  viewer.onMotionStart(() => settle.onGestureStart(ctx()));
-  if (settle.onChange) viewer.onChange(() => settle.onChange!(ctx()));
-  viewer.onSettle((transform) => settle.onSettle({ root, layer, transform }));
-  if (variants.cull === "explicit") {
-    const cull = createCull(root, layer);
-    viewer.onMotionStart(() => cull.onGestureStart());
-    viewer.onSettle(() => cull.onSettle());
-  }
 
   const slugs = new Set<string>();
   for (const el of layer.querySelectorAll<HTMLElement>("button.sticker[data-slug]")) slugs.add(el.dataset.slug!);

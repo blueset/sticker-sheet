@@ -2,7 +2,7 @@
 // only; no throttling, no trace, so it is a regression check, not a budget
 // measurement.
 //
-//   $env:BENCH='1'; $env:BENCH_LABEL='m2-control'; $env:BENCH_QUERY='?v=...'
+//   $env:BENCH='1'; $env:BENCH_LABEL='m2-control'; $env:BENCH_QUERY=''
 //   npx playwright test bench/portable --project=webkit-mobile --project=firefox-desktop
 //
 // Per run: fresh context, `BENCH_QUERY` appended to `/`, page loaded with every

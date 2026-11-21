@@ -46,9 +46,9 @@ export const probeCss = (selectors: { stickers: string; layer: string }) =>
     .replaceAll("{stickers}", selectors.stickers)
     .replaceAll("{layer}", selectors.layer);
 
-// Query appended to the benches' (and settle-crisp.spec's) `page.goto`, e.g.
-// BENCH_QUERY='?v=settle:none' to measure a tuning variant served from a
-// PUBLIC_VARIANTS=1 build. Empty for normal runs.
+// Query appended to the benches' (and settle-crisp.spec's) `page.goto`, kept
+// from the Task 2.3 tuning matrix (docs/superpowers/decisions/003) so a
+// candidate build can be measured with a URL switch. Empty for normal runs.
 export const benchQuery = () => process.env.BENCH_QUERY ?? "";
 export const benchUrl = () => `/${benchQuery()}`;
 
