@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
+  CRITICAL_JS_BUDGET,
+  criticalJsGateValue,
   gzipBytes,
   payloadMarkers,
   percentile,
@@ -57,6 +59,28 @@ describe("payloadMarkers", () => {
       "baseline-status",
     ]);
     expect(payloadMarkers('const __vite__mapDeps=["_astro/react-dom.x.js","_astro/Sheet.y.js"]')).toEqual([]);
+  });
+});
+
+describe("criticalJsGateValue", () => {
+  const ok = (profile: "mobile" | "desktop", runs: number[]) =>
+    criticalJsGateValue(profile, runs) <= CRITICAL_JS_BUDGET;
+
+  it("gates desktop on the median, so one racing run passes", () => {
+    expect(ok("desktop", [7950, 7950, 40697, 7950, 7950])).toBe(true);
+    expect(ok("desktop", [7950, 140_000, 7950])).toBe(true);
+    expect(ok("desktop", [140_000, 140_000, 7950])).toBe(false);
+  });
+
+  it("gates mobile on every run", () => {
+    expect(ok("mobile", [0, 0, 0])).toBe(true);
+    expect(ok("mobile", [CRITICAL_JS_BUDGET])).toBe(true);
+    expect(ok("mobile", [CRITICAL_JS_BUDGET + 1])).toBe(false);
+    expect(ok("mobile", [0, 0, 0, 0, 140_000])).toBe(false);
+  });
+
+  it("rejects an empty run list", () => {
+    expect(() => criticalJsGateValue("desktop", [])).toThrow();
   });
 });
 

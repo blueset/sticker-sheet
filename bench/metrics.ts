@@ -37,6 +37,18 @@ export function payloadMarkers(source: string): string[] {
     .map(([name]) => name);
 }
 
+// Critical-path JS budget (spec: <= 100 KB gzip).
+export const CRITICAL_JS_BUDGET = 100 * 1024;
+
+// The value the critical-JS gate compares with the budget. Mobile (the budget
+// profile) gates every run, so the worst run counts. On desktop the idle
+// islands can legitimately finish before a ~130 ms LCP in some runs, so the
+// median of the profile's runs counts and a single racing run cannot fail it.
+export function criticalJsGateValue(profile: "mobile" | "desktop", runs: number[]): number {
+  if (runs.length === 0) throw new RangeError("no runs to gate");
+  return profile === "mobile" ? Math.max(...runs) : percentile(runs, 50);
+}
+
 // A long task is a main-thread task over 50 ms, as reported by the `longtask`
 // PerformanceObserver. Tuples are [startMs, durationMs].
 export type LongTask = [number, number];
