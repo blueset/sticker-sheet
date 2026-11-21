@@ -177,11 +177,17 @@
   height: 100%;
 }
 
-.sticker .clip > img {
+.sticker .clip > img,
+.sticker .clip > picture > img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* The wrapper adds no box, so the img sizes against `.clip` exactly as without it. */
+.sticker .clip > picture {
+  display: contents;
 }
 
 /* Screen-reader-only titles never paint; a system font keeps them from

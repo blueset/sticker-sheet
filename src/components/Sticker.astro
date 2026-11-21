@@ -1,7 +1,9 @@
 ---
+import { webpSibling } from "../../scripts/optimize-assets";
 import { isInitialViewport, stickerBox, stickerCenter } from "../lib/geometry";
 import { variantPlan } from "../lib/lang-css";
 import type { Lang } from "../lib/localize";
+import { publicFiles } from "../lib/public-files";
 import type { StickerRecord } from "../lib/stickers";
 
 interface Props {
@@ -18,6 +20,17 @@ const content = variantPlan(sticker.content);
 const title = variantPlan(sticker.title);
 // A zero-area sticker is a hidden test fixture, not something to focus or announce.
 const hidden = box.width === 0 || box.height === 0;
+// Raster stickers get a WebP source when `npm run optimize-assets` wrote one; the img stays the fallback.
+const webp = sticker.image ? webpSibling(sticker.image, publicFiles()) : null;
+const imgProps = {
+  src: sticker.image,
+  width: box.width,
+  height: box.height,
+  alt: "",
+  decoding: "async",
+  loading: "eager",
+  fetchpriority: isInitialViewport(sticker) ? "high" : "low",
+} as const;
 
 const style = [
   `left:${box.left}px`,
@@ -45,17 +58,15 @@ const style = [
 >
   <span class="clip" style={sticker.clipPath ? `clip-path:${sticker.clipPath}` : undefined} aria-hidden="true" data-has={content.has.join(" ")}>
     {
-      sticker.image && (
-        <img
-          src={sticker.image}
-          width={box.width}
-          height={box.height}
-          alt=""
-          decoding="async"
-          loading="eager"
-          fetchpriority={isInitialViewport(sticker) ? "high" : "low"}
-        />
-      )
+      sticker.image &&
+        (webp ? (
+          <picture>
+            <source type="image/webp" srcset={webp} />
+            <img {...imgProps} />
+          </picture>
+        ) : (
+          <img {...imgProps} />
+        ))
     }
     {
       content.has.map((lang) => (

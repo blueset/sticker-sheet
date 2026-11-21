@@ -97,6 +97,45 @@ test.describe("without JavaScript", () => {
   });
 });
 
+test("raster stickers are served as WebP through <picture>, SVGs stay plain", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => Promise.all(Array.from(document.images, (img) => img.decode().catch(() => undefined))));
+
+  const images = await page.evaluate(() =>
+    Array.from(document.querySelectorAll<HTMLImageElement>("button.sticker .clip img")).map((img) => ({
+      src: img.getAttribute("src") ?? "",
+      picture: img.parentElement?.tagName ?? "",
+      sources: Array.from(img.parentElement?.querySelectorAll("source") ?? [], (s) => ({
+        type: s.type,
+        srcset: s.getAttribute("srcset"),
+      })),
+      currentSrc: new URL(img.currentSrc).pathname,
+      naturalWidth: img.naturalWidth,
+      width: img.getAttribute("width"),
+      height: img.getAttribute("height"),
+    })),
+  );
+
+  const png = images.filter((i) => i.src.endsWith(".png"));
+  expect(png.length).toBe(7);
+  for (const i of png) {
+    const webp = i.src.replace(/\.png$/, ".webp");
+    expect(i.picture, i.src).toBe("PICTURE");
+    expect(i.sources, i.src).toEqual([{ type: "image/webp", srcset: webp }]);
+    expect(i.currentSrc, i.src).toBe(webp);
+    expect(i.naturalWidth, i.src).toBeGreaterThan(0);
+  }
+
+  const svg = images.filter((i) => i.src.endsWith(".svg"));
+  expect(svg.length).toBe(48);
+  for (const i of svg) {
+    expect(i.picture, i.src).not.toBe("PICTURE");
+    expect(i.currentSrc, i.src).toBe(i.src);
+  }
+  // The size attributes that reserve the layout are the same with or without the wrapper.
+  for (const i of images) expect([i.width, i.height], i.src).not.toContain(null);
+});
+
 test("zero-area sticker is out of the tab order", async ({ page }) => {
   await page.goto("/");
   const zero = sticker(page, "test-1");

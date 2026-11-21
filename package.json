@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "optimize-assets": "node scripts/optimize-assets.ts"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.9",

@@ -9,6 +9,8 @@ export default defineConfig({
       ? ["tests/**/*.spec.ts", "bench/**/*.bench.ts"]
       : ["tests/**/*.spec.ts"],
   snapshotPathTemplate: "tests/visual/__snapshots__/{arg}{ext}",
+  // Exact match unless a comparison run opts in (new build vs the recorded baseline), e.g. VISUAL_MAX_DIFF=0.01.
+  expect: { toHaveScreenshot: { maxDiffPixelRatio: Number(process.env.VISUAL_MAX_DIFF ?? 0) } },
   // Benchmarks time the page, so they must never run in parallel.
   workers: process.env.BENCH === "1" ? 1 : undefined,
   use: {
