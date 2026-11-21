@@ -35,7 +35,7 @@ Facts that constrain the design:
 | `light-dark()` in sticker content depends on `color-scheme` on `<html>`, which `next-themes` sets. | The replacement theme mechanism must set `color-scheme` and the `.dark` class before first paint. |
 | Static deploy to GitHub Pages (`output: "export"`, CI runs `deno ... --once`, then `next build`). | No server, no edge. Everything is build-time or client-time. |
 | Descriptions use JSX and `export function` inside MDX, with `_provideComponents()` for `Button`, `useTheme`, `PlusCodeMap` (Leaflet), `CanIUse` (iframe), `BaselineStatus` (web component) and others. | The authoring format (YAML + MDX strings) is a public contract of this repo. It does not change. |
-| The Silk sheet is passed only the first detent (`detents={snapPoints}` is a single string), `activeSnap !== 2` compares against an index that never occurs, and `scrollGesture` is therefore always `false`. | The current two-stop behaviour looks mid-migration. Milestone 0 runs the current app in a phone-sized viewport and records what happens. The target spec is the one under "Sheet spec" below, and any difference between it and the running app is reported to the owner. |
+| The Silk sheet is passed only the first detent (`detents={snapPoints}` is a single string). | Milestone 0 measured this (`docs/superpowers/baseline/sheet-behaviour.md`): Silk appends a content-size detent, so a single-string `detents` still yields two real stops (1 = peek, 2 = expanded, 0 = hidden). `activeSnap !== 2` is therefore live, not dead code, and `scrollGesture` is on at expanded. The original reading here ("never occurs, always `false`") was wrong. The "Sheet spec" below follows the measured baseline (ruling R8). |
 | `PANEL_BREAKPOINT` is 4096 px, so the bottom sheet is used on practically every viewport. | The left-side panel only appears on viewports wider than 4096 px. Keep the constant. |
 | Sticker z-order follows `stickers.yaml` order, which comes from `Deno.readDir` and is filesystem-dependent (alphabetical on the owner's NTFS machine, arbitrary on the Linux CI runner). About two dozen sticker bounding boxes overlap. | Z-order needs a deterministic rule (see "Sticker z-order"). |
 
@@ -78,7 +78,7 @@ Measured in Chromium with mobile emulation, 4× CPU throttle and "Fast 4G", plus
 - Viewports wider than 4096 px: the 320 px left panel, one stop.
 - Selecting a sticker re-centres it in the visible area using the existing offsets (`PANEL_HEIGHT` = 135 px from the bottom on narrow viewports, `PANEL_WIDTH` from the left on wide ones), at the *current* zoom scale.
 - The sheet is not part of the first paint, even on a `#slug` URL. It animates in after load as it does today. The hashed sticker's description chunk is preloaded early from the head script so it opens without waiting.
-- If Milestone 0 shows the running app differs from this (for example a single stop, no scrolling), the plan reports it to the owner before changing the spec.
+- Milestone 0 did measure the running app. Where it differed from the first draft of this section, the measured baseline won (ruling R8); the differences are listed at the end of this document.
 
 ### Sticker z-order (my call)
 
