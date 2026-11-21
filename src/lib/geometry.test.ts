@@ -77,9 +77,14 @@ test("stickerBox matches the baseline placement fixture within 1px for every sti
     const expected = fixture[sticker.slug];
     expect(expected, `missing placement fixture for slug "${sticker.slug}"`).toBeDefined();
     const box = stickerBox(sticker);
-    // Exact equality doesn't hold for every sticker (half-pixel centres on
-    // odd width/height), so this allows up to 1px of drift, matching the
-    // "within 1 px of the baseline" constraint.
+    // tests/fixtures/placement.json was recorded from the live DOM's
+    // integer el.offsetLeft/el.offsetTop (tests/parity/record-golden.spec.ts),
+    // but stickerBox() computes exact (possibly half-pixel) centres. Any
+    // sticker with an odd width or height has a half-pixel left/top, which
+    // is up to 0.5px off the browser-rounded fixture value (29 of 63
+    // stickers, 46%, hit this for left and/or top). The assertion tolerates
+    // up to 1px per field, matching the "within 1 px of the baseline"
+    // constraint.
     for (const key of ["left", "top", "width", "height"] as const) {
       expect(
         Math.abs(box[key] - expected[key]),
