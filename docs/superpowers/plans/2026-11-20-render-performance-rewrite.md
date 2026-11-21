@@ -686,6 +686,32 @@ Added by controller ruling after the Task 1.14 benchmark. On the mobile profile 
 - [ ] **Step 4: Write `003-pathway-a-tuning.md`** (matrix, winners, rejected variants and why) and run `npm test; npx playwright test tests/e2e`; Expected: PASS.
 - [ ] **Step 5: Commit** `perf: adopt tuned shadow, settle, culling and background strategies`.
 
+### Task 2.3b: Settle timing (controller)
+
+Added after Task 2.3 (ruling R15d, R16). No variant won in 2.3, and the settle misses it recorded in `003` ("What still misses budget") come from controller timing, not raster cost, so the four 2.3 factors could not fix them.
+
+**Files:**
+- Modify: only what the change needs among `src/viewer/controller.ts` (+ its test), `src/viewer/main.ts`, `src/styles/global.css` (the `will-change` rule)
+- Modify: `tests/e2e/settle.spec.ts`, `tests/e2e/settle-crisp.spec.ts`
+- Modify: `docs/superpowers/decisions/003-pathway-a-tuning.md` (append a "Task 2.3b" section and update "What still misses budget")
+- Create: `bench/results/m2b-*.json` (raw results, no traces)
+
+**Interfaces:**
+- **Budget semantics (R16).** The crisp budget (≤ 150 ms) runs from the end of motion: the last frame whose transform changed (`crispAfterMotionMs`, added in 2.3). An animation or an inertial glide is still the gesture; a pan never changes the raster scale. `crispAfterMs` (from the last input) stays recorded.
+- **Targets** (chromium-mobile, 4× CPU, Fast 4G, 5-run medians, from the 2.3 control): wheel-zoom `crispAfterMotionMs` 219 → ≤ 150; pinch 135 and button-zoom 120 stay ≤ 150; drag-inertia literal `crispAfterMs` 930 → ≤ 150, by skipping the re-raster at settle when the scale is unchanged since the last raster (the `retoggle-on-scale-change` semantics the plan defined in 2.1; 2.3 measured 930 → 76); button-zoom input delay p95 114 → < 100 ms (the 10-run control read 241 ms, so root-cause the click-to-first-frame task before changing anything).
+- **Do not change** the inertia profile, `ALIGN_MS`, `CENTER_MS`, the button-zoom animation, `WHEEL_STOP_MS` or any other constant that changes how a gesture feels. Free to change: `SETTLE_MS` and how settle is scheduled after a wheel stop or an align, and whether `will-change` is dropped.
+- **Guards:** every existing unit and e2e test (including the replay goldens and `settle.spec.ts`) passes; `settle-crisp.spec.ts` passes on the default build; visual `initial` at `VISUAL_MAX_DIFF=0.01`; no gesture regresses `mainBusyMs`, `p95FrameMs` or `crispAfterMotionMs` by more than 5 % beyond the control's spread; `portable.bench` on webkit-mobile and firefox-desktop shows no metric more than 5 % worse beyond spread (Firefox drag `over16` was 23 in the 2.3 control; 26 for retoggle).
+- If a target cannot be met, record the measured floor and the reason, keep the rest, and do not loosen a guard.
+
+- [ ] **Step 1: Investigate, no code changes.** Trace one wheel zoom, one drag flick and one button zoom on chromium-mobile (the 2.3 decomposition says wheel = 44 ms tail + 195 ms settle timer + 25 ms raster). Write down where each millisecond goes (wheel stop, align, `SETTLE_MS`, raster) and what the click-to-first-frame task is for the button-zoom input delay. Put it in the 003 section.
+- [ ] **Step 2: Failing tests first.**
+  - Unit, fake timers, in the controller test: settle fires no later than the new bound after a wheel stop that needs no align; a further wheel notch inside the window cancels it; a pan-only gesture does not request a re-raster at settle; a gesture that changed the scale does.
+  - E2E: zoom to about 4×, settle, pan, and the sticker is still sharp (`settle-crisp` helpers); a wheel notch after settle re-promotes the layer.
+  Run them; Expected: FAIL for the new bounds.
+- [ ] **Step 3: Implement the smallest change** that meets the targets; rerun; Expected: PASS.
+- [ ] **Step 4: Measure** (`BENCH=1`, chromium-mobile gestures, 5 runs, label `m2b-<name>`; rerun at 10 runs where a margin falls between 10 % and twice the spread; `portable.bench` on webkit-mobile and firefox-desktop against a fresh 2.3-head control run in the same session). Record tables and the remaining misses in the 003 section.
+- [ ] **Step 5: Commit** `perf: settle sooner after a wheel zoom and skip the re-raster after a pan` (tests first, then bench results, then the change and the doc, as separate commits).
+
 ### Task 2.4: Parity audit and budgets
 
 **Files:**
@@ -693,7 +719,7 @@ Added by controller ruling after the Task 1.14 benchmark. On the mobile profile 
 
 - [ ] **Step 1: Full run on every engine.** `npx playwright test --project=chromium-desktop; ... chromium-mobile; webkit-mobile; firefox-desktop`. Expected: PASS everywhere.
 - [ ] **Step 2: Parity table.** One row per item of the design doc's "Feature parity checklist" with the spec file and test name that proves it and its status; any gap becomes a failing test first, then a fix.
-- [ ] **Step 3: Budgets.** Benchmark mobile and desktop (5 runs); record each budget as met or missed, with numbers against baseline.
+- [ ] **Step 3: Budgets.** Benchmark mobile and desktop (5 runs); record each budget as met or missed, with numbers against baseline. The crisp budget is measured from the end of motion (`crispAfterMotionMs`, ruling R16); also report the literal `crispAfterMs`.
 - [ ] **Step 4: Device checklist.** Write the owner's manual list (iOS Safari and Android Chrome: pinch, flick inertia, sheet drag at both stops, rotate with the sheet open, language and theme switch, memory after zooming to 5×, live date stickers). It cannot be run by the agent; list it as an open item for the owner.
 - [ ] **Step 5: Commit** `docs: record parity audit and Pathway A budgets`.
 
