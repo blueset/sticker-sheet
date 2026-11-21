@@ -15,24 +15,26 @@ Machine and method are the same as the baseline:
 
 ## First render (median / p95)
 
+This table is the Task 1.14 (Milestone 1 exit) measurement, taken before Task 1.15's modulepreload (`bench/results/m1-*.json`). Current mobile values after Task 1.15 differ (mobile critical-path JS 7,950 B, LCP 876 ms, input readiness 556 ms); they are in the "Input readiness (Task 1.15)" section, and the cells below show them as "Task 1.14 → after 1.15" (from `bench/results/i15-lever-a2-mobile.json`) wherever the mobile value changed.
+
 | Metric | Mobile new | Mobile baseline | Desktop new | Desktop baseline |
 |---|---|---|---|---|
-| FCP (ms) | 732 / 748 | 724 / 756 | 132 / 140 | 164 / 212 |
-| LCP (ms) | **792 / 844** | 2,772 / 3,020 | 132 / 140 | 324 / 376 |
-| TBT, FCP→TTI proxy (ms) | **0 / 2** | 726 / 928 | 0 / 0 | 0 / 0 |
+| FCP (ms) | 732 / 748 → 748 / 788 after 1.15 | 724 / 756 | 132 / 140 | 164 / 212 |
+| LCP (ms) | **792 / 844** → 876 / 900 after 1.15 | 2,772 / 3,020 | 132 / 140 | 324 / 376 |
+| TBT, FCP→TTI proxy (ms) | **0 / 2** → 1 / 11 after 1.15 | 726 / 928 | 0 / 0 | 0 / 0 |
 | CLS | 0 / 0 | 0 / 0 | 0 / 0 | 0 / 0 |
-| First sticker in DOM (ms) | 535 / 551 | 2,044 / 2,159 | 44 / 56 | 176 / 211 |
+| First sticker in DOM (ms) | 535 / 551 → 558 / 571 after 1.15 | 2,044 / 2,159 | 44 / 56 | 176 / 211 |
 | Stickers present at FCP | 63 | 0 | 63 | 0–63 |
-| Live sticker shows today's date (ms) | 719 / 735 | 2,529 / 2,842 | 78 / 84 | 209 / 261 |
-| All 63 stickers painted, images decoded (ms) | 2,502 / 2,534 | 5,659 / 5,859 | 84 / 113 | 291 / 345 |
-| Critical-path JS, gzip-9 of bodies finished before LCP (B) | **0 / 0** | 473,458 | 7,950 / 40,697 | 473,458 |
+| Live sticker shows today's date (ms) | 719 / 735 → 738 / 768 after 1.15 | 2,529 / 2,842 | 78 / 84 | 209 / 261 |
+| All 63 stickers painted, images decoded (ms) | 2,502 / 2,534 → 2,671 / 2,681 after 1.15 | 5,659 / 5,859 | 84 / 113 | 291 / 345 |
+| Critical-path JS, gzip-9 of bodies finished before LCP (B) | **0 / 0** → 7,950 / 7,950 after 1.15 (eager graph, no markers) | 473,458 | 7,950 / 40,697 | 473,458 |
 | Transferred: JS / CSS / img / font / html (B) | 170,677 / 20,327 / 733,627 / 141,714 / 16,186 | 439,685 / 79,846 / 2,313,268 / 490,076 / 35,446 | same as mobile (JS 170,771) | same |
-| Bytes before LCP: JS / CSS / img / font (B) | 0 / 15,717 / 54,197 / 73,220 | 438,760 / – / 21,399 / – | 8,940 / 15,717 / 732,070 / 139,788 | – |
-| Long tasks per load (median) | 1 | 4 | 0 | 1 |
+| Bytes before LCP: JS / CSS / img / font (B) | 0 / 15,717 / 54,197 / 73,220 → 8,940 / 15,717 / 24,004 / 73,220 after 1.15 | 438,760 / – / 21,399 / – | 8,940 / 15,717 / 732,070 / 139,788 | – |
+| Long tasks per load (median) | 1 → 2 after 1.15 | 4 | 0 | 1 |
 
 The LCP element is the `eana.svg` sticker image in both builds (52,900 px² on mobile, 104,468 px² on desktop).
 
-Spreads:
+Spreads (Task 1.14):
 - Mobile: LCP 12.6%, FCP 7.1%, all-painted 2.5%, live 8.8%, byte counts 0%.
 - Desktop: all-painted 49% and first sticker 103%, both on values under 115 ms. Desktop critical JS 412%; see "Payload" below.
 
@@ -59,15 +61,15 @@ How to read the table:
 
 | Budget (mobile unless noted) | Result | Verdict |
 |---|---|---|
-| LCP ≤ 1.38 s (ruling) / ≤ 1.5 s (spec) | 792 ms median, 844 ms p95, 852 ms worst run | PASS |
-| At least 2× better than baseline | LCP 3.5×, TBT 726 → 0, live 3.5×, all-painted 2.3×, first sticker 3.8×; crisp: pinch 2.5×, wheel-zoom 1.8×, button-zoom 1.0×, drag-inertia 0.59× (worse) | PASS on first render; MISS on settle |
+| LCP ≤ 1.38 s (ruling) / ≤ 1.5 s (spec) | Task 1.14: 792 ms median, 844 ms p95, 852 ms worst run. After Task 1.15: 876 ms median, 900 ms p95 and worst run | PASS |
+| At least 2× better than baseline | (Task 1.14; after Task 1.15 LCP is 3.2×, all-painted 2.1×, first sticker 3.7×, live 3.4×) LCP 3.5×, TBT 726 → 0, live 3.5×, all-painted 2.3×, first sticker 3.8×; crisp: pinch 2.5×, wheel-zoom 1.8×, button-zoom 1.0×, drag-inertia 0.59× (worse) | PASS on first render; MISS on settle |
 | Critical JS ≤ 100 KB gzip | After Task 1.15: 7,950 B on mobile in every run (the eager graph, no library markers); desktop 11,697 B median, 107,665 B max (an idle-island race, gated on the median). Task 1.14: 0 B on mobile; desktop 7,950 B median, 40,697 B max | PASS |
 | No Silk / Radix / Leaflet / React DOM / `baseline-status` bytes before LCP | none on mobile in all 5 runs (asserted); desktop showed `radix` in 1 of 5 runs (reported, not asserted) | PASS (mobile) |
 | Zero layout shift | CLS 0 in every run, both profiles | PASS |
 | p95 frame ≤ 16.7 ms | 16.667 ms in every scenario, both profiles | PASS (harness floor; see limits) |
 | Crisp ≤ 150 ms | mobile pinch 143 (p95 157); wheel-zoom 267; button-zoom 462; drag-inertia 922. Desktop wheel-zoom 133; button-zoom 480; drag-inertia 1,168 | MISS (except pinch and desktop wheel-zoom) |
 | Input delay < 100 ms | button-zoom 97.5 ms median, 119 ms p95 (baseline 96 / 106); all others ≤ 53 ms | MISS at p95 (on the line at the median) |
-| TBT (target: vs baseline 726 ms; no spec budget, spec asks it be minimal) | 0 ms median, 2 ms p95 | PASS (726 → 0) |
+| TBT (target: vs baseline 726 ms; no spec budget, spec asks it be minimal) | Task 1.14: 0 ms median, 2 ms p95. After Task 1.15: 1 ms median, 11 ms p95 | PASS (726 → 0) |
 | Time to input readiness (no spec budget; baseline first sticker 2,044 ms, interactive on hydration) | Task 1.14: no earlier than ~2.56–2.60 s. **After Task 1.15: `inputReadyMs` 556 ms median, 574 ms worst run** (Task 1.15 target ≤ 1.5 s; see Input readiness) | PASS (after Task 1.15; 3.7× better than the baseline's first sticker) |
 | Inline boot-head ≤ 600 B gzip | 350 B | PASS |
 | Inline boot-view ≤ 1,500 B gzip | 645 B | PASS |
@@ -119,12 +121,12 @@ The files and sizes are the same as in Task 1.13; Task 1.15 changed only how the
 Recommendation on `preload-helper`: do not spend Milestone 2 effort on inlining it.
 - It is a separate chunk only because the `Sheet` island and the deep-link path share it. Folding it into `main` (Rolldown `advancedChunks`/`manualChunks`) would save one request and about 1 KB.
 - Task 1.14 state (history): on mobile `main` was requested at ~270–290 ms and ended at ~2.3 s. `appState` and `preload-helper` were static imports discovered only when `main` arrived, so they were requested at ~2.3 s and ended at ~2.5–2.6 s (per-run table below). That second hop cost ~0.2–0.3 s, but a `modulepreload` for the two imports would remove it without changing the chunking, and inlining `preload-helper` alone would leave `appState` as the same late hop.
-- Our working explanation is that `main`'s ~2 s download is set by bandwidth shared with the 55 sticker images rather than by round trips. **This is inferred, not yet isolated**: it rests on the timings below, not on an experiment. The isolating A/B is Task 1.15 step 2. Revisit the chunking only after that result, and check that the Sheet chunk does not then duplicate the helper.
+- Task 1.14 (history): our working explanation was that `main`'s ~2 s download is set by bandwidth shared with the 55 sticker images rather than by round trips. **This is inferred, not yet isolated**: it rests on the timings below, not on an experiment. The isolating A/B is Task 1.15 step 2. Revisit the chunking only after that result, and check that the Sheet chunk does not then duplicate the helper.
 - **Task 1.15 update:** the A/B confirmed image contention as the main cause, and the build now emits a `modulepreload` for all three eager files (see Input readiness). The chunking is unchanged and there is no longer a reason to fold `preload-helper` into `main`.
 
 ## Idle hydration and long tasks (mobile)
 
-Per-run long tasks (start, duration), from `detail.longTasks`:
+Per-run long tasks (start, duration), from `detail.longTasks` (Task 1.14, `m1-mobile.json`; after Task 1.15 the median is 2 long tasks per load, see the First render table):
 
 | Run | Before FCP | After FCP |
 |---|---|---|
@@ -164,7 +166,7 @@ The table and the bullets below describe the Task 1.14 build (before the modulep
 ## Bounded idle prefetch (mobile)
 
 - **Sticker images.** All 55 sticker images are requested by the HTML parser before LCP: every one starts by ~0.8 s. They are prerendered `<img>`s, not prefetch.
-  - Only 9–12 finish before LCP (54 KB of 734 KB), and the last ends at ~2.5 s.
+  - In Task 1.14 only 9–12 finished before LCP (54 KB of 734 KB), and the last ended at ~2.5 s. After Task 1.15, 24 KB (median) finish before LCP and the last ends at ~2.7 s (all-painted 2,671 ms median), because the eager graph now goes first.
   - They share Fast 4G with the eager JS and fonts. In Task 1.14 this is why the 6 KB entry took ~2 s to arrive; the Task 1.15 A/B confirmed it (see Input readiness).
 - **Description chunks.** Requests to `en.*.js` plus `provider.*.js` start only after hydration and the MDX chunk: the first at ~2.8 s, after LCP, after the last image and after the islands.
   - They then come three at a time, one batch per ~200 ms round trip, 13 requests in all, ending at ~3.6 s.
@@ -175,7 +177,7 @@ The table and the bullets below describe the Task 1.14 build (before the modulep
 ## Live values (`liveCurrentMs`)
 
 - The live sticker's date is written at first paint by `boot-view.ts` `fillLive()`, from the build-time `#live-exprs` table.
-- The probe now reports 719 ms median on mobile. That is ≥ the first sticker in DOM (535 ms), and it is the last rAF before the FCP paint at 732 ms (rAF runs before the paint of its frame).
+- The probe reported 719 ms median on mobile in Task 1.14 (738 ms after Task 1.15). That is ≥ the first sticker in DOM (535 ms), and it is the last rAF before the FCP paint at 732 ms (rAF runs before the paint of its frame).
 - On desktop it reports 78 ms, against a first sticker at 44 ms.
 - No stale or placeholder value paints: unfilled `[data-live]` spans are `visibility:hidden`.
 
