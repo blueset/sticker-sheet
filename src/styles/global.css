@@ -157,6 +157,26 @@
   transform: translate(calc((100dvw - 3000px) / 2), calc((100dvh - 3000px) / 2));
 }
 
+/* The viewer sets `data-gesture` while a pan or zoom is running and removes
+   it 100 ms after the transform settles, so the canvas re-rasters at rest. */
+#canvasWrapper[data-gesture] #canvas {
+  will-change: transform;
+}
+
+/* boot-head sets `data-deep` for `/#slug`; boot-view removes it once the
+   hashed view is applied, so no frame shows the default view first. The
+   animation reveals the canvas anyway if boot-view never runs. */
+html[data-deep] #canvasWrapper {
+  visibility: hidden;
+  animation: deep-reveal 0s 1.5s forwards;
+}
+
+@keyframes deep-reveal {
+  to {
+    visibility: visible;
+  }
+}
+
 #canvas img {
   pointer-events: none;
 }

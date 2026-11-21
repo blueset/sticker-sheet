@@ -21,8 +21,10 @@ beforeEach(() => {
   html.removeAttribute("lang");
   html.className = "";
   html.style.cssText = "";
+  html.removeAttribute("data-deep");
   document.body.innerHTML = "";
   delete window.__boot;
+  delete window.__bootViewport;
 });
 
 afterEach(() => {
@@ -107,6 +109,21 @@ describe("boot-head", () => {
     expect(html.classList.contains("dark")).toBe(false);
     expect(html.style.colorScheme).toBe("light");
   });
+
+  it("gates the canvas only for a non-empty hash", () => {
+    stubMatchMedia(false);
+    for (const [url, gated] of [
+      ["/", false],
+      ["/#", false],
+      ["/#dark", true],
+      ["/#%E0%A4%A", true],
+    ] as const) {
+      html.removeAttribute("data-deep");
+      history.replaceState(null, "", url);
+      runBootHead();
+      expect(html.hasAttribute("data-deep"), url).toBe(gated);
+    }
+  });
 });
 
 describe("boot-view", () => {
@@ -181,6 +198,43 @@ describe("boot-view", () => {
     history.replaceState(null, "", "/#dark");
     expect(() => runBootView()).not.toThrow();
     expect(window.__boot).toBeUndefined();
+  });
+
+  it("records the viewport the view was computed for", () => {
+    mountCanvas();
+    runBootView();
+    expect(window.__bootViewport).toEqual(viewport);
+  });
+
+  it("lifts the deep-link gate on every path", () => {
+    const paths: [string, () => void][] = [
+      ["/#dark", () => mountCanvas()],
+      ["/#nope", () => mountCanvas()],
+      ["/#%E0%A4%A", () => mountCanvas()],
+      ["/#dark", () => mountCanvas('data-cx="abc" data-cy="1210"')],
+      ["/#dark", () => (document.body.innerHTML = "")],
+    ];
+    for (const [url, mount] of paths) {
+      mount();
+      history.replaceState(null, "", url);
+      html.dataset.deep = "";
+      runBootView();
+      expect(html.hasAttribute("data-deep"), url).toBe(false);
+    }
+  });
+
+  it("lifts the deep-link gate even when the view step throws", () => {
+    mountCanvas();
+    history.replaceState(null, "", "/#dark");
+    html.dataset.deep = "";
+    Object.defineProperty(window, "innerWidth", {
+      configurable: true,
+      get() {
+        throw new Error("boom");
+      },
+    });
+    expect(() => runBootView()).toThrow("boom");
+    expect(html.hasAttribute("data-deep")).toBe(false);
   });
 });
 

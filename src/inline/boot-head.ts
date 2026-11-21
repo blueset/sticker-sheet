@@ -27,6 +27,9 @@ try {
   root.lang = isLang(language) ? language : "en";
   root.classList.toggle("dark", resolved === "dark");
   root.style.colorScheme = resolved;
+  // Hides the canvas until boot-view centres it on the hashed sticker
+  // (global.css reveals it after 1.5 s even if boot-view never runs).
+  if (location.hash.length > 1) root.dataset.deep = "";
 } catch {
   // Falling back to the markup defaults is better than a console error.
 }

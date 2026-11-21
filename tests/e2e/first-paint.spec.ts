@@ -2,6 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 import fs from "node:fs";
 import path from "node:path";
 import { contract } from "../contract.ts";
+import { viewTransformFor } from "../../src/lib/geometry.ts";
 
 interface Placement {
   left: number;
@@ -94,6 +95,12 @@ test.describe("without JavaScript", () => {
         ).length,
     );
     expect(liveVisible, "[data-live] nodes visible without JS").toBe(0);
+  });
+
+  test("no-JS: a deep link does not hide the canvas", async ({ page }) => {
+    await page.goto("/#riddler");
+    expect(await page.evaluate(() => document.documentElement.hasAttribute("data-deep"))).toBe(false);
+    await expect(page.locator(contract.viewer)).toHaveCSS("visibility", "visible");
   });
 });
 
@@ -397,4 +404,172 @@ test("first frame uses the saved theme", async ({ page }) => {
   await page.waitForFunction(() => "__first" in window);
   const first = await page.evaluate(() => (window as unknown as { __first: unknown }).__first);
   expect(first).toEqual({ dark: true, colorScheme: "dark", lang: "ja" });
+});
+
+test("a saved system theme follows the OS scheme without a reload", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.addInitScript(() => {
+    localStorage.setItem("theme", "system");
+    requestAnimationFrame(() => {
+      (window as unknown as { __firstDark: boolean }).__firstDark = document.documentElement.classList.contains("dark");
+    });
+  });
+  const scheme = () =>
+    page.evaluate(() => ({
+      dark: document.documentElement.classList.contains("dark"),
+      colorScheme: document.documentElement.style.colorScheme,
+    }));
+
+  await page.goto("/", { waitUntil: "load" });
+  await page.waitForFunction(() => "__firstDark" in window);
+  expect(await page.evaluate(() => (window as unknown as { __firstDark: boolean }).__firstDark)).toBe(true);
+  expect(await scheme()).toEqual({ dark: true, colorScheme: "dark" });
+
+  await page.emulateMedia({ colorScheme: "light" });
+  await expect.poll(scheme).toEqual({ dark: false, colorScheme: "light" });
+  await page.emulateMedia({ colorScheme: "dark" });
+  await expect.poll(scheme).toEqual({ dark: true, colorScheme: "dark" });
+  expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe("system");
+});
+
+test.describe("deep link", () => {
+  interface Frame {
+    visibility: string;
+    x: number;
+    y: number;
+    scale: number;
+  }
+
+  // Records the wrapper's visibility and the canvas transform on every frame
+  // from the one the canvas first exists in.
+  const recordFrames = (page: Page) =>
+    page.addInitScript(() => {
+      const w = window as unknown as { __frames: Frame[]; __cls: number };
+      w.__frames = [];
+      w.__cls = 0;
+      try {
+        new PerformanceObserver((list) => {
+          for (const entry of list.getEntries() as unknown as { value: number; hadRecentInput: boolean }[]) {
+            if (!entry.hadRecentInput) w.__cls += entry.value;
+          }
+        }).observe({ type: "layout-shift", buffered: true });
+      } catch {
+        // Unsupported entry type; the frame samples still apply.
+      }
+      const sample = () => {
+        const wrapper = document.getElementById("canvasWrapper");
+        const canvas = document.getElementById("canvas");
+        if (wrapper && canvas) {
+          const m = new DOMMatrix(getComputedStyle(canvas).transform);
+          w.__frames.push({ visibility: getComputedStyle(wrapper).visibility, x: m.e, y: m.f, scale: m.a });
+        }
+        requestAnimationFrame(sample);
+      };
+      requestAnimationFrame(sample);
+    });
+
+  const frames = (page: Page) => page.evaluate(() => (window as unknown as { __frames: Frame[] }).__frames);
+
+  async function settle(page: Page): Promise<void> {
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    });
+  }
+
+  function expectView(frame: Frame | undefined, want: { x: number; y: number; scale: number }, label: string): void {
+    expect(frame, `${label}: no visible frame`).toBeDefined();
+    expect(Math.abs(frame!.x - want.x), `${label} x ${frame!.x} vs ${want.x}`).toBeLessThanOrEqual(0.01);
+    expect(Math.abs(frame!.y - want.y), `${label} y ${frame!.y} vs ${want.y}`).toBeLessThanOrEqual(0.01);
+    expect(frame!.scale, `${label} scale`).toBe(want.scale);
+  }
+
+  // Same parking technique as the canvas spec above: the parser stops after
+  // the last sticker, before `boot-view` centres on the hashed sticker.
+  test("the canvas stays hidden until the hashed view is applied", async ({ page }) => {
+    const slug = "riddler";
+    const marker = '<script type="application/json" id="live-exprs"';
+    let release = () => {};
+    const released = new Promise<void>((resolve) => (release = resolve));
+
+    await recordFrames(page);
+    await page.route("**/__hold.js", async (route) => {
+      await released;
+      await route.fulfill({ contentType: "text/javascript", body: "" });
+    });
+    await page.route(
+      (url) => url.pathname === "/",
+      async (route) => {
+        const html = await (await route.fetch()).text();
+        expect(html).toContain(marker);
+        await route.fulfill({
+          contentType: "text/html; charset=utf-8",
+          body: html.replace(marker, `<script src="/__hold.js"></script>${marker}`),
+        });
+      },
+    );
+
+    const held = page.waitForRequest("**/__hold.js");
+    const navigation = page.goto(`/#${slug}`, { waitUntil: "load" });
+    try {
+      await held;
+      const parked = await page.evaluate(async () => {
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        return {
+          deep: document.documentElement.hasAttribute("data-deep"),
+          wrapper: getComputedStyle(document.getElementById("canvasWrapper")!).visibility,
+          controls: getComputedStyle(document.getElementById("controls") ?? document.body).visibility,
+          stickers: document.querySelectorAll("button.sticker").length,
+        };
+      });
+      release();
+      await navigation;
+      await settle(page);
+
+      expect(parked).toEqual({ deep: true, wrapper: "hidden", controls: "visible", stickers: 63 });
+
+      const { center, viewport, deep } = await page.evaluate((s) => {
+        const el = document.querySelector<HTMLElement>(`[data-slug="${s}"]`)!;
+        return {
+          center: { x: +el.dataset.cx!, y: +el.dataset.cy! },
+          viewport: { w: innerWidth, h: innerHeight },
+          deep: document.documentElement.hasAttribute("data-deep"),
+        };
+      }, slug);
+      expect(Math.hypot(center.x - 1500, center.y - 1500), "the slug must be far from the centre").toBeGreaterThan(300);
+      expect(deep).toBe(false);
+
+      const want = viewTransformFor(center, 1, viewport);
+      const sampled = await frames(page);
+      const visible = sampled.filter((f) => f.visibility === "visible");
+      expectView(visible[0], want, "first visible frame");
+      expect(
+        visible.filter((f) => Math.abs(f.x - want.x) > 0.01 || Math.abs(f.y - want.y) > 0.01 || f.scale !== 1),
+        "visible frames away from the hashed view",
+      ).toEqual([]);
+      expect(await page.evaluate(() => (window as unknown as { __cls: number }).__cls)).toBe(0);
+    } finally {
+      release();
+      await navigation.catch(() => undefined);
+    }
+  });
+
+  for (const hash of ["#no-such-sticker", "#%E0%A4%A", "#"]) {
+    test(`${hash} ends visible at the default view`, async ({ page }) => {
+      await recordFrames(page);
+      await page.goto(`/${hash}`, { waitUntil: "load" });
+      await settle(page);
+      const state = await page.evaluate(() => ({
+        deep: document.documentElement.hasAttribute("data-deep"),
+        visibility: getComputedStyle(document.getElementById("canvasWrapper")!).visibility,
+        viewport: { w: innerWidth, h: innerHeight },
+      }));
+      expect(state.deep, "boot-view clears the gate").toBe(false);
+      expect(state.visibility).toBe("visible");
+      const want = { x: (state.viewport.w - 3000) / 2, y: (state.viewport.h - 3000) / 2, scale: 1 };
+      const visible = (await frames(page)).filter((f) => f.visibility === "visible");
+      expectView(visible[0], want, "first visible frame");
+      expectView(visible[visible.length - 1], want, "last frame");
+    });
+  }
 });

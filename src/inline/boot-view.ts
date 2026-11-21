@@ -3,6 +3,9 @@ import { viewTransformFor, type Transform } from "../lib/geometry";
 declare global {
   interface Window {
     __boot?: Transform;
+    // The viewport `__boot` was computed for, so the viewer can tell whether
+    // it changed before it started.
+    __bootViewport?: { w: number; h: number };
   }
 }
 
@@ -27,15 +30,21 @@ function hashedCenter(): { x: number; y: number } | null {
 
 const canvas = document.getElementById("canvas");
 
-if (canvas) {
-  const viewport = { w: window.innerWidth, h: window.innerHeight };
-  const center = hashedCenter();
-  const view: Transform = center
-    ? viewTransformFor(center, 1, viewport)
-    : { x: (viewport.w - CANVAS_SIZE) / 2, y: (viewport.h - CANVAS_SIZE) / 2, scale: 1 };
+try {
+  if (canvas) {
+    const viewport = { w: window.innerWidth, h: window.innerHeight };
+    const center = hashedCenter();
+    const view: Transform = center
+      ? viewTransformFor(center, 1, viewport)
+      : { x: (viewport.w - CANVAS_SIZE) / 2, y: (viewport.h - CANVAS_SIZE) / 2, scale: 1 };
 
-  canvas.style.transform = `translate(${view.x}px, ${view.y}px) scale(1)`;
-  window.__boot = view;
+    canvas.style.transform = `translate(${view.x}px, ${view.y}px) scale(1)`;
+    window.__boot = view;
+    window.__bootViewport = viewport;
+  }
+} finally {
+  // Lifts boot-head's deep-link gate in every path, including unknown slugs.
+  document.documentElement.removeAttribute("data-deep");
 }
 
 // Date-dependent expressions are prerendered as hidden `[data-live]` nodes; the
