@@ -37,3 +37,28 @@ if (canvas) {
   canvas.style.transform = `translate(${view.x}px, ${view.y}px) scale(1)`;
   window.__boot = view;
 }
+
+// Date-dependent expressions are prerendered as hidden `[data-live]` nodes; the
+// page's CSS keeps each hidden until it is filled, so no stale value ever paints.
+function fillLive(): void {
+  let table: Record<string, Record<string, string[]>> | null = null;
+  try {
+    table = JSON.parse(document.getElementById("live-exprs")?.textContent ?? "");
+  } catch {
+    // A missing or malformed table leaves every live node hidden.
+  }
+  for (const node of document.querySelectorAll<HTMLElement>("[data-live]")) {
+    const slug = node.closest<HTMLElement>("[data-slug]")?.dataset.slug;
+    const lang = node.closest<HTMLElement>("[data-l]")?.dataset.l;
+    const expr = slug && lang ? table?.[slug]?.[lang]?.[+node.dataset.live!] : undefined;
+    if (typeof expr !== "string") continue;
+    try {
+      node.textContent = String(new Function(`return(${expr})`)());
+      node.dataset.filled = "";
+    } catch {
+      // This node stays hidden; the others still fill.
+    }
+  }
+}
+
+fillLive();

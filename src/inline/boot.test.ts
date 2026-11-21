@@ -183,3 +183,100 @@ describe("boot-view", () => {
     expect(window.__boot).toBeUndefined();
   });
 });
+
+describe("boot-view live fill", () => {
+  type Table = Record<string, Record<string, string[]>>;
+
+  const variant = (lang: string, ...indexes: number[]) =>
+    `<div data-l="${lang}">${indexes.map((i) => `<span data-live="${i}">stale</span>`).join(" ")}</div>`;
+  const sticker = (slug: string, ...variants: string[]) =>
+    `<button class="sticker" data-slug="${slug}">${variants.join("")}</button>`;
+  const mount = (canvas: string, table?: Table | string) => {
+    const json = typeof table === "string" ? table : JSON.stringify(table);
+    document.body.innerHTML =
+      `<div id="canvas">${canvas}</div>` +
+      (table === undefined ? "" : `<script type="application/json" id="live-exprs">${json}</script>`);
+  };
+  const live = () => [...document.querySelectorAll<HTMLElement>("[data-live]")];
+  const filled = (node: Element) => node.hasAttribute("data-filled");
+
+  it("sets the text and marks the node filled", () => {
+    mount(sticker("date", variant("en", 0)), { date: { en: ["new Date(0).getUTCFullYear()"] } });
+    runBootView();
+    const [node] = live();
+    expect(node.textContent).toBe("1970");
+    expect(node.getAttribute("data-filled")).toBe("");
+  });
+
+  it("fills every language variant, hidden ones included, from its own table entry", () => {
+    mount(
+      sticker("date", variant("en", 0, 1), variant("ja", 0)).replace('data-l="ja"', 'data-l="ja" hidden'),
+      { date: { en: ["'en0'", "'en1'"], ja: ["'ja0'"] } },
+    );
+    runBootView();
+    expect(live().map((n) => n.textContent)).toEqual(["en0", "en1", "ja0"]);
+    expect(live().every(filled)).toBe(true);
+  });
+
+  it("looks each node up by its own sticker, language and index", () => {
+    mount(sticker("a", variant("en", 1)) + sticker("b", variant("en", 0), variant("zh-Hans", 0)), {
+      a: { en: ["'a0'", "'a1'"] },
+      b: { en: ["'b-en'"], "zh-Hans": ["'b-zh'"] },
+    });
+    runBootView();
+    expect(live().map((n) => n.textContent)).toEqual(["a1", "b-en", "b-zh"]);
+  });
+
+  it("fills without a canvas step to depend on", () => {
+    document.body.innerHTML =
+      sticker("date", variant("en", 0)) +
+      `<script type="application/json" id="live-exprs">{"date":{"en":["1 + 1"]}}</script>`;
+    runBootView();
+    expect(live()[0].textContent).toBe("2");
+  });
+
+  it("fills alongside the hash centring", () => {
+    mount(sticker("date", variant("en", 0)).replace(">", ' data-cx="1725" data-cy="1210">'), {
+      date: { en: ["40 + 2"] },
+    });
+    history.replaceState(null, "", "/#date");
+    runBootView();
+    expect(live()[0].textContent).toBe("42");
+    expect(window.__boot).toBeDefined();
+  });
+
+  it("leaves nodes hidden without throwing when the table is missing or malformed", () => {
+    for (const table of [undefined, "{not json", "", "null", '{"date":null}']) {
+      mount(sticker("date", variant("en", 0)), table as Table | string | undefined);
+      expect(() => runBootView()).not.toThrow();
+      expect(live().some(filled)).toBe(false);
+      expect(live()[0].textContent).toBe("stale");
+    }
+  });
+
+  it("leaves a node with no table entry unfilled and fills the rest", () => {
+    mount(sticker("date", variant("en", 0, 5), variant("ja", 0)), {
+      date: { en: ["'ok'"] },
+    });
+    runBootView();
+    expect(live().map(filled)).toEqual([true, false, false]);
+    expect(live().map((n) => n.textContent)).toEqual(["ok", "stale", "stale"]);
+  });
+
+  it("leaves a node with no sticker or language ancestor unfilled", () => {
+    mount('<span data-live="0">stale</span>' + sticker("date", '<span data-live="0">stale</span>'), {
+      date: { en: ["'no'"] },
+    });
+    runBootView();
+    expect(live().some(filled)).toBe(false);
+  });
+
+  it("keeps a node unfilled when its expression throws, and still fills the next one", () => {
+    mount(sticker("date", variant("en", 0, 1, 2)), {
+      date: { en: ["missing.value", "'ok'", "(1 +"] },
+    });
+    expect(() => runBootView()).not.toThrow();
+    expect(live().map(filled)).toEqual([false, true, false]);
+    expect(live().map((n) => n.textContent)).toEqual(["stale", "ok", "stale"]);
+  });
+});
