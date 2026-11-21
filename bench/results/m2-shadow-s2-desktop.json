@@ -1,0 +1,1640 @@
+{
+  "label": "m2-shadow-s2",
+  "profile": "desktop",
+  "meta": {
+    "label": "m2-shadow-s2",
+    "profile": "desktop",
+    "chromium": "159.0.8154.6",
+    "node": "v26.12.1",
+    "os": "Windows_NT 10.0.26300 (x64)",
+    "cpu": "AMD Ryzen 9 9950X 16-Core Processor            ",
+    "cores": 32,
+    "memGb": 94,
+    "cpuSlowdown": 1,
+    "network": null,
+    "runs": 5,
+    "recordedAt": "2026-11-21T20:40:09.707Z",
+    "query": "?v=shadow:s2"
+  },
+  "runs": {
+    "firstRender": 0,
+    "gestures": {
+      "button-zoom": 5,
+      "drag-inertia": 5,
+      "wheel-zoom": 5
+    }
+  },
+  "firstRender": null,
+  "gestures": {
+    "button-zoom": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 84,
+        "p95": 85,
+        "min": 84,
+        "max": 85,
+        "spreadPct": 1.19,
+        "values": [
+          84,
+          84,
+          85,
+          84,
+          84
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 82.857,
+        "p95": 85.971,
+        "min": 74.956,
+        "max": 85.971,
+        "spreadPct": 13.294,
+        "values": [
+          84.953,
+          80.457,
+          82.857,
+          74.956,
+          85.971
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 477.535,
+        "p95": 494.597,
+        "min": 475.41,
+        "max": 494.597,
+        "spreadPct": 4.018,
+        "values": [
+          475.41,
+          477.344,
+          481.697,
+          477.535,
+          494.597
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5.381,
+        "p95": 5.402,
+        "min": 5.375,
+        "max": 5.402,
+        "spreadPct": 0.504,
+        "values": [
+          5.383,
+          5.381,
+          5.375,
+          5.402,
+          5.376
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1408,
+        "p95": 1417.6,
+        "min": 1401.2,
+        "max": 1417.6,
+        "spreadPct": 1.165,
+        "values": [
+          1404.4,
+          1408,
+          1417.6,
+          1401.2,
+          1415.7
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 36,
+        "p95": 37,
+        "min": 33,
+        "max": 37,
+        "spreadPct": 11.111,
+        "values": [
+          36,
+          37,
+          35,
+          36,
+          33
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 2,
+        "p95": 3,
+        "min": 2,
+        "max": 3,
+        "spreadPct": 50,
+        "values": [
+          2,
+          3,
+          3,
+          2,
+          2
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 120.725,
+        "p95": 142.519,
+        "min": 105.464,
+        "max": 142.519,
+        "spreadPct": 30.694,
+        "values": [
+          120.725,
+          142.519,
+          105.464,
+          120.395,
+          124.864
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 46.172,
+        "p95": 58.209,
+        "min": 42.425,
+        "max": 58.209,
+        "spreadPct": 34.185,
+        "values": [
+          42.425,
+          46.172,
+          45.918,
+          54.491,
+          58.209
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 20.059,
+        "p95": 21.24,
+        "min": 18.951,
+        "max": 21.24,
+        "spreadPct": 11.411,
+        "values": [
+          20.986,
+          20.043,
+          20.059,
+          18.951,
+          21.24
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 6.878,
+        "p95": 7.037,
+        "min": 6.122,
+        "max": 7.037,
+        "spreadPct": 13.303,
+        "values": [
+          7.037,
+          6.878,
+          6.739,
+          6.122,
+          6.911
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 97,
+        "p95": 97,
+        "min": 97,
+        "max": 97,
+        "spreadPct": 0,
+        "values": [
+          97,
+          97,
+          97,
+          97,
+          97
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3.3,
+        "p95": 4.7,
+        "min": 2.8,
+        "max": 4.7,
+        "spreadPct": 57.576,
+        "values": [
+          4.7,
+          3.3,
+          2.8,
+          3.3,
+          3.9
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5,
+        "p95": 5,
+        "min": 5,
+        "max": 5,
+        "spreadPct": 0,
+        "values": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "crispAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 148.597,
+        "p95": 160.797,
+        "min": 144.61,
+        "max": 160.797,
+        "spreadPct": 10.893,
+        "values": [
+          144.61,
+          148.044,
+          148.597,
+          157.535,
+          160.797
+        ]
+      },
+      "motionAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 330.8,
+        "p95": 333.8,
+        "min": 320,
+        "max": 333.8,
+        "spreadPct": 4.172,
+        "values": [
+          330.8,
+          329.3,
+          333.1,
+          320,
+          333.8
+        ]
+      },
+      "settleAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 84.8,
+        "p95": 99.9,
+        "min": 84.4,
+        "max": 99.9,
+        "spreadPct": 18.278,
+        "values": [
+          84.8,
+          84.4,
+          99.9,
+          84.4,
+          85.7
+        ]
+      },
+      "rasterAfterSettleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 63.644,
+        "p95": 75.097,
+        "min": 48.697,
+        "max": 75.097,
+        "spreadPct": 41.481,
+        "values": [
+          59.81,
+          63.644,
+          48.697,
+          73.135,
+          75.097
+        ]
+      }
+    },
+    "drag-inertia": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 97,
+        "p95": 97,
+        "min": 96,
+        "max": 97,
+        "spreadPct": 1.031,
+        "values": [
+          97,
+          97,
+          97,
+          96,
+          96
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 93.029,
+        "p95": 93.807,
+        "min": 90.882,
+        "max": 93.807,
+        "spreadPct": 3.144,
+        "values": [
+          90.882,
+          91.754,
+          93.308,
+          93.807,
+          93.029
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1174.273,
+        "p95": 1174.938,
+        "min": 1159.508,
+        "max": 1174.938,
+        "spreadPct": 1.314,
+        "values": [
+          1159.508,
+          1174.836,
+          1163.937,
+          1174.938,
+          1174.273
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5.567,
+        "p95": 5.596,
+        "min": 5.551,
+        "max": 5.596,
+        "spreadPct": 0.809,
+        "values": [
+          5.568,
+          5.567,
+          5.551,
+          5.553,
+          5.596
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1624.1,
+        "p95": 1631.3,
+        "min": 1600.5,
+        "max": 1631.3,
+        "spreadPct": 1.896,
+        "values": [
+          1631.3,
+          1628.5,
+          1624.1,
+          1600.5,
+          1601.1
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 48,
+        "p95": 49,
+        "min": 41,
+        "max": 49,
+        "spreadPct": 16.667,
+        "values": [
+          42,
+          41,
+          49,
+          49,
+          48
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 9,
+        "p95": 10,
+        "min": 8,
+        "max": 10,
+        "spreadPct": 22.222,
+        "values": [
+          8,
+          9,
+          9,
+          10,
+          8
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 111.672,
+        "p95": 128.644,
+        "min": 93.244,
+        "max": 128.644,
+        "spreadPct": 31.7,
+        "values": [
+          107.377,
+          93.244,
+          118.445,
+          128.644,
+          111.672
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 11.713,
+        "p95": 13.325,
+        "min": 11.126,
+        "max": 13.325,
+        "spreadPct": 18.774,
+        "values": [
+          11.126,
+          13.325,
+          11.713,
+          11.491,
+          11.933
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 22.389,
+        "p95": 22.949,
+        "min": 21.892,
+        "max": 22.949,
+        "spreadPct": 4.721,
+        "values": [
+          22.442,
+          22.063,
+          21.892,
+          22.949,
+          22.389
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 4.861,
+        "p95": 4.959,
+        "min": 4.731,
+        "max": 4.959,
+        "spreadPct": 4.69,
+        "values": [
+          4.829,
+          4.861,
+          4.904,
+          4.959,
+          4.731
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 87,
+        "p95": 87,
+        "min": 86,
+        "max": 87,
+        "spreadPct": 1.149,
+        "values": [
+          87,
+          87,
+          86,
+          87,
+          87
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.4,
+        "p95": 17.8,
+        "min": 14.2,
+        "max": 17.8,
+        "spreadPct": 21.951,
+        "values": [
+          17.5,
+          17.8,
+          16.4,
+          14.2,
+          14.4
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1,
+        "p95": 1,
+        "min": 1,
+        "max": 1,
+        "spreadPct": 0,
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "crispAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 113.838,
+        "p95": 115.736,
+        "min": 97.808,
+        "max": 115.736,
+        "spreadPct": 15.749,
+        "values": [
+          97.808,
+          115.736,
+          113.937,
+          113.838,
+          113.073
+        ]
+      },
+      "motionAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1061.1,
+        "p95": 1061.7,
+        "min": 1050,
+        "max": 1061.7,
+        "spreadPct": 1.103,
+        "values": [
+          1061.7,
+          1059.1,
+          1050,
+          1061.1,
+          1061.2
+        ]
+      },
+      "settleAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 85.4,
+        "p95": 94.1,
+        "min": 84.6,
+        "max": 94.1,
+        "spreadPct": 11.124,
+        "values": [
+          85.4,
+          91.5,
+          84.9,
+          84.6,
+          94.1
+        ]
+      },
+      "rasterAfterSettleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 24.236,
+        "p95": 29.238,
+        "min": 12.408,
+        "max": 29.238,
+        "spreadPct": 69.442,
+        "values": [
+          12.408,
+          24.236,
+          29.037,
+          29.238,
+          18.973
+        ]
+      }
+    },
+    "wheel-zoom": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 50,
+        "p95": 50,
+        "min": 50,
+        "max": 50,
+        "spreadPct": 0,
+        "values": [
+          50,
+          50,
+          50,
+          50,
+          50
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 81.535,
+        "p95": 82.081,
+        "min": 75.152,
+        "max": 82.081,
+        "spreadPct": 8.498,
+        "values": [
+          81.63,
+          75.152,
+          82.081,
+          78.748,
+          81.535
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 136.199,
+        "p95": 144.576,
+        "min": 130.266,
+        "max": 144.576,
+        "spreadPct": 10.507,
+        "values": [
+          144.576,
+          136.199,
+          132.165,
+          130.266,
+          138.437
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5.221,
+        "p95": 5.233,
+        "min": 5.205,
+        "max": 5.233,
+        "spreadPct": 0.526,
+        "values": [
+          5.233,
+          5.215,
+          5.223,
+          5.221,
+          5.205
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 845.3,
+        "p95": 847.6,
+        "min": 834.4,
+        "max": 847.6,
+        "spreadPct": 1.562,
+        "values": [
+          847.6,
+          834.4,
+          845.8,
+          843.9,
+          845.3
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 22,
+        "p95": 24,
+        "min": 21,
+        "max": 24,
+        "spreadPct": 13.636,
+        "values": [
+          21,
+          24,
+          21,
+          22,
+          24
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 2,
+        "min": 0,
+        "max": 2,
+        "spreadPct": null,
+        "values": [
+          0,
+          0,
+          1,
+          2,
+          0
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 195.432,
+        "p95": 212.13,
+        "min": 183.734,
+        "max": 212.13,
+        "spreadPct": 14.53,
+        "values": [
+          202.165,
+          195.432,
+          183.734,
+          212.13,
+          189.917
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 52.013,
+        "p95": 61.249,
+        "min": 46.542,
+        "max": 61.249,
+        "spreadPct": 28.276,
+        "values": [
+          61.249,
+          52.013,
+          48.123,
+          46.542,
+          55.197
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 17.903,
+        "p95": 18.677,
+        "min": 16.514,
+        "max": 18.677,
+        "spreadPct": 12.082,
+        "values": [
+          17.903,
+          16.514,
+          17.141,
+          18.677,
+          17.92
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1.241,
+        "p95": 1.442,
+        "min": 1.119,
+        "max": 1.442,
+        "spreadPct": 26.027,
+        "values": [
+          1.241,
+          1.237,
+          1.442,
+          1.422,
+          1.119
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3.533,
+        "p95": 3.703,
+        "min": 3.482,
+        "max": 3.703,
+        "spreadPct": 6.255,
+        "values": [
+          3.703,
+          3.482,
+          3.525,
+          3.533,
+          3.632
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 2,
+        "p95": 2,
+        "min": 2,
+        "max": 2,
+        "spreadPct": 0,
+        "values": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 56,
+        "p95": 56,
+        "min": 54,
+        "max": 56,
+        "spreadPct": 3.571,
+        "values": [
+          56,
+          56,
+          56,
+          54,
+          56
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 49.8,
+        "p95": 50.4,
+        "min": 44.7,
+        "max": 50.4,
+        "spreadPct": 11.446,
+        "values": [
+          49.4,
+          50.2,
+          49.8,
+          44.7,
+          50.4
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5,
+        "p95": 5,
+        "min": 5,
+        "max": 5,
+        "spreadPct": 0,
+        "values": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "crispAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 254.399,
+        "p95": 263.276,
+        "min": 249.366,
+        "max": 263.276,
+        "spreadPct": 5.468,
+        "values": [
+          263.276,
+          254.399,
+          250.665,
+          249.366,
+          257.037
+        ]
+      },
+      "motionAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": -118.6,
+        "p95": -118.2,
+        "min": -119.1,
+        "max": -118.2,
+        "spreadPct": 0.759,
+        "values": [
+          -118.7,
+          -118.2,
+          -118.5,
+          -119.1,
+          -118.6
+        ]
+      },
+      "settleAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 185.3,
+        "p95": 195.4,
+        "min": 184.5,
+        "max": 195.4,
+        "spreadPct": 5.882,
+        "values": [
+          184.5,
+          185.2,
+          195.4,
+          185.3,
+          187
+        ]
+      },
+      "rasterAfterSettleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 69.199,
+        "p95": 78.776,
+        "min": 55.265,
+        "max": 78.776,
+        "spreadPct": 33.976,
+        "values": [
+          78.776,
+          69.199,
+          55.265,
+          64.066,
+          70.037
+        ]
+      }
+    }
+  },
+  "raw": {
+    "firstRender": [],
+    "gestures": [
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 84.953,
+        "crispAfterMs": 475.4100000858307,
+        "peakHeapMb": 5.3829345703125,
+        "motionMs": 1404.3999999523166,
+        "traceOver16": 36,
+        "traceOver33": 2,
+        "rasterMs": 120.725,
+        "rasterAfterInputMs": 42.425,
+        "scriptMs": 20.986000000000004,
+        "layoutMs": 0,
+        "styleMs": 7.037000000000001,
+        "layoutCount": 0,
+        "styleRecalcCount": 97,
+        "inputDelayMs": 4.700000047683716,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 144.6100001335144,
+        "motionAfterInputMs": 330.7999999284748,
+        "settleAfterMotionMs": 84.79999997615778,
+        "rasterAfterSettleMs": 59.81000018119812
+      },
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 80.457,
+        "crispAfterMs": 477.3439999818802,
+        "peakHeapMb": 5.38055419921875,
+        "motionMs": 1408,
+        "traceOver16": 37,
+        "traceOver33": 3,
+        "rasterMs": 142.519,
+        "rasterAfterInputMs": 46.172,
+        "scriptMs": 20.043,
+        "layoutMs": 0,
+        "styleMs": 6.877999999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 97,
+        "inputDelayMs": 3.299999952316284,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 148.0440000295639,
+        "motionAfterInputMs": 329.2999999523163,
+        "settleAfterMotionMs": 84.39999997615814,
+        "rasterAfterSettleMs": 63.64400005340576
+      },
+      {
+        "name": "button-zoom",
+        "frames": 85,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 82.857,
+        "crispAfterMs": 481.6970000267029,
+        "peakHeapMb": 5.374935150146484,
+        "motionMs": 1417.6000000238419,
+        "traceOver16": 35,
+        "traceOver33": 3,
+        "rasterMs": 105.464,
+        "rasterAfterInputMs": 45.918,
+        "scriptMs": 20.059,
+        "layoutMs": 0,
+        "styleMs": 6.739,
+        "layoutCount": 0,
+        "styleRecalcCount": 97,
+        "inputDelayMs": 2.799999952316284,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 148.59700000286102,
+        "motionAfterInputMs": 333.10000002384186,
+        "settleAfterMotionMs": 99.89999997615814,
+        "rasterAfterSettleMs": 48.69700002670288
+      },
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 74.956,
+        "crispAfterMs": 477.5349998474121,
+        "peakHeapMb": 5.402027130126953,
+        "motionMs": 1401.199999952316,
+        "traceOver16": 36,
+        "traceOver33": 2,
+        "rasterMs": 120.395,
+        "rasterAfterInputMs": 54.491,
+        "scriptMs": 18.951000000000004,
+        "layoutMs": 0,
+        "styleMs": 6.121999999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 97,
+        "inputDelayMs": 3.3000000715255737,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 157.5349999666214,
+        "motionAfterInputMs": 319.9999999046322,
+        "settleAfterMotionMs": 84.40000007152594,
+        "rasterAfterSettleMs": 73.13499987125397
+      },
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 85.971,
+        "crispAfterMs": 494.597000002861,
+        "peakHeapMb": 5.376316070556641,
+        "motionMs": 1415.7000000953676,
+        "traceOver16": 33,
+        "traceOver33": 2,
+        "rasterMs": 124.864,
+        "rasterAfterInputMs": 58.209,
+        "scriptMs": 21.240000000000002,
+        "layoutMs": 0,
+        "styleMs": 6.9110000000000005,
+        "layoutCount": 0,
+        "styleRecalcCount": 97,
+        "inputDelayMs": 3.899999976158142,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 160.79700005054474,
+        "motionAfterInputMs": 333.8000000000002,
+        "settleAfterMotionMs": 85.69999999999982,
+        "rasterAfterSettleMs": 75.09700000286102
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 97,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 90.882,
+        "crispAfterMs": 1159.5080000162125,
+        "peakHeapMb": 5.56805419921875,
+        "motionMs": 1631.3000000238417,
+        "traceOver16": 42,
+        "traceOver33": 8,
+        "rasterMs": 107.377,
+        "rasterAfterInputMs": 11.126,
+        "scriptMs": 22.441999999999997,
+        "layoutMs": 0,
+        "styleMs": 4.829000000000001,
+        "layoutCount": 0,
+        "styleRecalcCount": 87,
+        "inputDelayMs": 17.5,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 97.80799996852875,
+        "motionAfterInputMs": 1061.6999999999998,
+        "settleAfterMotionMs": 85.40000002384204,
+        "rasterAfterSettleMs": 12.407999992370605
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 97,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 91.754,
+        "crispAfterMs": 1174.8359999656677,
+        "peakHeapMb": 5.567272186279297,
+        "motionMs": 1628.4999999284746,
+        "traceOver16": 41,
+        "traceOver33": 9,
+        "rasterMs": 93.244,
+        "rasterAfterInputMs": 13.325,
+        "scriptMs": 22.063,
+        "layoutMs": 0,
+        "styleMs": 4.860999999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 87,
+        "inputDelayMs": 17.800000071525574,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 115.73600006103516,
+        "motionAfterInputMs": 1059.0999999523165,
+        "settleAfterMotionMs": 91.50000007152539,
+        "rasterAfterSettleMs": 24.235999941825867
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 97,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 93.308,
+        "crispAfterMs": 1163.9369999170303,
+        "peakHeapMb": 5.5506744384765625,
+        "motionMs": 1624.099999976158,
+        "traceOver16": 49,
+        "traceOver33": 9,
+        "rasterMs": 118.445,
+        "rasterAfterInputMs": 11.713,
+        "scriptMs": 21.891999999999996,
+        "layoutMs": 0,
+        "styleMs": 4.904,
+        "layoutCount": 0,
+        "styleRecalcCount": 86,
+        "inputDelayMs": 16.399999976158142,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 113.93699991703033,
+        "motionAfterInputMs": 1049.999999952316,
+        "settleAfterMotionMs": 84.90000002384204,
+        "rasterAfterSettleMs": 29.036999940872192
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 96,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 93.807,
+        "crispAfterMs": 1174.9380000829697,
+        "peakHeapMb": 5.552669525146484,
+        "motionMs": 1600.5000000238415,
+        "traceOver16": 49,
+        "traceOver33": 10,
+        "rasterMs": 128.644,
+        "rasterAfterInputMs": 11.491,
+        "scriptMs": 22.949000000000005,
+        "layoutMs": 0,
+        "styleMs": 4.959,
+        "layoutCount": 0,
+        "styleRecalcCount": 87,
+        "inputDelayMs": 14.200000047683716,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 113.83800005912781,
+        "motionAfterInputMs": 1061.1000000476834,
+        "settleAfterMotionMs": 84.60000000000036,
+        "rasterAfterSettleMs": 29.23800003528595
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 96,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 93.029,
+        "crispAfterMs": 1174.272999882698,
+        "peakHeapMb": 5.595733642578125,
+        "motionMs": 1601.1000000953672,
+        "traceOver16": 48,
+        "traceOver33": 8,
+        "rasterMs": 111.672,
+        "rasterAfterInputMs": 11.933,
+        "scriptMs": 22.389,
+        "layoutMs": 0,
+        "styleMs": 4.730999999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 87,
+        "inputDelayMs": 14.399999976158142,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 113.07299983501434,
+        "motionAfterInputMs": 1061.1999999999998,
+        "settleAfterMotionMs": 94.09999995231647,
+        "rasterAfterSettleMs": 18.972999930381775
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 81.63,
+        "crispAfterMs": 144.57599997520447,
+        "peakHeapMb": 5.232574462890625,
+        "motionMs": 847.5999999284745,
+        "traceOver16": 21,
+        "traceOver33": 0,
+        "rasterMs": 202.165,
+        "rasterAfterInputMs": 61.249,
+        "scriptMs": 17.903000000000002,
+        "layoutMs": 1.240999999999999,
+        "styleMs": 3.703,
+        "layoutCount": 2,
+        "styleRecalcCount": 56,
+        "inputDelayMs": 49.39999997615814,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 263.2760000228882,
+        "motionAfterInputMs": -118.70000002384177,
+        "settleAfterMotionMs": 184.50000009536734,
+        "rasterAfterSettleMs": 78.7759999036789
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 75.152,
+        "crispAfterMs": 136.19900000095367,
+        "peakHeapMb": 5.21527099609375,
+        "motionMs": 834.4000000715255,
+        "traceOver16": 24,
+        "traceOver33": 0,
+        "rasterMs": 195.432,
+        "rasterAfterInputMs": 52.013,
+        "scriptMs": 16.514,
+        "layoutMs": 1.2369999999999985,
+        "styleMs": 3.4820000000000007,
+        "layoutCount": 2,
+        "styleRecalcCount": 56,
+        "inputDelayMs": 50.200000047683716,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 254.3989999294281,
+        "motionAfterInputMs": -118.19999995231638,
+        "settleAfterMotionMs": 185.19999995231638,
+        "rasterAfterSettleMs": 69.19900000095367
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 82.081,
+        "crispAfterMs": 132.16499996185303,
+        "peakHeapMb": 5.223079681396484,
+        "motionMs": 845.7999999761582,
+        "traceOver16": 21,
+        "traceOver33": 1,
+        "rasterMs": 183.734,
+        "rasterAfterInputMs": 48.123,
+        "scriptMs": 17.141,
+        "layoutMs": 1.4419999999999988,
+        "styleMs": 3.5250000000000004,
+        "layoutCount": 2,
+        "styleRecalcCount": 56,
+        "inputDelayMs": 49.799999952316284,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 250.66499996185303,
+        "motionAfterInputMs": -118.49999997615805,
+        "settleAfterMotionMs": 195.3999999523162,
+        "rasterAfterSettleMs": 55.264999985694885
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 78.748,
+        "crispAfterMs": 130.26600003242493,
+        "peakHeapMb": 5.220935821533203,
+        "motionMs": 843.9000000715255,
+        "traceOver16": 22,
+        "traceOver33": 2,
+        "rasterMs": 212.13,
+        "rasterAfterInputMs": 46.542,
+        "scriptMs": 18.677,
+        "layoutMs": 1.4219999999999997,
+        "styleMs": 3.5330000000000004,
+        "layoutCount": 2,
+        "styleRecalcCount": 54,
+        "inputDelayMs": 44.699999928474426,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 249.3659999370575,
+        "motionAfterInputMs": -119.09999992847452,
+        "settleAfterMotionMs": 185.29999997615823,
+        "rasterAfterSettleMs": 64.06599998474121
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 81.535,
+        "crispAfterMs": 138.43699991703033,
+        "peakHeapMb": 5.205104827880859,
+        "motionMs": 845.3000000000002,
+        "traceOver16": 24,
+        "traceOver33": 0,
+        "rasterMs": 189.917,
+        "rasterAfterInputMs": 55.197,
+        "scriptMs": 17.920000000000005,
+        "layoutMs": 1.1189999999999984,
+        "styleMs": 3.6319999999999997,
+        "layoutCount": 2,
+        "styleRecalcCount": 56,
+        "inputDelayMs": 50.39999997615814,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 257.0369999408722,
+        "motionAfterInputMs": -118.59999997615796,
+        "settleAfterMotionMs": 186.9999999523161,
+        "rasterAfterSettleMs": 70.03699994087219
+      }
+    ]
+  }
+}

@@ -1,0 +1,5563 @@
+{
+  "label": "m2-settle-none",
+  "profile": "mobile",
+  "meta": {
+    "label": "m2-settle-none",
+    "profile": "mobile",
+    "chromium": "159.0.8154.6",
+    "node": "v26.12.1",
+    "os": "Windows_NT 10.0.26300 (x64)",
+    "cpu": "AMD Ryzen 9 9950X 16-Core Processor            ",
+    "cores": 32,
+    "memGb": 94,
+    "cpuSlowdown": 4,
+    "network": {
+      "offline": false,
+      "latency": 165,
+      "downloadThroughput": 1012500,
+      "uploadThroughput": 168750
+    },
+    "runs": 5,
+    "recordedAt": "2026-11-21T20:52:37.315Z",
+    "query": "?v=settle:none"
+  },
+  "runs": {
+    "firstRender": 5,
+    "gestures": {
+      "button-zoom": 5,
+      "drag-inertia": 5,
+      "pinch": 5,
+      "wheel-zoom": 5
+    }
+  },
+  "firstRender": {
+    "fcp": {
+      "n": 5,
+      "nulls": 0,
+      "median": 756,
+      "p95": 832,
+      "min": 740,
+      "max": 832,
+      "spreadPct": 12.169,
+      "values": [
+        832,
+        756,
+        800,
+        740,
+        748
+      ]
+    },
+    "lcp": {
+      "n": 5,
+      "nulls": 0,
+      "median": 876,
+      "p95": 920,
+      "min": 832,
+      "max": 920,
+      "spreadPct": 10.046,
+      "values": [
+        920,
+        876,
+        896,
+        832,
+        864
+      ]
+    },
+    "tbt": {
+      "n": 5,
+      "nulls": 0,
+      "median": 0,
+      "p95": 10,
+      "min": 0,
+      "max": 10,
+      "spreadPct": null,
+      "values": [
+        0,
+        3,
+        0,
+        10,
+        0
+      ]
+    },
+    "cls": {
+      "n": 5,
+      "nulls": 0,
+      "median": 0,
+      "p95": 0,
+      "min": 0,
+      "max": 0,
+      "spreadPct": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "allStickersPaintedMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 2666,
+      "p95": 2713.7,
+      "min": 2621.3,
+      "max": 2713.7,
+      "spreadPct": 3.466,
+      "values": [
+        2713.7,
+        2621.3,
+        2708,
+        2666,
+        2626.6
+      ]
+    },
+    "liveCurrentMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 738.1,
+      "p95": 813.8,
+      "min": 726.6,
+      "max": 813.8,
+      "spreadPct": 11.814,
+      "values": [
+        813.8,
+        738.1,
+        791.4,
+        732.8,
+        726.6
+      ]
+    },
+    "inputReadyMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 563,
+      "p95": 605,
+      "min": 556,
+      "max": 605,
+      "spreadPct": 8.703,
+      "values": [
+        592,
+        563,
+        605,
+        562.7,
+        556
+      ]
+    },
+    "entryStartMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 267,
+      "p95": 296,
+      "min": 252,
+      "max": 296,
+      "spreadPct": 16.479,
+      "values": [
+        280,
+        267,
+        296,
+        252,
+        266
+      ]
+    },
+    "entryEndMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 488,
+      "p95": 522,
+      "min": 470,
+      "max": 522,
+      "spreadPct": 10.656,
+      "values": [
+        508,
+        488,
+        522,
+        470,
+        483
+      ]
+    },
+    "criticalPathJsGzip": {
+      "n": 5,
+      "nulls": 0,
+      "median": 8636,
+      "p95": 8636,
+      "min": 8636,
+      "max": 8636,
+      "spreadPct": 0,
+      "values": [
+        8636,
+        8636,
+        8636,
+        8636,
+        8636
+      ]
+    },
+    "bytes": {
+      "js": {
+        "n": 5,
+        "nulls": 0,
+        "median": 171374,
+        "p95": 171374,
+        "min": 171374,
+        "max": 171374,
+        "spreadPct": 0,
+        "values": [
+          171374,
+          171374,
+          171374,
+          171374,
+          171374
+        ]
+      },
+      "css": {
+        "n": 5,
+        "nulls": 0,
+        "median": 20540,
+        "p95": 20540,
+        "min": 20540,
+        "max": 20540,
+        "spreadPct": 0,
+        "values": [
+          20540,
+          20540,
+          20540,
+          20540,
+          20540
+        ]
+      },
+      "img": {
+        "n": 5,
+        "nulls": 0,
+        "median": 733627,
+        "p95": 733627,
+        "min": 733627,
+        "max": 733627,
+        "spreadPct": 0,
+        "values": [
+          733627,
+          733627,
+          733627,
+          733627,
+          733627
+        ]
+      },
+      "font": {
+        "n": 5,
+        "nulls": 0,
+        "median": 141714,
+        "p95": 141714,
+        "min": 141714,
+        "max": 141714,
+        "spreadPct": 0,
+        "values": [
+          141714,
+          141714,
+          141714,
+          141714,
+          141714
+        ]
+      },
+      "html": {
+        "n": 5,
+        "nulls": 0,
+        "median": 17968,
+        "p95": 17968,
+        "min": 17968,
+        "max": 17968,
+        "spreadPct": 0,
+        "values": [
+          17968,
+          17968,
+          17968,
+          17968,
+          17968
+        ]
+      },
+      "other": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "bytesBeforeLcp": {
+      "js": {
+        "n": 5,
+        "nulls": 0,
+        "median": 9637,
+        "p95": 9637,
+        "min": 9637,
+        "max": 9637,
+        "spreadPct": 0,
+        "values": [
+          9637,
+          9637,
+          9637,
+          9637,
+          9637
+        ]
+      },
+      "css": {
+        "n": 5,
+        "nulls": 0,
+        "median": 15930,
+        "p95": 15930,
+        "min": 15930,
+        "max": 15930,
+        "spreadPct": 0,
+        "values": [
+          15930,
+          15930,
+          15930,
+          15930,
+          15930
+        ]
+      },
+      "img": {
+        "n": 5,
+        "nulls": 0,
+        "median": 24004,
+        "p95": 56312,
+        "min": 14446,
+        "max": 56312,
+        "spreadPct": 174.413,
+        "values": [
+          56312,
+          56312,
+          14446,
+          24004,
+          24004
+        ]
+      },
+      "font": {
+        "n": 5,
+        "nulls": 0,
+        "median": 73220,
+        "p95": 73220,
+        "min": 73220,
+        "max": 73220,
+        "spreadPct": 0,
+        "values": [
+          73220,
+          73220,
+          73220,
+          73220,
+          73220
+        ]
+      },
+      "html": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "other": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "firstStickerMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 566.1,
+      "p95": 608,
+      "min": 554.8,
+      "max": 608,
+      "spreadPct": 9.398,
+      "values": [
+        597.1,
+        554.8,
+        608,
+        566.1,
+        560
+      ]
+    },
+    "stickersAtFcp": {
+      "n": 5,
+      "nulls": 0,
+      "median": 63,
+      "p95": 63,
+      "min": 63,
+      "max": 63,
+      "spreadPct": 0,
+      "values": [
+        63,
+        63,
+        63,
+        63,
+        63
+      ]
+    },
+    "ttiProxyMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 832,
+      "p95": 2889,
+      "min": 748,
+      "max": 2889,
+      "spreadPct": 257.332,
+      "values": [
+        832,
+        2865.4,
+        800,
+        2889,
+        748
+      ]
+    },
+    "longTaskCount": {
+      "n": 5,
+      "nulls": 0,
+      "median": 1,
+      "p95": 2,
+      "min": 1,
+      "max": 2,
+      "spreadPct": 100,
+      "values": [
+        1,
+        2,
+        1,
+        2,
+        1
+      ]
+    },
+    "cpuProbeMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 36.9,
+      "p95": 38.7,
+      "min": 35.5,
+      "max": 38.7,
+      "spreadPct": 8.672,
+      "values": [
+        35.6,
+        38.7,
+        37.3,
+        35.5,
+        36.9
+      ]
+    },
+    "detail": {
+      "lcp": {
+        "size": {
+          "n": 5,
+          "nulls": 0,
+          "median": 52900,
+          "p95": 52900,
+          "min": 52900,
+          "max": 52900,
+          "spreadPct": 0,
+          "values": [
+            52900,
+            52900,
+            52900,
+            52900,
+            52900
+          ]
+        }
+      },
+      "imageCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 56,
+        "p95": 56,
+        "min": 56,
+        "max": 56,
+        "spreadPct": 0,
+        "values": [
+          56,
+          56,
+          56,
+          56,
+          56
+        ]
+      }
+    }
+  },
+  "gestures": {
+    "button-zoom": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 89,
+        "p95": 90,
+        "min": 86,
+        "max": 90,
+        "spreadPct": 4.494,
+        "values": [
+          90,
+          89,
+          89,
+          90,
+          86
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1,
+        "p95": 3,
+        "min": 1,
+        "max": 3,
+        "spreadPct": 200,
+        "values": [
+          1,
+          1,
+          2,
+          1,
+          3
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1,
+        "p95": 3,
+        "min": 1,
+        "max": 3,
+        "spreadPct": 200,
+        "values": [
+          1,
+          1,
+          2,
+          1,
+          3
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 688.724,
+        "p95": 735.826,
+        "min": 652.994,
+        "max": 735.826,
+        "spreadPct": 12.027,
+        "values": [
+          702.709,
+          676.747,
+          652.994,
+          688.724,
+          735.826
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 337.955,
+        "p95": 360.006,
+        "min": 334.948,
+        "max": 360.006,
+        "spreadPct": 7.415,
+        "values": [
+          360.006,
+          337.955,
+          334.948,
+          345.418,
+          337.27
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 6.05,
+        "p95": 6.055,
+        "min": 6.03,
+        "max": 6.055,
+        "spreadPct": 0.419,
+        "values": [
+          6.053,
+          6.03,
+          6.055,
+          6.05,
+          6.046
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1571.1,
+        "p95": 1598,
+        "min": 1537.8,
+        "max": 1598,
+        "spreadPct": 3.832,
+        "values": [
+          1571.1,
+          1537.8,
+          1556.2,
+          1598,
+          1591.2
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 35,
+        "p95": 39,
+        "min": 30,
+        "max": 39,
+        "spreadPct": 25.714,
+        "values": [
+          39,
+          33,
+          35,
+          37,
+          30
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3,
+        "p95": 3,
+        "min": 3,
+        "max": 3,
+        "spreadPct": 0,
+        "values": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1638.391,
+        "p95": 1672.535,
+        "min": 1557.745,
+        "max": 1672.535,
+        "spreadPct": 7.006,
+        "values": [
+          1640.774,
+          1672.535,
+          1638.391,
+          1631.323,
+          1557.745
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 302.163,
+        "p95": 305.857,
+        "min": 289.783,
+        "max": 305.857,
+        "spreadPct": 5.32,
+        "values": [
+          292.815,
+          305.857,
+          302.163,
+          305.76,
+          289.783
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 204.921,
+        "p95": 232.218,
+        "min": 191.495,
+        "max": 232.218,
+        "spreadPct": 19.873,
+        "values": [
+          204.921,
+          191.495,
+          191.609,
+          210.322,
+          232.218
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 11.669,
+        "p95": 13.296,
+        "min": 9.344,
+        "max": 13.296,
+        "spreadPct": 33.868,
+        "values": [
+          11.252,
+          9.344,
+          11.669,
+          12.377,
+          13.296
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 48.889,
+        "p95": 51.948,
+        "min": 43.893,
+        "max": 51.948,
+        "spreadPct": 16.476,
+        "values": [
+          48.889,
+          43.893,
+          44.663,
+          49.596,
+          51.948
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5,
+        "p95": 5,
+        "min": 5,
+        "max": 5,
+        "spreadPct": 0,
+        "values": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 102,
+        "p95": 103,
+        "min": 101,
+        "max": 103,
+        "spreadPct": 1.961,
+        "values": [
+          102,
+          102,
+          102,
+          103,
+          101
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 86.4,
+        "p95": 124.8,
+        "min": 77.5,
+        "max": 124.8,
+        "spreadPct": 54.745,
+        "values": [
+          86.4,
+          77.5,
+          85.7,
+          117.7,
+          124.8
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5,
+        "p95": 5,
+        "min": 5,
+        "max": 5,
+        "spreadPct": 0,
+        "values": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      "crispAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 3.818,
+        "min": 0,
+        "max": 3.818,
+        "spreadPct": null,
+        "values": [
+          2.406,
+          0,
+          0,
+          3.818,
+          0
+        ]
+      },
+      "motionAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 342.9,
+        "p95": 357.6,
+        "min": 340.3,
+        "max": 357.6,
+        "spreadPct": 5.045,
+        "values": [
+          357.6,
+          343.9,
+          340.3,
+          341.6,
+          342.9
+        ]
+      },
+      "settleAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 92.5,
+        "p95": 102.7,
+        "min": 86.7,
+        "max": 102.7,
+        "spreadPct": 17.297,
+        "values": [
+          87.2,
+          97.6,
+          86.7,
+          102.7,
+          92.5
+        ]
+      },
+      "rasterAfterSettleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": -98.13,
+        "p95": -84.794,
+        "min": -103.545,
+        "max": -84.794,
+        "spreadPct": 19.108,
+        "values": [
+          -84.794,
+          -103.545,
+          -92.052,
+          -98.882,
+          -98.13
+        ]
+      }
+    },
+    "drag-inertia": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 84,
+        "p95": 86,
+        "min": 83,
+        "max": 86,
+        "spreadPct": 3.571,
+        "values": [
+          84,
+          86,
+          83,
+          84,
+          86
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 500.747,
+        "p95": 543.251,
+        "min": 469.479,
+        "max": 543.251,
+        "spreadPct": 14.732,
+        "values": [
+          509.328,
+          492.87,
+          469.479,
+          500.747,
+          543.251
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 806.17,
+        "p95": 809.249,
+        "min": 797.012,
+        "max": 809.249,
+        "spreadPct": 1.518,
+        "values": [
+          809.249,
+          808.028,
+          797.012,
+          797.637,
+          806.17
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5.383,
+        "p95": 5.39,
+        "min": 5.378,
+        "max": 5.39,
+        "spreadPct": 0.223,
+        "values": [
+          5.383,
+          5.383,
+          5.378,
+          5.387,
+          5.39
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1409,
+        "p95": 1445.9,
+        "min": 1391.2,
+        "max": 1445.9,
+        "spreadPct": 3.882,
+        "values": [
+          1409,
+          1441.1,
+          1391.2,
+          1401.4,
+          1445.9
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 35,
+        "p95": 39,
+        "min": 32,
+        "max": 39,
+        "spreadPct": 20,
+        "values": [
+          39,
+          36,
+          32,
+          35,
+          35
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 10,
+        "p95": 11,
+        "min": 8,
+        "max": 11,
+        "spreadPct": 30,
+        "values": [
+          8,
+          10,
+          11,
+          10,
+          10
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1836.88,
+        "p95": 2016.826,
+        "min": 1778.251,
+        "max": 2016.826,
+        "spreadPct": 12.988,
+        "values": [
+          1836.88,
+          1836.067,
+          1879.917,
+          1778.251,
+          2016.826
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1339.282,
+        "p95": 1443.167,
+        "min": 1249.325,
+        "max": 1443.167,
+        "spreadPct": 14.474,
+        "values": [
+          1342.238,
+          1305.029,
+          1339.282,
+          1249.325,
+          1443.167
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 148.448,
+        "p95": 149.857,
+        "min": 140.885,
+        "max": 149.857,
+        "spreadPct": 6.044,
+        "values": [
+          149.857,
+          148.851,
+          140.885,
+          148.448,
+          146.711
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 18.309,
+        "p95": 19.844,
+        "min": 17.628,
+        "max": 19.844,
+        "spreadPct": 12.103,
+        "values": [
+          18.806,
+          17.863,
+          17.628,
+          19.844,
+          18.309
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 63,
+        "p95": 63,
+        "min": 63,
+        "max": 63,
+        "spreadPct": 0,
+        "values": [
+          63,
+          63,
+          63,
+          63,
+          63
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 33.2,
+        "p95": 35.3,
+        "min": 33.1,
+        "max": 35.3,
+        "spreadPct": 6.627,
+        "values": [
+          33.2,
+          35.3,
+          33.1,
+          33.2,
+          34.9
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1,
+        "p95": 1,
+        "min": 1,
+        "max": 1,
+        "spreadPct": 0,
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "crispAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "motionAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 809.6,
+        "p95": 811.5,
+        "min": 799.6,
+        "max": 811.5,
+        "spreadPct": 1.47,
+        "values": [
+          809.6,
+          810,
+          799.6,
+          799.9,
+          811.5
+        ]
+      },
+      "settleAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 86.5,
+        "p95": 91.8,
+        "min": 86,
+        "max": 91.8,
+        "spreadPct": 6.705,
+        "values": [
+          91.8,
+          86.5,
+          86.7,
+          86.4,
+          86
+        ]
+      },
+      "rasterAfterSettleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": -89.288,
+        "p95": -88.472,
+        "min": -92.151,
+        "max": -88.472,
+        "spreadPct": 4.12,
+        "values": [
+          -92.151,
+          -88.472,
+          -89.288,
+          -88.663,
+          -91.33
+        ]
+      }
+    },
+    "pinch": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 69,
+        "p95": 71,
+        "min": 66,
+        "max": 71,
+        "spreadPct": 7.246,
+        "values": [
+          67,
+          69,
+          66,
+          71,
+          70
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 329.794,
+        "p95": 344.449,
+        "min": 289.577,
+        "max": 344.449,
+        "spreadPct": 16.638,
+        "values": [
+          289.577,
+          330.659,
+          312.871,
+          329.794,
+          344.449
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 2.903,
+        "p95": 6.231,
+        "min": 1.14,
+        "max": 6.231,
+        "spreadPct": 175.37,
+        "values": [
+          1.55,
+          2.903,
+          1.14,
+          6.231,
+          4.113
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5.367,
+        "p95": 5.372,
+        "min": 5.347,
+        "max": 5.372,
+        "spreadPct": 0.464,
+        "values": [
+          5.37,
+          5.367,
+          5.366,
+          5.372,
+          5.347
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1155.9,
+        "p95": 1196.8,
+        "min": 1103.8,
+        "max": 1196.8,
+        "spreadPct": 8.046,
+        "values": [
+          1117.9,
+          1155.9,
+          1103.8,
+          1196.8,
+          1167.7
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 29,
+        "p95": 29,
+        "min": 26,
+        "max": 29,
+        "spreadPct": 10.345,
+        "values": [
+          29,
+          28,
+          29,
+          26,
+          29
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 17,
+        "p95": 18,
+        "min": 14,
+        "max": 18,
+        "spreadPct": 23.529,
+        "values": [
+          16,
+          17,
+          14,
+          18,
+          17
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 668.835,
+        "p95": 676.331,
+        "min": 599.156,
+        "max": 676.331,
+        "spreadPct": 11.539,
+        "values": [
+          668.835,
+          676.331,
+          670.715,
+          599.156,
+          643.597
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 4.088,
+        "p95": 8.052,
+        "min": 0.888,
+        "max": 8.052,
+        "spreadPct": 175.245,
+        "values": [
+          1.835,
+          4.088,
+          0.888,
+          8.052,
+          7.078
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 130.906,
+        "p95": 136.316,
+        "min": 122.578,
+        "max": 136.316,
+        "spreadPct": 10.495,
+        "values": [
+          122.578,
+          130.906,
+          127.869,
+          133.153,
+          136.316
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 8.646,
+        "p95": 9.038,
+        "min": 7.734,
+        "max": 9.038,
+        "spreadPct": 15.082,
+        "values": [
+          7.734,
+          8.955,
+          8.646,
+          8.454,
+          9.038
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 30,
+        "p95": 30,
+        "min": 30,
+        "max": 30,
+        "spreadPct": 0,
+        "values": [
+          30,
+          30,
+          30,
+          30,
+          30
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 38.6,
+        "p95": 38.9,
+        "min": 36,
+        "max": 38.9,
+        "spreadPct": 7.513,
+        "values": [
+          36.1,
+          38.7,
+          36,
+          38.6,
+          38.9
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3.5,
+        "p95": 3.5,
+        "min": 3.5,
+        "max": 3.5,
+        "spreadPct": 0,
+        "values": [
+          3.5,
+          3.5,
+          3.5,
+          3.5,
+          3.5
+        ]
+      },
+      "crispAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "motionAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 6,
+        "p95": 9.7,
+        "min": 3.1,
+        "max": 9.7,
+        "spreadPct": 110,
+        "values": [
+          3.1,
+          4.2,
+          6,
+          7.2,
+          9.7
+        ]
+      },
+      "settleAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 117.5,
+        "p95": 122.1,
+        "min": 110.1,
+        "max": 122.1,
+        "spreadPct": 10.213,
+        "values": [
+          110.1,
+          118.1,
+          122.1,
+          117.3,
+          117.5
+        ]
+      },
+      "rasterAfterSettleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": -119.397,
+        "p95": -111.65,
+        "min": -126.96,
+        "max": -111.65,
+        "spreadPct": 12.823,
+        "values": [
+          -111.65,
+          -119.397,
+          -126.96,
+          -118.269,
+          -123.087
+        ]
+      }
+    },
+    "wheel-zoom": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 61,
+        "p95": 61,
+        "min": 60,
+        "max": 61,
+        "spreadPct": 1.639,
+        "values": [
+          61,
+          60,
+          60,
+          61,
+          61
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 453.563,
+        "p95": 517.5,
+        "min": 406.452,
+        "max": 517.5,
+        "spreadPct": 24.483,
+        "values": [
+          438.433,
+          453.563,
+          406.452,
+          465.176,
+          517.5
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 46.649,
+        "p95": 56.422,
+        "min": 32.512,
+        "max": 56.422,
+        "spreadPct": 51.255,
+        "values": [
+          46.788,
+          41.959,
+          32.512,
+          46.649,
+          56.422
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5.235,
+        "p95": 5.254,
+        "min": 5.22,
+        "max": 5.254,
+        "spreadPct": 0.648,
+        "values": [
+          5.229,
+          5.22,
+          5.254,
+          5.244,
+          5.235
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1022,
+        "p95": 1030.3,
+        "min": 1014.8,
+        "max": 1030.3,
+        "spreadPct": 1.517,
+        "values": [
+          1030.3,
+          1014.8,
+          1015.5,
+          1024.7,
+          1022
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 29,
+        "p95": 32,
+        "min": 25,
+        "max": 32,
+        "spreadPct": 24.138,
+        "values": [
+          29,
+          30,
+          32,
+          25,
+          27
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3,
+        "p95": 5,
+        "min": 3,
+        "max": 5,
+        "spreadPct": 66.667,
+        "values": [
+          5,
+          3,
+          3,
+          3,
+          5
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1154.391,
+        "p95": 1263.346,
+        "min": 938.36,
+        "max": 1263.346,
+        "spreadPct": 28.152,
+        "values": [
+          964.068,
+          1154.391,
+          938.36,
+          1263.346,
+          1230.529
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 55.471,
+        "p95": 74.667,
+        "min": 21.518,
+        "max": 74.667,
+        "spreadPct": 95.814,
+        "values": [
+          40.183,
+          55.471,
+          21.518,
+          58.72,
+          74.667
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 139.117,
+        "p95": 144.329,
+        "min": 125.746,
+        "max": 144.329,
+        "spreadPct": 13.358,
+        "values": [
+          135.883,
+          140.806,
+          125.746,
+          139.117,
+          144.329
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 13.696,
+        "p95": 16.007,
+        "min": 10.43,
+        "max": 16.007,
+        "spreadPct": 40.72,
+        "values": [
+          10.935,
+          14.376,
+          10.43,
+          13.696,
+          16.007
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 48,
+        "p95": 51,
+        "min": 38,
+        "max": 51,
+        "spreadPct": 27.083,
+        "values": [
+          39,
+          48,
+          38,
+          50,
+          51
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 52.8,
+        "p95": 67,
+        "min": 47,
+        "max": 67,
+        "spreadPct": 37.879,
+        "values": [
+          47,
+          50.3,
+          52.8,
+          67,
+          59.6
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 2.804,
+        "p95": 2.805,
+        "min": 2.803,
+        "max": 2.805,
+        "spreadPct": 0.071,
+        "values": [
+          2.803,
+          2.804,
+          2.804,
+          2.805,
+          2.804
+        ]
+      },
+      "crispAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "motionAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 47.6,
+        "p95": 60.1,
+        "min": 33.2,
+        "max": 60.1,
+        "spreadPct": 56.513,
+        "values": [
+          47.6,
+          46.7,
+          33.2,
+          48.5,
+          60.1
+        ]
+      },
+      "settleAfterMotionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 192,
+        "p95": 204,
+        "min": 188.5,
+        "max": 204,
+        "spreadPct": 8.073,
+        "values": [
+          204,
+          188.5,
+          192,
+          191.8,
+          199.1
+        ]
+      },
+      "rasterAfterSettleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": -193.651,
+        "p95": -192.688,
+        "min": -204.812,
+        "max": -192.688,
+        "spreadPct": 6.261,
+        "values": [
+          -204.812,
+          -193.241,
+          -192.688,
+          -193.651,
+          -202.778
+        ]
+      }
+    }
+  },
+  "raw": {
+    "firstRender": [
+      {
+        "fcp": 832,
+        "lcp": 920,
+        "tbt": 0,
+        "cls": 0,
+        "allStickersPaintedMs": 2713.7,
+        "liveCurrentMs": 813.8,
+        "inputReadyMs": 592,
+        "entryStartMs": 280,
+        "entryEndMs": 508,
+        "criticalPathJsGzip": 8636,
+        "criticalPathMarkers": [],
+        "bytes": {
+          "js": 171374,
+          "css": 20540,
+          "img": 733627,
+          "font": 141714,
+          "html": 17968,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 9637,
+          "css": 15930,
+          "img": 56312,
+          "font": 73220,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 597.1,
+        "stickersAtFcp": 63,
+        "ttiProxyMs": 832,
+        "longTaskCount": 1,
+        "cpuProbeMs": 35.60000002384186,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/eana.svg",
+            "size": 52900
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_astro/preload-helper.DAljqb9w.js",
+              "gzip": 1094,
+              "transferred": 1448,
+              "startMs": 282,
+              "endMs": 478,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/appState.B-aHSmqp.js",
+              "gzip": 884,
+              "transferred": 1249,
+              "startMs": 281,
+              "endMs": 478,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/index.astro_astro_type_script_index_0_lang.HK4BLRLX.js",
+              "gzip": 6658,
+              "transferred": 7206,
+              "startMs": 280,
+              "endMs": 508,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/Controls.MGY0xc_k.js",
+              "gzip": 29000,
+              "transferred": 29438,
+              "startMs": 990,
+              "endMs": 2515,
+              "beforeLcp": false,
+              "markers": [
+                "radix"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/_virtual_sticker-mdx.BafUKLvf.js",
+              "gzip": 3747,
+              "transferred": 4014,
+              "startMs": 1004,
+              "endMs": 2578,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/client.Dgv5zXeZ.js",
+              "gzip": 56381,
+              "transferred": 57278,
+              "startMs": 991,
+              "endMs": 2641,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/Sheet.ybdl7SCV.js",
+              "gzip": 39282,
+              "transferred": 39397,
+              "startMs": 993,
+              "endMs": 2641,
+              "beforeLcp": false,
+              "markers": [
+                "silk"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/ui-strings.Bf6zbgGO.js",
+              "gzip": 1119,
+              "transferred": 1461,
+              "startMs": 2522,
+              "endMs": 2733,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/button.Bk_dIrI2.js",
+              "gzip": 8377,
+              "transferred": 8804,
+              "startMs": 2522,
+              "endMs": 2764,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/theme-hook.D3KCsmhe.js",
+              "gzip": 397,
+              "transferred": 988,
+              "startMs": 2523,
+              "endMs": 2825,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/react-dom.Dm2cJVtv.js",
+              "gzip": 1329,
+              "transferred": 1708,
+              "startMs": 2523,
+              "endMs": 2825,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/react.DBl4qH0R.js",
+              "gzip": 3112,
+              "transferred": 3541,
+              "startMs": 2523,
+              "endMs": 2825,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CQcgxGN6.js",
+              "gzip": 781,
+              "transferred": 1134,
+              "startMs": 2585,
+              "endMs": 2887,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/provider.DYXvfqQX.js",
+              "gzip": 1290,
+              "transferred": 1627,
+              "startMs": 2587,
+              "endMs": 2920,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.gyRf_FcY.js",
+              "gzip": 1491,
+              "transferred": 1837,
+              "startMs": 2589,
+              "endMs": 2951,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BJfLkyAm.js",
+              "gzip": 330,
+              "transferred": 831,
+              "startMs": 2590,
+              "endMs": 3012,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CuVmg8q4.js",
+              "gzip": 407,
+              "transferred": 984,
+              "startMs": 2952,
+              "endMs": 3139,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGcFZnAM.js",
+              "gzip": 450,
+              "transferred": 1168,
+              "startMs": 3015,
+              "endMs": 3201,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.2BPywM_M.js",
+              "gzip": 472,
+              "transferred": 1126,
+              "startMs": 3025,
+              "endMs": 3208,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BEGGDMpL.js",
+              "gzip": 853,
+              "transferred": 1206,
+              "startMs": 3144,
+              "endMs": 3328,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DbAbd96q.js",
+              "gzip": 431,
+              "transferred": 1089,
+              "startMs": 3207,
+              "endMs": 3390,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.8KZsHZjF.js",
+              "gzip": 520,
+              "transferred": 1202,
+              "startMs": 3213,
+              "endMs": 3396,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGE56tKN.js",
+              "gzip": 356,
+              "transferred": 870,
+              "startMs": 3334,
+              "endMs": 3530,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DOfHWR3P.js",
+              "gzip": 612,
+              "transferred": 949,
+              "startMs": 3401,
+              "endMs": 3593,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CjSLqjbo.js",
+              "gzip": 329,
+              "transferred": 819,
+              "startMs": 3395,
+              "endMs": 3594,
+              "beforeLcp": false,
+              "markers": []
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_astro/index.BBMcBwGF.css",
+              "startMs": 279,
+              "endMs": 508,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/PlusCodeMapInner.BgX4OC_Y.css",
+              "startMs": 280,
+              "endMs": 508,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/main-unlayered.CDuf2hHh.css",
+              "startMs": 2855,
+              "endMs": 3044,
+              "renderBlocking": "non-blocking"
+            }
+          ],
+          "imageCount": 56,
+          "images": [
+            {
+              "url": "http://localhost:4173/stickers/08n.svg",
+              "startMs": 283,
+              "endMs": 664
+            },
+            {
+              "url": "http://localhost:4173/stickers/code-liga.svg",
+              "startMs": 284,
+              "endMs": 664
+            },
+            {
+              "url": "http://localhost:4173/stickers/colemak.svg",
+              "startMs": 284,
+              "endMs": 696
+            },
+            {
+              "url": "http://localhost:4173/stickers/cpp.svg",
+              "startMs": 285,
+              "endMs": 696
+            },
+            {
+              "url": "http://localhost:4173/stickers/css.svg",
+              "startMs": 286,
+              "endMs": 696
+            },
+            {
+              "url": "http://localhost:4173/stickers/dark.svg",
+              "startMs": 287,
+              "endMs": 743
+            },
+            {
+              "url": "http://localhost:4173/stickers/double-lariat.svg",
+              "startMs": 288,
+              "endMs": 901
+            },
+            {
+              "url": "http://localhost:4173/stickers/eana.svg",
+              "startMs": 289,
+              "endMs": 853
+            },
+            {
+              "url": "http://localhost:4173/stickers/earth.webp",
+              "startMs": 290,
+              "endMs": 901
+            },
+            {
+              "url": "http://localhost:4173/stickers/en.svg",
+              "startMs": 290,
+              "endMs": 885
+            },
+            {
+              "url": "http://localhost:4173/stickers/feed.svg",
+              "startMs": 291,
+              "endMs": 885
+            },
+            {
+              "url": "http://localhost:4173/stickers/figma.svg",
+              "startMs": 291,
+              "endMs": 933
+            },
+            {
+              "url": "http://localhost:4173/stickers/gif.svg",
+              "startMs": 292,
+              "endMs": 1044
+            },
+            {
+              "url": "http://localhost:4173/stickers/git-plain.svg",
+              "startMs": 292,
+              "endMs": 1075
+            },
+            {
+              "url": "http://localhost:4173/stickers/icpc.svg",
+              "startMs": 293,
+              "endMs": 1090
+            },
+            {
+              "url": "http://localhost:4173/stickers/font-distinct.svg",
+              "startMs": 293,
+              "endMs": 1079
+            },
+            {
+              "url": "http://localhost:4173/stickers/inter.svg",
+              "startMs": 294,
+              "endMs": 1121
+            },
+            {
+              "url": "http://localhost:4173/stickers/internet.svg",
+              "startMs": 294,
+              "endMs": 1231
+            },
+            {
+              "url": "http://localhost:4173/stickers/ja.svg",
+              "startMs": 294,
+              "endMs": 1262
+            },
+            {
+              "url": "http://localhost:4173/stickers/kagami.svg",
+              "startMs": 295,
+              "endMs": 1270
+            },
+            {
+              "url": "http://localhost:4173/stickers/karaoke.svg",
+              "startMs": 295,
+              "endMs": 1293
+            },
+            {
+              "url": "http://localhost:4173/stickers/kotlin-plain.svg",
+              "startMs": 296,
+              "endMs": 1296
+            },
+            {
+              "url": "http://localhost:4173/stickers/map.svg",
+              "startMs": 296,
+              "endMs": 1339
+            },
+            {
+              "url": "http://localhost:4173/stickers/mdx.svg",
+              "startMs": 296,
+              "endMs": 1416
+            },
+            {
+              "url": "http://localhost:4173/stickers/next-js.svg",
+              "startMs": 297,
+              "endMs": 1447
+            },
+            {
+              "url": "http://localhost:4173/stickers/pedantic.svg",
+              "startMs": 297,
+              "endMs": 2703
+            },
+            {
+              "url": "http://localhost:4173/stickers/pi.svg",
+              "startMs": 298,
+              "endMs": 1457
+            },
+            {
+              "url": "http://localhost:4173/stickers/quizknock.svg",
+              "startMs": 298,
+              "endMs": 1477
+            },
+            {
+              "url": "http://localhost:4173/stickers/quotes.svg",
+              "startMs": 298,
+              "endMs": 1477
+            },
+            {
+              "url": "http://localhost:4173/stickers/react.svg",
+              "startMs": 299,
+              "endMs": 1524
+            },
+            {
+              "url": "http://localhost:4173/stickers/regex.svg",
+              "startMs": 299,
+              "endMs": 1601
+            },
+            {
+              "url": "http://localhost:4173/stickers/riddler.svg",
+              "startMs": 299,
+              "endMs": 1631
+            },
+            {
+              "url": "http://localhost:4173/stickers/sass.svg",
+              "startMs": 300,
+              "endMs": 1635
+            },
+            {
+              "url": "http://localhost:4173/stickers/shadcn-ui.svg",
+              "startMs": 300,
+              "endMs": 1662
+            },
+            {
+              "url": "http://localhost:4173/stickers/shoshitsu.svg",
+              "startMs": 301,
+              "endMs": 1663
+            },
+            {
+              "url": "http://localhost:4173/stickers/shs.svg",
+              "startMs": 301,
+              "endMs": 1709
+            },
+            {
+              "url": "http://localhost:4173/stickers/si.svg",
+              "startMs": 302,
+              "endMs": 1786
+            },
+            {
+              "url": "http://localhost:4173/stickers/contoso.svg",
+              "startMs": 302,
+              "endMs": 1818
+            },
+            {
+              "url": "http://localhost:4173/stickers/space-tab.svg",
+              "startMs": 302,
+              "endMs": 1818
+            },
+            {
+              "url": "http://localhost:4173/stickers/sui-dau.webp",
+              "startMs": 303,
+              "endMs": 2251
+            },
+            {
+              "url": "http://localhost:4173/stickers/typechat.webp",
+              "startMs": 303,
+              "endMs": 1941
+            },
+            {
+              "url": "http://localhost:4173/stickers/typescript.svg",
+              "startMs": 303,
+              "endMs": 1881
+            },
+            {
+              "url": "http://localhost:4173/stickers/typography.svg",
+              "startMs": 304,
+              "endMs": 1999
+            },
+            {
+              "url": "http://localhost:4173/stickers/fffd.svg",
+              "startMs": 304,
+              "endMs": 1988
+            },
+            {
+              "url": "http://localhost:4173/stickers/utc.svg",
+              "startMs": 305,
+              "endMs": 1996
+            },
+            {
+              "url": "http://localhost:4173/stickers/vocaloid.svg",
+              "startMs": 305,
+              "endMs": 2048
+            },
+            {
+              "url": "http://localhost:4173/stickers/vscode.svg",
+              "startMs": 305,
+              "endMs": 2126
+            },
+            {
+              "url": "http://localhost:4173/stickers/dumbbell.svg",
+              "startMs": 306,
+              "endMs": 2172
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkcd.webp",
+              "startMs": 306,
+              "endMs": 2219
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkjd27c.svg",
+              "startMs": 307,
+              "endMs": 2188
+            },
+            {
+              "url": "http://localhost:4173/stickers/yaml.svg",
+              "startMs": 307,
+              "endMs": 2220
+            },
+            {
+              "url": "http://localhost:4173/stickers/yofukashi.webp",
+              "startMs": 308,
+              "endMs": 2314
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurucom.webp",
+              "startMs": 308,
+              "endMs": 2547
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurugengo.webp",
+              "startMs": 309,
+              "endMs": 2642
+            },
+            {
+              "url": "http://localhost:4173/stickers/zh.svg",
+              "startMs": 309,
+              "endMs": 2393
+            }
+          ],
+          "longTasks": [
+            [
+              607,
+              216
+            ]
+          ]
+        }
+      },
+      {
+        "fcp": 756,
+        "lcp": 876,
+        "tbt": 3,
+        "cls": 0,
+        "allStickersPaintedMs": 2621.3,
+        "liveCurrentMs": 738.1,
+        "inputReadyMs": 563,
+        "entryStartMs": 267,
+        "entryEndMs": 488,
+        "criticalPathJsGzip": 8636,
+        "criticalPathMarkers": [],
+        "bytes": {
+          "js": 171374,
+          "css": 20540,
+          "img": 733627,
+          "font": 141714,
+          "html": 17968,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 9637,
+          "css": 15930,
+          "img": 56312,
+          "font": 73220,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 554.8,
+        "stickersAtFcp": 63,
+        "ttiProxyMs": 2865.399999976158,
+        "longTaskCount": 2,
+        "cpuProbeMs": 38.699999928474426,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/eana.svg",
+            "size": 52900
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_astro/appState.B-aHSmqp.js",
+              "gzip": 884,
+              "transferred": 1249,
+              "startMs": 268,
+              "endMs": 457,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/preload-helper.DAljqb9w.js",
+              "gzip": 1094,
+              "transferred": 1448,
+              "startMs": 268,
+              "endMs": 457,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/index.astro_astro_type_script_index_0_lang.HK4BLRLX.js",
+              "gzip": 6658,
+              "transferred": 7206,
+              "startMs": 267,
+              "endMs": 488,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/Controls.MGY0xc_k.js",
+              "gzip": 29000,
+              "transferred": 29438,
+              "startMs": 901,
+              "endMs": 2478,
+              "beforeLcp": false,
+              "markers": [
+                "radix"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/_virtual_sticker-mdx.BafUKLvf.js",
+              "gzip": 3747,
+              "transferred": 4014,
+              "startMs": 914,
+              "endMs": 2542,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/client.Dgv5zXeZ.js",
+              "gzip": 56381,
+              "transferred": 57278,
+              "startMs": 902,
+              "endMs": 2574,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/Sheet.ybdl7SCV.js",
+              "gzip": 39282,
+              "transferred": 39397,
+              "startMs": 904,
+              "endMs": 2592,
+              "beforeLcp": false,
+              "markers": [
+                "silk"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/ui-strings.Bf6zbgGO.js",
+              "gzip": 1119,
+              "transferred": 1461,
+              "startMs": 2483,
+              "endMs": 2669,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/button.Bk_dIrI2.js",
+              "gzip": 8377,
+              "transferred": 8804,
+              "startMs": 2484,
+              "endMs": 2731,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/react.DBl4qH0R.js",
+              "gzip": 3112,
+              "transferred": 3541,
+              "startMs": 2484,
+              "endMs": 2761,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/theme-hook.D3KCsmhe.js",
+              "gzip": 397,
+              "transferred": 988,
+              "startMs": 2485,
+              "endMs": 2764,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/react-dom.Dm2cJVtv.js",
+              "gzip": 1329,
+              "transferred": 1708,
+              "startMs": 2484,
+              "endMs": 2776,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CQcgxGN6.js",
+              "gzip": 781,
+              "transferred": 1134,
+              "startMs": 2548,
+              "endMs": 2807,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/provider.DYXvfqQX.js",
+              "gzip": 1290,
+              "transferred": 1627,
+              "startMs": 2550,
+              "endMs": 2855,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.gyRf_FcY.js",
+              "gzip": 1491,
+              "transferred": 1837,
+              "startMs": 2551,
+              "endMs": 2917,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BJfLkyAm.js",
+              "gzip": 330,
+              "transferred": 831,
+              "startMs": 2553,
+              "endMs": 2948,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CuVmg8q4.js",
+              "gzip": 407,
+              "transferred": 984,
+              "startMs": 2921,
+              "endMs": 3117,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGcFZnAM.js",
+              "gzip": 450,
+              "transferred": 1168,
+              "startMs": 2969,
+              "endMs": 3163,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.2BPywM_M.js",
+              "gzip": 472,
+              "transferred": 1126,
+              "startMs": 2988,
+              "endMs": 3169,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BEGGDMpL.js",
+              "gzip": 853,
+              "transferred": 1206,
+              "startMs": 3122,
+              "endMs": 3318,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DbAbd96q.js",
+              "gzip": 431,
+              "transferred": 1089,
+              "startMs": 3168,
+              "endMs": 3365,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.8KZsHZjF.js",
+              "gzip": 520,
+              "transferred": 1202,
+              "startMs": 3173,
+              "endMs": 3365,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGE56tKN.js",
+              "gzip": 356,
+              "transferred": 870,
+              "startMs": 3324,
+              "endMs": 3521,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CjSLqjbo.js",
+              "gzip": 329,
+              "transferred": 819,
+              "startMs": 3373,
+              "endMs": 3568,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DOfHWR3P.js",
+              "gzip": 612,
+              "transferred": 949,
+              "startMs": 3377,
+              "endMs": 3568,
+              "beforeLcp": false,
+              "markers": []
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_astro/index.BBMcBwGF.css",
+              "startMs": 266,
+              "endMs": 488,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/PlusCodeMapInner.BgX4OC_Y.css",
+              "startMs": 267,
+              "endMs": 488,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/main-unlayered.CDuf2hHh.css",
+              "startMs": 2810,
+              "endMs": 2989,
+              "renderBlocking": "non-blocking"
+            }
+          ],
+          "imageCount": 56,
+          "images": [
+            {
+              "url": "http://localhost:4173/stickers/08n.svg",
+              "startMs": 269,
+              "endMs": 644
+            },
+            {
+              "url": "http://localhost:4173/stickers/code-liga.svg",
+              "startMs": 270,
+              "endMs": 644
+            },
+            {
+              "url": "http://localhost:4173/stickers/colemak.svg",
+              "startMs": 270,
+              "endMs": 666
+            },
+            {
+              "url": "http://localhost:4173/stickers/cpp.svg",
+              "startMs": 271,
+              "endMs": 664
+            },
+            {
+              "url": "http://localhost:4173/stickers/css.svg",
+              "startMs": 271,
+              "endMs": 664
+            },
+            {
+              "url": "http://localhost:4173/stickers/dark.svg",
+              "startMs": 272,
+              "endMs": 738
+            },
+            {
+              "url": "http://localhost:4173/stickers/double-lariat.svg",
+              "startMs": 272,
+              "endMs": 869
+            },
+            {
+              "url": "http://localhost:4173/stickers/eana.svg",
+              "startMs": 273,
+              "endMs": 831
+            },
+            {
+              "url": "http://localhost:4173/stickers/earth.webp",
+              "startMs": 274,
+              "endMs": 854
+            },
+            {
+              "url": "http://localhost:4173/stickers/en.svg",
+              "startMs": 274,
+              "endMs": 833
+            },
+            {
+              "url": "http://localhost:4173/stickers/feed.svg",
+              "startMs": 275,
+              "endMs": 839
+            },
+            {
+              "url": "http://localhost:4173/stickers/figma.svg",
+              "startMs": 275,
+              "endMs": 905
+            },
+            {
+              "url": "http://localhost:4173/stickers/gif.svg",
+              "startMs": 275,
+              "endMs": 1034
+            },
+            {
+              "url": "http://localhost:4173/stickers/git-plain.svg",
+              "startMs": 276,
+              "endMs": 1017
+            },
+            {
+              "url": "http://localhost:4173/stickers/icpc.svg",
+              "startMs": 276,
+              "endMs": 1036
+            },
+            {
+              "url": "http://localhost:4173/stickers/font-distinct.svg",
+              "startMs": 277,
+              "endMs": 1046
+            },
+            {
+              "url": "http://localhost:4173/stickers/inter.svg",
+              "startMs": 277,
+              "endMs": 1093
+            },
+            {
+              "url": "http://localhost:4173/stickers/internet.svg",
+              "startMs": 277,
+              "endMs": 1203
+            },
+            {
+              "url": "http://localhost:4173/stickers/ja.svg",
+              "startMs": 278,
+              "endMs": 1219
+            },
+            {
+              "url": "http://localhost:4173/stickers/kagami.svg",
+              "startMs": 278,
+              "endMs": 1229
+            },
+            {
+              "url": "http://localhost:4173/stickers/karaoke.svg",
+              "startMs": 278,
+              "endMs": 1250
+            },
+            {
+              "url": "http://localhost:4173/stickers/kotlin-plain.svg",
+              "startMs": 279,
+              "endMs": 1281
+            },
+            {
+              "url": "http://localhost:4173/stickers/map.svg",
+              "startMs": 279,
+              "endMs": 1289
+            },
+            {
+              "url": "http://localhost:4173/stickers/mdx.svg",
+              "startMs": 280,
+              "endMs": 1388
+            },
+            {
+              "url": "http://localhost:4173/stickers/next-js.svg",
+              "startMs": 280,
+              "endMs": 1396
+            },
+            {
+              "url": "http://localhost:4173/stickers/pedantic.svg",
+              "startMs": 281,
+              "endMs": 2621
+            },
+            {
+              "url": "http://localhost:4173/stickers/pi.svg",
+              "startMs": 281,
+              "endMs": 1404
+            },
+            {
+              "url": "http://localhost:4173/stickers/quizknock.svg",
+              "startMs": 281,
+              "endMs": 1436
+            },
+            {
+              "url": "http://localhost:4173/stickers/quotes.svg",
+              "startMs": 281,
+              "endMs": 1467
+            },
+            {
+              "url": "http://localhost:4173/stickers/react.svg",
+              "startMs": 282,
+              "endMs": 1475
+            },
+            {
+              "url": "http://localhost:4173/stickers/regex.svg",
+              "startMs": 282,
+              "endMs": 1576
+            },
+            {
+              "url": "http://localhost:4173/stickers/riddler.svg",
+              "startMs": 283,
+              "endMs": 1592
+            },
+            {
+              "url": "http://localhost:4173/stickers/sass.svg",
+              "startMs": 283,
+              "endMs": 1592
+            },
+            {
+              "url": "http://localhost:4173/stickers/shadcn-ui.svg",
+              "startMs": 283,
+              "endMs": 1623
+            },
+            {
+              "url": "http://localhost:4173/stickers/shoshitsu.svg",
+              "startMs": 284,
+              "endMs": 1654
+            },
+            {
+              "url": "http://localhost:4173/stickers/shs.svg",
+              "startMs": 284,
+              "endMs": 1662
+            },
+            {
+              "url": "http://localhost:4173/stickers/si.svg",
+              "startMs": 284,
+              "endMs": 1764
+            },
+            {
+              "url": "http://localhost:4173/stickers/contoso.svg",
+              "startMs": 285,
+              "endMs": 1767
+            },
+            {
+              "url": "http://localhost:4173/stickers/space-tab.svg",
+              "startMs": 285,
+              "endMs": 1769
+            },
+            {
+              "url": "http://localhost:4173/stickers/sui-dau.webp",
+              "startMs": 286,
+              "endMs": 2207
+            },
+            {
+              "url": "http://localhost:4173/stickers/typechat.webp",
+              "startMs": 286,
+              "endMs": 1935
+            },
+            {
+              "url": "http://localhost:4173/stickers/typescript.svg",
+              "startMs": 287,
+              "endMs": 1841
+            },
+            {
+              "url": "http://localhost:4173/stickers/typography.svg",
+              "startMs": 287,
+              "endMs": 1981
+            },
+            {
+              "url": "http://localhost:4173/stickers/fffd.svg",
+              "startMs": 287,
+              "endMs": 1938
+            },
+            {
+              "url": "http://localhost:4173/stickers/utc.svg",
+              "startMs": 288,
+              "endMs": 1945
+            },
+            {
+              "url": "http://localhost:4173/stickers/vocaloid.svg",
+              "startMs": 288,
+              "endMs": 2028
+            },
+            {
+              "url": "http://localhost:4173/stickers/vscode.svg",
+              "startMs": 288,
+              "endMs": 2122
+            },
+            {
+              "url": "http://localhost:4173/stickers/dumbbell.svg",
+              "startMs": 288,
+              "endMs": 2123
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkcd.webp",
+              "startMs": 289,
+              "endMs": 2168
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkjd27c.svg",
+              "startMs": 289,
+              "endMs": 2168
+            },
+            {
+              "url": "http://localhost:4173/stickers/yaml.svg",
+              "startMs": 289,
+              "endMs": 2199
+            },
+            {
+              "url": "http://localhost:4173/stickers/yofukashi.webp",
+              "startMs": 290,
+              "endMs": 2308
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurucom.webp",
+              "startMs": 290,
+              "endMs": 2431
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurugengo.webp",
+              "startMs": 291,
+              "endMs": 2590
+            },
+            {
+              "url": "http://localhost:4173/stickers/zh.svg",
+              "startMs": 291,
+              "endMs": 2353
+            }
+          ],
+          "longTasks": [
+            [
+              574,
+              177
+            ],
+            [
+              2812,
+              53
+            ]
+          ]
+        }
+      },
+      {
+        "fcp": 800,
+        "lcp": 896,
+        "tbt": 0,
+        "cls": 0,
+        "allStickersPaintedMs": 2708,
+        "liveCurrentMs": 791.4,
+        "inputReadyMs": 605,
+        "entryStartMs": 296,
+        "entryEndMs": 522,
+        "criticalPathJsGzip": 8636,
+        "criticalPathMarkers": [],
+        "bytes": {
+          "js": 171374,
+          "css": 20540,
+          "img": 733627,
+          "font": 141714,
+          "html": 17968,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 9637,
+          "css": 15930,
+          "img": 14446,
+          "font": 73220,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 608,
+        "stickersAtFcp": 63,
+        "ttiProxyMs": 800,
+        "longTaskCount": 1,
+        "cpuProbeMs": 37.299999952316284,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/eana.svg",
+            "size": 52900
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_astro/preload-helper.DAljqb9w.js",
+              "gzip": 1094,
+              "transferred": 1448,
+              "startMs": 298,
+              "endMs": 491,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/appState.B-aHSmqp.js",
+              "gzip": 884,
+              "transferred": 1249,
+              "startMs": 297,
+              "endMs": 491,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/index.astro_astro_type_script_index_0_lang.HK4BLRLX.js",
+              "gzip": 6658,
+              "transferred": 7206,
+              "startMs": 296,
+              "endMs": 522,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/Controls.MGY0xc_k.js",
+              "gzip": 29000,
+              "transferred": 29438,
+              "startMs": 885,
+              "endMs": 2542,
+              "beforeLcp": false,
+              "markers": [
+                "radix"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/_virtual_sticker-mdx.BafUKLvf.js",
+              "gzip": 3747,
+              "transferred": 4014,
+              "startMs": 939,
+              "endMs": 2604,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/Sheet.ybdl7SCV.js",
+              "gzip": 39282,
+              "transferred": 39397,
+              "startMs": 930,
+              "endMs": 2652,
+              "beforeLcp": false,
+              "markers": [
+                "silk"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/client.Dgv5zXeZ.js",
+              "gzip": 56381,
+              "transferred": 57278,
+              "startMs": 886,
+              "endMs": 2652,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/ui-strings.Bf6zbgGO.js",
+              "gzip": 1119,
+              "transferred": 1461,
+              "startMs": 2546,
+              "endMs": 2728,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/button.Bk_dIrI2.js",
+              "gzip": 8377,
+              "transferred": 8804,
+              "startMs": 2547,
+              "endMs": 2790,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/react-dom.Dm2cJVtv.js",
+              "gzip": 1329,
+              "transferred": 1708,
+              "startMs": 2548,
+              "endMs": 2836,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/react.DBl4qH0R.js",
+              "gzip": 3112,
+              "transferred": 3541,
+              "startMs": 2547,
+              "endMs": 2837,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/theme-hook.D3KCsmhe.js",
+              "gzip": 397,
+              "transferred": 988,
+              "startMs": 2548,
+              "endMs": 2839,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CQcgxGN6.js",
+              "gzip": 781,
+              "transferred": 1134,
+              "startMs": 2610,
+              "endMs": 2882,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/provider.DYXvfqQX.js",
+              "gzip": 1290,
+              "transferred": 1627,
+              "startMs": 2611,
+              "endMs": 2906,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.gyRf_FcY.js",
+              "gzip": 1491,
+              "transferred": 1837,
+              "startMs": 2612,
+              "endMs": 2960,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BJfLkyAm.js",
+              "gzip": 330,
+              "transferred": 831,
+              "startMs": 2614,
+              "endMs": 3006,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CuVmg8q4.js",
+              "gzip": 407,
+              "transferred": 984,
+              "startMs": 2955,
+              "endMs": 3149,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGcFZnAM.js",
+              "gzip": 450,
+              "transferred": 1168,
+              "startMs": 3003,
+              "endMs": 3195,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.2BPywM_M.js",
+              "gzip": 472,
+              "transferred": 1126,
+              "startMs": 3032,
+              "endMs": 3204,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BEGGDMpL.js",
+              "gzip": 853,
+              "transferred": 1206,
+              "startMs": 3154,
+              "endMs": 3351,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.8KZsHZjF.js",
+              "gzip": 520,
+              "transferred": 1202,
+              "startMs": 3208,
+              "endMs": 3397,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DbAbd96q.js",
+              "gzip": 431,
+              "transferred": 1089,
+              "startMs": 3201,
+              "endMs": 3398,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGE56tKN.js",
+              "gzip": 356,
+              "transferred": 870,
+              "startMs": 3356,
+              "endMs": 3553,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CjSLqjbo.js",
+              "gzip": 329,
+              "transferred": 819,
+              "startMs": 3407,
+              "endMs": 3598,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DOfHWR3P.js",
+              "gzip": 612,
+              "transferred": 949,
+              "startMs": 3411,
+              "endMs": 3599,
+              "beforeLcp": false,
+              "markers": []
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_astro/index.BBMcBwGF.css",
+              "startMs": 295,
+              "endMs": 522,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/PlusCodeMapInner.BgX4OC_Y.css",
+              "startMs": 295,
+              "endMs": 521,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/main-unlayered.CDuf2hHh.css",
+              "startMs": 2905,
+              "endMs": 3102,
+              "renderBlocking": "non-blocking"
+            }
+          ],
+          "imageCount": 56,
+          "images": [
+            {
+              "url": "http://localhost:4173/stickers/08n.svg",
+              "startMs": 299,
+              "endMs": 676
+            },
+            {
+              "url": "http://localhost:4173/stickers/code-liga.svg",
+              "startMs": 300,
+              "endMs": 676
+            },
+            {
+              "url": "http://localhost:4173/stickers/colemak.svg",
+              "startMs": 300,
+              "endMs": 707
+            },
+            {
+              "url": "http://localhost:4173/stickers/cpp.svg",
+              "startMs": 301,
+              "endMs": 707
+            },
+            {
+              "url": "http://localhost:4173/stickers/css.svg",
+              "startMs": 302,
+              "endMs": 707
+            },
+            {
+              "url": "http://localhost:4173/stickers/dark.svg",
+              "startMs": 303,
+              "endMs": 784
+            },
+            {
+              "url": "http://localhost:4173/stickers/double-lariat.svg",
+              "startMs": 304,
+              "endMs": 909
+            },
+            {
+              "url": "http://localhost:4173/stickers/eana.svg",
+              "startMs": 305,
+              "endMs": 863
+            },
+            {
+              "url": "http://localhost:4173/stickers/earth.webp",
+              "startMs": 305,
+              "endMs": 909
+            },
+            {
+              "url": "http://localhost:4173/stickers/en.svg",
+              "startMs": 306,
+              "endMs": 886
+            },
+            {
+              "url": "http://localhost:4173/stickers/feed.svg",
+              "startMs": 307,
+              "endMs": 886
+            },
+            {
+              "url": "http://localhost:4173/stickers/figma.svg",
+              "startMs": 308,
+              "endMs": 973
+            },
+            {
+              "url": "http://localhost:4173/stickers/gif.svg",
+              "startMs": 309,
+              "endMs": 1112
+            },
+            {
+              "url": "http://localhost:4173/stickers/git-plain.svg",
+              "startMs": 309,
+              "endMs": 1081
+            },
+            {
+              "url": "http://localhost:4173/stickers/icpc.svg",
+              "startMs": 310,
+              "endMs": 1111
+            },
+            {
+              "url": "http://localhost:4173/stickers/font-distinct.svg",
+              "startMs": 311,
+              "endMs": 1084
+            },
+            {
+              "url": "http://localhost:4173/stickers/inter.svg",
+              "startMs": 311,
+              "endMs": 1159
+            },
+            {
+              "url": "http://localhost:4173/stickers/internet.svg",
+              "startMs": 312,
+              "endMs": 1267
+            },
+            {
+              "url": "http://localhost:4173/stickers/ja.svg",
+              "startMs": 312,
+              "endMs": 1268
+            },
+            {
+              "url": "http://localhost:4173/stickers/kagami.svg",
+              "startMs": 313,
+              "endMs": 1313
+            },
+            {
+              "url": "http://localhost:4173/stickers/karaoke.svg",
+              "startMs": 313,
+              "endMs": 1328
+            },
+            {
+              "url": "http://localhost:4173/stickers/kotlin-plain.svg",
+              "startMs": 314,
+              "endMs": 1314
+            },
+            {
+              "url": "http://localhost:4173/stickers/map.svg",
+              "startMs": 314,
+              "endMs": 1343
+            },
+            {
+              "url": "http://localhost:4173/stickers/mdx.svg",
+              "startMs": 315,
+              "endMs": 1452
+            },
+            {
+              "url": "http://localhost:4173/stickers/next-js.svg",
+              "startMs": 315,
+              "endMs": 1452
+            },
+            {
+              "url": "http://localhost:4173/stickers/pedantic.svg",
+              "startMs": 316,
+              "endMs": 2698
+            },
+            {
+              "url": "http://localhost:4173/stickers/pi.svg",
+              "startMs": 316,
+              "endMs": 1498
+            },
+            {
+              "url": "http://localhost:4173/stickers/quizknock.svg",
+              "startMs": 317,
+              "endMs": 1498
+            },
+            {
+              "url": "http://localhost:4173/stickers/quotes.svg",
+              "startMs": 318,
+              "endMs": 1498
+            },
+            {
+              "url": "http://localhost:4173/stickers/react.svg",
+              "startMs": 318,
+              "endMs": 1528
+            },
+            {
+              "url": "http://localhost:4173/stickers/regex.svg",
+              "startMs": 319,
+              "endMs": 1638
+            },
+            {
+              "url": "http://localhost:4173/stickers/riddler.svg",
+              "startMs": 320,
+              "endMs": 1637
+            },
+            {
+              "url": "http://localhost:4173/stickers/sass.svg",
+              "startMs": 320,
+              "endMs": 1683
+            },
+            {
+              "url": "http://localhost:4173/stickers/shadcn-ui.svg",
+              "startMs": 321,
+              "endMs": 1683
+            },
+            {
+              "url": "http://localhost:4173/stickers/shoshitsu.svg",
+              "startMs": 321,
+              "endMs": 1685
+            },
+            {
+              "url": "http://localhost:4173/stickers/shs.svg",
+              "startMs": 322,
+              "endMs": 1714
+            },
+            {
+              "url": "http://localhost:4173/stickers/si.svg",
+              "startMs": 323,
+              "endMs": 1824
+            },
+            {
+              "url": "http://localhost:4173/stickers/contoso.svg",
+              "startMs": 323,
+              "endMs": 1823
+            },
+            {
+              "url": "http://localhost:4173/stickers/space-tab.svg",
+              "startMs": 324,
+              "endMs": 1870
+            },
+            {
+              "url": "http://localhost:4173/stickers/sui-dau.webp",
+              "startMs": 324,
+              "endMs": 2279
+            },
+            {
+              "url": "http://localhost:4173/stickers/typechat.webp",
+              "startMs": 325,
+              "endMs": 1964
+            },
+            {
+              "url": "http://localhost:4173/stickers/typescript.svg",
+              "startMs": 326,
+              "endMs": 1885
+            },
+            {
+              "url": "http://localhost:4173/stickers/typography.svg",
+              "startMs": 326,
+              "endMs": 2042
+            },
+            {
+              "url": "http://localhost:4173/stickers/fffd.svg",
+              "startMs": 327,
+              "endMs": 2011
+            },
+            {
+              "url": "http://localhost:4173/stickers/utc.svg",
+              "startMs": 327,
+              "endMs": 2043
+            },
+            {
+              "url": "http://localhost:4173/stickers/vocaloid.svg",
+              "startMs": 328,
+              "endMs": 2073
+            },
+            {
+              "url": "http://localhost:4173/stickers/vscode.svg",
+              "startMs": 329,
+              "endMs": 2151
+            },
+            {
+              "url": "http://localhost:4173/stickers/dumbbell.svg",
+              "startMs": 330,
+              "endMs": 2198
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkcd.webp",
+              "startMs": 330,
+              "endMs": 2260
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkjd27c.svg",
+              "startMs": 331,
+              "endMs": 2229
+            },
+            {
+              "url": "http://localhost:4173/stickers/yaml.svg",
+              "startMs": 332,
+              "endMs": 2244
+            },
+            {
+              "url": "http://localhost:4173/stickers/yofukashi.webp",
+              "startMs": 332,
+              "endMs": 2338
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurucom.webp",
+              "startMs": 333,
+              "endMs": 2510
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurugengo.webp",
+              "startMs": 333,
+              "endMs": 2656
+            },
+            {
+              "url": "http://localhost:4173/stickers/zh.svg",
+              "startMs": 334,
+              "endMs": 2417
+            }
+          ],
+          "longTasks": [
+            [
+              612,
+              182
+            ]
+          ]
+        }
+      },
+      {
+        "fcp": 740,
+        "lcp": 832,
+        "tbt": 10,
+        "cls": 0,
+        "allStickersPaintedMs": 2666,
+        "liveCurrentMs": 732.8,
+        "inputReadyMs": 562.6999999284744,
+        "entryStartMs": 252,
+        "entryEndMs": 470,
+        "criticalPathJsGzip": 8636,
+        "criticalPathMarkers": [],
+        "bytes": {
+          "js": 171374,
+          "css": 20540,
+          "img": 733627,
+          "font": 141714,
+          "html": 17968,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 9637,
+          "css": 15930,
+          "img": 24004,
+          "font": 73220,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 566.1,
+        "stickersAtFcp": 63,
+        "ttiProxyMs": 2889,
+        "longTaskCount": 2,
+        "cpuProbeMs": 35.5,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/eana.svg",
+            "size": 52900
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_astro/appState.B-aHSmqp.js",
+              "gzip": 884,
+              "transferred": 1249,
+              "startMs": 253,
+              "endMs": 439,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/preload-helper.DAljqb9w.js",
+              "gzip": 1094,
+              "transferred": 1448,
+              "startMs": 253,
+              "endMs": 439,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/index.astro_astro_type_script_index_0_lang.HK4BLRLX.js",
+              "gzip": 6658,
+              "transferred": 7206,
+              "startMs": 252,
+              "endMs": 470,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/Controls.MGY0xc_k.js",
+              "gzip": 29000,
+              "transferred": 29438,
+              "startMs": 811,
+              "endMs": 2473,
+              "beforeLcp": false,
+              "markers": [
+                "radix"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/_virtual_sticker-mdx.BafUKLvf.js",
+              "gzip": 3747,
+              "transferred": 4014,
+              "startMs": 836,
+              "endMs": 2537,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/client.Dgv5zXeZ.js",
+              "gzip": 56381,
+              "transferred": 57278,
+              "startMs": 812,
+              "endMs": 2599,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/Sheet.ybdl7SCV.js",
+              "gzip": 39282,
+              "transferred": 39397,
+              "startMs": 826,
+              "endMs": 2614,
+              "beforeLcp": false,
+              "markers": [
+                "silk"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/ui-strings.Bf6zbgGO.js",
+              "gzip": 1119,
+              "transferred": 1461,
+              "startMs": 2480,
+              "endMs": 2665,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/button.Bk_dIrI2.js",
+              "gzip": 8377,
+              "transferred": 8804,
+              "startMs": 2480,
+              "endMs": 2723,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/theme-hook.D3KCsmhe.js",
+              "gzip": 397,
+              "transferred": 988,
+              "startMs": 2481,
+              "endMs": 2786,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/react-dom.Dm2cJVtv.js",
+              "gzip": 1329,
+              "transferred": 1708,
+              "startMs": 2481,
+              "endMs": 2786,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/react.DBl4qH0R.js",
+              "gzip": 3112,
+              "transferred": 3541,
+              "startMs": 2481,
+              "endMs": 2786,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CQcgxGN6.js",
+              "gzip": 781,
+              "transferred": 1134,
+              "startMs": 2543,
+              "endMs": 2833,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/provider.DYXvfqQX.js",
+              "gzip": 1290,
+              "transferred": 1627,
+              "startMs": 2544,
+              "endMs": 2848,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.gyRf_FcY.js",
+              "gzip": 1491,
+              "transferred": 1837,
+              "startMs": 2546,
+              "endMs": 2911,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BJfLkyAm.js",
+              "gzip": 330,
+              "transferred": 831,
+              "startMs": 2547,
+              "endMs": 2961,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CuVmg8q4.js",
+              "gzip": 407,
+              "transferred": 984,
+              "startMs": 2942,
+              "endMs": 3128,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGcFZnAM.js",
+              "gzip": 450,
+              "transferred": 1168,
+              "startMs": 2959,
+              "endMs": 3135,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.2BPywM_M.js",
+              "gzip": 472,
+              "transferred": 1126,
+              "startMs": 3017,
+              "endMs": 3206,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DbAbd96q.js",
+              "gzip": 431,
+              "transferred": 1089,
+              "startMs": 3141,
+              "endMs": 3331,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BEGGDMpL.js",
+              "gzip": 853,
+              "transferred": 1206,
+              "startMs": 3134,
+              "endMs": 3331,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.8KZsHZjF.js",
+              "gzip": 520,
+              "transferred": 1202,
+              "startMs": 3211,
+              "endMs": 3393,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGE56tKN.js",
+              "gzip": 356,
+              "transferred": 870,
+              "startMs": 3337,
+              "endMs": 3532,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CjSLqjbo.js",
+              "gzip": 329,
+              "transferred": 819,
+              "startMs": 3341,
+              "endMs": 3532,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DOfHWR3P.js",
+              "gzip": 612,
+              "transferred": 949,
+              "startMs": 3398,
+              "endMs": 3594,
+              "beforeLcp": false,
+              "markers": []
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_astro/index.BBMcBwGF.css",
+              "startMs": 251,
+              "endMs": 470,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/PlusCodeMapInner.BgX4OC_Y.css",
+              "startMs": 252,
+              "endMs": 455,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/main-unlayered.CDuf2hHh.css",
+              "startMs": 2826,
+              "endMs": 3018,
+              "renderBlocking": "non-blocking"
+            }
+          ],
+          "imageCount": 56,
+          "images": [
+            {
+              "url": "http://localhost:4173/stickers/08n.svg",
+              "startMs": 254,
+              "endMs": 625
+            },
+            {
+              "url": "http://localhost:4173/stickers/code-liga.svg",
+              "startMs": 254,
+              "endMs": 625
+            },
+            {
+              "url": "http://localhost:4173/stickers/colemak.svg",
+              "startMs": 255,
+              "endMs": 628
+            },
+            {
+              "url": "http://localhost:4173/stickers/cpp.svg",
+              "startMs": 255,
+              "endMs": 655
+            },
+            {
+              "url": "http://localhost:4173/stickers/css.svg",
+              "startMs": 256,
+              "endMs": 655
+            },
+            {
+              "url": "http://localhost:4173/stickers/dark.svg",
+              "startMs": 256,
+              "endMs": 717
+            },
+            {
+              "url": "http://localhost:4173/stickers/double-lariat.svg",
+              "startMs": 257,
+              "endMs": 850
+            },
+            {
+              "url": "http://localhost:4173/stickers/eana.svg",
+              "startMs": 257,
+              "endMs": 811
+            },
+            {
+              "url": "http://localhost:4173/stickers/earth.webp",
+              "startMs": 257,
+              "endMs": 826
+            },
+            {
+              "url": "http://localhost:4173/stickers/en.svg",
+              "startMs": 258,
+              "endMs": 829
+            },
+            {
+              "url": "http://localhost:4173/stickers/feed.svg",
+              "startMs": 258,
+              "endMs": 829
+            },
+            {
+              "url": "http://localhost:4173/stickers/figma.svg",
+              "startMs": 259,
+              "endMs": 906
+            },
+            {
+              "url": "http://localhost:4173/stickers/gif.svg",
+              "startMs": 259,
+              "endMs": 1042
+            },
+            {
+              "url": "http://localhost:4173/stickers/git-plain.svg",
+              "startMs": 259,
+              "endMs": 1015
+            },
+            {
+              "url": "http://localhost:4173/stickers/icpc.svg",
+              "startMs": 260,
+              "endMs": 1025
+            },
+            {
+              "url": "http://localhost:4173/stickers/font-distinct.svg",
+              "startMs": 260,
+              "endMs": 1028
+            },
+            {
+              "url": "http://localhost:4173/stickers/inter.svg",
+              "startMs": 261,
+              "endMs": 1091
+            },
+            {
+              "url": "http://localhost:4173/stickers/internet.svg",
+              "startMs": 261,
+              "endMs": 1201
+            },
+            {
+              "url": "http://localhost:4173/stickers/ja.svg",
+              "startMs": 262,
+              "endMs": 1216
+            },
+            {
+              "url": "http://localhost:4173/stickers/kagami.svg",
+              "startMs": 262,
+              "endMs": 1225
+            },
+            {
+              "url": "http://localhost:4173/stickers/karaoke.svg",
+              "startMs": 262,
+              "endMs": 1247
+            },
+            {
+              "url": "http://localhost:4173/stickers/kotlin-plain.svg",
+              "startMs": 263,
+              "endMs": 1278
+            },
+            {
+              "url": "http://localhost:4173/stickers/map.svg",
+              "startMs": 263,
+              "endMs": 1279
+            },
+            {
+              "url": "http://localhost:4173/stickers/mdx.svg",
+              "startMs": 263,
+              "endMs": 1388
+            },
+            {
+              "url": "http://localhost:4173/stickers/next-js.svg",
+              "startMs": 264,
+              "endMs": 1403
+            },
+            {
+              "url": "http://localhost:4173/stickers/pedantic.svg",
+              "startMs": 264,
+              "endMs": 2662
+            },
+            {
+              "url": "http://localhost:4173/stickers/pi.svg",
+              "startMs": 265,
+              "endMs": 1403
+            },
+            {
+              "url": "http://localhost:4173/stickers/quizknock.svg",
+              "startMs": 265,
+              "endMs": 1434
+            },
+            {
+              "url": "http://localhost:4173/stickers/quotes.svg",
+              "startMs": 265,
+              "endMs": 1466
+            },
+            {
+              "url": "http://localhost:4173/stickers/react.svg",
+              "startMs": 265,
+              "endMs": 1466
+            },
+            {
+              "url": "http://localhost:4173/stickers/regex.svg",
+              "startMs": 266,
+              "endMs": 1573
+            },
+            {
+              "url": "http://localhost:4173/stickers/riddler.svg",
+              "startMs": 266,
+              "endMs": 1589
+            },
+            {
+              "url": "http://localhost:4173/stickers/sass.svg",
+              "startMs": 267,
+              "endMs": 1589
+            },
+            {
+              "url": "http://localhost:4173/stickers/shadcn-ui.svg",
+              "startMs": 267,
+              "endMs": 1621
+            },
+            {
+              "url": "http://localhost:4173/stickers/shoshitsu.svg",
+              "startMs": 267,
+              "endMs": 1652
+            },
+            {
+              "url": "http://localhost:4173/stickers/shs.svg",
+              "startMs": 268,
+              "endMs": 1653
+            },
+            {
+              "url": "http://localhost:4173/stickers/si.svg",
+              "startMs": 268,
+              "endMs": 1760
+            },
+            {
+              "url": "http://localhost:4173/stickers/contoso.svg",
+              "startMs": 268,
+              "endMs": 1764
+            },
+            {
+              "url": "http://localhost:4173/stickers/space-tab.svg",
+              "startMs": 269,
+              "endMs": 1766
+            },
+            {
+              "url": "http://localhost:4173/stickers/sui-dau.webp",
+              "startMs": 269,
+              "endMs": 2224
+            },
+            {
+              "url": "http://localhost:4173/stickers/typechat.webp",
+              "startMs": 270,
+              "endMs": 1946
+            },
+            {
+              "url": "http://localhost:4173/stickers/typescript.svg",
+              "startMs": 270,
+              "endMs": 1837
+            },
+            {
+              "url": "http://localhost:4173/stickers/typography.svg",
+              "startMs": 270,
+              "endMs": 1991
+            },
+            {
+              "url": "http://localhost:4173/stickers/fffd.svg",
+              "startMs": 270,
+              "endMs": 1946
+            },
+            {
+              "url": "http://localhost:4173/stickers/utc.svg",
+              "startMs": 271,
+              "endMs": 1955
+            },
+            {
+              "url": "http://localhost:4173/stickers/vocaloid.svg",
+              "startMs": 271,
+              "endMs": 2022
+            },
+            {
+              "url": "http://localhost:4173/stickers/vscode.svg",
+              "startMs": 271,
+              "endMs": 2131
+            },
+            {
+              "url": "http://localhost:4173/stickers/dumbbell.svg",
+              "startMs": 272,
+              "endMs": 2131
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkcd.webp",
+              "startMs": 272,
+              "endMs": 2161
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkjd27c.svg",
+              "startMs": 272,
+              "endMs": 2177
+            },
+            {
+              "url": "http://localhost:4173/stickers/yaml.svg",
+              "startMs": 273,
+              "endMs": 2193
+            },
+            {
+              "url": "http://localhost:4173/stickers/yofukashi.webp",
+              "startMs": 273,
+              "endMs": 2321
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurucom.webp",
+              "startMs": 274,
+              "endMs": 2489
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurugengo.webp",
+              "startMs": 274,
+              "endMs": 2599
+            },
+            {
+              "url": "http://localhost:4173/stickers/zh.svg",
+              "startMs": 274,
+              "endMs": 2350
+            }
+          ],
+          "longTasks": [
+            [
+              574,
+              159
+            ],
+            [
+              2829,
+              60
+            ]
+          ]
+        }
+      },
+      {
+        "fcp": 748,
+        "lcp": 864,
+        "tbt": 0,
+        "cls": 0,
+        "allStickersPaintedMs": 2626.6,
+        "liveCurrentMs": 726.6,
+        "inputReadyMs": 556,
+        "entryStartMs": 266,
+        "entryEndMs": 483,
+        "criticalPathJsGzip": 8636,
+        "criticalPathMarkers": [],
+        "bytes": {
+          "js": 171374,
+          "css": 20540,
+          "img": 733627,
+          "font": 141714,
+          "html": 17968,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 9637,
+          "css": 15930,
+          "img": 24004,
+          "font": 73220,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 560,
+        "stickersAtFcp": 63,
+        "ttiProxyMs": 748,
+        "longTaskCount": 1,
+        "cpuProbeMs": 36.89999997615814,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/eana.svg",
+            "size": 52900
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_astro/appState.B-aHSmqp.js",
+              "gzip": 884,
+              "transferred": 1249,
+              "startMs": 267,
+              "endMs": 452,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/preload-helper.DAljqb9w.js",
+              "gzip": 1094,
+              "transferred": 1448,
+              "startMs": 267,
+              "endMs": 452,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/index.astro_astro_type_script_index_0_lang.HK4BLRLX.js",
+              "gzip": 6658,
+              "transferred": 7206,
+              "startMs": 266,
+              "endMs": 483,
+              "beforeLcp": true,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/Controls.MGY0xc_k.js",
+              "gzip": 29000,
+              "transferred": 29438,
+              "startMs": 867,
+              "endMs": 2493,
+              "beforeLcp": false,
+              "markers": [
+                "radix"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/_virtual_sticker-mdx.BafUKLvf.js",
+              "gzip": 3747,
+              "transferred": 4014,
+              "startMs": 897,
+              "endMs": 2572,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/client.Dgv5zXeZ.js",
+              "gzip": 56381,
+              "transferred": 57278,
+              "startMs": 868,
+              "endMs": 2588,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/Sheet.ybdl7SCV.js",
+              "gzip": 39282,
+              "transferred": 39397,
+              "startMs": 886,
+              "endMs": 2618,
+              "beforeLcp": false,
+              "markers": [
+                "silk"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/ui-strings.Bf6zbgGO.js",
+              "gzip": 1119,
+              "transferred": 1461,
+              "startMs": 2499,
+              "endMs": 2682,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/button.Bk_dIrI2.js",
+              "gzip": 8377,
+              "transferred": 8804,
+              "startMs": 2499,
+              "endMs": 2761,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/react.DBl4qH0R.js",
+              "gzip": 3112,
+              "transferred": 3541,
+              "startMs": 2500,
+              "endMs": 2764,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/theme-hook.D3KCsmhe.js",
+              "gzip": 397,
+              "transferred": 988,
+              "startMs": 2501,
+              "endMs": 2792,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/react-dom.Dm2cJVtv.js",
+              "gzip": 1329,
+              "transferred": 1708,
+              "startMs": 2500,
+              "endMs": 2792,
+              "beforeLcp": false,
+              "markers": [
+                "react-dom"
+              ]
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CQcgxGN6.js",
+              "gzip": 781,
+              "transferred": 1134,
+              "startMs": 2578,
+              "endMs": 2808,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/provider.DYXvfqQX.js",
+              "gzip": 1290,
+              "transferred": 1627,
+              "startMs": 2579,
+              "endMs": 2871,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BJfLkyAm.js",
+              "gzip": 330,
+              "transferred": 831,
+              "startMs": 2582,
+              "endMs": 2935,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.gyRf_FcY.js",
+              "gzip": 1491,
+              "transferred": 1837,
+              "startMs": 2580,
+              "endMs": 2948,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CuVmg8q4.js",
+              "gzip": 407,
+              "transferred": 984,
+              "startMs": 2932,
+              "endMs": 3119,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.2BPywM_M.js",
+              "gzip": 472,
+              "transferred": 1126,
+              "startMs": 3006,
+              "endMs": 3180,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGcFZnAM.js",
+              "gzip": 450,
+              "transferred": 1168,
+              "startMs": 2993,
+              "endMs": 3180,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.BEGGDMpL.js",
+              "gzip": 853,
+              "transferred": 1206,
+              "startMs": 3123,
+              "endMs": 3306,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DbAbd96q.js",
+              "gzip": 431,
+              "transferred": 1089,
+              "startMs": 3186,
+              "endMs": 3369,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.8KZsHZjF.js",
+              "gzip": 520,
+              "transferred": 1202,
+              "startMs": 3189,
+              "endMs": 3376,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DGE56tKN.js",
+              "gzip": 356,
+              "transferred": 870,
+              "startMs": 3313,
+              "endMs": 3496,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.CjSLqjbo.js",
+              "gzip": 329,
+              "transferred": 819,
+              "startMs": 3375,
+              "endMs": 3557,
+              "beforeLcp": false,
+              "markers": []
+            },
+            {
+              "url": "http://localhost:4173/_astro/en.DOfHWR3P.js",
+              "gzip": 612,
+              "transferred": 949,
+              "startMs": 3382,
+              "endMs": 3573,
+              "beforeLcp": false,
+              "markers": []
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_astro/index.BBMcBwGF.css",
+              "startMs": 265,
+              "endMs": 483,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/PlusCodeMapInner.BgX4OC_Y.css",
+              "startMs": 266,
+              "endMs": 482,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_astro/main-unlayered.CDuf2hHh.css",
+              "startMs": 2882,
+              "endMs": 3071,
+              "renderBlocking": "non-blocking"
+            }
+          ],
+          "imageCount": 56,
+          "images": [
+            {
+              "url": "http://localhost:4173/stickers/08n.svg",
+              "startMs": 268,
+              "endMs": 638
+            },
+            {
+              "url": "http://localhost:4173/stickers/code-liga.svg",
+              "startMs": 268,
+              "endMs": 638
+            },
+            {
+              "url": "http://localhost:4173/stickers/colemak.svg",
+              "startMs": 269,
+              "endMs": 664
+            },
+            {
+              "url": "http://localhost:4173/stickers/cpp.svg",
+              "startMs": 269,
+              "endMs": 662
+            },
+            {
+              "url": "http://localhost:4173/stickers/css.svg",
+              "startMs": 270,
+              "endMs": 662
+            },
+            {
+              "url": "http://localhost:4173/stickers/dark.svg",
+              "startMs": 270,
+              "endMs": 746
+            },
+            {
+              "url": "http://localhost:4173/stickers/double-lariat.svg",
+              "startMs": 271,
+              "endMs": 868
+            },
+            {
+              "url": "http://localhost:4173/stickers/eana.svg",
+              "startMs": 272,
+              "endMs": 826
+            },
+            {
+              "url": "http://localhost:4173/stickers/earth.webp",
+              "startMs": 272,
+              "endMs": 858
+            },
+            {
+              "url": "http://localhost:4173/stickers/en.svg",
+              "startMs": 272,
+              "endMs": 834
+            },
+            {
+              "url": "http://localhost:4173/stickers/feed.svg",
+              "startMs": 273,
+              "endMs": 837
+            },
+            {
+              "url": "http://localhost:4173/stickers/figma.svg",
+              "startMs": 273,
+              "endMs": 935
+            },
+            {
+              "url": "http://localhost:4173/stickers/gif.svg",
+              "startMs": 274,
+              "endMs": 1055
+            },
+            {
+              "url": "http://localhost:4173/stickers/git-plain.svg",
+              "startMs": 274,
+              "endMs": 1029
+            },
+            {
+              "url": "http://localhost:4173/stickers/icpc.svg",
+              "startMs": 275,
+              "endMs": 1045
+            },
+            {
+              "url": "http://localhost:4173/stickers/font-distinct.svg",
+              "startMs": 275,
+              "endMs": 1052
+            },
+            {
+              "url": "http://localhost:4173/stickers/inter.svg",
+              "startMs": 275,
+              "endMs": 1121
+            },
+            {
+              "url": "http://localhost:4173/stickers/internet.svg",
+              "startMs": 276,
+              "endMs": 1214
+            },
+            {
+              "url": "http://localhost:4173/stickers/ja.svg",
+              "startMs": 276,
+              "endMs": 1229
+            },
+            {
+              "url": "http://localhost:4173/stickers/kagami.svg",
+              "startMs": 277,
+              "endMs": 1253
+            },
+            {
+              "url": "http://localhost:4173/stickers/karaoke.svg",
+              "startMs": 277,
+              "endMs": 1276
+            },
+            {
+              "url": "http://localhost:4173/stickers/kotlin-plain.svg",
+              "startMs": 278,
+              "endMs": 1292
+            },
+            {
+              "url": "http://localhost:4173/stickers/map.svg",
+              "startMs": 278,
+              "endMs": 1304
+            },
+            {
+              "url": "http://localhost:4173/stickers/mdx.svg",
+              "startMs": 279,
+              "endMs": 1401
+            },
+            {
+              "url": "http://localhost:4173/stickers/next-js.svg",
+              "startMs": 279,
+              "endMs": 1410
+            },
+            {
+              "url": "http://localhost:4173/stickers/pedantic.svg",
+              "startMs": 279,
+              "endMs": 2623
+            },
+            {
+              "url": "http://localhost:4173/stickers/pi.svg",
+              "startMs": 280,
+              "endMs": 1447
+            },
+            {
+              "url": "http://localhost:4173/stickers/quizknock.svg",
+              "startMs": 280,
+              "endMs": 1450
+            },
+            {
+              "url": "http://localhost:4173/stickers/quotes.svg",
+              "startMs": 280,
+              "endMs": 1478
+            },
+            {
+              "url": "http://localhost:4173/stickers/react.svg",
+              "startMs": 281,
+              "endMs": 1485
+            },
+            {
+              "url": "http://localhost:4173/stickers/regex.svg",
+              "startMs": 281,
+              "endMs": 1587
+            },
+            {
+              "url": "http://localhost:4173/stickers/riddler.svg",
+              "startMs": 282,
+              "endMs": 1598
+            },
+            {
+              "url": "http://localhost:4173/stickers/sass.svg",
+              "startMs": 282,
+              "endMs": 1634
+            },
+            {
+              "url": "http://localhost:4173/stickers/shadcn-ui.svg",
+              "startMs": 282,
+              "endMs": 1634
+            },
+            {
+              "url": "http://localhost:4173/stickers/shoshitsu.svg",
+              "startMs": 283,
+              "endMs": 1665
+            },
+            {
+              "url": "http://localhost:4173/stickers/shs.svg",
+              "startMs": 283,
+              "endMs": 1673
+            },
+            {
+              "url": "http://localhost:4173/stickers/si.svg",
+              "startMs": 284,
+              "endMs": 1775
+            },
+            {
+              "url": "http://localhost:4173/stickers/contoso.svg",
+              "startMs": 284,
+              "endMs": 1778
+            },
+            {
+              "url": "http://localhost:4173/stickers/space-tab.svg",
+              "startMs": 285,
+              "endMs": 1821
+            },
+            {
+              "url": "http://localhost:4173/stickers/sui-dau.webp",
+              "startMs": 285,
+              "endMs": 2228
+            },
+            {
+              "url": "http://localhost:4173/stickers/typechat.webp",
+              "startMs": 285,
+              "endMs": 1947
+            },
+            {
+              "url": "http://localhost:4173/stickers/typescript.svg",
+              "startMs": 286,
+              "endMs": 1854
+            },
+            {
+              "url": "http://localhost:4173/stickers/typography.svg",
+              "startMs": 286,
+              "endMs": 1995
+            },
+            {
+              "url": "http://localhost:4173/stickers/fffd.svg",
+              "startMs": 286,
+              "endMs": 1951
+            },
+            {
+              "url": "http://localhost:4173/stickers/utc.svg",
+              "startMs": 287,
+              "endMs": 1998
+            },
+            {
+              "url": "http://localhost:4173/stickers/vocaloid.svg",
+              "startMs": 287,
+              "endMs": 2043
+            },
+            {
+              "url": "http://localhost:4173/stickers/vscode.svg",
+              "startMs": 287,
+              "endMs": 2135
+            },
+            {
+              "url": "http://localhost:4173/stickers/dumbbell.svg",
+              "startMs": 288,
+              "endMs": 2136
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkcd.webp",
+              "startMs": 288,
+              "endMs": 2212
+            },
+            {
+              "url": "http://localhost:4173/stickers/xkjd27c.svg",
+              "startMs": 288,
+              "endMs": 2182
+            },
+            {
+              "url": "http://localhost:4173/stickers/yaml.svg",
+              "startMs": 289,
+              "endMs": 2213
+            },
+            {
+              "url": "http://localhost:4173/stickers/yofukashi.webp",
+              "startMs": 289,
+              "endMs": 2322
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurucom.webp",
+              "startMs": 289,
+              "endMs": 2445
+            },
+            {
+              "url": "http://localhost:4173/stickers/yurugengo.webp",
+              "startMs": 290,
+              "endMs": 2603
+            },
+            {
+              "url": "http://localhost:4173/stickers/zh.svg",
+              "startMs": 290,
+              "endMs": 2383
+            }
+          ],
+          "longTasks": [
+            [
+              571,
+              168
+            ]
+          ]
+        }
+      }
+    ],
+    "gestures": [
+      {
+        "name": "button-zoom",
+        "frames": 90,
+        "over16": 1,
+        "over33": 1,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 702.709,
+        "crispAfterMs": 360.0059999227524,
+        "peakHeapMb": 6.0533447265625,
+        "motionMs": 1571.1000000000004,
+        "traceOver16": 39,
+        "traceOver33": 3,
+        "rasterMs": 1640.774,
+        "rasterAfterInputMs": 292.815,
+        "scriptMs": 204.92100000000002,
+        "layoutMs": 11.251999999999985,
+        "styleMs": 48.889,
+        "layoutCount": 5,
+        "styleRecalcCount": 102,
+        "inputDelayMs": 86.39999997615814,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          83.39999999999964,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 2.4059998989105225,
+        "motionAfterInputMs": 357.60000000000036,
+        "settleAfterMotionMs": 87.19999995231592,
+        "rasterAfterSettleMs": -84.7940000295639
+      },
+      {
+        "name": "button-zoom",
+        "frames": 89,
+        "over16": 1,
+        "over33": 1,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 676.747,
+        "crispAfterMs": 337.95500004291534,
+        "peakHeapMb": 6.029502868652344,
+        "motionMs": 1537.8000000238417,
+        "traceOver16": 33,
+        "traceOver33": 3,
+        "rasterMs": 1672.535,
+        "rasterAfterInputMs": 305.857,
+        "scriptMs": 191.49500000000003,
+        "layoutMs": 9.344000000000019,
+        "styleMs": 43.89299999999999,
+        "layoutCount": 5,
+        "styleRecalcCount": 102,
+        "inputDelayMs": 77.5,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          66.69999999999982,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 343.90000004768353,
+        "settleAfterMotionMs": 97.59999995231647,
+        "rasterAfterSettleMs": -103.54499995708466
+      },
+      {
+        "name": "button-zoom",
+        "frames": 89,
+        "over16": 2,
+        "over33": 2,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 652.994,
+        "crispAfterMs": 334.9480000734329,
+        "peakHeapMb": 6.054862976074219,
+        "motionMs": 1556.1999999761583,
+        "traceOver16": 35,
+        "traceOver33": 3,
+        "rasterMs": 1638.391,
+        "rasterAfterInputMs": 302.163,
+        "scriptMs": 191.609,
+        "layoutMs": 11.669000000000013,
+        "styleMs": 44.663,
+        "layoutCount": 5,
+        "styleRecalcCount": 102,
+        "inputDelayMs": 85.70000004768372,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          66.60000000000036,
+          33.29999999999927,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 340.3000000000002,
+        "settleAfterMotionMs": 86.69999999999982,
+        "rasterAfterSettleMs": -92.05199992656708
+      },
+      {
+        "name": "button-zoom",
+        "frames": 90,
+        "over16": 1,
+        "over33": 1,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 688.724,
+        "crispAfterMs": 345.4179998636246,
+        "peakHeapMb": 6.050453186035156,
+        "motionMs": 1598,
+        "traceOver16": 37,
+        "traceOver33": 3,
+        "rasterMs": 1631.323,
+        "rasterAfterInputMs": 305.76,
+        "scriptMs": 210.322,
+        "layoutMs": 12.376999999999999,
+        "styleMs": 49.596000000000004,
+        "layoutCount": 5,
+        "styleRecalcCount": 103,
+        "inputDelayMs": 117.70000004768372,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          100.10000000000036,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 3.8179999589920044,
+        "motionAfterInputMs": 341.59999990463257,
+        "settleAfterMotionMs": 102.70000004768372,
+        "rasterAfterSettleMs": -98.88200008869171
+      },
+      {
+        "name": "button-zoom",
+        "frames": 86,
+        "over16": 3,
+        "over33": 3,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 735.826,
+        "crispAfterMs": 337.2700001001358,
+        "peakHeapMb": 6.045589447021484,
+        "motionMs": 1591.1999999999998,
+        "traceOver16": 30,
+        "traceOver33": 3,
+        "rasterMs": 1557.745,
+        "rasterAfterInputMs": 289.783,
+        "scriptMs": 232.21800000000005,
+        "layoutMs": 13.295999999999975,
+        "styleMs": 51.94799999999999,
+        "layoutCount": 5,
+        "styleRecalcCount": 101,
+        "inputDelayMs": 124.79999995231628,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          133.29999999999927,
+          33.400000000000546,
+          33.30000000000018,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 342.90000004768353,
+        "settleAfterMotionMs": 92.5000000476839,
+        "rasterAfterSettleMs": -98.12999999523163
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 509.328,
+        "crispAfterMs": 809.2489998340607,
+        "peakHeapMb": 5.382816314697266,
+        "motionMs": 1409,
+        "traceOver16": 39,
+        "traceOver33": 8,
+        "rasterMs": 1836.88,
+        "rasterAfterInputMs": 1342.238,
+        "scriptMs": 149.85699999999997,
+        "layoutMs": 0,
+        "styleMs": 18.80599999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 33.200000047683716,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 809.5999999046326,
+        "settleAfterMotionMs": 91.80000007152557,
+        "rasterAfterSettleMs": -92.15100014209747
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 86,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 492.8699998779297,
+        "crispAfterMs": 808.0280001163483,
+        "peakHeapMb": 5.382518768310547,
+        "motionMs": 1441.0999999046326,
+        "traceOver16": 36,
+        "traceOver33": 10,
+        "rasterMs": 1836.067,
+        "rasterAfterInputMs": 1305.029,
+        "scriptMs": 148.851,
+        "layoutMs": 0,
+        "styleMs": 17.863000000000003,
+        "layoutCount": 0,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 35.299999952316284,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 810,
+        "settleAfterMotionMs": 86.5,
+        "rasterAfterSettleMs": -88.47199988365173
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 83,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 469.479,
+        "crispAfterMs": 797.011999964714,
+        "peakHeapMb": 5.377960205078125,
+        "motionMs": 1391.2000000238422,
+        "traceOver16": 32,
+        "traceOver33": 11,
+        "rasterMs": 1879.917,
+        "rasterAfterInputMs": 1339.282,
+        "scriptMs": 140.885,
+        "layoutMs": 0,
+        "styleMs": 17.628000000000004,
+        "layoutCount": 0,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 33.10000002384186,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 799.6000000000004,
+        "settleAfterMotionMs": 86.69999995231592,
+        "rasterAfterSettleMs": -89.28799998760223
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 500.7470001220703,
+        "crispAfterMs": 797.6370000839233,
+        "peakHeapMb": 5.386989593505859,
+        "motionMs": 1401.3999999761581,
+        "traceOver16": 35,
+        "traceOver33": 10,
+        "rasterMs": 1778.251,
+        "rasterAfterInputMs": 1249.325,
+        "scriptMs": 148.44799999999998,
+        "layoutMs": 0,
+        "styleMs": 19.844,
+        "layoutCount": 0,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 33.200000047683716,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 799.8999999761581,
+        "settleAfterMotionMs": 86.40000009536743,
+        "rasterAfterSettleMs": -88.66299998760223
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 86,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 543.251,
+        "crispAfterMs": 806.1699999570847,
+        "peakHeapMb": 5.38995361328125,
+        "motionMs": 1445.900000023842,
+        "traceOver16": 35,
+        "traceOver33": 10,
+        "rasterMs": 2016.826,
+        "rasterAfterInputMs": 1443.167,
+        "scriptMs": 146.71100000000004,
+        "layoutMs": 0,
+        "styleMs": 18.30899999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 34.89999997615814,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 811.5000000476839,
+        "settleAfterMotionMs": 85.9999999523161,
+        "rasterAfterSettleMs": -91.33000004291534
+      },
+      {
+        "name": "pinch",
+        "frames": 67,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 289.577,
+        "crispAfterMs": 1.5500000715255737,
+        "peakHeapMb": 5.370323181152344,
+        "motionMs": 1117.900000023842,
+        "traceOver16": 29,
+        "traceOver33": 16,
+        "rasterMs": 668.835,
+        "rasterAfterInputMs": 1.835,
+        "scriptMs": 122.57800000000002,
+        "layoutMs": 0,
+        "styleMs": 7.734000000000004,
+        "layoutCount": 0,
+        "styleRecalcCount": 30,
+        "inputDelayMs": 36.10000002384186,
+        "scaleChange": 3.5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 3.1000000715257556,
+        "settleAfterMotionMs": 110.09999997615796,
+        "rasterAfterSettleMs": -111.64999997615814
+      },
+      {
+        "name": "pinch",
+        "frames": 69,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 330.65899987792966,
+        "crispAfterMs": 2.902999997138977,
+        "peakHeapMb": 5.367435455322266,
+        "motionMs": 1155.8999999523166,
+        "traceOver16": 28,
+        "traceOver33": 17,
+        "rasterMs": 676.331,
+        "rasterAfterInputMs": 4.088,
+        "scriptMs": 130.90600000000003,
+        "layoutMs": 0,
+        "styleMs": 8.955000000000005,
+        "layoutCount": 0,
+        "styleRecalcCount": 30,
+        "inputDelayMs": 38.700000047683716,
+        "scaleChange": 3.5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 4.200000023842222,
+        "settleAfterMotionMs": 118.10000004768335,
+        "rasterAfterSettleMs": -119.3970000743866
+      },
+      {
+        "name": "pinch",
+        "frames": 66,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 312.871,
+        "crispAfterMs": 1.1399998664855957,
+        "peakHeapMb": 5.366245269775391,
+        "motionMs": 1103.8000000238417,
+        "traceOver16": 29,
+        "traceOver33": 14,
+        "rasterMs": 670.715,
+        "rasterAfterInputMs": 0.888,
+        "scriptMs": 127.86900000000001,
+        "layoutMs": 0,
+        "styleMs": 8.646,
+        "layoutCount": 0,
+        "styleRecalcCount": 30,
+        "inputDelayMs": 36,
+        "scaleChange": 3.5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 5.999999952316102,
+        "settleAfterMotionMs": 122.09999995231647,
+        "rasterAfterSettleMs": -126.96000003814697
+      },
+      {
+        "name": "pinch",
+        "frames": 71,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 329.794,
+        "crispAfterMs": 6.230999946594238,
+        "peakHeapMb": 5.371952056884766,
+        "motionMs": 1196.8000000000002,
+        "traceOver16": 26,
+        "traceOver33": 18,
+        "rasterMs": 599.156,
+        "rasterAfterInputMs": 8.052,
+        "scriptMs": 133.15300000000002,
+        "layoutMs": 0,
+        "styleMs": 8.45399999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 30,
+        "inputDelayMs": 38.60000002384186,
+        "scaleChange": 3.5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 7.199999976158324,
+        "settleAfterMotionMs": 117.30000002384168,
+        "rasterAfterSettleMs": -118.26900005340576
+      },
+      {
+        "name": "pinch",
+        "frames": 70,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 344.449,
+        "crispAfterMs": 4.11299991607666,
+        "peakHeapMb": 5.347026824951172,
+        "motionMs": 1167.7000000715252,
+        "traceOver16": 29,
+        "traceOver33": 17,
+        "rasterMs": 643.597,
+        "rasterAfterInputMs": 7.078,
+        "scriptMs": 136.316,
+        "layoutMs": 0,
+        "styleMs": 9.038000000000004,
+        "layoutCount": 0,
+        "styleRecalcCount": 30,
+        "inputDelayMs": 38.90000009536743,
+        "scaleChange": 3.5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 9.70000007152521,
+        "settleAfterMotionMs": 117.4999999761585,
+        "rasterAfterSettleMs": -123.08700013160706
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 61,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 438.433,
+        "crispAfterMs": 46.787999987602234,
+        "peakHeapMb": 5.228878021240234,
+        "motionMs": 1030.300000047684,
+        "traceOver16": 29,
+        "traceOver33": 5,
+        "rasterMs": 964.068,
+        "rasterAfterInputMs": 40.183,
+        "scriptMs": 135.88299999999998,
+        "layoutMs": 0,
+        "styleMs": 10.935,
+        "layoutCount": 0,
+        "styleRecalcCount": 39,
+        "inputDelayMs": 47,
+        "scaleChange": 2.803,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 47.600000000000364,
+        "settleAfterMotionMs": 203.9999999046322,
+        "rasterAfterSettleMs": -204.81199991703033
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 60,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 453.5629998779297,
+        "crispAfterMs": 41.95899999141693,
+        "peakHeapMb": 5.220226287841797,
+        "motionMs": 1014.7999999284748,
+        "traceOver16": 30,
+        "traceOver33": 3,
+        "rasterMs": 1154.391,
+        "rasterAfterInputMs": 55.471,
+        "scriptMs": 140.80599999999998,
+        "layoutMs": 0,
+        "styleMs": 14.376,
+        "layoutCount": 0,
+        "styleRecalcCount": 48,
+        "inputDelayMs": 50.299999952316284,
+        "scaleChange": 2.804,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 46.70000002384222,
+        "settleAfterMotionMs": 188.5000000238415,
+        "rasterAfterSettleMs": -193.24100005626678
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 60,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 406.452,
+        "crispAfterMs": 32.51199996471405,
+        "peakHeapMb": 5.254123687744141,
+        "motionMs": 1015.4999999761585,
+        "traceOver16": 32,
+        "traceOver33": 3,
+        "rasterMs": 938.36,
+        "rasterAfterInputMs": 21.518,
+        "scriptMs": 125.74600000000002,
+        "layoutMs": 0,
+        "styleMs": 10.430000000000009,
+        "layoutCount": 0,
+        "styleRecalcCount": 38,
+        "inputDelayMs": 52.799999952316284,
+        "scaleChange": 2.804,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 33.19999990463293,
+        "settleAfterMotionMs": 192.0000000238415,
+        "rasterAfterSettleMs": -192.68799996376038
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 61,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 465.1760001220703,
+        "crispAfterMs": 46.64900004863739,
+        "peakHeapMb": 5.244266510009766,
+        "motionMs": 1024.6999999999998,
+        "traceOver16": 25,
+        "traceOver33": 3,
+        "rasterMs": 1263.346,
+        "rasterAfterInputMs": 58.72,
+        "scriptMs": 139.11700000000005,
+        "layoutMs": 0,
+        "styleMs": 13.696,
+        "layoutCount": 0,
+        "styleRecalcCount": 50,
+        "inputDelayMs": 67,
+        "scaleChange": 2.805,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 48.4999999523161,
+        "settleAfterMotionMs": 191.80000000000018,
+        "rasterAfterSettleMs": -193.6509999036789
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 61,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 517.5000001220703,
+        "crispAfterMs": 56.42200005054474,
+        "peakHeapMb": 5.234535217285156,
+        "motionMs": 1022,
+        "traceOver16": 27,
+        "traceOver33": 5,
+        "rasterMs": 1230.529,
+        "rasterAfterInputMs": 74.667,
+        "scriptMs": 144.32899999999998,
+        "layoutMs": 0,
+        "styleMs": 16.00700000000001,
+        "layoutCount": 0,
+        "styleRecalcCount": 51,
+        "inputDelayMs": 59.60000002384186,
+        "scaleChange": 2.804,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ],
+        "crispAfterMotionMs": 0,
+        "motionAfterInputMs": 60.09999990463257,
+        "settleAfterMotionMs": 199.10000002384186,
+        "rasterAfterSettleMs": -202.7779998779297
+      }
+    ]
+  }
+}
