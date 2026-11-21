@@ -1,0 +1,1191 @@
+[
+  {
+    "x": 95,
+    "y": 280,
+    "width": 100,
+    "height": 100,
+    "rotation": 5,
+    "image": "/stickers/08n.svg",
+    "clipPath": "path('M46.8429 99.3774C33.6086 97.3547 21.4409 90.1189 12.6834 80.3595C0.756345 67.0679 -2.35103 48.5881 4.72184 33.2483C8.96476 24.0461 18.7969 13.3899 27.5686 8.48439C45.2687 -1.414 65.4639 -1.46475 78.5931 8.21098C92.4678 18.4362 100.005 36.0076 99.977 58.3634C99.9593 71.9952 97.0774 80.6291 90.2365 87.8623C83.7749 94.6945 75.5857 98.6062 63.1289 99.6831C58.905 100.048 56.4432 100.215 54.2349 100.17C52.0319 100.126 50.0698 99.8706 46.8429 99.3774Z')",
+    "title": {
+      "en": "Na’vi language",
+      "zh-Hans": "纳美语",
+      "ja": "ナヴィ語"
+    },
+    "description": {
+      "en": "I have a basic knowledge of **the Na’vi language**, but I rely on dictionaries and grammar books to read and write in it.\n",
+      "zh-Hans": "对**纳美语**有基本的了解，但在读写时需要依赖词典和语法书。\n",
+      "ja": "**ナヴィ語**の基礎知識はありますが、読み書きの際は辞書と文法書に頼っています。\n"
+    },
+    "slug": "08n"
+  },
+  {
+    "x": 320,
+    "y": -345,
+    "width": 100,
+    "height": 50,
+    "rotation": -30,
+    "content": {
+      "en": "<div style={{\n  width: \"100%\",\n  height: \"100%\",\n  backgroundColor: \"light-dark(#285817, #badc94)\",\n  color: \"light-dark(#badc94, #285817)\",\n  borderRadius: \"10px\",\n  padding: \"10px\",\n  textAlign: \"center\",\n  display: \"flex\",\n  alignItems: \"center\",\n  justifyContent: \"center\",\n  flexDirection: \"column\",\n  fontVariantNumeric: \"tabular-nums\",\n  fontSize: \"25px\",\n  fontWeight: \"600\"\n}}>\n  23:59\n</div>\n"
+    },
+    "title": {
+      "en": "24-hour clock",
+      "zh-Hans": "24 小时制",
+      "ja": "24 時制"
+    },
+    "description": {
+      "en": "I use **24-hour clock** for time when possible.\n",
+      "zh-Hans": "我尽可能使用 **24 小时制**来表示时间。\n",
+      "ja": "可能な限り、**24 時制**を使います。\n"
+    },
+    "slug": "24h"
+  },
+  {
+    "x": -225,
+    "y": 300,
+    "width": 250,
+    "height": 75,
+    "rotation": -5,
+    "content": {
+      "en": "<div style={{\n  width: '100%',\n  height: '100%',\n  borderRadius: '10px',\n  display: 'flex',\n  justifyContent: 'center',\n  alignItems: 'center',\n  backgroundColor: '#f3f3f3',\n  color: '#333',\n  fontFamily: `Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif`,\n  textTransform: 'uppercase',\n  lineHeight: 1.3,\n  textAlign: 'start',\n}}>Do not dumb here.<br />Not dumb area here.</div>\n",
+      "zh-Hans": "<div style={{\n  width: '100%',\n  height: '100%',\n  borderRadius: '10px',\n  display: 'flex',\n  flexDirection: 'column',\n  justifyContent: 'center',\n  alignItems: 'center',\n  gap: '0.2rem',\n  backgroundColor: '#000',\n  color: '#fff',\n  fontFamily: 'Segoe UI, Microsoft YaHei, sans-serif',\n  fontWeight: 300,\n}}><div style={{ fontSize: '0.7rem'}}>安装 Windows 10 Technical Preview</div><div style={{ fontSize: '1rem'}}>你的电脑将重启多次。坐和放宽</div></div>\n",
+      "ja": "<div style={{\n  width: '100%',\n  height: '100%',\n  borderRadius: '10px',\n  display: 'flex',\n  justifyContent: 'center',\n  alignItems: 'center',\n  backgroundColor: '#000',\n  color: '#fff',\n  fontFamily: 'sans-serif',\n  fontSize: '1.5rem',\n  fontWeight: 600,\n}}>極度乾燥<span style={{ color: '#FF5100' }}>(しなさい)</span></div>\n"
+    },
+    "title": {
+      "en": "Typos and weird translations",
+      "zh-Hans": "错别字和糟糕的翻译",
+      "ja": "誤字と変な翻訳"
+    },
+    "description": {
+      "en": "> <span lang=\"ja\">ここにゴミを<br />捨てないで下さい</span>\n>\n> DO NOT DUMB HERE.<br />NOT DUMB AREA HERE.\n>\n> <Small>(Please do not dump garbage here.)</Small>\n>\n> Found on [Reddit](https://www.reddit.com/r/engrish/comments/e0uf86/im_thinking_i_need_this_made_into_a_tshirt/)\n\nI collect poorly carried out internationalization (i18n), localization (l10n), and translation of software user interfaces at [i18n fails](https://i18nfails.1a23.studio/).\n\nMy sources for all kinds of weird translations:\n\n- [Twitter 中華業者商品画像bot @Rhkya](https://twitter.com/Rhkya)\n- [Twitter 中國の怪レい日本语bot @correctJP](https://twitter.com/correctJP)\n- [Reddit /r/engrish](https://www.reddit.com/r/engrish)\n- [Engrish.com](https://www.engrish.com/)\n- [Telegram 生草翻译 @TranslationGrass](https://t.me/translationgrass)\n",
+      "zh-Hans": "> <span style={{ fontFamily: 'Segoe UI, Microsoft YaHei, sans-serif', fontWeight: 300 }}>安装 Windows 10 Technical Preview</span><br />\n> <span style={{ fontFamily: 'Segoe UI, Microsoft YaHei, sans-serif', fontWeight: 300 }}>你的电脑将重启多次。<del>坐和放宽</del> 请坐下来放松片刻</span>\n>\n> [微软式中文 – 萌娘百科](https://zh.moegirl.org.cn/微软式中文)\n\n我在 [i18n fails](https://i18nfails.1a23.studio/) 收集软件界面中国际化（i18n）、本地化（l10n）和翻译失败的各种例子。\n\n收集错别字和糟糕翻译的来源：\n\n- [Twitter 中華業者商品画像bot @Rhkya](https://twitter.com/Rhkya)\n- [Twitter 中國の怪レい日本语bot @correctJP](https://twitter.com/correctJP)\n- [Reddit /r/engrish](https://www.reddit.com/r/engrish)\n- [Engrish.com](https://www.engrish.com/)\n- [Telegram 生草翻译 @TranslationGrass](https://t.me/translationgrass)\n",
+      "ja": "[<ruby>Superdry®<rp>(</rp><rt>極度乾燥(しなさい)</rt><rp>)</rp></ruby> – Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97_(%E6%9C%8D%E9%A3%BE%E4%BC%81%E6%A5%AD))\n\nソフトウェア UI の国際化（i18n）、ローカライゼーション（l10n）、翻訳の失敗を [i18n fails](https://i18nfails.1a23.studio/) にて集めています。\n\n変な翻訳を集めるサイト：\n\n- [Twitter 中華業者商品画像bot @Rhkya](https://twitter.com/Rhkya)\n- [Twitter 中國の怪レい日本语bot @correctJP](https://twitter.com/correctJP)\n- [Reddit /r/engrish](https://www.reddit.com/r/engrish)\n- [Engrish.com](https://www.engrish.com/)\n- [Telegram 生草翻译 @TranslationGrass](https://t.me/translationgrass)\n"
+    },
+    "slug": "bad-translations"
+  },
+  {
+    "x": 470,
+    "y": 260,
+    "width": 180,
+    "height": 100,
+    "rotation": -5,
+    "image": "/stickers/code-liga.svg",
+    "title": {
+      "en": "Code ligatures",
+      "zh-Hans": "代码连字",
+      "ja": "コードリガチャ"
+    },
+    "description": {
+      "en": "I prefer using **code ligatures** in code editors.",
+      "zh-Hans": "偏好在代码编辑器中使用**代码连字**。",
+      "ja": "コードエディタで**コードリガチャ**を使います。"
+    },
+    "slug": "code-ligature"
+  },
+  {
+    "x": -65,
+    "y": -260,
+    "width": 181,
+    "height": 100,
+    "rotation": -10,
+    "image": "/stickers/colemak.svg",
+    "title": {
+      "en": "Colemak"
+    },
+    "description": {
+      "en": "A proud user of [**Colemak**](https://colemak.com) keyboard layout. I’m glad to see that it’s finally pre-installed in all major OSes.\n",
+      "zh-Hans": "[**Colemak**](https://colemak.com) 键盘布局的忠实用户。很高兴看到它终于被预装在所有主流操作系统中了。\n\n另见「[Rime 星空键道 27C](https://github.com/xkjd27/rime_jd27c)」，一个为 Colemak 优化的音形码输入方案。\n",
+      "ja": "[**Colemak**](https://colemak.com) キーボードレイアウトの愛用者です。ついに主要 OS に標準搭載されるようになって嬉しく思います。\n"
+    },
+    "slug": "colemak"
+  },
+  {
+    "x": 370,
+    "y": -90,
+    "width": 66,
+    "height": 75,
+    "rotation": 20,
+    "image": "/stickers/cpp.svg",
+    "clipPath": "polygon(50% 0%, 100% 20%, 100% 80%, 50% 100%, 0% 80%, 0% 20%)",
+    "title": {
+      "en": "C++"
+    },
+    "description": {
+      "en": "I wrote something in **C++** at work recently (2025).\n\n[Logo](https://github.com/isocpp/logos) used under license of *the Standard C++ Foundation*.\n",
+      "zh-Hans": "最近（2025 年）工作中用 **C++** 写了一些东西。\n\n[Logo](https://github.com/isocpp/logos) 使用遵循 *the Standard C++ Foundation* 的许可。\n",
+      "ja": "最近（2025 年）仕事で **C++** で何か書いてみました。\n\n[ロゴ](https://github.com/isocpp/logos)は *the Standard C++ Foundation* のライセンスに基づいて使用しています。\n"
+    },
+    "slug": "cpp"
+  },
+  {
+    "x": 435,
+    "y": -195,
+    "width": 200,
+    "height": 100,
+    "rotation": 0,
+    "clipPath": "polygon(0% 0%, 75% 0%, 75% 33%, 100% 33%, 100% 100%, 0% 100%)",
+    "content": {
+      "en": "<div style={{\n  height: \"100%\",\n  aspectRatio: \"1 / 1\",\n  border: \"2px solid light-dark(black, white)\",\n  backgroundColor: \"light-dark(white, black)\",\n  color: \"light-dark(black, white)\",\n  lineHeight: \"1\",\n  fontSize: \"27px\",\n  textAlign: \"start\",\n  position: \"relative\",\n  wordBreak: \"keep-all\",\n}}>\n  <span style={{\n    position: \"absolute\", \n    display: \"flex\",\n    flexDirection: \"column\",\n    justifyContent: \"center\",\n    left: 10,\n    top: 0,\n    bottom: 0,\n  }}>CSS<br />IS<br /><span style={{ fontWeight: \"600\" }}>AWESOME</span></span>\n</div>\n",
+      "ja": "<div style={{\n  height: \"100%\",\n  aspectRatio: \"3 / 2\",\n  borderRadius: \"10px\",\n  border: \"2px solid light-dark(black, white)\",\n  backgroundColor: \"light-dark(white, black)\",\n  color: \"light-dark(black, white)\",\n  lineHeight: \"1\",\n  fontSize: \"27px\",\n  textAlign: \"start\",\n  position: \"relative\",\n  wordBreak: \"keep-all\",\n}}>\n  <span style={{\n    position: \"absolute\", \n    left: 27,\n    top: 15,\n  }}><span style={{ fontWeight: \"600\" }}>CSS<br /></span><small>完全に理解した</small></span>\n</div>\n"
+    },
+    "title": {
+      "en": "CSS is awesome",
+      "ja": "CSS 完全に理解した"
+    },
+    "description": {
+      "en": "Yes, [CSS is awesome](https://css-tricks.com/css-is-awesome/).\n",
+      "zh-Hans": "是的，[CSS is awesome](https://css-tricks.com/css-is-awesome/)。\n",
+      "ja": "そう、[CSS 完全に理解した](https://x.com/ikeji/status/1174570034196140033)。\n"
+    },
+    "slug": "css-is-awesome"
+  },
+  {
+    "x": 265,
+    "y": -155,
+    "width": 100,
+    "height": 100,
+    "rotation": 5,
+    "image": "/stickers/css.svg",
+    "title": {
+      "en": "CSS"
+    },
+    "description": {
+      "en": "I write a lot of **CSS**, and is looking forward to some new features to be widely supported by modern browsers.\n\nNamely…\n\n- [`text-combine-upright: \"digits\"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)\n- <details><summary>[`text-autospace: replace`](https://caniuse.com/mdn-css_properties_text-autospace_replace)</summary><CanIUse feature=\"mdn-css_properties_text-autospace_replace\" /></details>\n- <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature=\"mdn-css_properties_word-break_auto-phrase\" /></details>\n- <details><summary>[`calc-size()`](https://caniuse.com/wf-calc-size)</summary><CanIUse feature=\"mdn-css_types_calc-size\" /></details>\n- <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />\n  <Muted>**Update Jan 2025**: After Safari 18.2, Chrome 133 shipped support of CSS text box.</Muted></summary><BaselineStatus featureId=\"text-box\" /><CanIUse feature=\"css-text-box-trim\" /></details>\n- <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature=\"css-hanging-punctuation\" /></details>\n- <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature=\"mdn-css_properties_field-sizing_content\" /></details>\n- <details><summary>[Scroll-driven animations](https://caniuse.com/wf-scroll-driven-animations)</summary><CanIUse feature=\"mdn-api_scrolltimeline\" /></details>\n- <details><summary>[`timeline-trigger`](https://caniuse.com/mdn-css_properties_timeline-trigger)</summary><CanIUse feature=\"mdn-css_properties_timeline-trigger\" /></details>\n- <details><summary>[CSS3 `attr()` function for all properties](https://caniuse.com/css3-attr)</summary><CanIUse feature=\"css3-attr\" /></details>\n\n[logo.css](https://github.com/CSS-Next/logo.css) by Javi Aguilar and the CSS-Next Community Group. Released under <Abbr title=\"CC0 1.0 Universal\">🅭🄍 1.0</Abbr>.\n",
+      "zh-Hans": "我写过很多 **CSS**，也很期待一些新特性能在现代浏览器中得到广泛支持。\n\n具体来说……\n\n- [`text-combine-upright: \"digits\"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)\n- <details><summary>[`text-autospace: replace`](https://caniuse.com/mdn-css_properties_text-autospace_replace)</summary><CanIUse feature=\"mdn-css_properties_text-autospace_replace\" /></details>\n- <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature=\"mdn-css_properties_word-break_auto-phrase\" /></details>\n- <details><summary>[`calc-size()`](https://caniuse.com/wf-calc-size)</summary><CanIUse feature=\"mdn-css_types_calc-size\" /></details>\n- <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />\n  <Muted>**2025 年 1 月更新**：Safari 18.2 之后，Chrome 133 开始支持 CSS text box。</Muted></summary><BaselineStatus featureId=\"text-box\" /><CanIUse feature=\"css-text-box-trim\" /></details>\n- <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature=\"css-hanging-punctuation\" /></details>\n- <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature=\"mdn-css_properties_field-sizing_content\" /></details>\n- <details><summary>[滚动驱动动画](https://caniuse.com/wf-scroll-driven-animations)</summary><CanIUse feature=\"mdn-api_scrolltimeline\" /></details>\n- <details><summary>[`timeline-trigger`](https://caniuse.com/mdn-css_properties_timeline-trigger)</summary><CanIUse feature=\"mdn-css_properties_timeline-trigger\" /></details>\n- <details><summary>[CSS3 `attr()` 函数使用任意属性](https://caniuse.com/css3-attr)</summary><CanIUse feature=\"css3-attr\" /></details>\n\n[logo.css](https://github.com/CSS-Next/logo.css) 来自 Javi Aguilar 和 CSS-Next Community Group。授权：<Abbr title=\"CC0 1.0 Universal\">🅭🄍 1.0</Abbr>。\n",
+      "ja": "**CSS** をたくさん書いており、いろんな新機能がブラウザで広くサポートされることを楽しみにしています。\n\n具体的には…\n\n- [`text-combine-upright: \"digits\"`](https://drafts.csswg.org/css-writing-modes/#valdef-text-combine-upright-digits-integer-2-4)\n- <details><summary>[`text-autospace: replace`](https://caniuse.com/mdn-css_properties_text-autospace_replace)</summary><CanIUse feature=\"mdn-css_properties_text-autospace_replace\" /></details>\n- <details><summary>[`word-break: auto-phrase`](https://caniuse.com/mdn-css_properties_word-break_auto-phrase)</summary><CanIUse feature=\"mdn-css_properties_word-break_auto-phrase\" /></details>\n- <details><summary>[`calc-size()`](https://caniuse.com/wf-calc-size)</summary><CanIUse feature=\"mdn-css_types_calc-size\" /></details>\n- <details><summary>[CSS text box](https://caniuse.com/css-text-box-trim)<br />\n  <Muted>**2025 年 1 月更新**：Safari 18.2 以降、Chrome 133 が CSS text box をサポート。</Muted></summary><BaselineStatus featureId=\"text-box\" /><CanIUse feature=\"css-text-box-trim\" /></details>\n- <details><summary>[`hanging-punctuation`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/hanging-punctuation)</summary><CanIUse feature=\"css-hanging-punctuation\" /></details>\n- <details><summary>[`field-sizing: content`](https://caniuse.com/mdn-css_properties_field-sizing_content)</summary><CanIUse feature=\"mdn-css_properties_field-sizing_content\" /></details>\n- <details><summary>[スクロール駆動アニメーション](https://caniuse.com/wf-scroll-driven-animations)</summary><CanIUse feature=\"mdn-api_scrolltimeline\" /></details>\n- <details><summary>[`timeline-trigger`](https://caniuse.com/mdn-css_properties_timeline-trigger)</summary><CanIUse feature=\"mdn-css_properties_timeline-trigger\" /></details>\n- <details><summary>[CSS3 任意の属性値に対応する `attr()` 関数](https://caniuse.com/css3-attr)</summary><CanIUse feature=\"css3-attr\" /></details>\n\n[logo.css](https://github.com/CSS-Next/logo.css) by Javi Aguilar, CSS-Next Community Group。ライセンス：<Abbr title=\"CC0 1.0 Universal\">🅭🄍 1.0</Abbr>。\n"
+    },
+    "slug": "css"
+  },
+  {
+    "x": -215,
+    "y": -240,
+    "width": 100,
+    "height": 100,
+    "rotation": 0,
+    "image": "/stickers/dark.svg",
+    "clipPath": "circle(50% at 50% 50%)",
+    "title": {
+      "en": "Dark mode",
+      "zh-Hans": "暗色模式",
+      "ja": "ダークモード"
+    },
+    "description": {
+      "en": "export function DarkModeButton() {\n  const { useTheme } = _provideComponents();\n  const { setTheme } = useTheme();\n  return <Button className=\"dark:hidden\" style={{ width: \"100%\" }} onClick={() => setTheme(\"dark\")}>Try out dark mode</Button>\n}\n\nI prefer using **dark mode** on screens.\n\n<div className=\"hidden dark:block\">Looks like you’re using dark mode too, yay!</div>\n<DarkModeButton />\n\n<style>{`\n  .hidden {\n    display: none;\n  }\n\n  html.dark .dark\\\\:block {\n    display: block;\n  }\n\n  html.dark .dark\\\\:hidden {\n    display: none;\n  }\n`}</style>\n",
+      "zh-Hans": "export function DarkModeButton() {\n  const { useTheme } = _provideComponents();\n  const { setTheme } = useTheme();\n  return <Button className=\"dark:hidden\" style={{ width: \"100%\" }} onClick={() => setTheme(\"dark\")}>试试深色模式</Button>\n}\n\n偏好在屏幕上使用**深色模式**。\n\n<div className=\"hidden dark:block\">好耶，看起来你也在用深色模式！</div>\n<DarkModeButton />\n\n<style>{`\n  .hidden {\n    display: none;\n  }\n\n  html.dark .dark\\\\:block {\n    display: block;\n  }\n\n  html.dark .dark\\\\:hidden {\n    display: none;\n  }\n`}</style>\n",
+      "ja": "export function DarkModeButton() {\n  const { useTheme } = _provideComponents();\n  const { setTheme } = useTheme();\n  return <Button className=\"dark:hidden\" style={{ width: \"100%\" }} onClick={() => setTheme(\"dark\")}>ダークモードを試す</Button>\n}\n\n画面では**ダークモード**設定が使われています。\n\n<div className=\"hidden dark:block\">あなたもダークモードを使ってるようですね、やった！</div>\n<DarkModeButton />\n\n<style>{`\n  .hidden {\n    display: none;\n  }\n\n  html.dark .dark\\\\:block {\n    display: block;\n  }\n\n  html.dark .dark\\\\:hidden {\n    display: none;\n  }\n`}</style>\n"
+    },
+    "slug": "dark"
+  },
+  {
+    "x": 225,
+    "y": -290,
+    "width": 180,
+    "height": 50,
+    "rotation": 30,
+    "content": {
+      "en": "<div style={{\n  width: \"100%\",\n  height: \"100%\",\n  backgroundColor: \"light-dark(#0b574a, #a4d8d2)\",\n  color: \"light-dark(#a4d8d2, #0b574a)\",\n  borderRadius: \"10px\",\n  padding: \"10px\",\n  textAlign: \"center\",\n  display: \"flex\",\n  alignItems: \"center\",\n  justifyContent: \"center\",\n  flexDirection: \"column\",\n  fontVariantNumeric: \"tabular-nums\",\n  fontSize: \"25px\",\n  fontWeight: \"600\",\n  whiteSpace: \"nowrap\",\n}}>\n  {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}\n</div>\n"
+    },
+    "title": {
+      "en": "DD MMM YYYY"
+    },
+    "description": {
+      "en": "I prefer to use **DD MMM YYYY** format in forms written in English.\n",
+      "zh-Hans": "在填写英文表格时，我偏好使用 **DD MMM YYYY** 格式的日期。\n",
+      "ja": "英語のフォームでは **DD MMM YYYY** 形式をできる限り使っています。\n"
+    },
+    "slug": "dd-mmm-yyyy"
+  },
+  {
+    "x": -65,
+    "y": -400,
+    "width": 159,
+    "height": 100,
+    "rotation": -15,
+    "image": "/stickers/double-lariat.svg",
+    "title": {
+      "en": "The radius is 250 cm.",
+      "zh-Hans": "半径 250 公分",
+      "ja": "半径 250 センチ"
+    },
+    "description": {
+      "en": "A **250 cm radius** is the length this user can swing around. ♪\n\n> A 250 cm radius is the length this user can swing around.  \n> I’m about to start moving, so please stand clear.\n>\n> — [*Double Lariat*](https://youtu.be/hC8KrIY8qT4) by Agoaniki-P, [VocaDB](https://vocadb.net/S/3129)\n\nAlso see my [Double Lariat Meter](https://labs.1a23.com/double_lariat_meter/).\n",
+      "zh-Hans": "**半径 250 公分**是这双手能够到达的距离。♪\n\n> 半径 250 公分  \n> 是这双手能够到达的距离  \n> 现在我要开始回转了  \n> 所以请远离一点\n>\n> — [*Double Lariat*](https://youtu.be/hC8KrIY8qT4) / アゴアニキP, [VocaDB](https://vocadb.net/S/3129)\n\n另见我的 [Double Lariat Meter](https://labs.1a23.com/double_lariat_meter/)。\n",
+      "ja": "**半径 250 センチ**はこの手の届く距離。♪\n\n> 半径250センチは  \n> この手の届く距離  \n> 今から動き回りますので  \n> 離れていてください\n>\n> — [ダブルラリアット](https://youtu.be/hC8KrIY8qT4) / アゴアニキP, [VocaDB](https://vocadb.net/S/3129)\n\n[Double Lariat Meter](https://labs.1a23.com/double_lariat_meter/) もご覧ください。\n"
+    },
+    "slug": "double-lariat"
+  },
+  {
+    "x": 0,
+    "y": 0,
+    "width": 200,
+    "height": 200,
+    "image": "/stickers/eana.svg",
+    "clipPath": "circle(50%)",
+    "title": {
+      "en": "Hi, I’m Eana Hufwe!",
+      "zh-Hans": "你好，我是 Eana Hufwe！",
+      "ja": "どうも、Eana Hufwe です！"
+    },
+    "description": {
+      "en": "**Eana Hufwe** is my ~~name~~ pseudonym I go with online.\nThe name is in [Lì’fya leNa’vi](https://en.wikipedia.org/wiki/Na%27vi_language),\nthat language from _Avatar_.\n\n* _ean_ means blue;\n* _-a_ is adjective marker; and\n* _hufwe_ means wind.\n\nCheck out some of the links below!\n\n<div style={{ display: \"flex\", gap: \"10px\", marginTop: 10, flexDirection: \"column\" }}>\n  <Button asChild><Link target=\"_blank\" href=\"https://1a23.com\">1A23 Studio</Link></Button>\n  <Button asChild variant=\"outline\"><Link target=\"_blank\" href=\"https://blog.1a23.com\">1A23 Blog</Link></Button>\n</div>\n",
+      "zh-Hans": "**Eana Hufwe** 是我的网名。语言来自《阿凡达》里的 [Lì’fya leNa’vi](https://wuu.wikipedia.org/wiki/%E7%BA%B3%E7%BB%B4%E8%AF%AD)。\n\n* _ean_ 是蓝色；\n* _-a_ 是形容词修饰标记；\n* _hufwe_ 是风。\n\n欢迎来下面的地方逛逛！\n\n<div style={{ display: \"flex\", gap: \"10px\", marginTop: 10, flexDirection: \"column\" }}>\n  <Button asChild><Link target=\"_blank\" href=\"https://1a23.com\">1A23 Studio</Link></Button>\n  <Button asChild variant=\"outline\"><Link target=\"_blank\" href=\"https://blog.1a23.com\">1A23 Blog</Link></Button>\n</div>\n",
+      "ja": "**Eana Hufwe** は私のハンドルネームで、映画『アバター』の [Lì’fya leNa’vi](https://ja.wikipedia.org/wiki/%E3%83%8A%E3%83%B4%E3%82%A3%E8%AA%9E) という言語から来ています。\n\n* _ean_ は青；\n* _-a_ は形容詞限定マーカー；\n* _hufwe_ は風。\n\n下のリンクもチェックしてね！\n\n<div style={{ display: \"flex\", gap: \"10px\", marginTop: 10, flexDirection: \"column\" }}>\n  <Button asChild><Link target=\"_blank\" href=\"https://1a23.com\">1A23 Studio</Link></Button>\n  <Button asChild variant=\"outline\"><Link target=\"_blank\" href=\"https://blog.1a23.com\">1A23 Blog</Link></Button>\n</div>\n"
+    },
+    "slug": "eana"
+  },
+  {
+    "x": 120,
+    "y": -200,
+    "width": 172,
+    "height": 172,
+    "image": "/stickers/earth.png",
+    "clipPath": "circle(50%)",
+    "title": {
+      "en": "A native Terran",
+      "zh-Hans": "蓝星人",
+      "ja": "ワレワレハ チキュウジンダ"
+    },
+    "description": {
+      "en": "A proud **native Terran**.\n\nCopied from [Wikipedia/Template:User Native Terran](https://en.wikipedia.org/wiki/Template:User_Native_Terran).\n[Photo of Earth](https://visibleearth.nasa.gov/images/57723/the-blue-marble) from NASA, in Public Domain.\n",
+      "zh-Hans": "一个自豪的**蓝星人**。\n\n引用自 [Wikipedia/Template:User Native Terran](https://en.wikipedia.org/wiki/Template:User_Native_Terran)。\n[地球的照片](https://visibleearth.nasa.gov/images/57723/the-blue-marble)来自 NASA，公共领域。\n",
+      "ja": "言われるまでもなく**地球人**です。\n\n[Wikipedia/Template:User Native Terran](https://en.wikipedia.org/wiki/Template:User_Native_Terran) による。\n[地球の写真](https://visibleearth.nasa.gov/images/57723/the-blue-marble)は NASA により提供、パブリックドメイン。\n"
+    },
+    "slug": "earth"
+  },
+  {
+    "x": 550,
+    "y": 345,
+    "width": 100,
+    "height": 50,
+    "rotation": -25,
+    "content": {
+      "en": "<div style={{\n  width: \"100%\",\n  height: \"100%\",\n  backgroundColor: \"light-dark(#566D77, #D8DFE3)\",\n  color: \"light-dark(#D8DFE3, #566D77)\",\n  borderRadius: \"10px\",\n  padding: \"10px\",\n  textAlign: \"center\",\n  display: \"flex\",\n  alignItems: \"center\",\n  justifyContent: \"center\",\n  flexDirection: \"column\",\n  fontVariantNumeric: \"tabular-nums\",\n  fontSize: \"25px\",\n  fontWeight: \"600\"\n}}>\n  文 a 字\n</div>\n"
+    },
+    "title": {
+      "en": "East Asian Spacing",
+      "zh-Hans": "中西文间留白",
+      "ja": "和文・欧文間のスペース"
+    },
+    "description": {
+      "en": "I’ll add spacing between East Asian and non-East Asian characters, until all major OS/UI text render engines support it.\n\nRead more about this in [Unicode Technical Report #59 East Asian Spacing](https://www.unicode.org/reports/tr59/).\n\nAn incomplete list of rendering engine support (as of Mid 2026):\n* ✅ Apple (CoreText)\n* ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)\n* ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)\n* ✅ [Firefox (Gecko)](https://bugzilla.mozilla.org/show_bug.cgi?id=1988596)\n* 🔲 Windows (DirectWrite)\n* 🔲 GTK+ (Pango)\n* 🔲 Android\n",
+      "zh-Hans": "直到所有主要的操作系统/用户界面文本渲染引擎都支持之前，我会在中西文文本之间加空。\n\n请参阅[《中文排版需求・横排的中、西文混排配置》](https://www.w3.org/TR/clreq/#mixed_text_composition_in_horizontal_writing_mode)、[《Unicode 技术报告 #59 东亚文字间距》](https://www.unicode.org/reports/tr59/)。\n\n部分渲染引擎支持列表（截至 2026 年中）： \n* ✅ Apple (CoreText)\n* ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)\n* ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)\n* ✅ [Firefox (Gecko)](https://bugzilla.mozilla.org/show_bug.cgi?id=1988596)\n* 🔲 Windows (DirectWrite)\n* 🔲 GTK+ (Pango)\n* 🔲 Android\n",
+      "ja": "主要な OS/UI テキストレンダリングエンジンが対応するまで、和文と欧文の間にスペースを入れます。\n\n[『日本語組版処理の要件・プロポーショナルな​欧字を用いた​和欧文混植処理』](https://www.w3.org/TR/jlreq/#handling_of_western_text_in_japanese_text_using_proportional_western_fonts)、[『Unicode 技術報告 #59 東アジア字間』](https://www.unicode.org/reports/tr59/)をご覧ください。\n\n一部レンダリングエンジンの対応状況（2026 年中現在）：\n* ✅ Apple (CoreText)\n* ✅ [Safari (CoreText)](https://webkit.org/blog/16406/release-notes-for-safari-technology-preview-210/)\n* ✅ [Chromium (Skia)](https://developer.chrome.com/blog/css-i18n-features)\n* ✅ [Firefox (Gecko)](https://bugzilla.mozilla.org/show_bug.cgi?id=1988596)\n* 🔲 Windows (DirectWrite)\n* 🔲 GTK+ (Pango)\n* 🔲 Android\n"
+    },
+    "slug": "east-asian-spacing"
+  },
+  {
+    "x": -60,
+    "y": 190,
+    "width": 100,
+    "height": 100,
+    "rotation": -10,
+    "image": "/stickers/en.svg",
+    "clipPath": "path('M46.8429 99.3774C33.6086 97.3547 21.4409 90.1189 12.6834 80.3595C0.756345 67.0679 -2.35103 48.5881 4.72184 33.2483C8.96476 24.0461 18.7969 13.3899 27.5686 8.48439C45.2687 -1.414 65.4639 -1.46475 78.5931 8.21098C92.4678 18.4362 100.005 36.0076 99.977 58.3634C99.9593 71.9952 97.0774 80.6291 90.2365 87.8623C83.7749 94.6945 75.5857 98.6062 63.1289 99.6831C58.905 100.048 56.4432 100.215 54.2349 100.17C52.0319 100.126 50.0698 99.8706 46.8429 99.3774Z')",
+    "title": {
+      "en": "English language",
+      "zh-Hans": "英语",
+      "ja": "英語"
+    },
+    "description": {
+      "en": "I have a _near native speaker_ knowledge of **English**\n(based on the assumption that a native speaker might not be necessarily fluent in the language either).\n\nIELTS Academic 8.0 overall in 2017, \nreceived education instructed in English for 7+ years, \nand worked in an English-speaking environment for 4+ years and counting.\n",
+      "zh-Hans": "**英语**准母语水平（假设母语者也不一定能流利说英语）。\n\n2017 年取得 IELTS 学术类 8.0 分，接受 7 年以上英语教育，在英语环境中工作了 4 年以上。\n",
+      "ja": "準母語レベルの**英語**話者です、ただし本物の母語話者でも母語を常時に流暢に話せるとは限りません。\n\n2017 年で IELTS アカデミック 8.0 点を取得し、7 年以上の英語教育を受け、4 年以上英語で仕事をしています。\n"
+    },
+    "slug": "en"
+  },
+  {
+    "x": 445,
+    "y": 365,
+    "width": 75,
+    "height": 75,
+    "rotation": -15,
+    "image": "/stickers/feed.svg",
+    "title": {
+      "en": "RSS/Atom feed",
+      "zh-Hans": "RSS/Atom 订阅",
+      "ja": "RSS/Atom フィード"
+    },
+    "description": {
+      "en": "I read contents from **RSS/Atom feed** subscriptions.\n\n[Feed icon](http://feedicons.com/) by the Mozilla Foundation under a MPL/GPL/LGPL tri-license.\n",
+      "zh-Hans": "通过 **RSS/Atom 订阅** 阅读内容。\n\n[Feed 图标](http://feedicons.com/) 由 Mozilla Foundation 在 MPL/GPL/LGPL 三重许可下发布。\n",
+      "ja": "**RSS/Atom フィード** でコンテンツを読んでいます。\n\n[Feed アイコン](http://feedicons.com/) は Mozilla Foundation によって MPL/GPL/LGPL トリライセンスの下で提供されています。\n"
+    },
+    "slug": "feed"
+  },
+  {
+    "x": 515,
+    "y": 40,
+    "width": 53,
+    "height": 75,
+    "rotation": -15,
+    "image": "/stickers/figma.svg",
+    "clipPath": "polygon(0% 0%, 100% 0%, 100% 76%, 60% 76%, 60% 100%, 0% 100%)",
+    "title": {
+      "en": "Figma"
+    },
+    "description": {
+      "en": "I use [**Figma**](https://www.figma.com/) a lot.\n\nLogo used along the [Figma Trademark Guidelines](https://www.figma.com/using-the-figma-brand/).\n",
+      "zh-Hans": "常用 [**Figma**](https://www.figma.com/)。\n\nLogo 使用遵循 [Figma 商标指南](https://www.figma.com/using-the-figma-brand/)。\n",
+      "ja": "[**Figma**](https://www.figma.com/) をよく使います。\n\nロゴは [Figma 商標ガイドライン](https://www.figma.com/using-the-figma-brand/)に従って使用されています。\n"
+    },
+    "slug": "figma"
+  },
+  {
+    "x": -400,
+    "y": -10,
+    "width": 375,
+    "height": 75,
+    "rotation": -10,
+    "image": "/stickers/gif.svg",
+    "title": {
+      "en": "GIF is /dʒɪf/",
+      "zh-Hans": "GIF 读作 /dʒɪf/",
+      "ja": "GIF と書いて /dʒɪf/ と読む"
+    },
+    "description": {
+      "en": "I pronounce **GIF** as /dʒɪf/, as its creator Steve Wilhite did.\n\n> **Creator of the GIF says it is pronounced “Jif”**  \n> The creator of the GIF file format has sparked a lively debate on Twitter\n> after announcing that it must be pronounced “Jif”.\n>\n> — [The Telegraph](https://www.telegraph.co.uk/technology/10072420/Creator-of-the-GIF-says-it-is-pronounced-Jif.html), 22 May 2013\n",
+      "zh-Hans": "我把 **GIF** 读作 /dʒɪf/，和其创造者 Steve Wilhite 一样。\n\n> **GIF 的创造者表示它应读作「Jif」**  \n> GIF 文件格式的创造者在宣布这个缩写应该读作「Jif」后，\n> 在 Twitter 上引发了一场热烈的讨论。\n>\n> — [电讯报](https://www.telegraph.co.uk/technology/10072420/Creator-of-the-GIF-says-it-is-pronounced-Jif.html)，2013 年 5 月 22 日\n",
+      "ja": "**GIF** を /dʒɪf/ と発音します、開発者の Steve Wilhite と同じく。\n\n> **GIF の開発者「発音は“Jif”」と主張**  \n> GIF ファイル形式の開発者が“Jif”と発音すべきだと発表し、\n> Twitter 上で活発な議論が巻き起こりました。\n>\n> — [テレグラフ紙](https://www.telegraph.co.uk/technology/10072420/Creator-of-the-GIF-says-it-is-pronounced-Jif.html)、2013 年 5 月 22 日付\n"
+    },
+    "slug": "gif"
+  },
+  {
+    "x": 430,
+    "y": 65,
+    "width": 100,
+    "height": 100,
+    "rotation": -10,
+    "image": "/stickers/git-plain.svg",
+    "clipPath": "polygon(45% 0%, 55% 0%, 100% 45%, 100% 55%, 55% 100% , 45% 100%, 0% 55%, 0% 45%)",
+    "title": {
+      "en": "Git"
+    },
+    "description": {
+      "en": "I use [**Git**](https://git-scm.com) both for work and personal projects.\n\n[Git Logo](https://git-scm.com/downloads/logos) by [Jason Long](https://twitter.com/jasonlong) is licensed under [<Abbr title=\"Creative Commons Attribution 3.0 Unported License\">🅭🅯 3.0</Abbr>](https://creativecommons.org/licenses/by/3.0/).\n",
+      "zh-Hans": "我在工作和个人项目中都使用 [**Git**](https://git-scm.com)。\n\n[Git Logo](https://git-scm.com/downloads/logos) 由 [Jason Long](https://twitter.com/jasonlong) 创作，采用 [<Abbr title=\"知识共享署名 3.0 未本地化许可协议\">🅭🅯 3.0</Abbr>](https://creativecommons.org/licenses/by/3.0/) 许可协议。\n",
+      "ja": "[**Git**](https://git-scm.com) を仕事でもプライベートプロジェクトでも使用しています。\n\n[Git logo](https://git-scm.com/downloads/logos) by [Jason Long](https://twitter.com/jasonlong)、ライセンス：[<Abbr title=\"クリエイティブ・コモンズ 表示 3.0 非移植ライセンス\">🅭🅯 3.0</Abbr>](https://creativecommons.org/licenses/by/3.0/)。\n"
+    },
+    "slug": "git"
+  },
+  {
+    "x": -435,
+    "y": -230,
+    "width": 113,
+    "height": 75,
+    "rotation": -45,
+    "image": "/stickers/icpc.svg",
+    "clipPath": "polygon(27.26% 36.39%, 38.8% 17.63%, 54.77% 9.1%, 68.06% 25%, 71.81% 0%, 94.27% 0%, 100% 40.33%, 100% 88.33%, 35.13% 88.33%, 19.37% 100%, 0% 100%, 0% 36.67%)",
+    "title": {
+      "en": "ICPC"
+    },
+    "description": {
+      "en": "I was once a contestant in the **Regional Finals of the International Collegiate Programming Contest (ICPC)**.\n",
+      "zh-Hans": "我曾经是**国际大学生程序设计竞赛（ICPC）地区决赛**的参赛者。\n",
+      "ja": "かつて**国際大学生プログラミングコンテスト（ICPC）の地区大会**に出場したことがあります。\n"
+    },
+    "slug": "icpc"
+  },
+  {
+    "x": -490,
+    "y": -95,
+    "width": 132,
+    "height": 75,
+    "rotation": -10,
+    "image": "/stickers/font-distinct.svg",
+    "title": {
+      "en": "Identifying typefaces",
+      "zh-Hans": "区分字体",
+      "ja": "フォントを見分ける"
+    },
+    "description": {
+      "en": "I can **identify** a limited selection popular computer typefaces (or even fonts) by sight.\n\nThe sticker illustrates the differences between <span style={{color: \"light-dark(magenta, pink)\"}}>Arial</span> and <span style={{color: \"light-dark(blue, cyan)\"}}>Helvetica</span>.\n",
+      "zh-Hans": "我可以通过观察**区分**少数一部分常见的电脑字体。\n\n这张贴纸展示了 <span style={{color: \"light-dark(magenta, pink)\"}}>Arial</span> 和 <span style={{color: \"light-dark(blue, cyan)\"}}>Helvetica</span> 之间的区别。\n",
+      "ja": "ごく一部の常用**フォントを見分ける**ことができます。\n\nこのステッカーは、<span style={{color: \"light-dark(magenta, pink)\"}}>Arial</span> と <span style={{color: \"light-dark(blue, cyan)\"}}>Helvetica</span> の違いを示しています。\n"
+    },
+    "slug": "identify-fonts"
+  },
+  {
+    "x": 110,
+    "y": 420,
+    "width": 125,
+    "height": 125,
+    "rotation": -5,
+    "image": "/stickers/inter.svg",
+    "title": {
+      "en": "Inter"
+    },
+    "description": {
+      "en": "This page uses [**Inter**](https://rsms.me/inter/) as the main typeface.\n",
+      "zh-Hans": "本页面使用 [**Inter**](https://rsms.me/inter/) 作为主要字体。\n",
+      "ja": "このページのメインフォントは [**Inter**](https://rsms.me/inter/) です。\n"
+    },
+    "slug": "inter"
+  },
+  {
+    "x": -605,
+    "y": -65,
+    "width": 75,
+    "height": 75,
+    "rotation": 0,
+    "image": "/stickers/internet.svg",
+    "clipPath": "circle(50% at 50% 50%)",
+    "title": {
+      "en": "Open Internet",
+      "zh-Hans": "开放互联网",
+      "ja": "オープンインターネット"
+    },
+    "description": {
+      "en": "I believe in an **open Internet** and avoid contributing contents exclusively to walled gardens.\n\n> A **closed platform**, **walled garden**, or **closed ecosystem** is a software system wherein\n> the carrier or service provider has control over applications, content, and media, and restricts\n> convenient access to non-approved applicants or content. This is in contrast to an open platform, \n> wherein consumers generally have unrestricted access to applications and content.\n>\n> — [Wikipedia](https://en.wikipedia.org/wiki/Closed_platform)\n",
+      "zh-Hans": "我相信**开放互联网**，并避免将内容独家贡献给「围墙花园」。\n\n> **封闭平台**（closed platform），或称**围墙花园**（walled garden），是指一种软件系统，其中的电信运营商或服务供应商拥有控制应用、内容与媒体的能力，并能限制未经允许的应用或内容被轻易接取。与封闭平台相对的是开放平台，该平台允许消费者不受限制地接取应用、内容等。\n>\n> — [维基百科](https://zh.wikipedia.org/wiki/%E5%B0%81%E9%96%89%E5%B9%B3%E8%87%BA)\n",
+      "ja": "**オープンインターネット**を信じ、ウォールドガーデンに独占的にコンテンツを提供するのを避けます。\n\n> **ウォールドガーデン**とは、デジタルマーケティングの文脈で、特定のプラットフォームやエコシステム内で閉じられた環境を指します。これは、プラットフォーム提供者が独自のルール、データ、広告プラットフォームを維持し、他のデータや広告プロバイダーからのアクセスを制限することが一般的です。\n>\n> — [デジマール](https://digimarl.com/tips/detail/10921)\n"
+    },
+    "slug": "internet"
+  },
+  {
+    "x": 170,
+    "y": 190,
+    "width": 100,
+    "height": 100,
+    "rotation": 10,
+    "image": "/stickers/ja.svg",
+    "clipPath": "path('M46.8429 99.3774C33.6086 97.3547 21.4409 90.1189 12.6834 80.3595C0.756345 67.0679 -2.35103 48.5881 4.72184 33.2483C8.96476 24.0461 18.7969 13.3899 27.5686 8.48439C45.2687 -1.414 65.4639 -1.46475 78.5931 8.21098C92.4678 18.4362 100.005 36.0076 99.977 58.3634C99.9593 71.9952 97.0774 80.6291 90.2365 87.8623C83.7749 94.6945 75.5857 98.6062 63.1289 99.6831C58.905 100.048 56.4432 100.215 54.2349 100.17C52.0319 100.126 50.0698 99.8706 46.8429 99.3774Z')",
+    "title": {
+      "en": "Japanese language",
+      "zh-Hans": "日语",
+      "ja": "日本語"
+    },
+    "description": {
+      "en": "I’m a intermediate-advanced **Japanese** speaker. \nI have never learnt Japanese properly from bottom up before, and \nand never taken a widely recognized Japanese language test.\n\nSkill-wise, I can read a Japanese-Japanese dictionary with\nbarely any problem. I listen to songs, watch TV shows and YouTube \nvideos in Japanese with mostly no problem. I’m capable of using\nJapanese to carry out conversations during sightseeing trips in Japan.\n",
+      "zh-Hans": "能够较为熟练的使用**日语**。我从未系统地从基础开始学习过日语，\n也没有参加过任何广受认可的日语考试。\n\n就能力而言，我阅读日–日词典基本没有什么障碍。\n我可以比较顺畅地听懂日语歌曲、看日语电视节目和 YouTube 视频。\n能在日本旅游时全程使用日语交流。\n",
+      "ja": "中上級レベルの**日本語**話者です。\nだがこれまで日本語を体系的に基礎から学んだことはなく、\n一般的な日本語能力試験も受けたことがありません。\n\n能力的には、国語辞典をほぼ問題なく読むことができます。\n日本語の歌や、テレビ番組、YouTube の動画もほとんど理解できますが。\n日本観光中にフル日本語で会話をすることもできます。\n"
+    },
+    "slug": "ja"
+  },
+  {
+    "x": -150,
+    "y": 90,
+    "width": 111,
+    "height": 250,
+    "rotation": -15,
+    "image": "/stickers/kagami.svg",
+    "clipPath": "polygon(52.87% 0%, 100.9% 0%, 100% 22.62%, 81.44% 22.48%, 87.99% 72.8%, 60.38% 73.68%, 60.38% 85.93%, 48.36% 85.93%, 49.55% 100%, 0% 100%, 0% 80.48%, 7.06% 75.38%, 7.06% 5.92%, 52.53% 6.39%)",
+    "title": {
+      "en": "Everything believed is just a mirror reflecting ones wishful delusions one after another.",
+      "zh-Hans": "深信的一切，都不过是将自己一厢情愿的妄想反复映照出的镜子。",
+      "ja": "信じたものは、都合のいい妄想を繰り返し映し出す鏡。"
+    },
+    "description": {
+      "en": "<h3 lang=\"ja\" className=\"scroll-m-20 text-2xl font-semibold tracking-tight text-balance break-auto-phrase\">信じたものは、都合のいい妄想を繰り返し映し出す鏡。</h3>\n\n<p className=\"leading-7 mt-6\" lang=\"en\">What I believed is just a mirror reflecting my wishful delusions one after another.</p>\n<p className=\"leading-7 mt-6\" lang=\"zh-hans\">深信的一切，都不过是将自己一厢情愿的妄想反复映照出的镜子。​</p>\n<p className=\"leading-7 mt-6\" lang=\"ru\">В то, что я верила, Было лишь плодом фантазии, Отраженной в бесконечности путей, зеркал сплетений.</p>\n<p className=\"leading-7 mt-6\" lang=\"ko\">믿은 것은 보고 싶은 망상만을 계속해서 비추는 거울.</p>\n<p className=\"leading-7 mt-6\" lang=\"fr\">Ce en quoi j’ai cru une fantaisie réconfortante se répètae à l’infini dans le miroir.</p>\n<p className=\"leading-7 mt-6\" lang=\"th\">สิ่งที่ฉันเชื่อมั่น ความฝันอบอุ่น เกิดชํัวไม่รู้จบอยู่ในเงากระจก.</p>\n<p className=\"leading-7 mt-6\" lang=\"vi\">Những gì tôi tin tưởng, chỉ còn là ảo ảnh đẹp đẽ cứ lặp đi lặp lại, phản chiếu trên tấm gương kia.</p>\n<p className=\"leading-7 mt-6\" lang=\"de\">Mein Glaube ist nur ein Spiegel, reflektiert meine wiederkehrende Wahnvorstellung von einer perfekten Welt.</p>\n<p className=\"leading-7 mt-6\" lang=\"it\">Ciò in cui credevo, una confortante fantasia si ripete infinitamente nello specchio.</p>\n<p className=\"leading-7 mt-6\" lang=\"es\">Todo lo que creía no es mas que una fantasía que se repite como en un espejo.</p>\n<p className=\"leading-7 mt-6\" lang=\"pl\">Uwierzyłam w pocieszające fantazje powtarzające się bez końca w lustrze.</p>\n<p className=\"leading-7 mt-6\" lang=\"id\">Keyakinanku hanyalah sebuah cermin, mencerminkan ilusi yang berulang-ulang di dunia yang sempurna.</p>\n<p className=\"leading-7 mt-6\" lang=\"08n\">Fula spawnaw, lu rì’ìrtut a wìntxu nìleyn ronsrel mek letì’awpo nik.</p>\n"
+    },
+    "slug": "kagami"
+  },
+  {
+    "x": 570,
+    "y": -310,
+    "width": 470,
+    "height": 100,
+    "rotation": 10,
+    "image": "/stickers/karaoke.svg",
+    "clipPath": "polygon(0% 46.05%, 0% 0%, 84.33% 0%, 84.33% 46.05%, 100% 46.05%, 100% 100%, 46.05% 100%, 46.05% 46.05%)",
+    "title": {
+      "en": "Karaoke subtitles",
+      "zh-Hans": "卡拉 OK 歌词字幕",
+      "ja": "カラオケ歌詞字幕"
+    },
+    "description": {
+      "en": "I like to watch **karaoke subtitles** while listening to songs.\n\nAnd I made a karaoke-style lyrics display in the [Lyricova Jukebox](https://jukebox.1a23.studio).\n",
+      "zh-Hans": "喜欢在听歌时看**卡拉 OK 歌词字幕**。\n\n因此在 [Lyricova Jukebox](https://jukebox.1a23.studio) 中制作了卡拉 OK 风格的歌词显示。\n",
+      "ja": "歌を聴きながら**カラオケ歌詞字幕**を見るのが好きです。\n\n[Lyricova Jukebox](https://jukebox.1a23.studio) でニコカラ風の歌詞表示を作りました。\n"
+    },
+    "slug": "karaoke"
+  },
+  {
+    "x": 350,
+    "y": 80,
+    "width": 75,
+    "height": 75,
+    "rotation": -10,
+    "image": "/stickers/kotlin-plain.svg",
+    "clipPath": "polygon(0% 0%, 100% 0%, 100% 20%, 70% 50%, 100% 80%, 100% 100%, 0% 100%)",
+    "title": {
+      "en": "Kotlin"
+    },
+    "description": {
+      "en": "I wrote something in [**Kotlin™**](https://kotlinlang.org) recently (2025). [See my Kotlin projects](https://github.com/blueset?tab=repositories&q=Kotlin).\n\n[Logo](https://kotlinlang.org/docs/kotlin-brand-assets.html) used following the [Kotlin Brand Usage Guidelines](https://kotlinfoundation.org/guidelines/).\n",
+      "zh-Hans": "最近（2025 年）用 [**Kotlin™**](https://kotlinlang.org) 写了一些东西。[我的 Kotlin 项目](https://github.com/blueset?tab=repositories&q=Kotlin)。\n\n[Logo](https://kotlinlang.org/docs/kotlin-brand-assets.html) 使用遵循 [Kotlin 品牌使用指南](https://kotlinfoundation.org/guidelines/)。\n",
+      "ja": "最近（2025 年）[**Kotlin™**](https://kotlinlang.org) で何か書いてみました。[Kotlin で作ったもろもろ](https://github.com/blueset?tab=repositories&q=Kotlin)。\n\n[ロゴ](https://kotlinlang.org/docs/kotlin-brand-assets.html)は [Kotlin ブランド使用ガイドライン](https://kotlinfoundation.org/guidelines/)に従って使用しています。\n"
+    },
+    "slug": "kotlin"
+  },
+  {
+    "x": -150,
+    "y": -495,
+    "width": 120,
+    "height": 93,
+    "rotation": -10,
+    "image": "/stickers/map.svg",
+    "title": {
+      "en": "World",
+      "zh-Hans": "世界",
+      "ja": "世界"
+    },
+    "description": {
+      "en": "I’ve been to many places around the world. For the purpose of data masking, these are the places I’ve been to, in terms of 2-digit Open Location Code (Plus Codes).\n\n4P, 4R, 6P, 7P, 84, 8P, 8Q, 9C, 9F.\n\n<PlusCodeMap codes={['4P', '4R', '6P', '7P', '84', '8P', '8Q', '9C', '9F']} />\n",
+      "zh-Hans": "我去过世界上很多地方。为了数据脱敏，这些是我去过的地方，以 2 位数的开放位置码（Plus Codes）表示。\n\n4P、4R、6P、7P、84、8P、8Q、9C、9F。\n\n<PlusCodeMap codes={['4P', '4R', '6P', '7P', '84', '8P', '8Q', '9C', '9F']} />\n",
+      "ja": "世界のいろんな場所に行ったことがあります。データマスキングのため、行ったことがある場所で、2 桁のオープンロケーションコード（Plus Codes）で表されています。\n\n4P、4R、6P、7P、84、8P、8Q、9C、9F。\n\n<PlusCodeMap codes={['4P', '4R', '6P', '7P', '84', '8P', '8Q', '9C', '9F']} />\n"
+    },
+    "slug": "map"
+  },
+  {
+    "x": 565,
+    "y": -120,
+    "width": 123,
+    "height": 50,
+    "rotation": 10,
+    "image": "/stickers/mdx.svg",
+    "title": {
+      "en": "MDX"
+    },
+    "description": {
+      "en": "Content of this page is written in [**MDX**](https://mdxjs.com/).\n",
+      "zh-Hans": "本页面内容使用 [**MDX**](https://mdxjs.com/) 编写。\n",
+      "ja": "このページのコンテンツは [**MDX**](https://mdxjs.com/) で書かれています。\n"
+    },
+    "slug": "mdx"
+  },
+  {
+    "x": -585,
+    "y": -155,
+    "width": 200,
+    "height": 50,
+    "rotation": -15,
+    "content": {
+      "en": "<div style={{\n  width: \"100%\",\n  height: \"100%\",\n  backgroundColor: \"light-dark(#14146b, #b9bde3)\",\n  color: \"light-dark(#b9bde3, #14146b)\",\n  borderRadius: \"10px\",\n  padding: \"10px\",\n  textAlign: \"center\",\n  display: \"flex\",\n  alignItems: \"center\",\n  justifyContent: \"center\",\n  flexDirection: \"column\",\n  fontVariantNumeric: \"tabular-nums\",\n  fontSize: \"25px\",\n  fontWeight: \"600\",\n  whiteSpace: \"nowrap\",\n}}>\n  12,3456,7890\n</div>\n"
+    },
+    "title": {
+      "en": "Myriad separator",
+      "zh-Hans": "万位分割符",
+      "ja": "4 桁区切り"
+    },
+    "description": {
+      "en": "I use **myriad decimal separators** in CJK contexts.\n",
+      "zh-Hans": "在中日韩语语境中使用**万位分隔符**。\n\n[了解详情](https://blog.1a23.com/2020/04/01/shuzi-zhao-yu-wanwei-fengefu/)。\n",
+      "ja": "日中韓文脈では **4 桁区切り**を使います。\n"
+    },
+    "slug": "myriad-separator"
+  },
+  {
+    "x": 445,
+    "y": -30,
+    "width": 185,
+    "height": 50,
+    "rotation": -10,
+    "image": "/stickers/next-js.svg",
+    "clipPath": "polygon(11.99% 0%, 18.06% 27.75%, 18.06% 0%, 86.52% 0%, 86.52% 35.09%, 100% 42%, 100% 100%, 0% 100%, 0% 0%)",
+    "title": {
+      "en": "Next.js"
+    },
+    "description": {
+      "en": "This page is built with [**Next.js**](https://nextjs.org/).\n\nLogo used following [Vercel Geist Branding Guidelines](https://vercel.com/geist/brands#usage).\n",
+      "zh-Hans": "本页面使用 [**Next.js**](https://nextjs.org/) 构建。\n\nLogo 使用遵循 [Vercel Geist 品牌使用指南](https://vercel.com/geist/brands#usage)。\n",
+      "ja": "このページは [**Next.js**](https://nextjs.org/) で構築されています。\n\nロゴは [Vercel Geist ブランドガイドライン](https://vercel.com/geist/brands#usage)に従って使用されています。\n"
+    },
+    "slug": "next-js"
+  },
+  {
+    "x": -175,
+    "y": 515,
+    "width": 250,
+    "height": 63,
+    "rotation": 10,
+    "image": "/stickers/pedantic.svg",
+    "clipPath": "shape(evenodd from 6.6422% 18.8853%,curve to 9.5314% 15.6514% with 7.2983% 17.6435% / 8.3937% 15.9203%,curve to 17.2813% 28.9648% with 12.9446% 14.8445% / 15.6324% 20.5153%,curve to 23.9296% 15.412% with 18.9458% 20.8973% / 21.4255% 15.4424%,curve to 30.2024% 26.0881% with 26.5988% 15.3796% / 28.8452% 19.7254%,curve to 32.0708% 20.5097% with 30.9041% 23.3547% / 31.6024% 21.5517%,curve to 32.1859% 14.2366% with 32.064% 18.5373% / 32.0771% 16.2881%,curve to 33.3811% 5.3381% with 32.3702% 10.7676% / 32.7691% 7.6925%,curve to 36.2752% 0.7488% with 34.0307% 2.8384% / 34.9334% 0.8864%,curve to 38.8923% 3.5938% with 37.4044% 0.6337% / 38.2444% 1.8691%,curve to 40.692% 14.6235% with 39.8504% 6.1436% / 40.4462% 10.0758%,curve to 40.8221% 20.8344% with 40.8041% 16.6997% / 40.825% 18.9305%,curve to 41.6131% 22.8647% with 41.0777% 21.4585% / 41.3757% 22.2075%,curve to 43.6169% 30.496% with 42.2905% 24.7411% / 43.0006% 27.1124%,curve to 45.2802% 23.6723% with 44.067% 28.0993% / 44.6185% 25.8078%,curve to 56.8756% 25.2883% with 48.7679% 12.4139% / 53.8122% 14.207%,curve to 58.1558% 18.2563% with 57.0973% 22.996% / 57.4876% 20.5979%,curve to 61.7925% 14.1329% with 59.548% 13.3775% / 60.7534% 13.2116%,curve to 63.4685% 17.239% with 62.26% 14.5472% / 63.0197% 16.1985%,curve to 70.5885% 21.4218% with 66.1477% 14.4915% / 68.6722% 16.3305%,curve to 71.7441% 17.8666% with 70.917% 19.9823% / 71.3057% 18.7653%,curve to 71.8168% 14.027% with 71.7497% 16.5197% / 71.7673% 15.2186%,curve to 73.0606% 4.5263% with 71.9775% 10.1668% / 72.3914% 6.9647%,curve to 76.1527% 0.2052% with 73.7029% 2.1868% / 74.6403% 0.1974%,curve to 79.3934% 5.1786% with 77.7813% 0.2144% / 78.7494% 2.5327%,curve to 79.7529% 6.8919% with 79.5246% 5.7179% / 79.6445% 6.2898%,curve to 83.254% -0.0002% with 80.5492% 2.7099% / 81.8216% -0.0002%,curve to 87.6202% 17.1155% with 85.6636% -0.0002% / 87.6202% 7.6685%,curve to 87.3333% 23.2255% with 87.6202% 19.2679% / 87.5186% 21.3279%,curve to 90.725% 16.8642% with 88.2546% 20.4984% / 89.3786% 18.2944%,curve to 99.1207% 28.7643% with 94.2057% 13.1671% / 97.743% 20.5471%,curve to 99.8959% 41.6606% with 99.8345% 33.0212% / 100.0674% 37.5732%,curve to 98.7785% 50.329% with 99.7679% 44.7146% / 99.4325% 47.7353%,curve to 98.8193% 50.4892% with 98.7922% 50.3819% / 98.8057% 50.4356%,curve to 99.949% 61.4244% with 99.5669% 53.4718% / 99.9469% 57.236%,curve to 98.7456% 73.9719% with 99.9508% 65.3367% / 99.5793% 69.8767%,curve to 90.877% 83.978% with 97.342% 80.8655% / 94.4968% 87.0093%,curve to 87.057% 76.6255% with 89.3759% 82.7207% / 88.0941% 80.1165%,curve to 83.4649% 84.6465% with 86.3287% 81.426% / 84.992% 84.6465%,line to 83.0638% 84.6465%,curve to 79.6816% 77.8758% with 81.6734% 84.6465% / 80.4408% 81.9773%,curve to 78.6955% 81.8672% with 79.4079% 79.4839% / 79.0759% 80.8019%,curve to 76.0617% 84.8018% with 78.0376% 83.7097% / 77.1951% 84.9402%,curve to 73.4007% 81.1323% with 74.8912% 84.6585% / 74.0491% 83.217%,curve to 72.9591% 79.4776% with 73.2445% 80.6304% / 73.097% 80.0812%,curve to 72.7201% 80.4271% with 72.882% 79.8129% / 72.8022% 80.1285%,curve to 70.0009% 84.6098% with 72.0947% 82.7052% / 71.2576% 84.3204%,curve to 66.799% 80.4546% with 68.5161% 84.9508% / 67.5174% 83.0341%,curve to 65.691% 73.8483% with 66.3086% 78.694% / 65.9354% 76.4526%,curve to 64.3027% 81.2876% with 65.3742% 77.0082% / 64.9064% 79.5517%,curve to 61.4753% 84.4842% with 63.614% 83.2678% / 62.7119% 84.6451%,curve to 59.095% 81.342% with 60.4665% 84.3536% / 59.7038% 83.1407%,curve to 58.0888% 83.2904% with 58.7925% 82.1517% / 58.4566% 82.8266%,curve to 54.4635% 81.3928% with 57.1195% 84.5131% / 55.8843% 84.7552%,curve to 52.9115% 83.7549% with 54.0485% 82.1807% / 53.4772% 83.1542%,curve to 45.6822% 78.0389% with 50.2159% 86.6182% / 47.6495% 83.9406%,curve to 44.6578% 81.5001% with 45.4% 79.3089% / 45.0594% 80.4765%,curve to 42.4607% 84.3677% with 43.8147% 83.6483% / 43.084% 84.2886%,curve to 40.1498% 81.3716% with 41.752% 84.4573% / 40.7765% 82.6939%,curve to 30.1963% 73.8596% with 36.3382% 88.0852% / 32.5739% 83.5848%,curve to 30.0119% 74.7068% with 30.1373% 74.1448% / 30.0758% 74.4272%,curve to 24.3763% 84.2844% with 28.8684% 79.7007% / 26.7817% 83.9498%,curve to 17.1357% 71.4629% with 21.2396% 84.7207% / 18.7253% 79.3682%,curve to 14.6348% 79.6767% with 16.4823% 74.5225% / 15.6546% 77.311%,curve to 10.9984% 99.3578% with 14.526% 84.6345% / 13.9587% 97.5802%,curve to 7.8941% 97.1136% with 9.5759% 100.212% / 8.596% 98.8559%,curve to 5.9708% 82.6332% with 6.1673% 92.8278% / 5.9738% 84.0832%,curve to 5.9821% 79.8129% with 5.9686% 81.7133% / 5.9742% 80.7165%,curve to 1.6029% 46.2288% with 3.8416% 74.9517% / 1.0469% 62.6153%,curve to 0.0081% 35.2852% with 0.9857% 43.9429% / 0.0945% 39.8887%,curve to 2.5229% 17.7035% with -0.0932% 29.891% / 0.7512% 20.9453%,curve to 6.6422% 18.8853% with 3.506% 15.9048% / 4.8941% 14.9786%,close)",
+    "title": {
+      "en": "pedantic Inc. Podcasts",
+      "zh-Hans": "pedantic Inc. 系列播客",
+      "ja": "株式会社 pedantic 系列ポッドキャスト"
+    },
+    "description": {
+      "en": "Besides [**Yuru Gengo-gaku Radio**](#yurugengo) and [**Yuru Computer Kagaku Radio**](#yurucom), I also listen to other podcasts from [pedantic Inc.](https://pedantic.jp/)\n\n- *Yuru Tenmon-gaku Radio* ([Website](https://yurugakuto.com/tenmon), [YouTube](https://www.youtube.com/@yurutenmon))\n- *Yuru Minzoku-gaku Radio* ([Website](https://yurugakuto.com/minzoku), [YouTube](https://www.youtube.com/@yuruminzoku))\n- *Hakushi to Dokeshi* ([YouTube](https://www.youtube.com/@hakushi-to-dokeshi))\n- *Shirokuro Tsukenai Kaigi* ([Website](https://cybozu.co.jp/not-shirokuro/), [YouTube](https://www.youtube.com/@not_shirokuro))\n- *Bonno Dokomademo* ([YouTube](https://www.youtube.com/@bon-doko))\n- *pedantic Inc.* ([YouTube](https://www.youtube.com/@pedanticInc))\n",
+      "zh-Hans": "除了[**《Yuru 言語学 Radio》**](#yurugengo)和[**《Yuru Computer 科学 Radio》**](#yurucom)，我也收听 [pedantic 株式会社](https://pedantic.jp/) 的其他播客。\n\n- 《Yuru 天文学 Radio》 ([Website](https://yurugakuto.com/tenmon), [YouTube](https://www.youtube.com/@yurutenmon))\n- 《Yuru 民俗学 Radio》 ([Website](https://yurugakuto.com/minzoku), [YouTube](https://www.youtube.com/@yuruminzoku))\n- 《博士 to 道化师》 ([YouTube](https://www.youtube.com/@hakushi-to-dokeshi))\n- 《白黑 Tsukenai 会议》 ([Website](https://cybozu.co.jp/not-shirokuro/), [YouTube](https://www.youtube.com/@not_shirokuro))\n- 《烦恼 Dokomademo》 ([YouTube](https://www.youtube.com/@bon-doko))\n- 《株式会社 pedantic》 ([YouTube](https://www.youtube.com/@pedanticInc))\n",
+      "ja": "[『ゆる言語学ラジオ』](#yurugengo)と[『ゆるコンピュータ科学ラジオ』](#yurucom)以外に、[株式会社 pedantic](https://pedantic.jp/) の他のポッドキャストも聞いています。\n\n- 『ゆる天文学ラジオ』 ([Website](https://yurugakuto.com/tenmon), [YouTube](https://www.youtube.com/@yurutenmon))\n- 『ゆる民俗学ラジオ』 ([Website](https://yurugakuto.com/minzoku), [YouTube](https://www.youtube.com/@yuruminzoku))\n- 『博士と道化師』([YouTube](https://www.youtube.com/@hakushi-to-dokeshi))\n- 『白黒つけない会議』([Website](https://cybozu.co.jp/not-shirokuro/), [YouTube](https://www.youtube.com/@not_shirokuro))\n- 『煩悩どこまでも』([YouTube](https://www.youtube.com/@bon-doko))\n- 『株式会社 pedantic』([YouTube](https://www.youtube.com/@pedanticInc))\n"
+    },
+    "slug": "pedantic"
+  },
+  {
+    "x": -320,
+    "y": -295,
+    "width": 100,
+    "height": 100,
+    "rotation": 10,
+    "image": "/stickers/pi.svg",
+    "clipPath": "circle(50% at 50% 50%)",
+    "title": {
+      "en": "π"
+    },
+    "description": {
+      "en": "I can remember **the decimal of π** up to 62 decimal place…\n\n```\n3.14 1592 6535 8979 3238 4626 4338 3279 \n5028 8419 7169 3993 7510 5820 4749 4459...\n```\n\n…thanks to [this song](https://www.nicovideo.jp/watch/sm5508506).\n",
+      "zh-Hans": "我可以记住 **π 的小数点后 62 位**…\n\n```\n3.14 1592 6535 8979 3238 4626 4338 3279\n5028 8419 7169 3993 7510 5820 4749 4459...\n```\n\n…归功于[这首歌](https://www.nicovideo.jp/watch/sm5508506)。\n",
+      "ja": "**π** の小数点以下 62 桁を覚えています。\n\n```\n3.14 1592 6535 8979 3238 4626 4338 3279\n5028 8419 7169 3993 7510 5820 4749 4459...\n```\n\n[この曲](https://www.nicovideo.jp/watch/sm5508506)のおかげです。\n\nexport function Nums(props) {\n  const digitMap = {\n    '0': 'ｾﾞﾛ', '1': 'ｲﾁ', '2': 'ﾆｰ', '3': 'ｻﾝ', '4': 'ﾖﾝ',\n    '5': 'ｺﾞｰ', '6': 'ﾛｸ', '7': 'ﾅﾅ', '8': 'ﾊﾁ', '9': 'ｷｭｰ',\n    ' ': ' ', '.': 'ﾃﾝ',\n  };\n  return [\"♪ \", ...props.children.split('').map(digit => digitMap[digit]).map((mapped, idx) => mapped.length > 2 ? <span className=\"pi-2-3\" key={idx}>{mapped}</span> : mapped)];\n}\n\n<Muted style={{ fontSize: \"12px\", marginTop: \"12px\" }}>♪ ﾄﾝ ﾄﾝ ﾄﾝ ｶﾁｰﾝ<br /><Nums>3.14 1592 6535 8979</Nums><br /><Nums>3238 4626 4338 3279</Nums><br /><Nums>5028 8419 7169 3993</Nums><br /><Nums>7510 5820 4749 4459</Nums>……</Muted>\n\n<style>{`.pi-2-3 { display: inline-block; scale: 66.67% 1; width: 1ic; transform-origin: center left; white-space: pre; }`}</style>\n"
+    },
+    "slug": "pi"
+  },
+  {
+    "x": -395,
+    "y": 215,
+    "width": 200,
+    "height": 50,
+    "rotation": 5,
+    "image": "/stickers/quizknock.svg",
+    "title": {
+      "en": "QuizKnock"
+    },
+    "description": {
+      "en": "I subscribed to **[QuizKnock](https://quizknock.com/)**’s [YouTube Channel](https://www.youtube.com/channel/UCQ_MqAw18jFTlBB-f8BP7dw/featured).\n",
+      "zh-Hans": "我订阅了 **[QuizKnock](https://quizknock.com/)** 的 [YouTube 频道](https://www.youtube.com/channel/UCQ_MqAw18jFTlBB-f8BP7dw/featured)。\n",
+      "ja": "**[QuizKnock](https://quizknock.com/)** の [YouTube チャンネル](https://www.youtube.com/channel/UCQ_MqAw18jFTlBB-f8BP7dw/featured)を登録しました。\n"
+    },
+    "slug": "quizknock"
+  },
+  {
+    "x": -25,
+    "y": 305,
+    "width": 128,
+    "height": 100,
+    "rotation": -15,
+    "image": "/stickers/quotes.svg",
+    "title": {
+      "en": "“Curly quotes” are the right quotes",
+      "zh-Hans": "“弯引号”才是西文排版中正确的引号",
+      "ja": "“Curly quotes” こそが欧文組版においての正しい引用符"
+    },
+    "description": {
+      "en": "**“Curly quotes”** are the right quotes in typesetting.\n\n> **Straight quotes** are the two generic vertical quotation marks located near the return key.\n>\n> **Curly quotes** are the quotation marks used in good typography.\n>\n> — [Typography for Lawyers](https://typographyforlawyers.com/straight-and-curly-quotes)\n\nFor Wikipedia who reluctantly [still enforces the usage of straight quotes](https://en.wikipedia.org/w/index.php?title=MOS:%22&redirect=no),\nI have [a user script to correct the quotes in articles](https://en.wikipedia.org/wiki/User:Eana_Hufwe/SmartQuote).\n",
+      "zh-Hans": "<strong>“弯引号”</strong>才是西文排版中正确的引号。\n\n> **直引号**（\"）是键盘回车键附近的两个通用垂直引号符号。\n>\n> **弯引号**（“”）是优质排版中使用的引号。\n>\n> — [Typography for Lawyers（律师排版指南）](https://typographyforlawyers.com/straight-and-curly-quotes)\n\n对于仍然[固守直引号使用](https://en.wikipedia.org/w/index.php?title=MOS:%22&redirect=no)的英文维基百科，\n我写了一个[用户脚本来修正文章中的引号](https://en.wikipedia.org/wiki/User:Eana_Hufwe/SmartQuote)。\n",
+      "ja": "欧文組版では<strong>「curly quotes」</strong>こそが正しい引用符です。\n\n> **Straight quote**（\"）は、Enter キー付近にある 2 つの一般的な縦型の引用符のことです。\n>\n> **Curly quote**（“”）は、上質な組版で使用される引用符です。\n>\n> — [Typography for Lawyers（法律家のための組版術）](https://typographyforlawyers.com/straight-and-curly-quotes)\n\n[まだストレートクォートの使用にこだわっている](https://en.wikipedia.org/w/index.php?title=MOS:%22&redirect=no)英語版ウィキペディアのために、\n[記事内の引用符を修正するユーザースクリプト](https://en.wikipedia.org/wiki/User:Eana_Hufwe/SmartQuote)を作成しました。\n"
+    },
+    "slug": "quotes"
+  },
+  {
+    "x": 270,
+    "y": 20,
+    "width": 75,
+    "height": 75,
+    "rotation": 10,
+    "clipPath": "ellipse(50% 50% at 50% 50%)",
+    "image": "/stickers/react.svg",
+    "title": {
+      "en": "React"
+    },
+    "description": {
+      "en": "I write stuff using [**React**](https://react.dev) a lot, including this website.\n\n[Logo](https://raw.githubusercontent.com/facebook/react/main/fixtures/dom/public/react-logo.svg), licensed under MIT license.\n",
+      "zh-Hans": "我写了很多东西使用 [**React**](https://react.dev)，包括这个网站。\n\n[Logo](https://raw.githubusercontent.com/facebook/react/main/fixtures/dom/public/react-logo.svg)，授权：MIT。\n",
+      "ja": "このウェブサイトを含め、[**React**](https://react.dev) でたくさんのものを書いています。\n\n[Logo](https://raw.githubusercontent.com/facebook/react/main/fixtures/dom/public/react-logo.svg)、ライセンス：MIT。\n"
+    },
+    "slug": "react"
+  },
+  {
+    "x": 345,
+    "y": 185,
+    "width": 225,
+    "height": 75,
+    "rotation": -20,
+    "image": "/stickers/regex.svg",
+    "title": {
+      "en": "Apprentice RegEx magician",
+      "zh-Hans": "见习正则魔法师",
+      "ja": "見習い RegEx 魔法使い"
+    },
+    "description": {
+      "en": "An apprentice [RegEx](https://en.wikipedia.org/wiki/Regular_expression \"Regular Expression\") magician summons a cat to walk on my keyboard. \n(via [Garabato Kid](https://twitter.com/garabatokid/status/1147063121678389253))\n\nThe regex above matches a social media handle and capture it in match group 1. \nBy [rayfranco](https://stackoverflow.com/a/13398311/1989455), <Abbr title=\"Creative Commons Attribution-ShareAlike 3.0\">🅭 🅯⊜ 3.0</Abbr>, [Explanation](https://regexr.com/89ius).\n",
+      "zh-Hans": "见习[正则](https://zh.wikipedia.org/wiki/正则表达式 \"正则表达式\")魔法师召唤了一只猫在我的键盘上爬。\n（来自 [Garabato Kid](https://twitter.com/garabatokid/status/1147063121678389253)）\n\n上面的正则表达式可以匹配社交媒体用户名并将其捕获到第 1 个匹配组中。\n作者：[rayfranco](https://stackoverflow.com/a/13398311/1989455)，<Abbr title=\"知识共享 署名-相同方式共享 3.0\">🅭 🅯⊜ 3.0</Abbr>，[详细说明](https://regexr.com/89ius)。\n",
+      "ja": "見習い [RegEx](https://ja.wikipedia.org/wiki/正規表現 \"正規表現\") 魔法使いが、猫を召喚してキーボードの上を歩かせました。（出典：[Garabato Kid](https://twitter.com/garabatokid/status/1147063121678389253)）\n\n上記の正規表現は、ソーシャルメディアのハンドルネームを一致させ、マッチグループ 1 に捕捉します。\n制作：[rayfranco](https://stackoverflow.com/a/13398311/1989455)、<Abbr title=\"クリエイティブ・コモンズ 表示-継承 3.0\">🅭 🅯⊜ 3.0</Abbr>、[説明](https://regexr.com/89ius)。\n"
+    },
+    "slug": "regex"
+  },
+  {
+    "x": -535,
+    "y": 450,
+    "width": 145,
+    "height": 141,
+    "rotation": -15,
+    "image": "/stickers/riddler.svg",
+    "clipPath": "polygon(7.82% 5.54%, 82.14% 0%, 100% 0%, 100% 85.33%, 9.42% 100%, 9.11% 82.04%, 7.82% 64.12%, 0% 42.67%, 0% 33.33%, 8.65% 30.45%)",
+    "title": {
+      "en": "Riddler’s Nazotoki Channel",
+      "zh-Hans": "《Riddler 的 Nazotoki Channel》",
+      "ja": "『リドラの謎解きチャンネル』"
+    },
+    "description": {
+      "en": "I subscribed to [**Riddler’s Nazotoki Channel**](https://www.youtube.com/@RIDDLER_nazo) on YouTube.",
+      "zh-Hans": "我在 YouTube 上订阅了[**《Riddler 的 Nazotoki Channel》**](https://www.youtube.com/@RIDDLER_nazo)。",
+      "ja": "YouTube で [**『リドラの謎解きチャンネル』**](https://www.youtube.com/@RIDDLER_nazo)を登録しました。"
+    },
+    "slug": "riddler"
+  },
+  {
+    "x": 300,
+    "y": -50,
+    "width": 98,
+    "height": 75,
+    "rotation": 20,
+    "image": "/stickers/sass.svg",
+    "clipPath": "polygon(33.08% 0%, 63.85% 0%, 75% 26%, 100% 52%, 100% 84%, 31.54% 100%, 0% 100%, 0% 17%)",
+    "title": {
+      "en": "Sass"
+    },
+    "description": {
+      "en": "I write stuff in [**Sass**](https://sass-lang.com) sometimes, especially in SCSS,\ndespite most of the main reasons why I chose SCSS (nested syntax, variables, etc.)\nare now already available in CSS.\n\n[Logo by Sass-lang](https://sass-lang.com/styleguide/brand), licensed under <Abbr title=\" Creative Commons Attribution-NonCommercial-ShareAlike 3.0\">🅭 🅯🄏⊜ 3.0</Abbr>.\n",
+      "zh-Hans": "我有时会用 [**Sass**](https://sass-lang.com) 写代码，特别是使用 SCSS 语法，\n尽管我当初选择 SCSS 的主要原因（嵌套语法、变量等）现在的 CSS 都已经支持了。\n\n[Logo by Sass-lang](https://sass-lang.com/styleguide/brand)，以 <Abbr title=\" Creative Commons Attribution-NonCommercial-ShareAlike 3.0\">🅭 🅯🄏⊜ 3.0</Abbr> 协议授权。\n",
+      "ja": "[**Sass**](https://sass-lang.com) でコードを書くことがあります。特に SCSS 形式をよく使いますが、\nSCSS を選んだ主な理由（ネスト構文や変数など）のほとんどは、今では CSS でも使えるようになっています。\n\n[Logo by Sass-lang](https://sass-lang.com/styleguide/brand)、ライセンス: <Abbr title=\"  Creative Commons Attribution-NonCommercial-ShareAlike 3.0\">🅭 🅯🄏⊜ 3.0</Abbr>。\n"
+    },
+    "slug": "sass"
+  },
+  {
+    "x": 360,
+    "y": 405,
+    "width": 75,
+    "height": 75,
+    "rotation": -5,
+    "image": "/stickers/shadcn-ui.svg",
+    "title": {
+      "en": "shadcn/ui"
+    },
+    "description": {
+      "en": "This page uses [**shadcn/ui**](https://ui.shadcn.com/) as the UI library.\n",
+      "zh-Hans": "本页面使用 [**shadcn/ui**](https://ui.shadcn.com/) 作为 UI 组件库。\n",
+      "ja": "このページは UI ライブラリ [**shadcn/ui**](https://ui.shadcn.com/) を利用しています。\n"
+    },
+    "slug": "shadcn-ui"
+  },
+  {
+    "x": -620,
+    "y": 165,
+    "width": 139,
+    "height": 250,
+    "rotation": -15,
+    "image": "/stickers/shoshitsu.svg",
+    "clipPath": "polygon(47.85% 24.09%, 38.8% 17.63%, 38.99% 8.13%, 47.85% 0%, 100% 0%, 100% 28.59%, 90.88% 36.67%, 78.03% 45.62%, 91.75% 54.17%, 84.42% 62.64%, 84.71% 76.01%, 61.14% 79%, 67.78% 92.95%, 60.27% 100%, 44.95% 100%, 37.23% 95.79%, 25.34% 100%, 0% 100%, 0% 78.41%, 10.62% 77.46%, 4.79% 55.11%, 10.62% 43.71%, 38.8% 43.71%)",
+    "title": {
+      "en": "The End of Hatsune Miku",
+      "zh-Hans": "《初音未来的消失》",
+      "ja": "『初音ミクの消失』"
+    },
+    "description": {
+      "en": "My favorite Vocaloid composition is ***the End of Hatsune Miku*** (also known as *the Disappearance of Hatsune Miku*), both the songs and the albums.\n\nThe songs:\n\n- “Remake”, [YouTube](https://www.youtube.com/watch?v=VWVtIg5cdDU).\n- “Long version”, [NicoVideo](https://www.nicovideo.jp/watch/sm2937784).\n- The “Original”, [NicoVideo](https://www.nicovideo.jp/watch/sm1476648).\n\nThe albums:\n\n- “Disappearance” ([Wayback Machine](https://web.archive.org/web/20201125042036/http://hatsunemikushoushitsu.com/))\n- [“Real and Repeat”](https://shoushitsu-re.tumblr.com/)\n",
+      "zh-Hans": "主推 Vocaloid 作品**《初音未来的消失》**，包括单曲和专辑。\n\n单曲：\n\n- 重制版：[YouTube](https://www.youtube.com/watch?v=VWVtIg5cdDU)\n- 完整版：[NicoVideo](https://www.nicovideo.jp/watch/sm2937784)\n- 原版：[NicoVideo](https://www.nicovideo.jp/watch/sm1476648)\n\n专辑：\n\n- 《消失》([Wayback Machine](https://web.archive.org/web/20201125042036/http://hatsunemikushoushitsu.com/))\n- [《Real and Repeat》](https://shoushitsu-re.tumblr.com/)\n",
+      "ja": "いち押しのボカロ作品は楽曲もアルバムもあわせて **『初音ミクの消失』** です。\n\n楽曲：\n\n- 「リメイク」：[YouTube](https://www.youtube.com/watch?v=VWVtIg5cdDU) 。\n- 「ロングバージョン」：[ニコニコ動画](https://www.nicovideo.jp/watch/sm2937784)。\n- 「オリジナル」：[ニコニコ動画](https://www.nicovideo.jp/watch/sm1476648)。\n\nアルバム：\n\n- 『消失』([Wayback Machine](https://web.archive.org/web/20201125042036/http://hatsunemikushoushitsu.com/))\n- [『Real and Repeat』](https://shoushitsu-re.tumblr.com/)\n"
+    },
+    "slug": "shoshitsu"
+  },
+  {
+    "x": 250,
+    "y": 415,
+    "width": 100,
+    "height": 100,
+    "rotation": 5,
+    "image": "/stickers/shs.svg",
+    "title": {
+      "en": "Source Han Sans / Noto Sans CJK",
+      "zh-Hans": "思源黑体",
+      "ja": "源ノ角ゴシック"
+    },
+    "description": {
+      "en": "This page uses [**Source Han Sans**](https://github.com/adobe-fonts/source-han-sans) / **Noto Sans CJK** as the main CJK typeface.\n",
+      "zh-Hans": "本页面使用[**思源黑体**](https://github.com/adobe-fonts/source-han-sans)作为主要中日韩字体。\n",
+      "ja": "このページのメイン CJK フォントは[**源ノ角ゴシック**](https://github.com/adobe-fonts/source-han-sans)です。\n"
+    },
+    "slug": "shs"
+  },
+  {
+    "x": -335,
+    "y": -155,
+    "width": 150,
+    "height": 150,
+    "rotation": 0,
+    "image": "/stickers/si.svg",
+    "clipPath": "circle(50% at 50% 50%)",
+    "title": {
+      "en": "SI units",
+      "zh-Hans": "国际单位制",
+      "ja": "SI 単位系"
+    },
+    "description": {
+      "en": "When I have a choice wnd when no computation is needed, I prefer to use **SI units** and degree celsius.\n\nExceptions include when I have to compare numbers with something I can’t change, \nlike speed signs on roads and weight plates in gyms.\n",
+      "zh-Hans": "在有选择且不需要计算的情况下，我更喜欢使用**国际单位制**和摄氏度。\n\n例外情况包括需要与一些无法改变的数值做对比时，比如道路上的限速标志和健身房里的配重片重量。\n",
+      "ja": "選択肢があり、かつ計算の必要がない場合は、**SI 単位系**と摂氏温度を使います。\n\nただし、道路標識の速度表示やジムのウェイトプレートの重量など、\n変更できない数値と比較する必要がある場合は例外です。\n"
+    },
+    "slug": "si"
+  },
+  {
+    "x": -110,
+    "y": -140,
+    "width": 280,
+    "height": 110,
+    "rotation": -10,
+    "image": "/stickers/contoso.svg",
+    "clipPath": "polygon(13% 0, 0 0, 0 100%, 35% 100%, 35% 75%, 100% 75%, 100% 10%, 35% 10%, 35% 0)",
+    "title": {
+      "en": "A software engineer",
+      "zh-Hans": "软件工程师",
+      "ja": "ソフトウェアエンジニア"
+    },
+    "description": {
+      "en": "I’m a **software engineer** at [Contoso Inc.](https://www.contoso.com), or so I think. 🤔",
+      "zh-Hans": "我在 [Contoso Inc.](https://www.contoso.com) 担任**软件工程师**，至少我这么以为。🤔",
+      "ja": "[Contoso Inc.](https://www.contoso.com) で**ソフトウェアエンジニア**を勤めています。少なくともそうとは思っています。🤔\n"
+    },
+    "slug": "software-engineer"
+  },
+  {
+    "x": 180,
+    "y": -415,
+    "width": 180,
+    "height": 100,
+    "rotation": 20,
+    "image": "/stickers/space-tab.svg",
+    "title": {
+      "en": "Prefer spaces over tabs",
+      "zh-Hans": "缩进偏好使用空格",
+      "ja": "インデントはスペースで"
+    },
+    "description": {
+      "en": "When writing source code, I prefer using **spaces** over **tabs** for indentation.\n\nThe number of spaces depends on the project and the conventions used.\n",
+      "zh-Hans": "在写代码时，我偏好使用**空格**进行缩进。\n\n空格的数量取决于项目惯例。\n",
+      "ja": "ソースコードを書く際、インデントには**スペース**をいます。\n\nスペースの数は各プロジェクトの慣習によります。\n"
+    },
+    "slug": "space-tab"
+  },
+  {
+    "x": -330,
+    "y": 90,
+    "width": 184,
+    "height": 120,
+    "rotation": -20,
+    "image": "/stickers/sui-dau.png",
+    "title": {
+      "en": "Wednesday’s Downtown",
+      "zh-Hans": "《水曜日 Downtown》",
+      "ja": "『水曜日のダウンタウン』"
+    },
+    "description": {
+      "en": "I’m following the TV series [**Wednesday’s Downtown**](https://en.wikipedia.org/wiki/Wednesday%27s_Downtown).\nI also have a nearly complete archive of all episodes since 2014,\nuntil the most recent one.\n\nPing me up if you want a copy of them.\n",
+      "zh-Hans": "我在追看综艺节目[**《水曜日 Downtown》**](https://zh.wikipedia.org/wiki/%E6%B0%B4%E6%9B%9C%E6%97%A5Downtown)。\n我收藏了从 2014 年至最新一期的几乎所有节目。\n\n如果你也想要一份，欢迎联系我。\n",
+      "ja": "[**『水曜日のダウンタウン』**](https://ja.wikipedia.org/wiki/%E6%B0%B4%E6%9B%9C%E6%97%A5%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%82%BF%E3%82%A6%E3%83%B3)を視聴しています。\n2014年から最新回までのほぼ全エピソード入りのアーカイブを持っています。\n\n欲しい方はぜひご連絡ください。\n"
+    },
+    "slug": "sui-dau"
+  },
+  {
+    "x": 900,
+    "y": -50,
+    "width": 0,
+    "height": 0,
+    "rotation": -10,
+    "title": {
+      "en": "Sticker 2"
+    },
+    "content": {
+      "en": "export function getFormattedTime() {\n  const now = new Date();\n  return now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })\n}\n\nexport function Clock() {\n  const { React } = _provideComponents();\n  const [time, setTime] = React.useState(getFormattedTime());\n  React.useEffect(() => {\n    const interval = setInterval(() => {\n      setTime(getFormattedTime());\n    }, 1000);\n    return () => clearInterval(interval);\n  }, []);\n\n  return <span style={{ fontVariantNumeric: 'tabular-nums' }}>{time}</span>\n}\n\n<div style={{\n  width: \"100%\",\n  height: \"100%\",\n  backgroundColor: \"light-dark(lightblue, rebeccapurple)\",\n  borderRadius: \"10px\",\n  padding: \"10px\",\n  textAlign: \"center\",\n  alignItems: \"center\",\n  justifyContent: \"center\",\n  flexDirection: \"column\",\n  // display: \"flex\",\n  display: \"none\",\n}}>\n  MDX sticker content <Clock />\n</div>\n"
+    },
+    "slug": "test-1"
+  },
+  {
+    "x": -485,
+    "y": 115,
+    "width": 100,
+    "height": 100,
+    "rotation": -10,
+    "image": "/stickers/typechat.png",
+    "title": {
+      "en": "TypeChat",
+      "zh-Hans": "《字谈字畅》",
+      "ja": "TypeChat"
+    },
+    "description": {
+      "en": "I subscribed to [**TypeChat**](https://www.thetype.com/typechat/), a podcast.",
+      "zh-Hans": "订阅了播客[《字谈字畅》](https://www.thetype.com/typechat/)。",
+      "ja": "[**『TypeChat』**](https://ja.wikipedia.org/wiki/字談字暢)ポッドキャストを聞いてます。"
+    },
+    "slug": "typechat"
+  },
+  {
+    "x": 175,
+    "y": -45,
+    "width": 100,
+    "height": 100,
+    "rotation": 5,
+    "image": "/stickers/typescript.svg",
+    "title": {
+      "en": "TypeScript"
+    },
+    "description": {
+      "en": "I use [**TypeScript**](https://www.typescriptlang.org) in all of my recent JS web projects and also at work. [See my TypeScript projects](https://github.com/blueset?tab=repositories&q=TypeScript).\n\n[TypeScript Logo](https://www.typescriptlang.org/branding/) by Microsoft. Released under CC BY 4.0.\n",
+      "zh-Hans": "我在最近的所有 JS 网页项目中使用 [**TypeScript**](https://www.typescriptlang.org)，工作中也经常使用。[我的 TypeScript 项目](https://github.com/blueset?tab=repositories&q=TypeScript)。\n\n[TypeScript Logo](https://www.typescriptlang.org/branding/) 来自 Microsoft。授权为 CC BY 4.0。\n",
+      "ja": "最近のすべての JS ウェブプロジェクトと仕事で [**TypeScript**](https://www.typescriptlang.org) を使用しています。[TypeScript で作ったもろもろ](https://github.com/blueset?tab=repositories&q=TypeScript)。\n\n[TypeScript Logo](https://www.typescriptlang.org/branding/) by Microsoft。ライセンス：CC BY 4.0。\n"
+    },
+    "slug": "typescript"
+  },
+  {
+    "x": 260,
+    "y": 305,
+    "width": 206,
+    "height": 75,
+    "rotation": 5,
+    "image": "/stickers/typography.svg",
+    "title": {
+      "en": "Design and typography",
+      "zh-Hans": "设计和字体排印",
+      "ja": "デザインとタイポグラフィ"
+    },
+    "description": {
+      "en": "I enjoy **designing and typography**.",
+      "zh-Hans": "爱好**设计和字体排印**。",
+      "ja": "デザインとタイポグラフィに興味があります。"
+    },
+    "slug": "typography"
+  },
+  {
+    "x": 60,
+    "y": -325,
+    "width": 100,
+    "height": 100,
+    "rotation": 10,
+    "image": "/stickers/fffd.svg",
+    "clipPath": "polygon(45% 0%, 55% 0%, 100% 45%, 100% 55%, 55% 100% , 45% 100%, 0% 55%, 0% 45%)",
+    "title": {
+      "en": "I � Unicode"
+    },
+    "description": {
+      "en": "I ~~`\\uFFFD`~~ `\\u2764` [**Unicode**](https://unicode.org)."
+    },
+    "slug": "unicode"
+  },
+  {
+    "x": -210,
+    "y": -355,
+    "width": 100,
+    "height": 108,
+    "rotation": -10,
+    "image": "/stickers/utc.svg",
+    "clipPath": "circle(50% at 50% 50%)",
+    "title": {
+      "en": "UTC"
+    },
+    "description": {
+      "en": "I prefer using **UTC** over GMT.\n\nHello, my friend from UTC{new Date().getTimezoneOffset() > 0 ? '-' : '+'}{Math.abs(new Date().getTimezoneOffset() / 60).toString()}!\n",
+      "zh-Hans": "惯用 **UTC** 而不是 GMT。\n\n你好，来自 UTC{new Date().getTimezoneOffset() > 0 ? '-' : '+'}{Math.abs(new Date().getTimezoneOffset() / 60).toString()} 的朋友！\n",
+      "ja": "GMT より **UTC** を使います。\n\nUTC{new Date().getTimezoneOffset() > 0 ? '-' : '+'}{Math.abs(new Date().getTimezoneOffset() / 60).toString()} から来た友よ、こんにちは！\n"
+    },
+    "slug": "utc"
+  },
+  {
+    "x": -250,
+    "y": 195,
+    "width": 100,
+    "height": 100,
+    "rotation": -10,
+    "image": "/stickers/vocaloid.svg",
+    "clipPath": "polygon(100% 0%, 100% 30.69%, 69.76% 100%, 30.95% 100%, 0% 30.69%, 0% 0%)",
+    "title": {
+      "en": "Vocaloid* enjoyer",
+      "zh-Hans": "术力口*厨",
+      "ja": "ボカロ*大好き"
+    },
+    "description": {
+      "en": "I have [a library](https://jukebox.1a23.studio) of 1,300+ <strong>Vocaloid</strong>* songs and their derivatives.\n\n<small>\\* Including Vocaloid, UTAU, CeVIO, Neutrino, Synthesizer V, and other vocal synthesizing technologies.</small>\n",
+      "zh-Hans": "有一个包含 1300+ 首 <strong>Vocaloid</strong>* 歌曲及其衍生作品的[曲库](https://jukebox.1a23.studio)。\n\n<small>\\* 包括 Vocaloid、UTAU、CeVIO、Neutrino、Synthesizer V 和其他歌声合成技术。</small>\n",
+      "ja": "1300 曲以上の<strong>ボーカロイド</strong>*楽曲とその派生作品が入ってる[プレイリスト](https://jukebox.1a23.studio)を持っています。\n\n<small>\\* Vocaloid をはじめ、UTAU、CeVIO、Neutrino、Synthesizer V、など他の歌声合成技術を含む。</small>\n"
+    },
+    "slug": "vocaloid"
+  },
+  {
+    "x": 450,
+    "y": -105,
+    "width": 66,
+    "height": 75,
+    "rotation": -5,
+    "image": "/stickers/vscode.svg",
+    "clipPath": "polygon(27.75% 27.75%, 54.69% 0%, 100% 0%, 100% 100%, 54.69% 100%, 27.75% 75%, 0% 87%, 0% 13%)",
+    "title": {
+      "en": "Visual Studio Code"
+    },
+    "description": {
+      "en": "I use [**Visual Studio Code**](https://code.visualstudio.com/) a lot.\n\nLogo used along the [Visual Studio Code Branding Guidelines](https://code.visualstudio.com/brand).\n",
+      "zh-Hans": "常用 [**Visual Studio Code**](https://code.visualstudio.com/)。\n\nLogo 使用遵循 [Visual Studio Code 品牌指南](https://code.visualstudio.com/brand)。\n",
+      "ja": "[**Visual Studio Code**](https://code.visualstudio.com/) をよく使います。\n\nロゴは [Visual Studio Code ブランドガイドライン](https://code.visualstudio.com/brand)に従って使用されています。\n"
+    },
+    "slug": "vscode"
+  },
+  {
+    "x": 205,
+    "y": 95,
+    "width": 200,
+    "height": 110,
+    "rotation": 20,
+    "image": "/stickers/dumbbell.svg",
+    "clipPath": "polygon(0% 12.84%, 34.37% 0%, 34.37% 34.37%, 65.63% 34.37%, 65.67% 0%, 100% 14.09%, 100% 84.64%, 65.56% 100%, 65.67% 65.67%, 34.37% 65.67%, 34.37% 100%, 0% 83.22%)",
+    "title": {
+      "en": "Workout",
+      "zh-Hans": "健身",
+      "ja": "筋トレ"
+    },
+    "description": {
+      "en": "<a href=\"https://labs.1a23.com/gymrun/card.svg\" target=\"_blank\"><img src=\"https://labs.1a23.com/gymrun/card.svg\" alt=\"Check out my recent workout\" style={{ width: \"100%\", marginTop: 0 }} /></a>\n\n<Large style={{ marginBlockStart: 10, marginBlockEnd: 10 }}>Check out my recent workouts</Large>\n\n<div style={{ display: \"grid\", gridTemplateColumns: \"1fr 1fr 1fr\", marginBlockEnd: \"1em\"}}>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderStartEndRadius: 0, borderEndEndRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg\">Equipment units</Link>\n  </Button>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg?unit=kg\">Metric (kg)</Link>\n  </Button>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderStartStartRadius: 0, borderEndStartRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg?unit=lbs\">U.S. Customary (lbs)</Link>\n  </Button>\n</div>\n\n<Button asChild variant=\"outline\"><Link target=\"_blank\" href=\"https://github.com/blueset/gymrun\" style={{ width: \"100%\" }}>GitHub</Link></Button>\n\n[Heavy dumbbell equipment icon isolated created by studiogstock](https://www.freepik.com/free-vector/heavy-dumbbell-equipment-icon-isolated_169501845.htm) on `www.freepik.com`.\n",
+      "zh-Hans": "<a href=\"https://labs.1a23.com/gymrun/card.svg\" target=\"_blank\"><img src=\"https://labs.1a23.com/gymrun/card.svg\" alt=\"最近的健身记录\" style={{ width: \"100%\", marginTop: 0 }} /></a>\n\n<Large style={{ marginBlockStart: 10, marginBlockEnd: 10 }}>最近的健身记录</Large>\n\n<div style={{ display: \"grid\", gridTemplateColumns: \"1fr 1fr 1fr\", marginBlockEnd: \"1em\"}}>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderStartEndRadius: 0, borderEndEndRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg\">器械单位</Link>\n  </Button>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg?unit=kg\">公制（千克）</Link>\n  </Button>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderStartStartRadius: 0, borderEndStartRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg?unit=lbs\">美制（磅）</Link>\n  </Button>\n</div>\n\n<Button asChild variant=\"outline\"><Link target=\"_blank\" href=\"https://github.com/blueset/gymrun\" style={{ width: \"100%\" }}>GitHub</Link></Button>\n\n[由 studiogstock 创作的 Heavy dumbbell equipment icon isolated](https://www.freepik.com/free-vector/heavy-dumbbell-equipment-icon-isolated_169501845.htm) 来自 `www.freepik.com`。\n",
+      "ja": "<a href=\"https://labs.1a23.com/gymrun/card.svg\" target=\"_blank\"><img src=\"https://labs.1a23.com/gymrun/card.svg\" alt=\"最近の筋トレをチェック\" style={{ width: \"100%\", marginTop: 0 }} /></a>\n\n<Large style={{ marginBlockStart: 10, marginBlockEnd: 10 }}>最近の筋トレ</Large>\n\n<div style={{ display: \"grid\", gridTemplateColumns: \"1fr 1fr 1fr\", marginBlockEnd: \"1em\"}}>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderStartEndRadius: 0, borderEndEndRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg\">マシーンでの単位</Link>\n  </Button>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg?unit=kg\">メートル法（kg）</Link>\n  </Button>\n  <Button asChild variant=\"outline\">\n    <Link target=\"_blank\" style={{ borderStartStartRadius: 0, borderEndStartRadius: 0 }} href=\"https://labs.1a23.com/gymrun/card.svg?unit=lbs\">米式（ポンド）</Link>\n  </Button>\n</div>\n\n<Button asChild variant=\"outline\"><Link target=\"_blank\" href=\"https://github.com/blueset/gymrun\" style={{ width: \"100%\" }}>GitHub</Link></Button>\n\n[studiogstock 制作の Heavy dumbbell equipment icon isolated](https://www.freepik.com/free-vector/heavy-dumbbell-equipment-icon-isolated_169501845.htm) は `www.freepik.com` からの提供です。\n"
+    },
+    "slug": "workout"
+  },
+  {
+    "x": -520,
+    "y": 305,
+    "width": 131,
+    "height": 75,
+    "rotation": -30,
+    "image": "/stickers/xkcd.png",
+    "title": {
+      "en": "xkcd"
+    },
+    "description": {
+      "en": "I read **[xkcd](https://xkcd.com/)**, a webcomic by Randall Monroe. Comics licensed under <Abbr title=\"Creative Commons Attribution-NonCommercial 2.5\">🅭🅯🄏 2.5</Abbr>.\n",
+      "zh-Hans": "我阅读 **[xkcd](https://xkcd.com/)**，由 Randall Monroe 创作的网络漫画。使用 <Abbr title=\"Creative Commons Attribution-NonCommercial 2.5\">🅭🅯🄏 2.5</Abbr> 许可。\n",
+      "ja": "私は Randall Monroe によるウェブコミック **[xkcd](https://xkcd.com/)** を読んでいます。コミックは <Abbr title=\"Creative Commons Attribution-NonCommercial 2.5\">🅭🅯🄏 2.5</Abbr> でライセンスされています。\n"
+    },
+    "slug": "xkcd"
+  },
+  {
+    "x": -420,
+    "y": -355,
+    "width": 452,
+    "height": 75,
+    "rotation": -35,
+    "image": "/stickers/xkjd27c.svg",
+    "title": {
+      "en": "XKJD27C",
+      "zh-Hans": "星空键道 27C",
+      "ja": "XKJD27C"
+    },
+    "description": {
+      "en": "I use [**XKJD27C**](https://github.com/xkjd27/rime_jd27c), a phonetic-shape-dual input method designed for Colemak layout, to type Simplified Chinese.\n\nTo type 文 (wén), you can enter:\n\nexport function Key(props) {\n  return <Button variant=\"outline\" size=\"clear\" style={{ display: 'grid', gridTemplateAreas: '\"a b\" \"c d\"', gridTemplateRows: '1fr 1fr', justifyContent: 'space-between', padding: '0 0.5rem', width: '4rem', height: '4rem' }}>{props.children}</Button>;\n}\n\n<div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n</div>\n\nWhich is a simplified form of:\n\n<div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>一</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>木</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>V</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25, fontSize: '0.6em' }}>土士o</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丿</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>月</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>十o</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n</div>\n",
+      "zh-Hans": "我使用[**星空键道 27C**](https://github.com/xkjd27/rime_jd27c)，一款为 Colemak 键盘布局设计的音形顶功输入方案。\n\n要输入「文」，你可以输入：\n\nexport function Key(props) {\n  return <Button variant=\"outline\" size=\"clear\" style={{ display: 'grid', gridTemplateAreas: '\"a b\" \"c d\"', gridTemplateRows: '1fr 1fr', justifyContent: 'space-between', padding: '0 0.5rem', width: '4rem', height: '4rem' }}>{props.children}</Button>;\n}\n\n<div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n</div>\n\n或者输入其完整编码：\n\n<div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>一</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>木</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>V</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25, fontSize: '0.6em' }}>土士o</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丿</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>月</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>十o</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n</div>\n",
+      "ja": "[**XKJD27C**](https://github.com/xkjd27/rime_jd27c)という、Colemak 配列向けの発音・字画に基づいた中国語入力方法を使っています。\n\n「文」（wén）と入力するには、次のように入力します：\n\nexport function Key(props) {\n  return <Button variant=\"outline\" size=\"clear\" style={{ display: 'grid', gridTemplateAreas: '\"a b\" \"c d\"', gridTemplateRows: '1fr 1fr', justifyContent: 'space-between', padding: '0 0.5rem', width: '4rem', height: '4rem' }}>{props.children}</Button>;\n}\n\n<div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n</div>\n\nまた、フル形式で入力するには次のように入力します：\n\n<div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start', opacity: 0.25 }}>ei</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>un</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', }}>W</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>en</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>一</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>木</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>V</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25, fontSize: '0.6em' }}>土士o</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丿</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>月</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>E</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>十o</span>\n  </Key>\n  <Key>\n    <span style={{ gridArea: 'a', justifySelf: 'start' }}>丶</span>\n    <span style={{ gridArea: 'b', justifySelf: 'end', opacity: 0.25 }}>口</span>\n    <span style={{ gridArea: 'c', justifySelf: 'start', opacity: 0.25 }}>O</span>\n    <span style={{ gridArea: 'd', justifySelf: 'end', opacity: 0.25 }}>日i</span>\n  </Key>\n</div>\n"
+    },
+    "slug": "xkjd27c"
+  },
+  {
+    "x": 510,
+    "y": 145,
+    "width": 100,
+    "height": 100,
+    "rotation": 5,
+    "image": "/stickers/yaml.svg",
+    "clipPath": "polygon(0% -1%, 69.44% -1%, 87.04% 43.86%, 87.04% 75.58%, 99.48% 75.58%, 100.93% 100%, 11.65% 100%, 11.65% 43.86%, 0% 21%)",
+    "title": {
+      "en": "YAML"
+    },
+    "description": {
+      "en": "I choose [**YAML**](https://yaml.org/) for configuration files meant to be written by hands.\n\nData of this project is also written in YAML.\n",
+      "zh-Hans": "我选择 [**YAML**](https://yaml.org/) 作为需要手写的配置文件格式。\n\n本项目的数据也是用 YAML 编写的。\n",
+      "ja": "手書き想定の設定ファイルは [**YAML**](https://yaml.org/) を選択しています。\n\nこのプロジェクトのデータも YAML で書かれています。\n"
+    },
+    "slug": "yaml"
+  },
+  {
+    "x": -395,
+    "y": 390,
+    "width": 135,
+    "height": 200,
+    "rotation": -5,
+    "image": "/stickers/yofukashi.png",
+    "clipPath": "polygon(83.86% 64.05%, 100% 64.29%, 99.44% 81.55%, 75.35% 81.55%, 66.48% 89.33%, 48.71% 92.51%, 44.61% 100%, 6.89% 100%, 14% 44.44%, 0% 44.44%, 0% 28.46%, 14% 4.49%, 37.14% 14.4%, 42.22% 0%, 75.56% 0%, 75.56% 47.51%)",
+    "title": {
+      "en": "Monday Lateshow",
+      "zh-Hans": "《月曜夜未央》",
+      "ja": "『月曜から夜ふかし』"
+    },
+    "description": {
+      "en": "I watch **Monday Lateshow**.",
+      "zh-Hans": "我在追看综艺节目[**《月曜夜未央》**](https://zh.wikipedia.org/wiki/月曜夜未央)。",
+      "ja": "[**『月曜から夜ふかし』**](https://ja.wikipedia.org/wiki/月曜から夜ふかし)を見てます。"
+    },
+    "slug": "yofukashi"
+  },
+  {
+    "x": -60,
+    "y": 430,
+    "width": 156,
+    "height": 100,
+    "rotation": 10,
+    "image": "/stickers/yurucom.png",
+    "title": {
+      "en": "Yuru Computer Kagaku Radio",
+      "zh-Hans": "《Yuru Computer 科学 Radio》",
+      "ja": "『ゆるコンピュータ科学ラジオ』"
+    },
+    "description": {
+      "en": "I listen to [**Yuru Computer Kagaku Radio**](https://www.youtube.com/channel/UCpLu0KjNy616-E95gPx7LZg).",
+      "zh-Hans": "订阅了播客[**《Yuru Computer 科学 Radio》**](https://www.youtube.com/channel/UCpLu0KjNy616-E95gPx7LZg)。",
+      "ja": "[**『ゆるコンピュータ科学ラジオ』**](https://www.youtube.com/channel/UCpLu0KjNy616-E95gPx7LZg)を聞いてます。"
+    },
+    "slug": "yurucom"
+  },
+  {
+    "x": -245,
+    "y": 400,
+    "width": 173,
+    "height": 100,
+    "rotation": 0,
+    "image": "/stickers/yurugengo.png",
+    "clipPath": "polygon(0% 32.53%, 12.64% 21.45%, 12.64% 4.34%, 90.83% 0%, 100% 8.92%, 97.5% 47.23%, 90.83% 50.82%, 97.5% 68.67%, 95.05% 84.81%, 92.45% 85.22%, 88% 99.76%, 80.13% 99.76%, 69.57% 88.81%, 57.78% 100%, 48.33% 100%, 44.08% 85.71%, 36.22% 94.24%, 23.19% 86.07%, 20.62% 78.2%, 16.86% 71.91%, 7.85% 70.71%, 5.53% 66.17%, 0% 50.6%)",
+    "title": {
+      "en": "Yuru Gengo-gaku Radio",
+      "zh-Hans": "《Yuru 言語学 Radio》",
+      "ja": "『ゆる言語学ラジオ』"
+    },
+    "description": {
+      "en": "I listen to [**Yuru Gengo-gaku Radio**](https://yurugengo.com/).",
+      "zh-Hans": "订阅了播客[**《Yuru 言語学 Radio》**](https://yurugengo.com/)。",
+      "ja": "[**『ゆる言語学ラジオ』**](https://yurugengo.com/)を聞いてます。"
+    },
+    "slug": "yurugengo"
+  },
+  {
+    "x": 430,
+    "y": -285,
+    "width": 190,
+    "height": 50,
+    "rotation": 0,
+    "content": {
+      "en": "<div style={{\n  width: \"100%\",\n  height: \"100%\",\n  color: \"light-dark(#0b574a, #a4d8d2)\",\n  backgroundColor: \"light-dark(#a4d8d2, #0b574a)\",\n  borderRadius: \"10px\",\n  padding: \"10px\",\n  textAlign: \"center\",\n  display: \"flex\",\n  alignItems: \"center\",\n  justifyContent: \"center\",\n  flexDirection: \"column\",\n  fontVariantNumeric: \"tabular-nums\",\n  fontSize: \"25px\",\n  whiteSpace: \"nowrap\",\n  fontWeight: \"600\"\n}}>\n  {new Date().toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' })}\n</div>\n"
+    },
+    "title": {
+      "en": "YYYY-MM-DD"
+    },
+    "description": {
+      "en": "I also use **YYYY-MM-DD** to write date sometimes, as in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).\n\n![Public Service Announcement: Our different ways of writing dates as numbers can lead to online confusion. That's why in 1988 ISO set a global standard numeric date format. This is THE correct way to write numeric dates: 2013-02-27. The following formats are therefore discouraged: 02/27/2013, 02/27/13, 27/02/2013, 27/02/13, 20130227, 2013.02.27, 27.02.13, 27-02-13, 27.2.13, 2013. II. 27… See full transcription in “explain” link below.](https://imgs.xkcd.com/comics/iso_8601_2x.png)\n<Small>https://xkcd.com/1179/, 🅭 🅯🄏 2.5. [Explain](https://explainxkcd.com/wiki/index.php/1179:_ISO_8601).</Small>\n",
+      "zh-Hans": "有时我也使用 **YYYY-MM-DD** 格式来写日期，就像 [ISO 8601](https://zh.wikipedia.org/wiki/ISO_8601) 那样。\n\n![公益廣告時間 我們用不同的方式書寫日期數字，這在網路上可能造成許多誤會。這也是為什麼 ISO 會在 1988 年訂定數字日期的標準書寫格式這才是數字日期的標準格式。2013-02-27。也因此建議不要使用下列這些格式：02/27/2013, 02/27/13, 27/02/2013, 27/02/13, 20130227, 2013.02.27, 27.02.13, 27-02-13, 27.2.13, 2013. II. 27…](https://xkcd.tw/strip/1179.jpg)\n<Small>https://xkcd.com/1179/, [中文：CQD](https://xkcd.tw/1179), 🅭 🅯🄏 2.5.</Small>\n",
+      "ja": "**YYYY-MM-DD** 形式で日付を書くこともあります、[ISO 8601](https://ja.wikipedia.org/wiki/ISO_8601) のように。\n\n![公共広告 従来より様々な日付の書式を用いてきましたが、それらがオンライン上で混乱を引き起こしております。1988年、ISOが日付書式の世界基準を作成しておりますので、それに従ってください。これが唯一正しい日付の書式です。2013-02-27。下記のような書式は今後使用しないでください。02/27/2013, 02/27/13, 27/02/2013, 27/02/13, 20130227, 2013.02.27, 27.02.13, 27-02-13, 27.2.13, 2013. II. 27…](https://osaresearch.wordpress.com/wp-content/uploads/2015/01/1179-iso_8601.png)\n<Small>https://xkcd.com/1179/, [日本語訳：OsaResearch](https://osaresearch.wordpress.com/2015/01/04/iso-8601/), 🅭 🅯🄏 2.5.</Small>\n"
+    },
+    "slug": "yyyy-mm-dd"
+  },
+  {
+    "x": 55,
+    "y": 170,
+    "width": 100,
+    "height": 100,
+    "rotation": 5,
+    "image": "/stickers/zh.svg",
+    "clipPath": "path('M46.8429 99.3774C33.6086 97.3547 21.4409 90.1189 12.6834 80.3595C0.756345 67.0679 -2.35103 48.5881 4.72184 33.2483C8.96476 24.0461 18.7969 13.3899 27.5686 8.48439C45.2687 -1.414 65.4639 -1.46475 78.5931 8.21098C92.4678 18.4362 100.005 36.0076 99.977 58.3634C99.9593 71.9952 97.0774 80.6291 90.2365 87.8623C83.7749 94.6945 75.5857 98.6062 63.1289 99.6831C58.905 100.048 56.4432 100.215 54.2349 100.17C52.0319 100.126 50.0698 99.8706 46.8429 99.3774Z')",
+    "title": {
+      "en": "Chinese language",
+      "zh-Hans": "中文",
+      "ja": "中国語"
+    },
+    "description": {
+      "en": "I’m a native speaker of **Chinese**. I can read equally well in simplified and traditional Chinese.\nI can write (with pen) most common simplified and some traditional Chinese characters.\nI am aware of the term difference used across different regions, and I try to use them accordingly.\n",
+      "zh-Hans": "**中文**是我的母语。简体字和繁體字认读能力相仿。会写大部分常用简体字和一小部分繁體字。\n我了解中文在不同地区的用语会有区别，并会尝试着迎合这种区别。\n",
+      "ja": "**中国語**は母国語です。簡体字と繁体字の読み書き能力は同じです。\nよく使う簡体字のほとんどと、ごく一部の繁体字を書けます。\n中国語の地域差を理解していて、話し相手に合わせようとしています。\n"
+    },
+    "slug": "zh"
+  }
+]
