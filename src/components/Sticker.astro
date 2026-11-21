@@ -1,0 +1,75 @@
+---
+import { isInitialViewport, stickerBox, stickerCenter } from "../lib/geometry";
+import { variantPlan } from "../lib/lang-css";
+import type { Lang } from "../lib/localize";
+import type { StickerRecord } from "../lib/stickers";
+
+interface Props {
+  sticker: StickerRecord;
+  // Prerendered content markup per language (see `prerenderContent`).
+  contentHtml: Partial<Record<Lang, string>>;
+}
+
+const { sticker, contentHtml } = Astro.props;
+
+const box = stickerBox(sticker);
+const center = stickerCenter(sticker);
+const content = variantPlan(sticker.content);
+const title = variantPlan(sticker.title);
+// A zero-area sticker is a hidden test fixture, not something to focus or announce.
+const hidden = box.width === 0 || box.height === 0;
+
+const style = [
+  `left:${box.left}px`,
+  `top:${box.top}px`,
+  `width:${box.width}px`,
+  `height:${box.height}px`,
+  sticker.rotation ? `rotate:${sticker.rotation}deg` : "",
+  `contain-intrinsic-size:${box.width}px ${box.height}px`,
+]
+  .filter(Boolean)
+  .join(";");
+---
+
+<button
+  type="button"
+  class="sticker"
+  style={style}
+  data-slug={sticker.slug}
+  data-cx={center.x}
+  data-cy={center.y}
+  data-titles={JSON.stringify(sticker.title)}
+  data-has={content.has.join(" ")}
+  tabindex={hidden ? -1 : undefined}
+  aria-hidden={hidden ? "true" : undefined}
+>
+  <span class="clip" style={sticker.clipPath ? `clip-path:${sticker.clipPath}` : undefined} aria-hidden="true" data-has={content.has.join(" ")}>
+    {
+      sticker.image && (
+        <img
+          src={sticker.image}
+          width={box.width}
+          height={box.height}
+          alt=""
+          decoding="async"
+          loading="eager"
+          fetchpriority={isInitialViewport(sticker) ? "high" : "low"}
+        />
+      )
+    }
+    {
+      content.has.map((lang) => (
+        <div data-l={lang} data-fb={lang === content.fallback ? "" : undefined} set:html={contentHtml[lang]} />
+      ))
+    }
+  </span>
+  <span class="sr-only" data-title-group data-has={title.has.join(" ")}>
+    {
+      title.has.map((lang) => (
+        <span data-l={lang} data-fb={lang === title.fallback ? "" : undefined}>
+          {sticker.title[lang]}
+        </span>
+      ))
+    }
+  </span>
+</button>

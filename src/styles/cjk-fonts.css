@@ -1,0 +1,5 @@
+/* Loaded on demand (see src/inline/boot-fonts.ts): the unicode-range slices
+   are small, but the @font-face rules are ~60 KB gzip and non-CJK visitors
+   never need them. */
+@import "@fontsource-variable/noto-sans-sc";
+@import "@fontsource-variable/noto-sans-jp";

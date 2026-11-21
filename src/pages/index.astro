@@ -1,16 +1,64 @@
 ---
-// Placeholder page: later tasks replace this with the prerendered sticker
-// sheet (viewer, state, islands). It exists now so `astro build` produces a
-// `dist/index.html`.
+import "../styles/global.css";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url";
+import cjkFontsCss from "../styles/cjk-fonts.css?url";
+import Sticker from "../components/Sticker.astro";
+import StaticControls from "../components/StaticControls.astro";
+import { bundleInline } from "../inline/bundle";
+import { variantCss, variantPlan } from "../lib/lang-css";
+import { LANGS, type Lang } from "../lib/localize";
+import { prerenderContent } from "../lib/mdx/prerender";
+import { loadStickers } from "../lib/stickers";
+
+const stickers = loadStickers();
+
+// `{"<slug>":{"<lang>":["expr0", …]}}`, read by boot-view to fill `[data-live]` nodes.
+const liveExprs: Record<string, Record<string, string[]>> = {};
+const contentHtml = new Map<string, Partial<Record<Lang, string>>>();
+
+for (const sticker of stickers) {
+  const html: Partial<Record<Lang, string>> = {};
+  for (const lang of variantPlan(sticker.content).has) {
+    const rendered = await prerenderContent(sticker.slug, lang);
+    html[lang] = rendered.html;
+    if (rendered.exprs.length > 0) (liveExprs[sticker.slug] ??= {})[lang] = rendered.exprs;
+  }
+  contentHtml.set(sticker.slug, html);
+}
+
+// `<` is escaped so no expression can close the script element.
+const liveJson = JSON.stringify(liveExprs).replace(/</g, "\\u003c");
+
+const [bootHead, bootFonts, bootView] = await Promise.all([
+  bundleInline("boot-head"),
+  bundleInline("boot-fonts"),
+  bundleInline("boot-view"),
+]);
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Sticker sheet</title>
-	</head>
-	<body>
-		<p>Sticker sheet — under construction.</p>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sticker sheet</title>
+    <meta name="description" content="Eana’s sticker sheet" />
+    <link rel="icon" href="/favicon.ico" />
+    <script is:inline set:html={bootHead}></script>
+    <script is:inline data-href={cjkFontsCss} set:html={bootFonts}></script>
+    <link rel="preload" as="font" type="font/woff2" href={interLatin} crossorigin />
+    <style is:inline set:html={variantCss(LANGS)}></style>
+  </head>
+  <body class="antialiased overflow-hidden h-dvh w-dvw">
+    <div class="h-dvh w-dvw overflow-hidden relative">
+      <div id="canvasWrapper">
+        <div id="canvas" class="bg-grid-png">
+          {stickers.map((sticker) => <Sticker sticker={sticker} contentHtml={contentHtml.get(sticker.slug) ?? {}} />)}
+        </div>
+        <script is:inline type="application/json" id="live-exprs" set:html={liveJson}></script>
+        <script is:inline set:html={bootView}></script>
+      </div>
+      <StaticControls />
+    </div>
+  </body>
 </html>
