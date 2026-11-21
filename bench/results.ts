@@ -15,6 +15,8 @@ export interface FirstRenderResult {
   liveCurrentMs: number | null;
   // Gzip bytes of the script responses that finished before LCP.
   criticalPathJsGzip: number;
+  // Libraries (metrics.ts PAYLOAD_MARKERS) found in those scripts.
+  criticalPathMarkers?: string[];
   // Bytes transferred over the whole observation window, by resource type.
   bytes: ByteBreakdown;
 
@@ -48,8 +50,11 @@ export interface FirstRenderDetail {
     url: string;
     gzip: number;
     transferred: number;
+    startMs?: number | null;
     endMs: number | null;
     beforeLcp: boolean;
+    // PAYLOAD_MARKERS libraries in the body; null when the body was evicted.
+    markers?: string[] | null;
   }>;
   stylesheets: Array<{
     url: string;
@@ -58,6 +63,9 @@ export interface FirstRenderDetail {
     renderBlocking: string | null;
   }>;
   imageCount: number;
+  images?: Array<{ url: string; startMs: number; endMs: number }>;
+  // [startMs, durationMs] of every long task seen.
+  longTasks?: Array<[number, number]>;
 }
 
 export type GestureName =

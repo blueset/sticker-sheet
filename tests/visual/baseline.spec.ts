@@ -277,16 +277,20 @@ test.describe("visual baselines", () => {
       y: box.y + box.height / 2 + offset,
     };
 
-    const transformBefore = await darkSticker.evaluate(
-      (el) => getComputedStyle(el).transform
-    );
+    // The baseline enlarges a hovered sticker through `transform`; the
+    // rewrite uses the individual `scale` property
+    // (`.sticker:has(.clip:hover){scale:1.1}`), which leaves `transform`
+    // untouched. Observe both: a change in either counts as the hover effect.
+    const hoverStyle = (el: Element) => {
+      const cs = getComputedStyle(el);
+      return `${cs.transform}|${cs.scale}`;
+    };
+    const styleBefore = await darkSticker.evaluate(hoverStyle);
     await page.mouse.move(hoverPoint.x, hoverPoint.y);
     // Fail loudly rather than silently snapshot a no-op: if the computed
     // point missed the circle, the CSS hover scale never applies and this
     // assertion times out instead of passing.
-    await expect
-      .poll(() => darkSticker.evaluate((el) => getComputedStyle(el).transform))
-      .not.toBe(transformBefore);
+    await expect.poll(() => darkSticker.evaluate(hoverStyle)).not.toBe(styleBefore);
 
     await settled(page);
     await expect(page).toHaveScreenshot(["desktop-light-en-hover-clip.png"], {

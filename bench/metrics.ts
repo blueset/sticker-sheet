@@ -17,6 +17,26 @@ export function gzipBytes(buf: Uint8Array): number {
   return gzipSync(buf, { level: 9 }).length;
 }
 
+// Content markers of libraries that must stay off the rewrite's critical path.
+// Chosen from strings present in the shipped bundles (dist/_astro) and absent
+// from the eager viewer chunks: React DOM's root/internals keys, Radix's
+// `data-radix-*` attributes, Silk's `data-silk` attribute, Leaflet's container
+// class and the `baseline-status` custom element's name.
+export const PAYLOAD_MARKERS: Record<string, string[]> = {
+  "react-dom": ["__reactContainer$", "__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE"],
+  radix: ["data-radix-"],
+  silk: ["data-silk"],
+  leaflet: ["leaflet-container"],
+  "baseline-status": ["baseline-status"],
+};
+
+// Names of the PAYLOAD_MARKERS libraries whose markers occur in `source`.
+export function payloadMarkers(source: string): string[] {
+  return Object.entries(PAYLOAD_MARKERS)
+    .filter(([, needles]) => needles.some((n) => source.includes(n)))
+    .map(([name]) => name);
+}
+
 // A long task is a main-thread task over 50 ms, as reported by the `longtask`
 // PerformanceObserver. Tuples are [startMs, durationMs].
 export type LongTask = [number, number];

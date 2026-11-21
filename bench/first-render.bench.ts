@@ -25,13 +25,22 @@
 //   `complete && naturalWidth > 0`, with at least STICKER_COUNT stickers.
 // - liveCurrentMs: first rAF at which `document.body.innerText` contains
 //   today's `toLocaleDateString('en-GB', {day:'2-digit', month:'short',
-//   year:'numeric'})`; null if that never happens before the deadline.
+//   year:'numeric'})`; null if that never happens before the deadline. The
+//   check runs on the first rAF, on every rAF after any DOM mutation (child
+//   list, text or attribute), and on every rAF while the date is in
+//   `textContent` but not yet in `innerText`, so a value revealed by an
+//   attribute or a rendering change alone (content-visibility) is not missed.
 // - criticalPathJsGzip: gzip level 9 of the decoded body of every `Script`
 //   response whose resource-timing responseEnd is <= LCP. Inline scripts are
 //   part of the HTML document and are counted under `bytes.html` only.
+// - criticalPathMarkers: names of the libraries (metrics.ts PAYLOAD_MARKERS:
+//   react-dom, radix, silk, leaflet, baseline-status) whose content markers
+//   occur in those same before-LCP script bodies. Gate: criticalPathJsGzip
+//   <= 100 KB on both profiles, markers empty on mobile (BENCH_PAYLOAD_GATE=0
+//   disables it, e.g. for TARGET=baseline).
 // - bytes: `Network.loadingFinished.encodedDataLength` (what crossed the wire,
 //   including headers) per CDP resource type, over the whole run.
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import type { CDPSession } from "@playwright/test";
 import { contract } from "../tests/contract.ts";
 import { PROFILES } from "./profiles.ts";
@@ -44,7 +53,13 @@ import {
   runMeta,
   sleep,
 } from "./harness.ts";
-import { gzipBytes, QUIET_WINDOW_MS, totalBlockingTime, ttiProxy } from "./metrics.ts";
+import {
+  gzipBytes,
+  payloadMarkers,
+  QUIET_WINDOW_MS,
+  totalBlockingTime,
+  ttiProxy,
+} from "./metrics.ts";
 import {
   benchLabel,
   clearRaw,
@@ -146,10 +161,19 @@ function installRecorder(opts: { stickers: string; count: number }) {
     month: "short",
     year: "numeric",
   });
+  // The innerText check only re-runs after a DOM mutation. Attributes count:
+  // a live value can be written while hidden and revealed later by an
+  // attribute alone (the rewrite's `[data-live]:not([data-filled])` CSS, or a
+  // class/attribute gate on an ancestor), which childList/characterData miss.
   let dirty = true;
   new MutationObserver(() => {
     dirty = true;
-  }).observe(document, { subtree: true, childList: true, characterData: true });
+  }).observe(document, {
+    subtree: true,
+    childList: true,
+    characterData: true,
+    attributes: true,
+  });
 
   const tick = (t: number) => {
     const els = document.querySelectorAll(opts.stickers);
@@ -171,13 +195,14 @@ function installRecorder(opts: { stickers: string; count: number }) {
       if (ok) b.allPaintedMs = t;
     }
     if (b.liveMs === null && dirty && document.body) {
-      dirty = false;
-      // textContent is a cheap prefilter; innerText (layout) confirms.
-      if (
-        document.body.textContent?.includes(dateText) &&
-        document.body.innerText.includes(dateText)
-      ) {
-        b.liveMs = t;
+      // textContent is a cheap prefilter; innerText (layout) confirms. While
+      // the text is in the DOM but not rendered, stay dirty: rendering can
+      // change without any mutation (e.g. `content-visibility: auto` deciding
+      // a sticker is relevant one frame after it was filled).
+      if (document.body.textContent?.includes(dateText)) {
+        if (document.body.innerText.includes(dateText)) b.liveMs = t;
+      } else {
+        dirty = false;
       }
     }
     if (b.allPaintedMs === null || b.liveMs === null) {
@@ -267,6 +292,9 @@ function trackNetwork(cdp: CDPSession) {
   });
   return reqs;
 }
+
+// Critical-path JS budget (spec: <= 100 KB gzip).
+const CRITICAL_JS_BUDGET = 100 * 1024;
 
 // Time budget for one run, measured from navigation start.
 const deadlineMs = (profile: ProfileName) =>
@@ -363,6 +391,7 @@ test.describe("first render", () => {
       let imageCount = 0;
       const scripts: FirstRenderDetail["scripts"] = [];
       let criticalJs = 0;
+      const criticalMarkers = new Set<string>();
       for (const r of reqs.values()) {
         if (!r.finished) continue;
         const bucket = bucketOf(r.type);
@@ -376,24 +405,33 @@ test.describe("first render", () => {
       for (const [requestId, r] of reqs) {
         if (r.type !== "Script" || !r.finished) continue;
         let gzip = r.encoded;
+        let markers: string[] | null = null;
         try {
           const { body, base64Encoded } = await cdp.send(
             "Network.getResponseBody",
             { requestId }
           );
-          gzip = gzipBytes(Buffer.from(body, base64Encoded ? "base64" : "utf8"));
+          const buf = Buffer.from(body, base64Encoded ? "base64" : "utf8");
+          gzip = gzipBytes(buf);
+          markers = payloadMarkers(buf.toString("utf8"));
         } catch {
           // Body evicted: fall back to the bytes that crossed the wire.
         }
         const timing = timingByUrl.get(r.url);
         const beforeLcp = !!timing && timing.end <= lcp.time;
-        if (beforeLcp) criticalJs += gzip;
+        if (beforeLcp) {
+          criticalJs += gzip;
+          if (markers === null) criticalMarkers.add("unknown (body evicted)");
+          for (const m of markers ?? []) criticalMarkers.add(m);
+        }
         scripts.push({
           url: r.url,
           gzip,
           transferred: r.encoded,
+          startMs: timing ? Math.round(timing.start) : null,
           endMs: timing ? Math.round(timing.end) : null,
           beforeLcp,
+          markers,
         });
       }
 
@@ -405,6 +443,7 @@ test.describe("first render", () => {
         allStickersPaintedMs: final.allPaintedMs as number,
         liveCurrentMs: final.liveMs,
         criticalPathJsGzip: criticalJs,
+        criticalPathMarkers: [...criticalMarkers].sort(),
         bytes,
         bytesBeforeLcp,
         firstStickerMs: final.firstStickerMs,
@@ -424,14 +463,37 @@ test.describe("first render", () => {
               renderBlocking: t.renderBlocking,
             })),
           imageCount,
+          images: timings
+            .filter((t) => timingUrlIsType(reqs, t.url, "Image"))
+            .map((t) => ({
+              url: t.url,
+              startMs: Math.round(t.start),
+              endMs: Math.round(t.end),
+            })),
+          longTasks: final.longTasks.map(
+            ([s, d]) => [Math.round(s), Math.round(d)] as [number, number]
+          ),
         },
       };
       writeRaw(label, profileName, `first-render-${run}.json`, result);
       console.log(
         `[${label}/${profileName}] run ${run}: fcp ${fcp.toFixed(0)} lcp ${lcp.time.toFixed(0)} ` +
           `tbt ${result.tbt.toFixed(0)} cls ${result.cls.toFixed(4)} painted ${result.allStickersPaintedMs.toFixed(0)} ` +
-          `live ${result.liveCurrentMs?.toFixed(0) ?? "null"} critJS ${criticalJs}`
+          `live ${result.liveCurrentMs?.toFixed(0) ?? "null"} critJS ${criticalJs} ` +
+          `markers [${result.criticalPathMarkers?.join(",")}]`
       );
+      // Payload gate (Milestone 1 exit), checked after the run is recorded so a
+      // failure keeps its data. Critical JS must fit the 100 KB gzip budget on
+      // both profiles. The library markers are a hard gate on mobile (the
+      // budget profile); on desktop the idle islands can finish before a
+      // ~300 ms LCP, so there they are only reported. BENCH_PAYLOAD_GATE=0
+      // turns the gate off (the baseline target fails it by design).
+      if (process.env.BENCH_PAYLOAD_GATE !== "0") {
+        expect(criticalJs, "critical-path JS gzip (B)").toBeLessThanOrEqual(CRITICAL_JS_BUDGET);
+        if (profileName === "mobile") {
+          expect(result.criticalPathMarkers, "libraries in critical-path JS").toEqual([]);
+        }
+      }
     });
   }
 
@@ -442,8 +504,12 @@ test.describe("first render", () => {
 });
 
 function timingUrlIsStylesheet(reqs: Map<string, Tracked>, url: string) {
+  return timingUrlIsType(reqs, url, "Stylesheet");
+}
+
+function timingUrlIsType(reqs: Map<string, Tracked>, url: string, type: string) {
   for (const r of reqs.values()) {
-    if (r.url === url) return r.type === "Stylesheet";
+    if (r.url === url) return r.type === type;
   }
   return false;
 }

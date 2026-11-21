@@ -275,6 +275,12 @@ test("no layout shift", async ({ page }) => {
     await Promise.all(Array.from(document.images, (img) => img.decode().catch(() => undefined)));
     await new Promise((resolve) => setTimeout(resolve, 500));
   });
+  // WebKit headless runs rAF at ~5 Hz for about a second after load while it
+  // rasterises the sticker images (the baseline does the same): wait for
+  // enough sampled frames rather than trusting the fixed 500 ms.
+  await expect
+    .poll(() => page.evaluate(() => (window as unknown as { __frames: number }).__frames), { timeout: 5000 })
+    .toBeGreaterThan(5);
 
   const { cls, frames, seen } = await page.evaluate(() => {
     const w = window as unknown as { __cls: number; __frames: number; __seen: Record<string, string[]> };

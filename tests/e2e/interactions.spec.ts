@@ -609,6 +609,10 @@ test.describe("hash anchors", () => {
     const errors = watchErrors(page);
     await page.goto("/#dark", { waitUntil: "load" });
     await sleep(900);
+    // WebKit headless runs rAF at ~5 Hz for about a second after load while it
+    // rasterises the sticker images (the baseline does the same), so 900 ms can
+    // yield only 5 samples under parallel load: wait for enough frames.
+    await expect.poll(() => views.length, { timeout: 5000 }).toBeGreaterThan(5);
 
     const { w, h } = await viewportOf(page);
     const want = viewTransformFor(await centreOf(page, "dark"), 1, { w, h });

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   gzipBytes,
+  payloadMarkers,
   percentile,
   totalBlockingTime,
   ttiProxy,
@@ -42,6 +43,20 @@ describe("gzipBytes", () => {
   it("is deterministic", () => {
     const raw = new TextEncoder().encode("function a(){return 1}".repeat(50));
     expect(gzipBytes(raw)).toBe(gzipBytes(raw));
+  });
+});
+
+describe("payloadMarkers", () => {
+  it("names each library whose marker occurs and nothing else", () => {
+    expect(payloadMarkers('n[`__reactContainer$`+r];e.setAttribute("data-radix-x","")')).toEqual([
+      "react-dom",
+      "radix",
+    ]);
+    expect(payloadMarkers("customElements.define(`baseline-status`,X);L.leaflet-container")).toEqual([
+      "leaflet",
+      "baseline-status",
+    ]);
+    expect(payloadMarkers('const __vite__mapDeps=["_astro/react-dom.x.js","_astro/Sheet.y.js"]')).toEqual([]);
   });
 });
 
