@@ -1,0 +1,118 @@
+{
+  "24h": {
+    "radius": 10,
+    "hash": "27634b8f0877a56ef12b36235512036d26fad72a2d53c69d526b64d5a7c94bd0"
+  },
+  "bad-translations": {
+    "radius": 10,
+    "hash": "ead6b56c7d7948a5b5ad33d772974f673bf842968f6720205e4e0fb4759ee58e"
+  },
+  "code-ligature": {
+    "radius": null,
+    "hash": "4475f6877af0477d0772c514aed83438fdc52b82f4acb3b57503725b6da7dc3a"
+  },
+  "colemak": {
+    "radius": null,
+    "hash": "5d553b3623b7eb58a610df3f8eb56e55274558518f3acd8944d3f99afbc47986"
+  },
+  "css": {
+    "radius": null,
+    "hash": "8932fdc46fc3ed3447e598faa2e8bb882d38b484297dd7596b17589b5813d6e0"
+  },
+  "dd-mmm-yyyy": {
+    "radius": 10,
+    "hash": "e6595672e8e638d31c0dcab991513578ac14c5d7ef2348f324ffbcbc7c2cda2d"
+  },
+  "double-lariat": {
+    "radius": null,
+    "hash": "18c08791037c4121571a73c64b99ca28fd0361002eb02509691d13b776ac23e5"
+  },
+  "east-asian-spacing": {
+    "radius": 10,
+    "hash": "f55010b1b5588ccdf0e9dd6f3571ed34be62a017753f8a492a7d72a1f582e7a1"
+  },
+  "feed": {
+    "radius": 6,
+    "hash": "3bd54b98949d37d7d919abdda13bf284fbaa608b5cddd1afe717bf3a473ee763"
+  },
+  "gif": {
+    "radius": null,
+    "hash": "9282eef5ce3b1d5ba793a86f271d73ac78f93518056cf69b156f73e06af17292"
+  },
+  "identify-fonts": {
+    "radius": null,
+    "hash": "fc25a50fbb6e22c6be5a563796adaebd1db2e4897874b71529e656410f4b58b6"
+  },
+  "inter": {
+    "radius": 0,
+    "hash": "68a16329f976ec5fa9e799d5b1361dd587854ce0a6e5fb3d4088225a8f8e81d3"
+  },
+  "map": {
+    "radius": null,
+    "hash": "10c0d9aa0b1755b451fef5bb190da3151243dd0b75983eb14caaa678f05e1801"
+  },
+  "mdx": {
+    "radius": null,
+    "hash": "6af845af60339996bc112e15b815530a0785f96792101c16e73989adc1ed997f"
+  },
+  "myriad-separator": {
+    "radius": 10,
+    "hash": "8acf43fbfdbaf365ded2e970643b9886b6dde2126de4b5b7f3f26eaab45fc08b"
+  },
+  "quizknock": {
+    "radius": 0,
+    "hash": "31ab10dbe427e48107bd4f9307945a104d28505c6b0c38cb4fbfc673b93e8149"
+  },
+  "quotes": {
+    "radius": null,
+    "hash": "4bf4669685c09e2443678d11fb87f6243ca2cef7eda35fa55d168aa15fdc7629"
+  },
+  "regex": {
+    "radius": null,
+    "hash": "98887feec564cf3e37df7998bb7cb29fe4c90943ae6060bc64986749cc1d492b"
+  },
+  "shadcn-ui": {
+    "radius": 7,
+    "hash": "26e5cdac5d7fc659278bae539e8dd0ff07f24ec0b874c153d1d155a746cba725"
+  },
+  "shs": {
+    "radius": 0,
+    "hash": "f42f4413de763be39f20f84d233aeb9f931c8ebd950eef1d6cc35fd73cbc80cd"
+  },
+  "space-tab": {
+    "radius": null,
+    "hash": "b26581eacf2155a07b20e69a7a3f29cb94fa3fff193971a3fb59c9d4f956e882"
+  },
+  "sui-dau": {
+    "radius": null,
+    "hash": "959e43f21481e1a20f5875ea8085e60dd2842d1ee5328c8dcef0bf4fadccf086"
+  },
+  "typechat": {
+    "radius": 0,
+    "hash": "57730df05f9f5b35cfae7809baf9cbec42d99a9f8e72010d9c5e18730a7e64c4"
+  },
+  "typescript": {
+    "radius": 5,
+    "hash": "3ad2bbcbe0a95ef04a6e92c3812f7df55702233437620156eba6bfd5ee750516"
+  },
+  "typography": {
+    "radius": null,
+    "hash": "24aee499a5e1f33379d1ac6b87bba1a35de93c790565f414447542b2ef46ac04"
+  },
+  "xkcd": {
+    "radius": null,
+    "hash": "f2d88c4104918df4048a626bfc9be1e8e7b0494f43843ef8f854168598ff47b9"
+  },
+  "xkjd27c": {
+    "radius": null,
+    "hash": "83ee9ffc7f0846f825300fec1803705c9b23d049f755aa64f2c002a3fdc1caff"
+  },
+  "yurucom": {
+    "radius": 6.5,
+    "hash": "5eb5611b19d4107ecc80775c634d7065988d0ff1f2e2c562d2723761454e6d05"
+  },
+  "yyyy-mm-dd": {
+    "radius": 10,
+    "hash": "e20693e8987f119dfcee8d1bfd700035c40922125959d4c2b0f52e30b4e5ce3e"
+  }
+}
