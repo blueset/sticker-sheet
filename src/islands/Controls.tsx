@@ -1,4 +1,5 @@
 import { Globe, Locate, Minus, Moon, Plus, Sun } from "lucide-react";
+import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { TooltipWarmup } from "@/components/ui/tooltip-warmup";
 import { setLanguage } from "@/lib/appState";
 import { useLanguage } from "@/lib/lang-hook";
 import { isLang } from "@/lib/localize";
@@ -21,9 +23,12 @@ import { t } from "@/lib/ui-strings";
 export default function Controls() {
   const lang = useLanguage();
   const { setTheme } = useTheme();
+  const [warm, setWarm] = useState(true);
+  const warmed = useCallback(() => setWarm(false), []);
 
   return (
     <TooltipProvider>
+      {warm && <TooltipWarmup label={t(lang, "zoomIn")} onDone={warmed} />}
       <div id="controls" className="absolute bottom-4 right-4 z-10 flex gap-2">
         <DropdownMenu>
           <Tooltip>

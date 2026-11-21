@@ -262,7 +262,7 @@ are 5-run medians on chromium-mobile (4x CPU), and the settle budget is
 | button-zoom crispAfterMs | **465 ms** | 346 zoom-animation tail / 88 settle / 32 raster |
 | wheel-zoom crispAfterMs | **264 ms** | 44 tail / 195 settle (wheel-burst timer) / 25 raster |
 | pinch crispAfterMs | 147 ms | 11 / 120 / 18; within budget, but with no margin (±11 %) |
-| button-zoom input delay p95 | **114 ms** (241 ms in the 10-run set) | budget < 100 ms; noisy |
+| button-zoom input delay p95 | **114 ms** (241 ms in the 10-run set) | budget < 100 ms; noisy. Met in Task 2.3c (85 ms) |
 | desktop raster time | about 2x the baseline | see [002](002-m1-numbers.md); untouched by every variant |
 
 Measured from the last moving frame (`crispAfterMotionMs`), the crisp delay is
@@ -359,10 +359,83 @@ Frames, over16 counts, heap and raster work are unchanged within spread.
   first tap's focus tooltip mount, about 60 ms of main-thread work under 4x
   CPU. A fix needs a UI ruling, because it changes baseline behaviour. The
   options are not opening the tooltip on a touch focus, or pre-mounting it at
-  idle.
+  idle. Task 2.3c took the second option (below); the budget is now met.
 - **`crispAfterMs` of animated gestures** (button 456 ms) is dominated by the
   tween tail, which is part of the gesture (R16). Measured from the end of
   motion, every gesture now meets the 150 ms budget.
+
+## Task 2.3c: first-tap tooltip mount
+
+### Where the first tap's time goes (control traces, chromium-mobile, 4x CPU, 2 runs)
+
+| tap | `focusin` handler | enclosing task | click input delay |
+|---|---|---|---|
+| first tap, zoom-in | 84 ms | 121–128 ms | 131–144 ms |
+| second tap, zoom-in | 19–23 ms | 32–38 ms | 33–37 ms |
+| first tap, zoom-out (code already warm) | 19–29 ms | 38–61 ms | 37–59 ms |
+
+- **The first `focusin`.** It spends about 25 ms compiling code lazily
+  (parse plus Ignition), and 10–14 ms in a forced layout against about 1 ms
+  later. The rest is cold-interpreter work. About 60 ms of it happens only
+  once per page, not once per tooltip.
+- **Why the tooltip opens on a tap.** Radix's trigger opens on focus when no
+  pointer is down. On a Chromium touch tap, focus follows `pointerup`, so the
+  tooltip opens on focus and then closes on the click in the same task. The
+  baseline does the same (its `tooltip.tsx` is identical). WebKit does not
+  focus a button on a tap, so no tooltip opens there, in either build.
+- **Warming any tooltip warms all of them.** The zoom-out row shows that.
+  So the cost can be paid once, at idle, away from the tap.
+
+### What changed (the preferred route of R8)
+
+The tap still shows its tooltip, as in the baseline.
+
+- **`TooltipWarmup` (`src/components/ui/tooltip-warmup.tsx`).** The Controls
+  island renders it once, inside its `TooltipProvider` and outside
+  `#controls`. Each step runs as a transition from its own idle callback
+  (`setTimeout`, then `requestIdleCallback`):
+  1. Create a host `div`, `aria-hidden` and `visibility:hidden`.
+  2. Mount an open tooltip's content in that host, with no anchor yet.
+  3. Add the anchor, so floating-ui's positioning runs.
+  4. Close it, wait 400 ms so the exit path runs too, then unmount and
+     remove the host.
+
+  Positioning gets a separate step from the React mount so no step is a
+  long task.
+- **`TooltipContent`** takes an optional `container`, passed to the Radix
+  portal. With a container, the portal renders in the first render and needs
+  no synchronous re-render.
+- **Unchanged.** `#controls`, its markup, classes, `data-action` attributes
+  and labels; the tooltip's look and delays; mouse hover and keyboard focus.
+  Nothing under `src/viewer/` changed.
+
+### Results (same session, chromium-mobile, spread in brackets)
+
+| metric | control (2.3b head) | candidate |
+|---|---|---|
+| button-zoom input delay p95 (10 runs) | 138.5 ms | **85.0 ms** |
+| button-zoom input delay median (10 runs) | 121.6 ms (26 %) | 54.4 ms (76 %) |
+| button-zoom crispAfterMotionMs median | 119 ms (17 %) | 121 ms (17 %) |
+| first-render inputReadyMs median (5 runs) | 542 ms (3 %) | 528 ms (5 %) |
+| first-render TBT median / p95 | 0 / 1 ms | 0 / 0 ms |
+| first-render LCP median | 848 ms | 840 ms |
+| first-render CLS | 0 | 0 |
+| critical-path JS (gzip) | 8011 B | 8011 B |
+| Controls island chunk (gzip, not critical) | 29.3 KB | 29.7 KB |
+
+- **Input delay values (candidate):** 85, 54, 69, 55, 44, 44, 56, 55, 47 and
+  47 ms. **Control:** 106–139 ms.
+- **Other gestures.** Drag, pinch and wheel input delay, frames and settle
+  times are unchanged within spread.
+- **Long tasks.** The warm-up adds none. In a longtask observer the only
+  entries are during page load, in both builds.
+
+### Still missing
+
+Nothing for this budget. The candidate's spread is wide (76 %). Its slowest
+run (85 ms) was not traced. In the scratch traces of the candidate's first
+tap, `focusin` takes 15–29 ms with at most 1.6 ms of compile (84 ms and 25 ms
+on the control), and click delays are 48–66 ms.
 
 ## What to look for on real devices
 
