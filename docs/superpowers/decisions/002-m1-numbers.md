@@ -67,7 +67,8 @@ How to read the table:
 | p95 frame ≤ 16.7 ms | 16.667 ms in every scenario, both profiles | PASS (harness floor; see limits) |
 | Crisp ≤ 150 ms | mobile pinch 143 (p95 157); wheel-zoom 267; button-zoom 462; drag-inertia 922. Desktop wheel-zoom 133; button-zoom 480; drag-inertia 1,168 | MISS (except pinch and desktop wheel-zoom) |
 | Input delay < 100 ms | button-zoom 97.5 ms median, 119 ms p95 (baseline 96 / 106); all others ≤ 53 ms | MISS at p95 (on the line at the median) |
-| TBT | 0 ms median, 2 ms p95 | PASS |
+| TBT (target: vs baseline 726 ms; no spec budget, spec asks it be minimal) | 0 ms median, 2 ms p95 | PASS (726 → 0) |
+| Time to input readiness (no spec budget; baseline first sticker 2,044 ms, interactive on hydration) | no earlier than ~2.56–2.60 s (last eager file's `responseEnd`) | not a PASS: no better than baseline; owned by Task 1.15 |
 | Inline boot-head ≤ 600 B gzip | 350 B | PASS |
 | Inline boot-view ≤ 1,500 B gzip | 645 B | PASS |
 
@@ -93,15 +94,15 @@ The bare string `react-dom` is not a marker: the eager entry's `__vite__mapDeps`
 
 Check on the baseline (3 runs, label `livecheck`, not committed): the markers find `baseline-status`, `radix`, `react-dom` and `silk` in its 473,458 B critical path. Leaflet is absent, which matches the baseline report.
 
-The gate runs after every first-render run, unless `BENCH_PAYLOAD_GATE=0`, which is needed for `TARGET=baseline`:
-- `criticalPathJsGzip ≤ 102,400 B` on both profiles.
-- `criticalPathMarkers` empty on mobile.
+The gate runs after each first-render run is recorded, unless `BENCH_PAYLOAD_GATE=0`, which is needed for `TARGET=baseline`. The rule is `criticalJsGateValue` in `bench/metrics.ts`:
+- **Mobile, every run:** `criticalPathJsGzip ≤ 102,400 B` and `criticalPathMarkers` empty.
+- **Desktop, median of the profile's runs:** the last run reads every recorded run and asserts that the median `criticalPathJsGzip` (nearest rank, the same median as `summarize.ts`) is ≤ 102,400 B. The per-run values are still in the raw JSON and the log, and the desktop markers are logged, not asserted.
 
 Tolerance: `criticalPathJsGzip` is race-sensitive, because it counts only scripts whose response ends before LCP.
-- On mobile it reads 0 B in all 5 runs. Even the eager entry finishes at ~2.3 s, well after the ~0.8 s LCP (see below). Earlier runs read 0 or 421 B depending on whether the deep-link or island chunk finished first.
+- On mobile it reads 0 B in all 5 runs. Even the eager entry finishes at ~2.3 s, well after the ~0.8 s LCP (see the per-run table below). Earlier runs read 0 or 421 B depending on whether the deep-link or island chunk finished first. Mobile has no tolerance: a single run over budget, or any marker, fails.
 - On desktop it read 7,950 B (the eager graph) in 4 runs and 40,697 B in 1. In that run `Controls.*.js` (Radix, 29,000 B) ended at 124 ms, the same millisecond as LCP.
-- If all of `client` (56,381 B), `Sheet` (39,282 B), `Controls` and the MDX chunk ever land before a desktop LCP, the total is about 136 KB and the desktop numeric gate fails.
-- The desktop marker result is therefore reported, not asserted. Reading it as a defect would be wrong: it is idle hydration finishing before a ~130 ms LCP on an unthrottled host.
+- If all of `client` (56,381 B), `Sheet` (39,282 B), `Controls` and the MDX chunk land before a desktop LCP, that run's total is about 136 KB. Such a run is expected and is not a defect: it is idle hydration finishing before a ~130 ms LCP on an unthrottled host. That is why desktop is gated on the median: one or two racing runs out of five cannot fail it, but a build whose eager path itself exceeded the budget would.
+- For the same reason the desktop marker result is reported, not asserted.
 
 Eager request graph for `/` (from `dist/index.html`; one `<script type="module" src>`, no modulepreload):
 
@@ -116,8 +117,8 @@ This is unchanged from Task 1.13.
 
 Recommendation on `preload-helper`: do not spend Milestone 2 effort on inlining it.
 - It is a separate chunk only because the `Sheet` island and the deep-link path share it. Folding it into `main` (Rolldown `advancedChunks`/`manualChunks`) would save one request and about 1 KB.
-- On mobile the three eager files are requested in parallel at ~270 ms and finish at ~2.3 s. That time is set by bandwidth shared with 55 sticker images, not by round trips. An extra parallel request costs nothing measurable there.
-- The time to fix is the image competition (next section). Revisit the chunking only if that fix makes the entry request-count-bound, and check that the Sheet chunk does not then duplicate the helper.
+- On mobile `main` is requested at ~270–290 ms and ends at ~2.3 s. `appState` and `preload-helper` are static imports discovered only when `main` arrives, so they are requested at ~2.3 s and end at ~2.5–2.6 s (per-run table below). That second hop costs ~0.2–0.3 s, but a `modulepreload` for the two imports would remove it without changing the chunking, and inlining `preload-helper` alone would leave `appState` as the same late hop.
+- Our working explanation is that `main`'s ~2 s download is set by bandwidth shared with the 55 sticker images rather than by round trips. **This is inferred, not yet isolated**: it rests on the timings below, not on an experiment. The isolating A/B is Task 1.15 step 2. Revisit the chunking only after that result, and check that the Sheet chunk does not then duplicate the helper.
 
 ## Idle hydration and long tasks (mobile)
 
@@ -136,22 +137,36 @@ Per-run long tasks (start, duration), from `detail.longTasks`:
 - Island chunk timing:
   - `Controls`, `Sheet` and `client` (React DOM) are requested at ~770–920 ms, right after the idle callback that follows FCP/LCP.
   - They finish at ~2.4–2.5 s. The shared `react`, `react-dom`, `button`, `ui-strings` and `theme-hook` chunks finish at ~2.7 s, and hydration runs after that.
-- **First-interaction window.**
-  - The viewer entry, which owns pan, zoom and clicks, finishes downloading at ~2.3 s. The page cannot respond to input until then, even though everything is painted at 0.8 s.
-  - Hydration lands at ~2.7–2.8 s, just after the viewer comes alive, so a user who acts at 2.3–2.8 s can meet one task of up to 52 ms. That is within the 100 ms input-delay budget.
-  - The gestures bench starts after load and idle, so it does not measure this window.
 - On desktop there are no long tasks at all.
-- The 2.3 s time to input readiness is not a budget in the spec, but it is the largest remaining first-load cost (see the Milestone 2 ranking).
+
+Per-run request timings on mobile, from the committed `bench/results/m1-mobile.json` (`raw.firstRender[i]`). Script and image times are resource-timing `startTime`/`responseEnd` in ms from navigation start (`detail.scripts`, `detail.images`). "Images" covers the 55 `/stickers/` responses.
+
+| Run | `main` start / end | `appState` start / end | `preload-helper` start / end | first / last image end | images ended ≤ LCP | LCP | `liveCurrentMs` | `Controls` start / end | `Sheet` start / end | `client` start / end |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 289 / 2,336 | 2,340 / 2,525 | 2,341 / 2,600 | 456 / 2,522 | 12 | 844 | 734 | 914 / 2,414 | 916 / 2,507 | 915 / 2,523 |
+| 2 | 274 / 2,313 | 2,320 / 2,489 | 2,321 / 2,561 | 458 / 2,491 | 9 | 792 | 719 | 810 / 2,405 | 848 / 2,487 | 811 / 2,484 |
+| 3 | 269 / 2,335 | 2,337 / 2,507 | 2,337 / 2,569 | 438 / 2,459 | 9 | 760 | 672 | 765 / 2,412 | 768 / 2,507 | 766 / 2,491 |
+| 4 | 277 / 2,283 | 2,292 / 2,463 | 2,293 / 2,601 | 455 / 2,461 | 9 | 744 | 676 | 765 / 2,415 | 767 / 2,507 | 765 / 2,476 |
+| 5 | 285 / 2,338 | 2,344 / 2,512 | 2,344 / 2,587 | 461 / 2,516 | 9 | 800 | 735 | 800 / 2,432 | 802 / 2,509 | 801 / 2,513 |
+
+The JSON does not record when the viewer's module actually executed or when its listeners were attached; the readiness times below are therefore "no earlier than the last eager file's `responseEnd`", not a measured first-input time.
+
+- **First-interaction window.**
+  - The viewer entry, which owns pan, zoom and clicks, cannot run before its last eager file arrives at ~2.56–2.60 s (`preload-helper`, table above). The page cannot respond to input until then, even though everything is painted at ~0.8 s.
+  - Hydration lands at ~2.7–2.8 s, just after the viewer comes alive, so a user who acts at 2.6–2.8 s can meet one task of up to 52 ms. That is within the 100 ms input-delay budget.
+  - The gestures bench starts after load and idle, so it does not measure this window.
+- **Cause: inferred, not yet isolated.** `main` is requested at ~280 ms and takes ~2 s to arrive while all 55 sticker images (734 KB) download in the same window; its end falls 124–186 ms before the last image end in every run, i.e. inside the image download, not before it. That is consistent with the images starving the 6 KB entry on Fast 4G, but no experiment has de-prioritised the images to prove it. The isolating A/B is Task 1.15 step 2.
+- **Not better than the baseline on time to input.** The baseline's first sticker appears at 2,044 ms and it is interactive when it hydrates, so it can respond to input from roughly the moment there is anything to touch. The new build paints at ~0.8 s but cannot respond before ~2.6 s. Time to input readiness is not a spec budget, but this is **not a PASS**: it is owned by plan Task 1.15 ("Input readiness under bandwidth contention", after 1.14, before Milestone 2).
 
 ## Bounded idle prefetch (mobile)
 
 - **Sticker images.** All 55 sticker images are requested by the HTML parser before LCP: every one starts by ~0.8 s. They are prerendered `<img>`s, not prefetch.
   - Only 9–12 finish before LCP (54 KB of 734 KB), and the last ends at ~2.5 s.
-  - They share Fast 4G with the eager JS and fonts, which is why the 6 KB entry takes 2 s to arrive.
+  - They share Fast 4G with the eager JS and fonts. We infer that this is why the 6 KB entry takes ~2 s to arrive; that is not yet isolated (Task 1.15 step 2).
 - **Description chunks.** Requests to `en.*.js` plus `provider.*.js` start only after hydration and the MDX chunk: the first at ~2.8 s, after LCP, after the last image and after the islands.
   - They then come three at a time, one batch per ~200 ms round trip, 13 requests in all, ending at ~3.6 s.
 - **Result: none of them happens before LCP, and prefetch does not compete with first paint.**
-- The competition that matters is images against the eager JS, not prefetch.
+- The competition that matters is likely images against the eager JS, not prefetch (inferred, not yet isolated).
 - On desktop the same sequence completes by ~260 ms, all after LCP except as noted under Payload.
 
 ## Live values (`liveCurrentMs`)
@@ -203,7 +218,10 @@ Run: `TARGET=new STATIC_DIR=dist VISUAL_MAX_DIFF=0.01`, against the committed ba
   - Sticker drop-shadow filters are kept for visual parity; the baseline A/B showed they double raster.
   - Frame cadence is not affected in this harness.
 - **Button-zoom input delay** is 97.5 ms median and 119 ms p95 on mobile. That is unchanged from the baseline (96 / 106) and on the budget line.
-- **Time to interactive on mobile ≈ 2.3 s.** The 6 KB eager entry downloads alongside 55 eagerly requested sticker images. `loading`/`fetchpriority` on off-screen images, or a higher priority for the entry, is the lever.
+- **Mobile time to input readiness, no earlier than ~2.6 s** (per-run table under Idle hydration). Now owned by plan Task 1.15 ("Input readiness under bandwidth contention", added after 1.14, before Milestone 2).
+  - The 6 KB `main` takes ~2 s to arrive while 55 eagerly requested sticker images download, and `appState`/`preload-helper` add a second ~0.25 s hop after it.
+  - The image-contention cause is **inferred, not yet isolated**; the isolating A/B is Task 1.15 step 2. Candidate levers, after that: `loading`/`fetchpriority` on off-screen images, a higher priority for the entry, `modulepreload` for its two imports.
+  - Baseline reference: the baseline's first sticker appears at 2,044 ms and it is interactive on hydration, so the new build is not better than the baseline on time to input. This is not a PASS.
 - **Silk's `unload` listener.** Chromium logs "Permissions policy violation: unload" as a console error whenever the sheet opens.
   - It cannot be mitigated on GitHub Pages, which allows no response headers.
   - The e2e `watchErrors` ignores that exact message.
@@ -213,7 +231,7 @@ Run: `TARGET=new STATIC_DIR=dist VISUAL_MAX_DIFF=0.01`, against the committed ba
 - **English aria-labels before hydration.** The static markup shows English aria-labels until hydration for non-English users.
 - **Deep-link LCP ≈ 1.48 s.** This is within the 1.5 s spec budget but over the 1.38 s ruling. `fetchpriority` for the hashed sticker's images is the candidate fix.
 - **Cached canvas origin.** The cached `getBoundingClientRect` origin assumes `#canvasWrapper` never moves without resizing.
-- **`criticalPathJsGzip` is race-sensitive** (see Payload for the tolerance). Read it next to the eager-graph table, not alone.
+- **`criticalPathJsGzip` is race-sensitive** (see Payload for the tolerance: per run on mobile, median on desktop). Read it next to the eager-graph table, not alone.
 - **The desktop marker result is not asserted.** Radix landed before LCP in 1 of 5 desktop runs.
 
 ## What Milestone 2 should tune first
@@ -221,7 +239,7 @@ Run: `TARGET=new STATIC_DIR=dist VISUAL_MAX_DIFF=0.01`, against the committed ba
 1. **Drag-inertia settle**: 922 / 1,168 ms against 150 ms, and worse than the baseline. This is the only gesture that regressed. Shorten or end the inertia tail and stop raster at motion end.
 2. **Settle on wheel-zoom and button-zoom**: 267 and 462 ms on mobile. Look at the settle timer and the re-raster after the final transform; pinch (143 ms) shows the budget is reachable.
 3. **Button-zoom input delay**: 119 ms p95. Work in the click handler or the zoom animation start.
-4. **Mobile time to input readiness, ~2.3 s**: de-prioritise off-screen sticker images so the 8 KB eager graph is not starved. LCP (792 ms) has room to absorb this.
+4. **Mobile time to input readiness, no earlier than ~2.6 s**, not better than the baseline (first sticker at 2,044 ms, interactive on hydration). Now owned by plan Task 1.15 ("Input readiness under bandwidth contention", before Milestone 2). The image-contention cause is inferred, not yet isolated; Task 1.15 step 2 is the isolating A/B, and the fix follows from it. LCP (792 ms) has room to absorb de-prioritising off-screen images if that is the answer.
 5. **Raster cost**: about 2× on desktop. Try a cheaper shadow, such as a pre-baked shadow or `box-shadow` on clip-free stickers, measured with the `BENCH_PROBE_CSS` A/B.
 6. **Deep-link LCP**: 1.48 s against the 1.38 s ruling.
 
