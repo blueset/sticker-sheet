@@ -3,7 +3,7 @@ import "../styles/global.css";
 import interLatin from "@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url";
 import cjkFontsCss from "../styles/cjk-fonts.css?url";
 import Sticker from "../components/Sticker.astro";
-import StaticControls from "../components/StaticControls.astro";
+import Controls from "../islands/Controls";
 import { bundleInline } from "../inline/bundle";
 import { variantCss, variantPlan } from "../lib/lang-css";
 import { LANGS, type Lang } from "../lib/localize";
@@ -58,7 +58,7 @@ const [bootHead, bootFonts, bootView] = await Promise.all([
         <script is:inline type="application/json" id="live-exprs" set:html={liveJson}></script>
         <script is:inline set:html={bootView}></script>
       </div>
-      <StaticControls />
+      <Controls client:idle />
     </div>
     <script>
       import "../viewer/main.ts";
