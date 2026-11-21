@@ -9,7 +9,11 @@
 // compared with pixelmatch. A file whose difference exceeds `GATE.maxDiffRatio` is not touched.
 // A rerun changes nothing: what the pipeline wrote is recorded in `optimized-assets.json` (a hash
 // of the files that define the settled state), and a recorded file is never processed again, so
-// repeated runs cannot add up to more than one gated change.
+// repeated runs cannot add up to more than one gated change. Both the manifest and each optimised
+// file are written atomically (temp file + rename), and the manifest entry is persisted *before*
+// the corresponding file write, so a killed run (Ctrl+C/SIGKILL/crash) never leaves an optimised
+// file on disk without a matching manifest entry - the next run either sees a consistent settled
+// pair and skips the file, or sees a hash mismatch and reprocesses the untouched original.
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -295,24 +299,47 @@ interface Outcome {
   detail: string;
 }
 
-type Manifest = Record<string, string>;
+export type Manifest = Record<string, string>;
+
+// Writes `data` to a sibling temp file and `rename`s it over `filePath`. The rename is the only
+// step that touches the real path, and both POSIX and Windows make a same-volume rename atomic
+// (on Windows via `MoveFileEx(..., MOVEFILE_REPLACE_EXISTING)`), so a process killed before or
+// during the temp write leaves `filePath` exactly as it was, never truncated or half-written.
+export function atomicWriteFileSync(filePath: string, data: Buffer | string): void {
+  const dir = path.dirname(filePath);
+  const tmp = path.join(dir, `.${path.basename(filePath)}.tmp-${process.pid}-${Math.random().toString(36).slice(2)}`);
+  fs.writeFileSync(tmp, data);
+  fs.renameSync(tmp, filePath);
+}
+
+export function readManifestFrom(manifestPath: string): Manifest {
+  return fs.existsSync(manifestPath) ? (JSON.parse(fs.readFileSync(manifestPath, "utf8")) as Manifest) : {};
+}
+
+export function writeManifestAtomic(manifestPath: string, manifest: Manifest): void {
+  const sorted = Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)));
+  atomicWriteFileSync(manifestPath, `${JSON.stringify(sorted, null, 2)}\n`);
+}
 
 function readManifest(): Manifest {
-  return fs.existsSync(MANIFEST_PATH) ? (JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8")) as Manifest) : {};
+  return readManifestFrom(MANIFEST_PATH);
 }
 
 function writeManifest(manifest: Manifest): void {
-  const sorted = Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)));
-  fs.writeFileSync(MANIFEST_PATH, `${JSON.stringify(sorted, null, 2)}\n`);
+  writeManifestAtomic(MANIFEST_PATH, manifest);
 }
 
 // Line endings are normalised so a CRLF checkout hashes like the committed bytes.
-function hashOf(...paths: string[]): string {
+export function hashBytes(...buffers: Buffer[]): string {
   const hash = createHash("sha256");
-  for (const file of paths) {
-    hash.update(fs.readFileSync(file).toString("latin1").replace(/\r\n/g, "\n"), "latin1");
+  for (const buf of buffers) {
+    hash.update(buf.toString("latin1").replace(/\r\n/g, "\n"), "latin1");
   }
   return hash.digest("hex");
+}
+
+function hashOf(...paths: string[]): string {
+  return hashBytes(...paths.map((file) => fs.readFileSync(file)));
 }
 
 // What defines a settled asset: the SVG itself, or a PNG together with its WebP sibling.
@@ -345,8 +372,20 @@ async function processFile(
     worst: null,
     detail: "",
   };
-  const settle = () => {
-    if (!dryRun) manifest[path.basename(target)] = hashOf(...settledPaths(file));
+  // Manifest-first: record the hash the settled file *will* have, and persist it (atomically)
+  // before `newBytes` is written to `target`. A process killed between the two leaves the
+  // manifest pointing at a hash that does not match the still-original file on disk, so the
+  // "up to date" check below fails on the next run and the untouched original is reprocessed from
+  // scratch. The alternative order - write the file, then the manifest - is what let a killed run
+  // leave an already-optimised SVG (its only copy, overwritten in place) with no manifest entry,
+  // so the next run treated that optimised output as the "original" and re-optimised it, which is
+  // lossy and not a fixpoint. `target` itself is written with `atomicWriteFileSync`, so a crash
+  // during that write never leaves a truncated or partial file either.
+  const settle = (newBytes: Buffer): void => {
+    if (dryRun) return;
+    const expected = isSvg ? hashBytes(newBytes) : hashBytes(original, newBytes);
+    manifest[outcome.file] = expected;
+    writeManifest(manifest);
   };
 
   if (manifest[outcome.file] === hashOf(...settledPaths(file))) {
@@ -397,11 +436,11 @@ async function processFile(
       continue;
     }
     const changed = !current?.equals(candidate.bytes);
-    if (changed && !dryRun) fs.writeFileSync(target, candidate.bytes);
+    settle(candidate.bytes);
+    if (changed && !dryRun) atomicWriteFileSync(target, candidate.bytes);
     outcome.after = candidate.bytes.length;
     outcome.status = `${changed ? (dryRun ? "would write" : "written") : "unchanged"} (${candidate.label})`;
     outcome.detail = rejected.length > 0 ? `rejected first: ${rejected.join("; ")}` : "";
-    settle();
     return outcome;
   }
   outcome.status = "REJECTED by render gate, nothing written";
