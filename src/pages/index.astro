@@ -35,6 +35,8 @@ const [bootHead, bootFonts, bootView] = await Promise.all([
   bundleInline("boot-fonts"),
   bundleInline("boot-view"),
 ]);
+// Tuning builds only (PUBLIC_VARIANTS=1): sets html[data-v-*] before first paint.
+const bootVariants = process.env.PUBLIC_VARIANTS === "1" ? await bundleInline("boot-variants") : null;
 ---
 
 <!doctype html>
@@ -46,6 +48,7 @@ const [bootHead, bootFonts, bootView] = await Promise.all([
     <meta name="description" content="Eana’s sticker sheet" />
     <link rel="icon" href="/favicon.ico" />
     <script is:inline set:html={bootHead}></script>
+    {bootVariants && <script is:inline set:html={bootVariants}></script>}
     <script is:inline data-href={cjkFontsCss} set:html={bootFonts}></script>
     <link rel="preload" as="font" type="font/woff2" href={interLatin} crossorigin />
     <style is:inline set:html={variantCss(LANGS)}></style>

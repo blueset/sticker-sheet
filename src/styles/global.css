@@ -160,10 +160,34 @@
   transform: translate(calc((100dvw - 3000px) / 2), calc((100dvh - 3000px) / 2));
 }
 
-/* The viewer sets `data-gesture` while a pan or zoom is running and removes
-   it 100 ms after the transform settles, so the canvas re-rasters at rest. */
-#canvasWrapper[data-gesture] #canvas {
-  will-change: transform;
+/* `will-change` on #canvas is written by the settle strategy (settle.ts). */
+
+/* Tuning variants: html[data-v-*] is set from `?v=` (variants.ts). */
+html[data-v-cull="none"] .sticker,
+html[data-v-cull="explicit"] .sticker {
+  content-visibility: visible;
+}
+
+html[data-v-cull="explicit"] .sticker[data-cull] {
+  content-visibility: hidden;
+}
+
+html[data-v-bg="gradient"] #canvas {
+  --vertex-color: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+  --large-scale-color: light-dark(#f2f2f2, #0d0d0d);
+  --cross-hair-color: light-dark(#aaa, #555);
+  --grid-color: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(-90deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(-90deg, var(--vertex-color) 1px, transparent 1px),
+    linear-gradient(var(--vertex-color) 1px, transparent 1px),
+    linear-gradient(
+      transparent 3px,
+      var(--large-scale-color) 3px,
+      var(--large-scale-color) 98px,
+      transparent 98px
+    ),
+    100px 100px, 100px 100px, 100px 100px;
 }
 
 /* boot-head sets `data-deep` for `/#slug`; boot-view removes it once the
