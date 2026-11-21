@@ -9,6 +9,8 @@ export default defineConfig({
       ? ["tests/**/*.spec.ts", "bench/**/*.bench.ts"]
       : ["tests/**/*.spec.ts"],
   snapshotPathTemplate: "tests/visual/__snapshots__/{arg}{ext}",
+  // Benchmarks time the page, so they must never run in parallel.
+  workers: process.env.BENCH === "1" ? 1 : undefined,
   use: {
     baseURL: "http://localhost:4173",
   },

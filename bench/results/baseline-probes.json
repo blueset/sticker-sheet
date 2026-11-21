@@ -1,0 +1,1137 @@
+{
+  "static": {
+    "indexHtml": {
+      "bytes": 129451,
+      "stickerButtonsInHtml": 0,
+      "imgTags": 0,
+      "imgWithLoading": 0,
+      "scriptTags": 34,
+      "preloadLinks": 6,
+      "stylesheets": [
+        "<link rel=\"stylesheet\" href=\"/_next/static/chunks/6c6094cf5de0ffd1.css\" data-precedence=\"next\"/>",
+        "<link rel=\"stylesheet\" href=\"/_next/static/chunks/394c817a22ef0c27.css\" data-precedence=\"next\"/>",
+        "<link rel=\"stylesheet\" href=\"/_next/static/chunks/f913597cb07e42c8.css\" data-precedence=\"next\"/>",
+        "<link rel=\"stylesheet\" href=\"https://rsms.me/inter/inter.css\"/>",
+        "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css\"/>"
+      ]
+    },
+    "chunks": [
+      {
+        "file": "aa5a262c2c9845dd.js",
+        "rawBytes": 1182155,
+        "gzipBytes": 331510,
+        "referencedByIndexHtml": true,
+        "markers": [
+          "mdx compiler (mdast/micromark/mdxJsx)",
+          "next-mdx-remote serialize",
+          "acorn",
+          "silk (sheet)",
+          "radix (dialog/dropdown/tooltip)",
+          "react-zoom-pan-pinch"
+        ]
+      },
+      {
+        "file": "b905cd925e44f4c2.js",
+        "rawBytes": 224413,
+        "gzipBytes": 69953,
+        "referencedByIndexHtml": true,
+        "markers": [
+          "react-dom",
+          "next runtime"
+        ]
+      },
+      {
+        "file": "e1a70d1583749b0a.js",
+        "rawBytes": 154820,
+        "gzipBytes": 44952,
+        "referencedByIndexHtml": false,
+        "markers": [
+          "leaflet"
+        ]
+      },
+      {
+        "file": "489ed84c5cc82ec7.js",
+        "rawBytes": 118374,
+        "gzipBytes": 32056,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "a6dad97d9634a72d.js",
+        "rawBytes": 112594,
+        "gzipBytes": 39520,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "65e9eb79724840fc.js",
+        "rawBytes": 67877,
+        "gzipBytes": 24585,
+        "referencedByIndexHtml": false,
+        "markers": []
+      },
+      {
+        "file": "7507a90f0a25ce56.js",
+        "rawBytes": 44973,
+        "gzipBytes": 15454,
+        "referencedByIndexHtml": false,
+        "markers": []
+      },
+      {
+        "file": "e86aaec610478414.js",
+        "rawBytes": 38404,
+        "gzipBytes": 8287,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "4f437ba1c3d31b7c.js",
+        "rawBytes": 34023,
+        "gzipBytes": 12059,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "60aaf39211ce612e.js",
+        "rawBytes": 34023,
+        "gzipBytes": 12043,
+        "referencedByIndexHtml": false,
+        "markers": []
+      },
+      {
+        "file": "54b43f37f6d92d16.js",
+        "rawBytes": 30681,
+        "gzipBytes": 7418,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "17bb1792733763b4.js",
+        "rawBytes": 17560,
+        "gzipBytes": 6008,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "turbopack-b132ca5457862e96.js",
+        "rawBytes": 10232,
+        "gzipBytes": 4016,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "8fd396d233b251ac.js",
+        "rawBytes": 3576,
+        "gzipBytes": 1582,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "6b319e5795751c89.js",
+        "rawBytes": 527,
+        "gzipBytes": 345,
+        "referencedByIndexHtml": true,
+        "markers": []
+      },
+      {
+        "file": "ff1a16fafef87110.js",
+        "rawBytes": 282,
+        "gzipBytes": 224,
+        "referencedByIndexHtml": true,
+        "markers": []
+      }
+    ],
+    "mainChunkBands": {
+      "file": "aa5a262c2c9845dd.js",
+      "size": 1175398,
+      "mdx": {
+        "start": 454546,
+        "end": 831805
+      },
+      "silk": {
+        "start": 263868,
+        "end": 394797
+      }
+    },
+    "stickerYamlInBundle": {
+      "yamlFiles": 63,
+      "yamlBytes": 102850,
+      "filesCarryingStickerImagePaths": {
+        "index.html": 55,
+        "7507a90f0a25ce56.js": 1
+      },
+      "inlineFlightScriptsWithStickerData": 1,
+      "inlineFlightBytes": 83533,
+      "indexHtmlRawBytes": 129451,
+      "indexHtmlBrotliBytes": 28135,
+      "indexHtmlGzipBytes": 36314
+    }
+  },
+  "_meta": {
+    "chromium": "159.0.8154.6",
+    "node": "v26.12.1",
+    "url": "http://localhost:4173/",
+    "recordedAt": "2026-11-21T03:58:50.811Z"
+  },
+  "dom": {
+    "withoutScript": {
+      "stickerButtons": 0,
+      "imgTags": 0
+    },
+    "withScript": {
+      "stickerButtons": 63,
+      "computedFilters": {
+        "drop-shadow(rgba(0, 0, 0, 0.07) 0px 4px 3px) drop-shadow(rgba(0, 0, 0, 0.06) 0px 2px 2px)": 63
+      },
+      "contentVisibilityAuto": 63,
+      "imgs": 55,
+      "imgLoadingAttr": 0,
+      "imgDecodingAttr": 0,
+      "imgFetchPriorityAttr": 0,
+      "imgSizeAttrs": 0,
+      "layerWillChangeIdle": "auto"
+    }
+  },
+  "cpu": {
+    "profile": "mobile (Pixel 7, 4x CPU, Fast 4G); CDP Profiler, 250 us sampling, load until all stickers painted + 3 s",
+    "bands": {
+      "file": "aa5a262c2c9845dd.js",
+      "mdxKB": [
+        443.9,
+        812.3
+      ],
+      "silkKB": [
+        257.7,
+        385.5
+      ]
+    },
+    "median": {
+      "busyMs": 1860.3,
+      "mainChunkMs": 597.5,
+      "mdxBandMs": 355.5,
+      "silkBandMs": 5.1,
+      "otherMainBandMs": 237,
+      "gcMs": 26.4
+    },
+    "runs": [
+      {
+        "busyMs": 2225.1,
+        "idleMs": 4587.2,
+        "programMs": 2214,
+        "gcMs": 17.3,
+        "mainChunkMs": 724,
+        "bands": {
+          "mdx": 424.6,
+          "silk": 5.1,
+          "other": 294.3
+        },
+        "byScript": {
+          "aa5a262c2c9845dd.js": 724,
+          "b905cd925e44f4c2.js": 605.3,
+          "turbopack-b132ca5457862e96.js": 457,
+          "(native)": 259.6,
+          "489ed84c5cc82ec7.js": 61.6,
+          "4f437ba1c3d31b7c.js": 30.7,
+          "8fd396d233b251ac.js": 29.6,
+          "17bb1792733763b4.js": 26.3,
+          "54b43f37f6d92d16.js": 17.3,
+          "e86aaec610478414.js": 8.9
+        },
+        "topFunctions": [
+          {
+            "ms": 149.1,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 99.7,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 63.4,
+            "band": "n/a",
+            "fn": "_createMdxContent (native):5:26"
+          },
+          {
+            "ms": 54.6,
+            "band": "n/a",
+            "fn": "(anonymous) (native):2:33"
+          },
+          {
+            "ms": 51.2,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 45,
+            "band": "other",
+            "fn": "k @827KB: (e,t){var n,i,r,s,a,o,l=e.wrapperComponent,u=e.contentComponent,c=e.se"
+          },
+          {
+            "ms": 41.8,
+            "band": "n/a",
+            "fn": "av b905cd925e44f4c2.js:0:63097"
+          },
+          {
+            "ms": 34.9,
+            "band": "n/a",
+            "fn": "io b905cd925e44f4c2.js:0:92718"
+          },
+          {
+            "ms": 33.1,
+            "band": "n/a",
+            "fn": "(anonymous) (native):0:0"
+          },
+          {
+            "ms": 26.6,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 21.6,
+            "band": "n/a",
+            "fn": "requestAnimationFrame (native):-1:-1"
+          },
+          {
+            "ms": 21.3,
+            "band": "n/a",
+            "fn": "i b905cd925e44f4c2.js:0:8695"
+          }
+        ]
+      },
+      {
+        "busyMs": 1860.3,
+        "idleMs": 5154.8,
+        "programMs": 1708.9,
+        "gcMs": 26.4,
+        "mainChunkMs": 597.5,
+        "bands": {
+          "mdx": 355.5,
+          "silk": 5.1,
+          "other": 237
+        },
+        "byScript": {
+          "aa5a262c2c9845dd.js": 597.5,
+          "b905cd925e44f4c2.js": 545.3,
+          "turbopack-b132ca5457862e96.js": 328.7,
+          "(native)": 227.4,
+          "489ed84c5cc82ec7.js": 49.4,
+          "17bb1792733763b4.js": 32.7,
+          "4f437ba1c3d31b7c.js": 27.4,
+          "8fd396d233b251ac.js": 24.8,
+          "54b43f37f6d92d16.js": 17.4,
+          "e86aaec610478414.js": 6.1
+        },
+        "topFunctions": [
+          {
+            "ms": 117.8,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 69.9,
+            "band": "n/a",
+            "fn": "(anonymous) (native):2:33"
+          },
+          {
+            "ms": 62.5,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 45.4,
+            "band": "n/a",
+            "fn": "_createMdxContent (native):5:26"
+          },
+          {
+            "ms": 34.2,
+            "band": "n/a",
+            "fn": "io b905cd925e44f4c2.js:0:92718"
+          },
+          {
+            "ms": 34.1,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 29.3,
+            "band": "n/a",
+            "fn": "av b905cd925e44f4c2.js:0:63097"
+          },
+          {
+            "ms": 20,
+            "band": "other",
+            "fn": "(anonymous) @251KB: e=>{\"use strict\";let t,n,i,r,s,a,o,l,u,c,h,p;var d=e.i(18050);let f=(0"
+          },
+          {
+            "ms": 19.4,
+            "band": "other",
+            "fn": "k @827KB: (e,t){var n,i,r,s,a,o,l=e.wrapperComponent,u=e.contentComponent,c=e.se"
+          },
+          {
+            "ms": 18.7,
+            "band": "n/a",
+            "fn": "(anonymous) (native):0:0"
+          },
+          {
+            "ms": 18.2,
+            "band": "n/a",
+            "fn": "i b905cd925e44f4c2.js:0:8695"
+          },
+          {
+            "ms": 18.1,
+            "band": "n/a",
+            "fn": "(anonymous) b905cd925e44f4c2.js:0:215359"
+          }
+        ]
+      },
+      {
+        "busyMs": 1581.6,
+        "idleMs": 5488.3,
+        "programMs": 1425,
+        "gcMs": 27.5,
+        "mainChunkMs": 400.6,
+        "bands": {
+          "mdx": 225.1,
+          "silk": 4.5,
+          "other": 170.9
+        },
+        "byScript": {
+          "b905cd925e44f4c2.js": 516,
+          "aa5a262c2c9845dd.js": 400.6,
+          "turbopack-b132ca5457862e96.js": 307.8,
+          "(native)": 200.1,
+          "489ed84c5cc82ec7.js": 45.4,
+          "8fd396d233b251ac.js": 31.4,
+          "17bb1792733763b4.js": 26.8,
+          "54b43f37f6d92d16.js": 20.4,
+          "4f437ba1c3d31b7c.js": 16.9,
+          "e86aaec610478414.js": 14.1
+        },
+        "topFunctions": [
+          {
+            "ms": 123.1,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 77.1,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 59.3,
+            "band": "n/a",
+            "fn": "(anonymous) (native):2:33"
+          },
+          {
+            "ms": 36,
+            "band": "n/a",
+            "fn": "_createMdxContent (native):5:26"
+          },
+          {
+            "ms": 33.3,
+            "band": "n/a",
+            "fn": "io b905cd925e44f4c2.js:0:92718"
+          },
+          {
+            "ms": 33.2,
+            "band": "n/a",
+            "fn": "av b905cd925e44f4c2.js:0:63097"
+          },
+          {
+            "ms": 26.9,
+            "band": "n/a",
+            "fn": "i b905cd925e44f4c2.js:0:8695"
+          },
+          {
+            "ms": 24.9,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 22.6,
+            "band": "n/a",
+            "fn": "(anonymous) b905cd925e44f4c2.js:0:96317"
+          },
+          {
+            "ms": 20.6,
+            "band": "n/a",
+            "fn": "(anonymous) b905cd925e44f4c2.js:0:215359"
+          },
+          {
+            "ms": 19.1,
+            "band": "n/a",
+            "fn": "q turbopack-b132ca5457862e96.js:3:509"
+          },
+          {
+            "ms": 15.5,
+            "band": "n/a",
+            "fn": "P 489ed84c5cc82ec7.js:0:1399"
+          }
+        ]
+      }
+    ]
+  },
+  "coverage": {
+    "profile": "desktop, JS coverage via Playwright (function + block ranges), load until all stickers painted + 3 s",
+    "scripts": [
+      {
+        "file": "aa5a262c2c9845dd.js",
+        "totalBytes": 1175398,
+        "usedBytes": 257910,
+        "usedPct": 21.9,
+        "mdxBand": {
+          "totalBytes": 377259,
+          "usedBytes": 115398,
+          "usedPct": 30.6
+        },
+        "silkBand": {
+          "totalBytes": 130929,
+          "usedBytes": 9788,
+          "usedPct": 7.5
+        }
+      },
+      {
+        "file": "b905cd925e44f4c2.js",
+        "totalBytes": 224413,
+        "usedBytes": 85011,
+        "usedPct": 37.9
+      },
+      {
+        "file": "489ed84c5cc82ec7.js",
+        "totalBytes": 118374,
+        "usedBytes": 32718,
+        "usedPct": 27.6
+      },
+      {
+        "file": "e86aaec610478414.js",
+        "totalBytes": 38404,
+        "usedBytes": 8359,
+        "usedPct": 21.8
+      },
+      {
+        "file": "4f437ba1c3d31b7c.js",
+        "totalBytes": 34023,
+        "usedBytes": 24851,
+        "usedPct": 73
+      },
+      {
+        "file": "54b43f37f6d92d16.js",
+        "totalBytes": 30679,
+        "usedBytes": 5488,
+        "usedPct": 17.9
+      },
+      {
+        "file": "17bb1792733763b4.js",
+        "totalBytes": 17560,
+        "usedBytes": 8656,
+        "usedPct": 49.3
+      },
+      {
+        "file": "turbopack-b132ca5457862e96.js",
+        "totalBytes": 10232,
+        "usedBytes": 4515,
+        "usedPct": 44.1
+      },
+      {
+        "file": "8fd396d233b251ac.js",
+        "totalBytes": 3576,
+        "usedBytes": 2635,
+        "usedPct": 73.7
+      },
+      {
+        "file": "6b319e5795751c89.js",
+        "totalBytes": 527,
+        "usedBytes": 101,
+        "usedPct": 19.2
+      },
+      {
+        "file": "ff1a16fafef87110.js",
+        "totalBytes": 282,
+        "usedBytes": 223,
+        "usedPct": 79.1
+      }
+    ]
+  },
+  "hover": {
+    "cpu1x": {
+      "overSticker": {
+        "movesPerTrial": [
+          160,
+          160,
+          160
+        ],
+        "scriptMsPerMove": 0.47,
+        "taskMsPerMove": 2.029,
+        "reactCommitsPerMove": 4.006,
+        "styleRecalcsPerMove": 1.988,
+        "layoutsPerMove": 0.006
+      },
+      "overEmptyCanvas": {
+        "movesPerTrial": [
+          160,
+          160,
+          160
+        ],
+        "scriptMsPerMove": 0.044,
+        "taskMsPerMove": 0.409,
+        "reactCommitsPerMove": 0.019,
+        "styleRecalcsPerMove": 0,
+        "layoutsPerMove": 0
+      },
+      "trials": [
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.525,
+            "taskMs": 2.029,
+            "reactCommits": 4.013,
+            "styleRecalcs": 1.988,
+            "layouts": 0.006
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.05,
+            "taskMs": 0.409,
+            "reactCommits": 0.019,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.459,
+            "taskMs": 1.918,
+            "reactCommits": 4,
+            "styleRecalcs": 1.988,
+            "layouts": 0.006
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.044,
+            "taskMs": 0.427,
+            "reactCommits": 0.019,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.47,
+            "taskMs": 2.062,
+            "reactCommits": 4.006,
+            "styleRecalcs": 1.988,
+            "layouts": 0.006
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.044,
+            "taskMs": 0.392,
+            "reactCommits": 0.019,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        }
+      ]
+    },
+    "cpu4x": {
+      "overSticker": {
+        "movesPerTrial": [
+          160,
+          160,
+          160
+        ],
+        "scriptMsPerMove": 3.424,
+        "taskMsPerMove": 13.946,
+        "reactCommitsPerMove": 4.013,
+        "styleRecalcsPerMove": 1.988,
+        "layoutsPerMove": 0.006
+      },
+      "overEmptyCanvas": {
+        "movesPerTrial": [
+          160,
+          160,
+          160
+        ],
+        "scriptMsPerMove": 0.205,
+        "taskMsPerMove": 2.166,
+        "reactCommitsPerMove": 0.019,
+        "styleRecalcsPerMove": 0,
+        "layoutsPerMove": 0
+      },
+      "trials": [
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 3.648,
+            "taskMs": 13.946,
+            "reactCommits": 4.013,
+            "styleRecalcs": 1.988,
+            "layouts": 0.006
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.197,
+            "taskMs": 2.104,
+            "reactCommits": 0.013,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 3.424,
+            "taskMs": 14.105,
+            "reactCommits": 4.013,
+            "styleRecalcs": 1.988,
+            "layouts": 0.006
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.205,
+            "taskMs": 2.345,
+            "reactCommits": 0.019,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 2.933,
+            "taskMs": 12.55,
+            "reactCommits": 4.013,
+            "styleRecalcs": 1.988,
+            "layouts": 0.006
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "scriptMs": 0.227,
+            "taskMs": 2.166,
+            "reactCommits": 0.019,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        }
+      ]
+    }
+  },
+  "settle": {
+    "desktop": [
+      {
+        "zoomingOffAfterLastWheelMs": 141.4,
+        "zoomingLog": [
+          {
+            "afterLastWheelMs": -598.7,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 141.4,
+            "what": "zooming-off will-change=auto"
+          },
+          {
+            "afterLastWheelMs": 142.1,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 465.5,
+            "what": "zooming-off will-change=auto"
+          }
+        ],
+        "rasterDuringGesture": {
+          "tasks": 82,
+          "totalMs": 100.02,
+          "firstStartAfterMs": -580.6,
+          "lastEndAfterMs": -481.5
+        },
+        "rasterAfterLastWheel": {
+          "tasks": 24,
+          "totalMs": 46.1,
+          "firstStartAfterMs": 466.8,
+          "lastEndAfterMs": 513
+        },
+        "rasterAfterZoomingOff": {
+          "tasks": 24,
+          "totalMs": 46.1,
+          "firstStartAfterMs": 466.8,
+          "lastEndAfterMs": 513
+        },
+        "eventsAfterLastWheel": {
+          "Layerize": 18,
+          "PrePaint": 20,
+          "Paint": 2,
+          "UpdateLayoutTree": 5,
+          "Layout": 0,
+          "ImageDecodeTask": 1,
+          "DrawFrame": 4
+        },
+        "reactCommits": {
+          "duringGesture": 2,
+          "afterLastWheel": 2
+        }
+      },
+      {
+        "zoomingOffAfterLastWheelMs": 139.5,
+        "zoomingLog": [
+          {
+            "afterLastWheelMs": -588.7,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 139.5,
+            "what": "zooming-off will-change=auto"
+          },
+          {
+            "afterLastWheelMs": 140.2,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 452.5,
+            "what": "zooming-off will-change=auto"
+          }
+        ],
+        "rasterDuringGesture": {
+          "tasks": 110,
+          "totalMs": 115.55,
+          "firstStartAfterMs": -624.9,
+          "lastEndAfterMs": -470.9
+        },
+        "rasterAfterLastWheel": {
+          "tasks": 24,
+          "totalMs": 46.31,
+          "firstStartAfterMs": 454,
+          "lastEndAfterMs": 500.4
+        },
+        "rasterAfterZoomingOff": {
+          "tasks": 24,
+          "totalMs": 46.31,
+          "firstStartAfterMs": 454,
+          "lastEndAfterMs": 500.4
+        },
+        "eventsAfterLastWheel": {
+          "Layerize": 18,
+          "PrePaint": 20,
+          "Paint": 2,
+          "UpdateLayoutTree": 5,
+          "Layout": 0,
+          "ImageDecodeTask": 1,
+          "DrawFrame": 3
+        },
+        "reactCommits": {
+          "duringGesture": 2,
+          "afterLastWheel": 2
+        }
+      },
+      {
+        "zoomingOffAfterLastWheelMs": 139.3,
+        "zoomingLog": [
+          {
+            "afterLastWheelMs": -588.5,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 139.3,
+            "what": "zooming-off will-change=auto"
+          },
+          {
+            "afterLastWheelMs": 140.1,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 450.3,
+            "what": "zooming-off will-change=auto"
+          }
+        ],
+        "rasterDuringGesture": {
+          "tasks": 111,
+          "totalMs": 136.44,
+          "firstStartAfterMs": -620.8,
+          "lastEndAfterMs": -455
+        },
+        "rasterAfterLastWheel": {
+          "tasks": 24,
+          "totalMs": 48.55,
+          "firstStartAfterMs": 451.6,
+          "lastEndAfterMs": 500.2
+        },
+        "rasterAfterZoomingOff": {
+          "tasks": 24,
+          "totalMs": 48.55,
+          "firstStartAfterMs": 451.6,
+          "lastEndAfterMs": 500.2
+        },
+        "eventsAfterLastWheel": {
+          "Layerize": 18,
+          "PrePaint": 20,
+          "Paint": 2,
+          "UpdateLayoutTree": 5,
+          "Layout": 0,
+          "ImageDecodeTask": 1,
+          "DrawFrame": 3
+        },
+        "reactCommits": {
+          "duringGesture": 2,
+          "afterLastWheel": 2
+        }
+      }
+    ],
+    "mobile": [
+      {
+        "zoomingOffAfterLastWheelMs": 245.2,
+        "zoomingLog": [
+          {
+            "afterLastWheelMs": -614.1,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 245.2,
+            "what": "zooming-off will-change=auto"
+          },
+          {
+            "afterLastWheelMs": 255.3,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 617.4,
+            "what": "zooming-off will-change=auto"
+          }
+        ],
+        "rasterDuringGesture": {
+          "tasks": 24,
+          "totalMs": 77.78,
+          "firstStartAfterMs": -608.1,
+          "lastEndAfterMs": -539
+        },
+        "rasterAfterLastWheel": {
+          "tasks": 40,
+          "totalMs": 141.08,
+          "firstStartAfterMs": 251.9,
+          "lastEndAfterMs": 628.3
+        },
+        "rasterAfterZoomingOff": {
+          "tasks": 40,
+          "totalMs": 141.08,
+          "firstStartAfterMs": 251.9,
+          "lastEndAfterMs": 628.3
+        },
+        "eventsAfterLastWheel": {
+          "Layerize": 20,
+          "PrePaint": 21,
+          "Paint": 6,
+          "UpdateLayoutTree": 5,
+          "Layout": 0,
+          "ImageDecodeTask": 7,
+          "DrawFrame": 6
+        },
+        "reactCommits": {
+          "duringGesture": 1,
+          "afterLastWheel": 2
+        }
+      },
+      {
+        "zoomingOffAfterLastWheelMs": 226.2,
+        "zoomingLog": [
+          {
+            "afterLastWheelMs": -613.9,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 226.2,
+            "what": "zooming-off will-change=auto"
+          },
+          {
+            "afterLastWheelMs": 234,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 776.8,
+            "what": "zooming-off will-change=auto"
+          }
+        ],
+        "rasterDuringGesture": {
+          "tasks": 24,
+          "totalMs": 75.14,
+          "firstStartAfterMs": -606.8,
+          "lastEndAfterMs": -528.9
+        },
+        "rasterAfterLastWheel": {
+          "tasks": 40,
+          "totalMs": 131.95,
+          "firstStartAfterMs": 230.8,
+          "lastEndAfterMs": 791.3
+        },
+        "rasterAfterZoomingOff": {
+          "tasks": 40,
+          "totalMs": 131.95,
+          "firstStartAfterMs": 230.8,
+          "lastEndAfterMs": 791.3
+        },
+        "eventsAfterLastWheel": {
+          "Layerize": 20,
+          "PrePaint": 22,
+          "Paint": 6,
+          "UpdateLayoutTree": 5,
+          "Layout": 0,
+          "ImageDecodeTask": 7,
+          "DrawFrame": 6
+        },
+        "reactCommits": {
+          "duringGesture": 1,
+          "afterLastWheel": 2
+        }
+      },
+      {
+        "zoomingOffAfterLastWheelMs": 327.1,
+        "zoomingLog": [
+          {
+            "afterLastWheelMs": -611.9,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 327.1,
+            "what": "zooming-off will-change=auto"
+          },
+          {
+            "afterLastWheelMs": 336.8,
+            "what": "zooming-on will-change=transform"
+          },
+          {
+            "afterLastWheelMs": 1007.3,
+            "what": "zooming-off will-change=auto"
+          }
+        ],
+        "rasterDuringGesture": {
+          "tasks": 20,
+          "totalMs": 69.21,
+          "firstStartAfterMs": -596,
+          "lastEndAfterMs": -526.5
+        },
+        "rasterAfterLastWheel": {
+          "tasks": 40,
+          "totalMs": 120.41,
+          "firstStartAfterMs": 332.3,
+          "lastEndAfterMs": 1021.3
+        },
+        "rasterAfterZoomingOff": {
+          "tasks": 40,
+          "totalMs": 120.41,
+          "firstStartAfterMs": 332.3,
+          "lastEndAfterMs": 1021.3
+        },
+        "eventsAfterLastWheel": {
+          "Layerize": 20,
+          "PrePaint": 21,
+          "Paint": 6,
+          "UpdateLayoutTree": 5,
+          "Layout": 0,
+          "ImageDecodeTask": 7,
+          "DrawFrame": 6
+        },
+        "reactCommits": {
+          "duringGesture": 1,
+          "afterLastWheel": 2
+        }
+      }
+    ]
+  },
+  "third-party": {
+    "profile": "mobile (Pixel 7, 4x CPU, Fast 4G); the two third-party stylesheets are fulfilled with an empty body in the `without` variant",
+    "withThirdPartyCss": {
+      "fcp": {
+        "median": 668,
+        "min": 664,
+        "max": 676
+      },
+      "lcp": {
+        "median": 2744,
+        "min": 2692,
+        "max": 2800
+      },
+      "runs": [
+        {
+          "fcp": 668,
+          "lcp": 2692
+        },
+        {
+          "fcp": 668,
+          "lcp": 2744
+        },
+        {
+          "fcp": 664,
+          "lcp": 2800
+        },
+        {
+          "fcp": 672,
+          "lcp": 2752
+        },
+        {
+          "fcp": 676,
+          "lcp": 2716
+        }
+      ]
+    },
+    "withoutThirdPartyCss": {
+      "fcp": {
+        "median": 656,
+        "min": 652,
+        "max": 660
+      },
+      "lcp": {
+        "median": 2488,
+        "min": 2424,
+        "max": 2676
+      },
+      "runs": [
+        {
+          "fcp": 660,
+          "lcp": 2520
+        },
+        {
+          "fcp": 652,
+          "lcp": 2676
+        },
+        {
+          "fcp": 652,
+          "lcp": 2424
+        },
+        {
+          "fcp": 660,
+          "lcp": 2488
+        },
+        {
+          "fcp": 656,
+          "lcp": 2452
+        }
+      ]
+    }
+  }
+}

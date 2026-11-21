@@ -1,0 +1,167 @@
+// Result shapes and raw-run storage shared by the benches and `summarize.ts`.
+// No Playwright imports here: `summarize.ts` runs as a plain Node CLI.
+import fs from "node:fs";
+import path from "node:path";
+
+export type ProfileName = "mobile" | "desktop";
+
+export interface FirstRenderResult {
+  fcp: number;
+  lcp: number;
+  // Total blocking time: see first-render.bench.ts for the exact definition.
+  tbt: number;
+  cls: number;
+  allStickersPaintedMs: number;
+  liveCurrentMs: number | null;
+  // Gzip bytes of the script responses that finished before LCP.
+  criticalPathJsGzip: number;
+  // Bytes transferred over the whole observation window, by resource type.
+  bytes: ByteBreakdown;
+
+  // Extras beyond the shared shape. Everything below is optional so runs
+  // recorded without it (or by a different harness version) still summarise.
+  bytesBeforeLcp?: ByteBreakdown;
+  firstStickerMs?: number | null;
+  // Sticker elements in the DOM at the last rAF at or before FCP (0 = the first
+  // paint was an empty shell).
+  stickersAtFcp?: number;
+  ttiProxyMs?: number;
+  longTaskCount?: number;
+  // Wall time of a fixed 5M-iteration JS loop run after the page settled:
+  // evidence that CPU throttling is in effect (about cpuSlowdown x slower).
+  cpuProbeMs?: number;
+  detail?: FirstRenderDetail;
+}
+
+export interface ByteBreakdown {
+  js: number;
+  css: number;
+  img: number;
+  font: number;
+  html: number;
+  other: number;
+}
+
+export interface FirstRenderDetail {
+  lcp: { tag: string; url: string; size: number } | null;
+  scripts: Array<{
+    url: string;
+    gzip: number;
+    transferred: number;
+    endMs: number | null;
+    beforeLcp: boolean;
+  }>;
+  stylesheets: Array<{
+    url: string;
+    startMs: number;
+    endMs: number;
+    renderBlocking: string | null;
+  }>;
+  imageCount: number;
+}
+
+export type GestureName =
+  | "wheel-zoom"
+  | "drag-inertia"
+  | "pinch"
+  | "button-zoom";
+
+export interface GestureResult {
+  name: GestureName;
+  // Frames and frame times come from the in-page rAF loop (deltas between
+  // consecutive rAF timestamps) between the first input and the end of motion.
+  frames: number;
+  over16: number;
+  over33: number;
+  p95FrameMs: number;
+  mainBusyMs: number;
+  crispAfterMs: number | null;
+  peakHeapMb: number;
+
+  // Optional extras (see gestures.bench.ts for definitions).
+  motionMs?: number;
+  traceOver16?: number;
+  traceOver33?: number;
+  rasterMs?: number;
+  rasterAfterInputMs?: number;
+  scriptMs?: number;
+  layoutMs?: number;
+  styleMs?: number;
+  layoutCount?: number;
+  styleRecalcCount?: number;
+  inputDelayMs?: number | null;
+  scaleChange?: number;
+  // The five longest rAF deltas (ms) inside the gesture.
+  worstFramesMs?: number[];
+}
+
+export interface RunMeta {
+  label: string;
+  profile: ProfileName;
+  chromium: string;
+  node: string;
+  os: string;
+  cpu: string;
+  cores: number;
+  memGb: number;
+  cpuSlowdown: number;
+  network: unknown;
+  runs: number;
+  recordedAt: string;
+  // Set only for A/B probe runs (BENCH_PROBE_CSS); absent for normal runs.
+  probeCss?: string;
+}
+
+// Playwright, vitest and the CLI are all run from the repository root.
+export const resultsDir = path.resolve("bench", "results");
+
+export function benchLabel(): string {
+  return process.env.BENCH_LABEL ?? process.env.TARGET ?? "new";
+}
+
+export function rawDir(label: string, profile: ProfileName): string {
+  return path.join(resultsDir, "tmp", `${label}-${profile}`);
+}
+
+export function summaryPath(label: string, profile: ProfileName): string {
+  return path.join(resultsDir, `${label}-${profile}.json`);
+}
+
+export function writeRaw(
+  label: string,
+  profile: ProfileName,
+  file: string,
+  data: unknown
+): void {
+  const dir = rawDir(label, profile);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, file), JSON.stringify(data, null, 2));
+}
+
+export function readRaw<T>(
+  label: string,
+  profile: ProfileName,
+  prefix: string
+): T[] {
+  const dir = rawDir(label, profile);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.startsWith(prefix) && f.endsWith(".json"))
+    .sort()
+    .map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as T);
+}
+
+export function clearRaw(
+  label: string,
+  profile: ProfileName,
+  prefix: string
+): void {
+  const dir = rawDir(label, profile);
+  if (!fs.existsSync(dir)) return;
+  for (const f of fs.readdirSync(dir)) {
+    if (f.startsWith(prefix) && f.endsWith(".json")) {
+      fs.rmSync(path.join(dir, f));
+    }
+  }
+}

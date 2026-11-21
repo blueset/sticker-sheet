@@ -1,0 +1,2558 @@
+{
+  "label": "baseline",
+  "profile": "desktop",
+  "meta": {
+    "label": "baseline",
+    "profile": "desktop",
+    "chromium": "159.0.8154.6",
+    "node": "v26.12.1",
+    "os": "Windows_NT 10.0.26300 (x64)",
+    "cpu": "AMD Ryzen 9 9950X 16-Core Processor            ",
+    "cores": 32,
+    "memGb": 94,
+    "cpuSlowdown": 1,
+    "network": null,
+    "runs": 5,
+    "recordedAt": "2026-11-21T03:45:25.410Z"
+  },
+  "runs": {
+    "firstRender": 5,
+    "gestures": {
+      "button-zoom": 5,
+      "drag-inertia": 5,
+      "wheel-zoom": 5
+    }
+  },
+  "firstRender": {
+    "fcp": {
+      "n": 5,
+      "nulls": 0,
+      "median": 164,
+      "p95": 212,
+      "min": 112,
+      "max": 212,
+      "spreadPct": 60.976,
+      "values": [
+        212,
+        160,
+        112,
+        164,
+        172
+      ]
+    },
+    "lcp": {
+      "n": 5,
+      "nulls": 0,
+      "median": 324,
+      "p95": 376,
+      "min": 312,
+      "max": 376,
+      "spreadPct": 19.753,
+      "values": [
+        376,
+        316,
+        312,
+        324,
+        336
+      ]
+    },
+    "tbt": {
+      "n": 5,
+      "nulls": 0,
+      "median": 0,
+      "p95": 0,
+      "min": 0,
+      "max": 0,
+      "spreadPct": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "cls": {
+      "n": 5,
+      "nulls": 0,
+      "median": 0,
+      "p95": 0,
+      "min": 0,
+      "max": 0,
+      "spreadPct": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "allStickersPaintedMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 290.7,
+      "p95": 344.5,
+      "min": 275.6,
+      "max": 344.5,
+      "spreadPct": 23.701,
+      "values": [
+        344.5,
+        280.5,
+        275.6,
+        290.7,
+        319.7
+      ]
+    },
+    "liveCurrentMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 208.9,
+      "p95": 261.3,
+      "min": 197.2,
+      "max": 261.3,
+      "spreadPct": 30.685,
+      "values": [
+        261.3,
+        197.2,
+        208.9,
+        207.4,
+        219.7
+      ]
+    },
+    "criticalPathJsGzip": {
+      "n": 5,
+      "nulls": 0,
+      "median": 473458,
+      "p95": 473458,
+      "min": 473458,
+      "max": 473458,
+      "spreadPct": 0,
+      "values": [
+        473458,
+        473458,
+        473458,
+        473458,
+        473458
+      ]
+    },
+    "bytes": {
+      "js": {
+        "n": 5,
+        "nulls": 0,
+        "median": 439685,
+        "p95": 439685,
+        "min": 439685,
+        "max": 439685,
+        "spreadPct": 0,
+        "values": [
+          439685,
+          439685,
+          439685,
+          439685,
+          439685
+        ]
+      },
+      "css": {
+        "n": 5,
+        "nulls": 0,
+        "median": 79842,
+        "p95": 79868,
+        "min": 79837,
+        "max": 79868,
+        "spreadPct": 0.039,
+        "values": [
+          79842,
+          79840,
+          79868,
+          79837,
+          79843
+        ]
+      },
+      "img": {
+        "n": 5,
+        "nulls": 0,
+        "median": 2313268,
+        "p95": 2313268,
+        "min": 2313268,
+        "max": 2313268,
+        "spreadPct": 0,
+        "values": [
+          2313268,
+          2313268,
+          2313268,
+          2313268,
+          2313268
+        ]
+      },
+      "font": {
+        "n": 5,
+        "nulls": 0,
+        "median": 490073,
+        "p95": 490099,
+        "min": 490045,
+        "max": 490099,
+        "spreadPct": 0.011,
+        "values": [
+          490073,
+          490059,
+          490092,
+          490099,
+          490045
+        ]
+      },
+      "html": {
+        "n": 5,
+        "nulls": 0,
+        "median": 35446,
+        "p95": 35446,
+        "min": 35446,
+        "max": 35446,
+        "spreadPct": 0,
+        "values": [
+          35446,
+          35446,
+          35446,
+          35446,
+          35446
+        ]
+      },
+      "other": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "bytesBeforeLcp": {
+      "js": {
+        "n": 5,
+        "nulls": 0,
+        "median": 438760,
+        "p95": 438760,
+        "min": 438760,
+        "max": 438760,
+        "spreadPct": 0,
+        "values": [
+          438760,
+          438760,
+          438760,
+          438760,
+          438760
+        ]
+      },
+      "css": {
+        "n": 5,
+        "nulls": 0,
+        "median": 79275,
+        "p95": 79299,
+        "min": 79272,
+        "max": 79299,
+        "spreadPct": 0.034,
+        "values": [
+          79272,
+          79275,
+          79299,
+          79272,
+          79276
+        ]
+      },
+      "img": {
+        "n": 5,
+        "nulls": 0,
+        "median": 2311520,
+        "p95": 2311520,
+        "min": 2311520,
+        "max": 2311520,
+        "spreadPct": 0,
+        "values": [
+          2311520,
+          2311520,
+          2311520,
+          2311520,
+          2311520
+        ]
+      },
+      "font": {
+        "n": 5,
+        "nulls": 0,
+        "median": 136956,
+        "p95": 136956,
+        "min": 136956,
+        "max": 136956,
+        "spreadPct": 0,
+        "values": [
+          136956,
+          136956,
+          136956,
+          136956,
+          136956
+        ]
+      },
+      "html": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "other": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "firstStickerMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 175.6,
+      "p95": 211.2,
+      "min": 163.9,
+      "max": 211.2,
+      "spreadPct": 26.936,
+      "values": [
+        211.2,
+        163.9,
+        175.6,
+        174.1,
+        186.4
+      ]
+    },
+    "stickersAtFcp": {
+      "n": 5,
+      "nulls": 0,
+      "median": 0,
+      "p95": 63,
+      "min": 0,
+      "max": 63,
+      "spreadPct": null,
+      "values": [
+        63,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "ttiProxyMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 164,
+      "p95": 212,
+      "min": 158.5,
+      "max": 212,
+      "spreadPct": 32.622,
+      "values": [
+        212,
+        160,
+        158.5,
+        164,
+        172
+      ]
+    },
+    "longTaskCount": {
+      "n": 5,
+      "nulls": 0,
+      "median": 1,
+      "p95": 1,
+      "min": 1,
+      "max": 1,
+      "spreadPct": 0,
+      "values": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "cpuProbeMs": {
+      "n": 5,
+      "nulls": 0,
+      "median": 7.2,
+      "p95": 7.7,
+      "min": 7.1,
+      "max": 7.7,
+      "spreadPct": 8.333,
+      "values": [
+        7.2,
+        7.2,
+        7.1,
+        7.2,
+        7.7
+      ]
+    },
+    "detail": {
+      "lcp": {
+        "size": {
+          "n": 5,
+          "nulls": 0,
+          "median": 104468,
+          "p95": 104468,
+          "min": 104468,
+          "max": 104468,
+          "spreadPct": 0,
+          "values": [
+            104468,
+            104468,
+            104468,
+            104468,
+            104468
+          ]
+        }
+      },
+      "imageCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 56,
+        "p95": 56,
+        "min": 56,
+        "max": 56,
+        "spreadPct": 0,
+        "values": [
+          56,
+          56,
+          56,
+          56,
+          56
+        ]
+      }
+    }
+  },
+  "gestures": {
+    "button-zoom": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 84,
+        "p95": 84,
+        "min": 84,
+        "max": 84,
+        "spreadPct": 0,
+        "values": [
+          84,
+          84,
+          84,
+          84,
+          84
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 81.047,
+        "p95": 83.301,
+        "min": 79.215,
+        "max": 83.301,
+        "spreadPct": 5.042,
+        "values": [
+          81.047,
+          79.215,
+          83.301,
+          81.869,
+          80.09
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 470.044,
+        "p95": 475.338,
+        "min": 467.254,
+        "max": 475.338,
+        "spreadPct": 1.72,
+        "values": [
+          467.254,
+          470.938,
+          475.338,
+          467.932,
+          470.044
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 9.732,
+        "p95": 9.758,
+        "min": 9.729,
+        "max": 9.758,
+        "spreadPct": 0.294,
+        "values": [
+          9.729,
+          9.731,
+          9.745,
+          9.758,
+          9.732
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1408.2,
+        "p95": 1414.2,
+        "min": 1401.2,
+        "max": 1414.2,
+        "spreadPct": 0.923,
+        "values": [
+          1411.7,
+          1408.2,
+          1414.2,
+          1404.4,
+          1401.2
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 37,
+        "p95": 39,
+        "min": 36,
+        "max": 39,
+        "spreadPct": 8.108,
+        "values": [
+          39,
+          36,
+          36,
+          37,
+          39
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3,
+        "p95": 3,
+        "min": 3,
+        "max": 3,
+        "spreadPct": 0,
+        "values": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 46.769,
+        "p95": 51.296,
+        "min": 39.395,
+        "max": 51.296,
+        "spreadPct": 25.446,
+        "values": [
+          46.769,
+          47.227,
+          51.296,
+          40.265,
+          39.395
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 40.679,
+        "p95": 42.69,
+        "min": 39.836,
+        "max": 42.69,
+        "spreadPct": 7.016,
+        "values": [
+          39.836,
+          40.059,
+          42.69,
+          42.278,
+          40.679
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 23.6,
+        "p95": 23.963,
+        "min": 23.361,
+        "max": 23.963,
+        "spreadPct": 2.551,
+        "values": [
+          23.6,
+          23.455,
+          23.96,
+          23.963,
+          23.361
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 6.694,
+        "p95": 6.721,
+        "min": 6.291,
+        "max": 6.721,
+        "spreadPct": 6.424,
+        "values": [
+          6.71,
+          6.291,
+          6.721,
+          6.694,
+          6.499
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 97,
+        "p95": 98,
+        "min": 96,
+        "max": 98,
+        "spreadPct": 2.062,
+        "values": [
+          97,
+          96,
+          97,
+          97,
+          98
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3.6,
+        "p95": 4,
+        "min": 3.5,
+        "max": 4,
+        "spreadPct": 13.889,
+        "values": [
+          3.6,
+          3.5,
+          4,
+          3.6,
+          3.7
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5,
+        "p95": 5,
+        "min": 5,
+        "max": 5,
+        "spreadPct": 0,
+        "values": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      }
+    },
+    "drag-inertia": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 57,
+        "p95": 58,
+        "min": 57,
+        "max": 58,
+        "spreadPct": 1.754,
+        "values": [
+          58,
+          57,
+          57,
+          58,
+          57
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 57,
+        "p95": 57.516,
+        "min": 56.815,
+        "max": 57.516,
+        "spreadPct": 1.23,
+        "values": [
+          57.516,
+          56.815,
+          57,
+          57.074,
+          56.918
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 523.841,
+        "p95": 528.628,
+        "min": 505.421,
+        "max": 528.628,
+        "spreadPct": 4.43,
+        "values": [
+          527.376,
+          505.421,
+          528.628,
+          523.841,
+          521.211
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 9.766,
+        "p95": 9.797,
+        "min": 9.74,
+        "max": 9.797,
+        "spreadPct": 0.585,
+        "values": [
+          9.761,
+          9.74,
+          9.766,
+          9.778,
+          9.797
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 961.6,
+        "p95": 979.4,
+        "min": 951.1,
+        "max": 979.4,
+        "spreadPct": 2.943,
+        "values": [
+          979.4,
+          951.1,
+          953.9,
+          967.6,
+          961.6
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 28,
+        "p95": 29,
+        "min": 27,
+        "max": 29,
+        "spreadPct": 7.143,
+        "values": [
+          27,
+          28,
+          29,
+          28,
+          28
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 10,
+        "p95": 12,
+        "min": 9,
+        "max": 12,
+        "spreadPct": 30,
+        "values": [
+          10,
+          10,
+          9,
+          12,
+          10
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 33.219,
+        "p95": 34.751,
+        "min": 32.028,
+        "max": 34.751,
+        "spreadPct": 8.197,
+        "values": [
+          33.219,
+          32.028,
+          32.04,
+          33.78,
+          34.751
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 17.553,
+        "p95": 17.842,
+        "min": 15.758,
+        "max": 17.842,
+        "spreadPct": 11.873,
+        "values": [
+          16.876,
+          17.842,
+          17.553,
+          15.758,
+          17.592
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 20.851,
+        "p95": 21.143,
+        "min": 20.432,
+        "max": 21.143,
+        "spreadPct": 3.41,
+        "values": [
+          20.851,
+          20.657,
+          21.143,
+          20.432,
+          21.109
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 2.639,
+        "p95": 2.811,
+        "min": 2.545,
+        "max": 2.811,
+        "spreadPct": 10.08,
+        "values": [
+          2.811,
+          2.639,
+          2.663,
+          2.545,
+          2.599
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 44,
+        "p95": 44,
+        "min": 44,
+        "max": 44,
+        "spreadPct": 0,
+        "values": [
+          44,
+          44,
+          44,
+          44,
+          44
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 15.4,
+        "p95": 17.2,
+        "min": 14.7,
+        "max": 17.2,
+        "spreadPct": 16.234,
+        "values": [
+          16.1,
+          14.7,
+          14.8,
+          17.2,
+          15.4
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1,
+        "p95": 1,
+        "min": 1,
+        "max": 1,
+        "spreadPct": 0,
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    "wheel-zoom": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 50,
+        "p95": 50,
+        "min": 49,
+        "max": 50,
+        "spreadPct": 2,
+        "values": [
+          49,
+          50,
+          50,
+          50,
+          50
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "over33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 16.667,
+        "p95": 16.667,
+        "min": 16.667,
+        "max": 16.667,
+        "spreadPct": 0,
+        "values": [
+          16.667,
+          16.667,
+          16.667,
+          16.667,
+          16.667
+        ]
+      },
+      "mainBusyMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 83.49,
+        "p95": 84.259,
+        "min": 79.814,
+        "max": 84.259,
+        "spreadPct": 5.324,
+        "values": [
+          80.213,
+          83.49,
+          79.814,
+          83.543,
+          84.259
+        ]
+      },
+      "crispAfterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 495.861,
+        "p95": 512.654,
+        "min": 488.829,
+        "max": 512.654,
+        "spreadPct": 4.805,
+        "values": [
+          505.181,
+          494.421,
+          512.654,
+          488.829,
+          495.861
+        ]
+      },
+      "peakHeapMb": {
+        "n": 5,
+        "nulls": 0,
+        "median": 10.504,
+        "p95": 10.531,
+        "min": 10.459,
+        "max": 10.531,
+        "spreadPct": 0.688,
+        "values": [
+          10.478,
+          10.531,
+          10.504,
+          10.459,
+          10.528
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 840.2,
+        "p95": 848.1,
+        "min": 821.9,
+        "max": 848.1,
+        "spreadPct": 3.118,
+        "values": [
+          821.9,
+          848.1,
+          845.7,
+          840.2,
+          834.9
+        ]
+      },
+      "traceOver16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 20,
+        "p95": 26,
+        "min": 18,
+        "max": 26,
+        "spreadPct": 40,
+        "values": [
+          22,
+          18,
+          26,
+          20,
+          19
+        ]
+      },
+      "traceOver33": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 1,
+        "min": 0,
+        "max": 1,
+        "spreadPct": null,
+        "values": [
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "rasterMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 120.59,
+        "p95": 128.259,
+        "min": 115.719,
+        "max": 128.259,
+        "spreadPct": 10.399,
+        "values": [
+          120.59,
+          119.707,
+          115.719,
+          128.259,
+          125.465
+        ]
+      },
+      "rasterAfterInputMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 187.959,
+        "p95": 199.54,
+        "min": 146.195,
+        "max": 199.54,
+        "spreadPct": 28.381,
+        "values": [
+          159.543,
+          199.54,
+          187.959,
+          146.195,
+          193.049
+        ]
+      },
+      "scriptMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 28.032,
+        "p95": 29.078,
+        "min": 27.041,
+        "max": 29.078,
+        "spreadPct": 7.267,
+        "values": [
+          27.041,
+          28.032,
+          27.363,
+          28.667,
+          29.078
+        ]
+      },
+      "layoutMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1.376,
+        "p95": 1.392,
+        "min": 1.335,
+        "max": 1.392,
+        "spreadPct": 4.142,
+        "values": [
+          1.377,
+          1.376,
+          1.335,
+          1.392,
+          1.336
+        ]
+      },
+      "styleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 4.783,
+        "p95": 4.919,
+        "min": 4.683,
+        "max": 4.919,
+        "spreadPct": 4.934,
+        "values": [
+          4.683,
+          4.758,
+          4.783,
+          4.806,
+          4.919
+        ]
+      },
+      "layoutCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3,
+        "p95": 3,
+        "min": 3,
+        "max": 3,
+        "spreadPct": 0,
+        "values": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ]
+      },
+      "styleRecalcCount": {
+        "n": 5,
+        "nulls": 0,
+        "median": 63,
+        "p95": 63,
+        "min": 63,
+        "max": 63,
+        "spreadPct": 0,
+        "values": [
+          63,
+          63,
+          63,
+          63,
+          63
+        ]
+      },
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 48,
+        "p95": 51.8,
+        "min": 33.3,
+        "max": 51.8,
+        "spreadPct": 38.542,
+        "values": [
+          41.7,
+          48,
+          49.9,
+          33.3,
+          51.8
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5,
+        "p95": 5,
+        "min": 5,
+        "max": 5,
+        "spreadPct": 0,
+        "values": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      }
+    }
+  },
+  "raw": {
+    "firstRender": [
+      {
+        "fcp": 212,
+        "lcp": 376,
+        "tbt": 0,
+        "cls": 0,
+        "allStickersPaintedMs": 344.5,
+        "liveCurrentMs": 261.3,
+        "criticalPathJsGzip": 473458,
+        "bytes": {
+          "js": 439685,
+          "css": 79842,
+          "img": 2313268,
+          "font": 490073,
+          "html": 35446,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 438760,
+          "css": 79272,
+          "img": 2311520,
+          "font": 136956,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 211.2,
+        "stickersAtFcp": 63,
+        "ttiProxyMs": 212,
+        "longTaskCount": 1,
+        "cpuProbeMs": 7.199999928474426,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/xkjd27c.svg",
+            "size": 104468
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/17bb1792733763b4.js",
+              "gzip": 6008,
+              "transferred": 6510,
+              "endMs": 30,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/e86aaec610478414.js",
+              "gzip": 8287,
+              "transferred": 8818,
+              "endMs": 30,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/8fd396d233b251ac.js",
+              "gzip": 1582,
+              "transferred": 1929,
+              "endMs": 30,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/turbopack-b132ca5457862e96.js",
+              "gzip": 4016,
+              "transferred": 4470,
+              "endMs": 31,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/489ed84c5cc82ec7.js",
+              "gzip": 32056,
+              "transferred": 32683,
+              "endMs": 31,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/ff1a16fafef87110.js",
+              "gzip": 224,
+              "transferred": 615,
+              "endMs": 33,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6b319e5795751c89.js",
+              "gzip": 345,
+              "transferred": 860,
+              "endMs": 33,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/b905cd925e44f4c2.js",
+              "gzip": 69953,
+              "transferred": 70383,
+              "endMs": 33,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/54b43f37f6d92d16.js",
+              "gzip": 7418,
+              "transferred": 7949,
+              "endMs": 34,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/4f437ba1c3d31b7c.js",
+              "gzip": 12059,
+              "transferred": 12485,
+              "endMs": 34,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/aa5a262c2c9845dd.js",
+              "gzip": 331510,
+              "transferred": 292983,
+              "endMs": 50,
+              "beforeLcp": true
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/f913597cb07e42c8.css",
+              "startMs": 12,
+              "endMs": 20,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6c6094cf5de0ffd1.css",
+              "startMs": 12,
+              "endMs": 20,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/394c817a22ef0c27.css",
+              "startMs": 12,
+              "endMs": 20,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://rsms.me/inter/inter.css",
+              "startMs": 12,
+              "endMs": 129,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css",
+              "startMs": 12,
+              "endMs": 103,
+              "renderBlocking": "blocking"
+            }
+          ],
+          "imageCount": 56
+        }
+      },
+      {
+        "fcp": 160,
+        "lcp": 316,
+        "tbt": 0,
+        "cls": 0,
+        "allStickersPaintedMs": 280.5,
+        "liveCurrentMs": 197.2,
+        "criticalPathJsGzip": 473458,
+        "bytes": {
+          "js": 439685,
+          "css": 79840,
+          "img": 2313268,
+          "font": 490059,
+          "html": 35446,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 438760,
+          "css": 79275,
+          "img": 2311520,
+          "font": 136956,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 163.9,
+        "stickersAtFcp": 0,
+        "ttiProxyMs": 160,
+        "longTaskCount": 1,
+        "cpuProbeMs": 7.200000047683716,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/xkjd27c.svg",
+            "size": 104468
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/8fd396d233b251ac.js",
+              "gzip": 1582,
+              "transferred": 1929,
+              "endMs": 21,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/e86aaec610478414.js",
+              "gzip": 8287,
+              "transferred": 8818,
+              "endMs": 21,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/turbopack-b132ca5457862e96.js",
+              "gzip": 4016,
+              "transferred": 4470,
+              "endMs": 21,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/17bb1792733763b4.js",
+              "gzip": 6008,
+              "transferred": 6510,
+              "endMs": 21,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/489ed84c5cc82ec7.js",
+              "gzip": 32056,
+              "transferred": 32683,
+              "endMs": 22,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/ff1a16fafef87110.js",
+              "gzip": 224,
+              "transferred": 615,
+              "endMs": 24,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6b319e5795751c89.js",
+              "gzip": 345,
+              "transferred": 860,
+              "endMs": 24,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/54b43f37f6d92d16.js",
+              "gzip": 7418,
+              "transferred": 7949,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/4f437ba1c3d31b7c.js",
+              "gzip": 12059,
+              "transferred": 12485,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/b905cd925e44f4c2.js",
+              "gzip": 69953,
+              "transferred": 70383,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/aa5a262c2c9845dd.js",
+              "gzip": 331510,
+              "transferred": 292983,
+              "endMs": 38,
+              "beforeLcp": true
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6c6094cf5de0ffd1.css",
+              "startMs": 8,
+              "endMs": 17,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/394c817a22ef0c27.css",
+              "startMs": 8,
+              "endMs": 17,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/f913597cb07e42c8.css",
+              "startMs": 8,
+              "endMs": 17,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css",
+              "startMs": 9,
+              "endMs": 81,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://rsms.me/inter/inter.css",
+              "startMs": 9,
+              "endMs": 88,
+              "renderBlocking": "blocking"
+            }
+          ],
+          "imageCount": 56
+        }
+      },
+      {
+        "fcp": 112,
+        "lcp": 312,
+        "tbt": 0,
+        "cls": 0,
+        "allStickersPaintedMs": 275.6,
+        "liveCurrentMs": 208.9,
+        "criticalPathJsGzip": 473458,
+        "bytes": {
+          "js": 439685,
+          "css": 79868,
+          "img": 2313268,
+          "font": 490092,
+          "html": 35446,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 438760,
+          "css": 79299,
+          "img": 2311520,
+          "font": 136956,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 175.6,
+        "stickersAtFcp": 0,
+        "ttiProxyMs": 158.5,
+        "longTaskCount": 1,
+        "cpuProbeMs": 7.100000023841858,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/xkjd27c.svg",
+            "size": 104468
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/17bb1792733763b4.js",
+              "gzip": 6008,
+              "transferred": 6510,
+              "endMs": 22,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/8fd396d233b251ac.js",
+              "gzip": 1582,
+              "transferred": 1929,
+              "endMs": 22,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/e86aaec610478414.js",
+              "gzip": 8287,
+              "transferred": 8818,
+              "endMs": 22,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/turbopack-b132ca5457862e96.js",
+              "gzip": 4016,
+              "transferred": 4470,
+              "endMs": 22,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/489ed84c5cc82ec7.js",
+              "gzip": 32056,
+              "transferred": 32683,
+              "endMs": 23,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/ff1a16fafef87110.js",
+              "gzip": 224,
+              "transferred": 615,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6b319e5795751c89.js",
+              "gzip": 345,
+              "transferred": 860,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/b905cd925e44f4c2.js",
+              "gzip": 69953,
+              "transferred": 70383,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/54b43f37f6d92d16.js",
+              "gzip": 7418,
+              "transferred": 7949,
+              "endMs": 26,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/4f437ba1c3d31b7c.js",
+              "gzip": 12059,
+              "transferred": 12485,
+              "endMs": 26,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/aa5a262c2c9845dd.js",
+              "gzip": 331510,
+              "transferred": 292983,
+              "endMs": 39,
+              "beforeLcp": true
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6c6094cf5de0ffd1.css",
+              "startMs": 9,
+              "endMs": 18,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/394c817a22ef0c27.css",
+              "startMs": 9,
+              "endMs": 18,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/f913597cb07e42c8.css",
+              "startMs": 9,
+              "endMs": 17,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://rsms.me/inter/inter.css",
+              "startMs": 9,
+              "endMs": 89,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css",
+              "startMs": 9,
+              "endMs": 89,
+              "renderBlocking": "blocking"
+            }
+          ],
+          "imageCount": 56
+        }
+      },
+      {
+        "fcp": 164,
+        "lcp": 324,
+        "tbt": 0,
+        "cls": 0,
+        "allStickersPaintedMs": 290.7,
+        "liveCurrentMs": 207.4,
+        "criticalPathJsGzip": 473458,
+        "bytes": {
+          "js": 439685,
+          "css": 79837,
+          "img": 2313268,
+          "font": 490099,
+          "html": 35446,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 438760,
+          "css": 79272,
+          "img": 2311520,
+          "font": 136956,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 174.1,
+        "stickersAtFcp": 0,
+        "ttiProxyMs": 164,
+        "longTaskCount": 1,
+        "cpuProbeMs": 7.200000047683716,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/xkjd27c.svg",
+            "size": 104468
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/17bb1792733763b4.js",
+              "gzip": 6008,
+              "transferred": 6510,
+              "endMs": 24,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/e86aaec610478414.js",
+              "gzip": 8287,
+              "transferred": 8818,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/8fd396d233b251ac.js",
+              "gzip": 1582,
+              "transferred": 1929,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/turbopack-b132ca5457862e96.js",
+              "gzip": 4016,
+              "transferred": 4470,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/489ed84c5cc82ec7.js",
+              "gzip": 32056,
+              "transferred": 32683,
+              "endMs": 26,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/ff1a16fafef87110.js",
+              "gzip": 224,
+              "transferred": 615,
+              "endMs": 28,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6b319e5795751c89.js",
+              "gzip": 345,
+              "transferred": 860,
+              "endMs": 28,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/54b43f37f6d92d16.js",
+              "gzip": 7418,
+              "transferred": 7949,
+              "endMs": 29,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/b905cd925e44f4c2.js",
+              "gzip": 69953,
+              "transferred": 70383,
+              "endMs": 29,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/4f437ba1c3d31b7c.js",
+              "gzip": 12059,
+              "transferred": 12485,
+              "endMs": 30,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/aa5a262c2c9845dd.js",
+              "gzip": 331510,
+              "transferred": 292983,
+              "endMs": 42,
+              "beforeLcp": true
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6c6094cf5de0ffd1.css",
+              "startMs": 9,
+              "endMs": 17,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/394c817a22ef0c27.css",
+              "startMs": 9,
+              "endMs": 18,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/f913597cb07e42c8.css",
+              "startMs": 9,
+              "endMs": 17,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css",
+              "startMs": 9,
+              "endMs": 94,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://rsms.me/inter/inter.css",
+              "startMs": 9,
+              "endMs": 95,
+              "renderBlocking": "blocking"
+            }
+          ],
+          "imageCount": 56
+        }
+      },
+      {
+        "fcp": 172,
+        "lcp": 336,
+        "tbt": 0,
+        "cls": 0,
+        "allStickersPaintedMs": 319.7,
+        "liveCurrentMs": 219.7,
+        "criticalPathJsGzip": 473458,
+        "bytes": {
+          "js": 439685,
+          "css": 79843,
+          "img": 2313268,
+          "font": 490045,
+          "html": 35446,
+          "other": 0
+        },
+        "bytesBeforeLcp": {
+          "js": 438760,
+          "css": 79276,
+          "img": 2311520,
+          "font": 136956,
+          "html": 0,
+          "other": 0
+        },
+        "firstStickerMs": 186.4,
+        "stickersAtFcp": 0,
+        "ttiProxyMs": 172,
+        "longTaskCount": 1,
+        "cpuProbeMs": 7.700000047683716,
+        "detail": {
+          "lcp": {
+            "tag": "IMG",
+            "url": "http://localhost:4173/stickers/xkjd27c.svg",
+            "size": 104468
+          },
+          "scripts": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/17bb1792733763b4.js",
+              "gzip": 6008,
+              "transferred": 6510,
+              "endMs": 24,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/8fd396d233b251ac.js",
+              "gzip": 1582,
+              "transferred": 1929,
+              "endMs": 24,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/e86aaec610478414.js",
+              "gzip": 8287,
+              "transferred": 8818,
+              "endMs": 24,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/turbopack-b132ca5457862e96.js",
+              "gzip": 4016,
+              "transferred": 4470,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/489ed84c5cc82ec7.js",
+              "gzip": 32056,
+              "transferred": 32683,
+              "endMs": 25,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6b319e5795751c89.js",
+              "gzip": 345,
+              "transferred": 860,
+              "endMs": 27,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/ff1a16fafef87110.js",
+              "gzip": 224,
+              "transferred": 615,
+              "endMs": 27,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/54b43f37f6d92d16.js",
+              "gzip": 7418,
+              "transferred": 7949,
+              "endMs": 28,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/4f437ba1c3d31b7c.js",
+              "gzip": 12059,
+              "transferred": 12485,
+              "endMs": 28,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/b905cd925e44f4c2.js",
+              "gzip": 69953,
+              "transferred": 70383,
+              "endMs": 28,
+              "beforeLcp": true
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/aa5a262c2c9845dd.js",
+              "gzip": 331510,
+              "transferred": 292983,
+              "endMs": 40,
+              "beforeLcp": true
+            }
+          ],
+          "stylesheets": [
+            {
+              "url": "http://localhost:4173/_next/static/chunks/6c6094cf5de0ffd1.css",
+              "startMs": 9,
+              "endMs": 18,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/394c817a22ef0c27.css",
+              "startMs": 9,
+              "endMs": 19,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "http://localhost:4173/_next/static/chunks/f913597cb07e42c8.css",
+              "startMs": 9,
+              "endMs": 18,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://rsms.me/inter/inter.css",
+              "startMs": 10,
+              "endMs": 96,
+              "renderBlocking": "blocking"
+            },
+            {
+              "url": "https://cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css",
+              "startMs": 10,
+              "endMs": 91,
+              "renderBlocking": "blocking"
+            }
+          ],
+          "imageCount": 56
+        }
+      }
+    ],
+    "gestures": [
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 81.047,
+        "crispAfterMs": 467.2539999485016,
+        "peakHeapMb": 9.729251861572266,
+        "motionMs": 1411.6999999999998,
+        "traceOver16": 39,
+        "traceOver33": 3,
+        "rasterMs": 46.769,
+        "rasterAfterInputMs": 39.836,
+        "scriptMs": 23.6,
+        "layoutMs": 0,
+        "styleMs": 6.709999999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 97,
+        "inputDelayMs": 3.600000023841858,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 79.215,
+        "crispAfterMs": 470.93800008296967,
+        "peakHeapMb": 9.730735778808594,
+        "motionMs": 1408.2000000238422,
+        "traceOver16": 36,
+        "traceOver33": 3,
+        "rasterMs": 47.227,
+        "rasterAfterInputMs": 40.059,
+        "scriptMs": 23.45499999999999,
+        "layoutMs": 0,
+        "styleMs": 6.2909999999999995,
+        "layoutCount": 0,
+        "styleRecalcCount": 96,
+        "inputDelayMs": 3.5,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 83.301,
+        "crispAfterMs": 475.3379999399185,
+        "peakHeapMb": 9.744548797607422,
+        "motionMs": 1414.199999904633,
+        "traceOver16": 36,
+        "traceOver33": 3,
+        "rasterMs": 51.296,
+        "rasterAfterInputMs": 42.69,
+        "scriptMs": 23.959999999999994,
+        "layoutMs": 0,
+        "styleMs": 6.720999999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 97,
+        "inputDelayMs": 4,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 81.869,
+        "crispAfterMs": 467.932000041008,
+        "peakHeapMb": 9.757862091064453,
+        "motionMs": 1404.3999999761581,
+        "traceOver16": 37,
+        "traceOver33": 3,
+        "rasterMs": 40.265,
+        "rasterAfterInputMs": 42.278,
+        "scriptMs": 23.962999999999997,
+        "layoutMs": 0,
+        "styleMs": 6.693999999999998,
+        "layoutCount": 0,
+        "styleRecalcCount": 97,
+        "inputDelayMs": 3.600000023841858,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "button-zoom",
+        "frames": 84,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 80.09,
+        "crispAfterMs": 470.0440000295639,
+        "peakHeapMb": 9.732025146484375,
+        "motionMs": 1401.1999999761583,
+        "traceOver16": 39,
+        "traceOver33": 3,
+        "rasterMs": 39.395,
+        "rasterAfterInputMs": 40.679,
+        "scriptMs": 23.361000000000008,
+        "layoutMs": 0,
+        "styleMs": 6.499000000000001,
+        "layoutCount": 0,
+        "styleRecalcCount": 98,
+        "inputDelayMs": 3.6999999284744263,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 58,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 57.516,
+        "crispAfterMs": 527.3759999275208,
+        "peakHeapMb": 9.760967254638672,
+        "motionMs": 979.4000000476835,
+        "traceOver16": 27,
+        "traceOver33": 10,
+        "rasterMs": 33.219,
+        "rasterAfterInputMs": 16.876,
+        "scriptMs": 20.85100000000001,
+        "layoutMs": 0,
+        "styleMs": 2.811000000000001,
+        "layoutCount": 0,
+        "styleRecalcCount": 44,
+        "inputDelayMs": 16.09999990463257,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 57,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 56.815000122070316,
+        "crispAfterMs": 505.4210000038147,
+        "peakHeapMb": 9.740131378173828,
+        "motionMs": 951.1000000476834,
+        "traceOver16": 28,
+        "traceOver33": 10,
+        "rasterMs": 32.028,
+        "rasterAfterInputMs": 17.842,
+        "scriptMs": 20.656999999999996,
+        "layoutMs": 0,
+        "styleMs": 2.638999999999999,
+        "layoutCount": 0,
+        "styleRecalcCount": 44,
+        "inputDelayMs": 14.700000047683716,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 57,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 56.99999987792969,
+        "crispAfterMs": 528.6280000209808,
+        "peakHeapMb": 9.766334533691406,
+        "motionMs": 953.8999999761581,
+        "traceOver16": 29,
+        "traceOver33": 9,
+        "rasterMs": 32.04,
+        "rasterAfterInputMs": 17.553,
+        "scriptMs": 21.143000000000008,
+        "layoutMs": 0,
+        "styleMs": 2.6630000000000003,
+        "layoutCount": 0,
+        "styleRecalcCount": 44,
+        "inputDelayMs": 14.799999952316284,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 58,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 57.074,
+        "crispAfterMs": 523.8410000801086,
+        "peakHeapMb": 9.777748107910156,
+        "motionMs": 967.5999999284741,
+        "traceOver16": 28,
+        "traceOver33": 12,
+        "rasterMs": 33.78,
+        "rasterAfterInputMs": 15.758,
+        "scriptMs": 20.432000000000006,
+        "layoutMs": 0,
+        "styleMs": 2.5450000000000004,
+        "layoutCount": 0,
+        "styleRecalcCount": 44,
+        "inputDelayMs": 17.199999928474426,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "drag-inertia",
+        "frames": 57,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 56.918,
+        "crispAfterMs": 521.2109999656677,
+        "peakHeapMb": 9.797260284423828,
+        "motionMs": 961.6000000476834,
+        "traceOver16": 28,
+        "traceOver33": 10,
+        "rasterMs": 34.751,
+        "rasterAfterInputMs": 17.592,
+        "scriptMs": 21.109,
+        "layoutMs": 0,
+        "styleMs": 2.5990000000000006,
+        "layoutCount": 0,
+        "styleRecalcCount": 44,
+        "inputDelayMs": 15.399999976158142,
+        "scaleChange": 1,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 49,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 80.213,
+        "crispAfterMs": 505.18099999427795,
+        "peakHeapMb": 10.47781753540039,
+        "motionMs": 821.9000000953674,
+        "traceOver16": 22,
+        "traceOver33": 0,
+        "rasterMs": 120.59,
+        "rasterAfterInputMs": 159.543,
+        "scriptMs": 27.040999999999997,
+        "layoutMs": 1.3769999999999998,
+        "styleMs": 4.683,
+        "layoutCount": 3,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 41.699999928474426,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 83.49,
+        "crispAfterMs": 494.421000123024,
+        "peakHeapMb": 10.530879974365234,
+        "motionMs": 848.1000000953672,
+        "traceOver16": 18,
+        "traceOver33": 0,
+        "rasterMs": 119.707,
+        "rasterAfterInputMs": 199.54,
+        "scriptMs": 28.031999999999993,
+        "layoutMs": 1.3759999999999988,
+        "styleMs": 4.758,
+        "layoutCount": 3,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 48,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 79.814,
+        "crispAfterMs": 512.6539999246597,
+        "peakHeapMb": 10.503704071044922,
+        "motionMs": 845.6999999761583,
+        "traceOver16": 26,
+        "traceOver33": 0,
+        "rasterMs": 115.719,
+        "rasterAfterInputMs": 187.959,
+        "scriptMs": 27.363000000000014,
+        "layoutMs": 1.3349999999999993,
+        "styleMs": 4.7829999999999995,
+        "layoutCount": 3,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 49.89999997615814,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 83.543,
+        "crispAfterMs": 488.8290001153946,
+        "peakHeapMb": 10.45858383178711,
+        "motionMs": 840.2000000476837,
+        "traceOver16": 20,
+        "traceOver33": 1,
+        "rasterMs": 128.259,
+        "rasterAfterInputMs": 146.195,
+        "scriptMs": 28.666999999999998,
+        "layoutMs": 1.3920000000000008,
+        "styleMs": 4.805999999999999,
+        "layoutCount": 3,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 33.300000071525574,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      },
+      {
+        "name": "wheel-zoom",
+        "frames": 50,
+        "over16": 0,
+        "over33": 0,
+        "p95FrameMs": 16.666666666666668,
+        "mainBusyMs": 84.259,
+        "crispAfterMs": 495.86100006103516,
+        "peakHeapMb": 10.528079986572266,
+        "motionMs": 834.9000000000001,
+        "traceOver16": 19,
+        "traceOver33": 1,
+        "rasterMs": 125.465,
+        "rasterAfterInputMs": 193.049,
+        "scriptMs": 29.078000000000007,
+        "layoutMs": 1.3360000000000003,
+        "styleMs": 4.919,
+        "layoutCount": 3,
+        "styleRecalcCount": 63,
+        "inputDelayMs": 51.799999952316284,
+        "scaleChange": 5,
+        "worstFramesMs": [
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668,
+          16.666666666666668
+        ]
+      }
+    ]
+  }
+}

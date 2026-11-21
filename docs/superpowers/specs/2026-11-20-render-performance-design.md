@@ -10,9 +10,9 @@ The Sticker Sheet is a static single-page "about me" canvas: 63 stickers on a 30
 
 Phones and desktop browsers matter equally. Jank is felt on both today.
 
-## What the code does today (read, not yet profiled)
+## What the code does today (read, then profiled at Milestone 0)
 
-These are suspects from reading the code. Milestone 0 turns them into numbers.
+These are suspects from reading the code. Milestone 0 turned them into numbers: see `docs/superpowers/baseline/report.md` for each verdict. One correction from the profile: the ~100 KB of sticker YAML ships as an inline RSC payload in `index.html`, not in a JS chunk.
 
 - **Empty first paint.** `Canvas.tsx` puts stickers in a zustand store from a `useEffect`, so the prerendered HTML contains no stickers. Nothing is visible until JS loads, hydrates and effects run.
 - **Runtime MDX compiler.** Sticker `content` and every description are MDX strings compiled in the browser (`next-mdx-remote/serialize` in `MDXRenderer`). The compiler ships to every visitor. Dynamic stickers appear late, after an async compile.
@@ -46,15 +46,15 @@ Facts that constrain the design:
 3. **Settle.** When the gesture ends, visible content re-rasters sharp at the new scale (vectors stay vector). A cached, scaled bitmap during the gesture is acceptable.
 4. **Parity.** Every feature in "Feature parity checklist" works as it does today.
 
-### Proposed budgets (my call, to be calibrated against the Milestone 0 baseline)
+### Proposed budgets (my call, calibrated against the Milestone 0 baseline)
 
-Measured in Chromium with mobile emulation, 4× CPU throttle and "Fast 4G", plus desktop, plus the owner's real devices:
+Measured in Chromium with mobile emulation (Pixel 7, 4× CPU throttle, "Fast 4G"), plus desktop, plus the owner's real devices. Baseline medians over 5 runs are in `docs/superpowers/baseline/report.md`. Rule: a budget is the stricter of the absolute figure and "at least 2× better than the baseline median" (below). Milestone 0 only tightened budgets; where the baseline already meets one, it is kept as written.
 
-- First render: the stickers in the initial viewport are painted by LCP ≤ 1.5 s on the mobile profile. Critical-path JS ≤ 100 KB gzip, to be validated. Zero layout shift from sticker placement. No JS is needed for first paint of non-live stickers.
-- Pan and zoom: p95 frame time ≤ 16.7 ms on the mobile profile. Main-thread time per frame during a gesture ≈ the transform write only.
-- Settle: crisp re-raster within 150 ms of gesture end, with no blank or flickering stickers.
-- Interaction: sticker hover feedback and sheet-open input delay under 100 ms.
-- Relative: at least 2× better than baseline on every one of the above, whichever is stricter.
+- First render: the stickers in the initial viewport are painted by **LCP ≤ 1.38 s** on the mobile profile (was 1.5 s; baseline 2,772 ms, so 2× is 1,386 ms). Critical-path JS **≤ 100 KB gzip** (baseline 473 KB gzip-9, 2× is 237 KB, so the absolute figure stays; validate against the real chunk graph). Zero layout shift from sticker placement (baseline CLS is already 0, kept). No JS is needed for first paint of non-live stickers (baseline: 0 stickers in the HTML, first sticker at 2,044 ms).
+- Pan and zoom: **p95 frame time ≤ 16.7 ms** on the mobile profile (baseline already meets it: 16.667 ms, one vsync, in every scenario, with 0 frames over 16.7 ms except 1 in button-zoom; kept as written; it cannot be 2× better than one vsync). Main-thread time per frame ≈ the transform write only. Because frame time is at its floor on the baseline, this is tracked as main-thread `RunTask` time per gesture, at least 2× lower than the baseline mobile medians: wheel-zoom ≤ 174 ms (baseline 348), drag-inertia ≤ 137 ms (275), pinch ≤ 150 ms (301), button-zoom ≤ 259 ms (518).
+- Settle: crisp re-raster within **150 ms** of gesture end, with no blank or flickering stickers (kept; baseline proxy is 351–541 ms on mobile, wheel-zoom 477 ms, so 2× would be 238 ms and the absolute figure is stricter). `crispAfterMs` is a proxy: last input to end of the last raster task.
+- Interaction: sticker hover feedback and sheet-open input delay **under 100 ms**, and at least 2× lower than the baseline mobile medians for the benchmarked inputs: wheel-zoom ≤ 21 ms (baseline 42), drag-inertia ≤ 17 ms (35), pinch ≤ 17 ms (35), button-zoom ≤ 48 ms (baseline 96 ms, p95 106 ms: the one gesture input delay that sits at the 100 ms line today). Hover cost per `mousemove` over a sticker (desktop at 4× CPU): ≤ 7 ms of main-thread task time (baseline 13.9 ms, 4 React commits per move). Sheet-open input delay is not part of the Milestone 0 bench, so it keeps the 100 ms budget and gets its baseline when the rewrite's bench adds it.
+- Relative: at least 2× better than baseline on every one of the above, whichever is stricter. Desktop baseline medians for the same rule: LCP 324 ms (≤ 162 ms), crisp 470–524 ms (≤ 150 ms), p95 frame 16.667 ms (kept), CLS 0 (kept). Where a 2× target falls below the harness resolution (about 2 ms of input delay), the rule is "no regression".
 
 ### Feature parity checklist
 
