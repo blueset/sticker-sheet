@@ -243,6 +243,60 @@ test("no layout shift", async ({ page }) => {
   ).toEqual([]);
 });
 
+// The parser may yield, and the browser paint, at any point while the stickers
+// stream in. The frame sampler above only hits that window by chance, so this
+// parks the parser right after the last sticker (a script that never answers
+// until released) and requires the canvas to already sit where it ends up.
+test("canvas is at its final position while the parser is parked after the stickers", async ({ page }) => {
+  const marker = '<script type="application/json" id="live-exprs"';
+  let release = () => {};
+  const released = new Promise<void>((resolve) => (release = resolve));
+
+  await page.route("**/__hold.js", async (route) => {
+    await released;
+    await route.fulfill({ contentType: "text/javascript", body: "" });
+  });
+  await page.route(
+    (url) => url.pathname === "/",
+    async (route) => {
+      const html = await (await route.fetch()).text();
+      expect(html).toContain(marker);
+      await route.fulfill({
+        contentType: "text/html; charset=utf-8",
+        body: html.replace(marker, `<script src="/__hold.js"></script>${marker}`),
+      });
+    },
+  );
+
+  const measure = () =>
+    page.evaluate(async () => {
+      await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      const rect = (selector: string) => document.querySelector(selector)!.getBoundingClientRect().toJSON();
+      return {
+        stickers: document.querySelectorAll("button.sticker").length,
+        canvas: rect("#canvas"),
+        react: rect('button.sticker[data-slug="react"]'),
+      };
+    });
+
+  const held = page.waitForRequest("**/__hold.js");
+  const navigation = page.goto("/", { waitUntil: "load" });
+  try {
+    await held;
+    const parked = await measure();
+    release();
+    await navigation;
+    const final = await measure();
+
+    expect(parked.stickers).toBe(63);
+    expect(parked.canvas).toEqual(final.canvas);
+    expect(parked.react).toEqual(final.react);
+  } finally {
+    release();
+    await navigation.catch(() => undefined);
+  }
+});
+
 test("live nodes never show a stale value", async ({ page }) => {
   await page.addInitScript(() => {
     const w = window as unknown as { __live: { slug: string; text: string; expected: string }[] };

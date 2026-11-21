@@ -150,6 +150,11 @@
   width: 3000px;
   height: 3000px;
   transform-origin: 0 0;
+  /* The default view `boot-view` computes (canvas centred in the viewport). It
+     is in the stylesheet so a frame painted while the parser is still
+     streaming stickers already has the final geometry instead of the canvas
+     origin, which `boot-view`'s inline transform would otherwise move. */
+  transform: translate(calc((100dvw - 3000px) / 2), calc((100dvh - 3000px) / 2));
 }
 
 #canvas img {
