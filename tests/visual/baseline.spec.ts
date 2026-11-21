@@ -51,9 +51,10 @@ const VIEWPORTS = {
   mobile: { width: 390, height: 844 },
 } as const;
 
-// DOM order is alphabetical-by-slug (confirmed identical between the
-// baseline and the rewrite in Task 0.2), so indices looked up from the
-// fixture are safe to reuse across TARGET=baseline and TARGET=new.
+// DOM order is alphabetical-by-slug (confirmed against ascending-slug order
+// on the baseline in Task 0.2; the rewrite must preserve this order), so
+// indices looked up from the fixture are safe to reuse across
+// TARGET=baseline and TARGET=new.
 const stickersFixture: { slug: string }[] = JSON.parse(
   fs.readFileSync(
     path.resolve(process.cwd(), "tests/fixtures/stickers.baseline.json"),
@@ -93,7 +94,13 @@ async function gotoWithPrefs(
     [theme, lang] as [Theme, Lang]
   );
   await page.goto(route);
-  await expect(page.locator(contract.stickers)).toHaveCount(63);
+  await expect(page.locator(contract.stickers)).toHaveCount(
+    stickersFixture.length
+  );
+  // html[lang] and the .dark class are not a baseline-only detail: they are
+  // the documented boot-head contract for the rewrite (plan Task 1.4, plan
+  // lines 278-287), so both TARGET=baseline and TARGET=new must satisfy
+  // this same gate.
   await expect
     .poll(() => page.evaluate(() => document.documentElement.lang))
     .toBe(lang);
@@ -188,6 +195,28 @@ async function findHoverPointNearTop(
     throw new Error("no hoverable point found near top of bounding box");
   }
   return point;
+}
+
+// Resolves the visible tooltip bubble's own bounding box, portably across
+// both builds. Two real DOM shapes exist for role="tooltip": the baseline
+// (Radix) renders it on a visually-hidden 1x1 accessible-description span
+// that is a *sibling* of the actual visible bubble inside one positioned
+// container, so the visible bubble there is the span's parent; the rewrite
+// (plan Task 1.11) instead makes a single div#tip[role="tooltip"] element
+// that IS the visible bubble itself, so its parent would be a much larger,
+// unrelated container. Distinguish them by box size: a real bubble has a
+// non-trivial width/height, while Radix's accessibility span collapses to
+// ~0 in at least one dimension.
+async function resolveTooltipBubbleBox(
+  tooltipDescription: Locator
+): Promise<{ x: number; y: number; width: number; height: number }> {
+  const ownBox = await tooltipDescription.boundingBox();
+  if (ownBox && ownBox.width > 4 && ownBox.height > 4) {
+    return ownBox;
+  }
+  const parentBox = await tooltipDescription.locator("xpath=..").boundingBox();
+  if (!parentBox) throw new Error("tooltip bubble has no bounding box");
+  return parentBox;
 }
 
 test.describe("visual baselines", () => {
@@ -285,13 +314,11 @@ test.describe("visual baselines", () => {
     const tooltipDescription = page.getByRole("tooltip");
     await expect(tooltipDescription).toBeVisible();
 
-    // Radix renders role="tooltip" on a visually-hidden accessible
-    // description span; the rendered bubble people actually see is its
-    // parent. Assert that bubble doesn't land back inside dd-mmm-yyyy's own
-    // (mask-covered) bounding box -- fail loudly here instead of silently
-    // snapshotting a tooltip hidden behind the date mask.
-    const bubbleBox = await tooltipDescription.locator("xpath=..").boundingBox();
-    if (!bubbleBox) throw new Error("tooltip bubble has no bounding box");
+    // Resolve the visible bubble portably (see resolveTooltipBubbleBox) and
+    // assert it doesn't land back inside dd-mmm-yyyy's own (mask-covered)
+    // bounding box -- fail loudly here instead of silently snapshotting a
+    // tooltip hidden behind the date mask.
+    const bubbleBox = await resolveTooltipBubbleBox(tooltipDescription);
     const overlapsStickerMask =
       bubbleBox.x < box.x + box.width &&
       bubbleBox.x + bubbleBox.width > box.x &&
