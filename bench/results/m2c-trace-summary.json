@@ -1,0 +1,10 @@
+{
+  "label": "m2c-trace-summary",
+  "note": "Controls island chunk sizes only. The first-tap trace table and the warm-up long-task observation in 003 (Task 2.3c) came from scratch traces that were deleted; they are labelled there as unreproducible scratch observations and are not recorded here.",
+  "controlsChunk": {
+    "command": "node -e \"const fs=require('fs'),z=require('zlib');for(const f of ['dist-control/_astro/Controls.MGY0xc_k.js','dist/_astro/Controls.CVFWLPJb.js']){const b=fs.readFileSync(f);console.log(f,b.length,z.gzipSync(b).length)}\"",
+    "builds": "TARGET=new npm run build; control = src of d4b1cfa (into dist-control), candidate = src of d23220b (dist). Chunk hashes match the builds benched as m2c-control and m2c-candidate.",
+    "control": { "commit": "d4b1cfa", "file": "Controls.MGY0xc_k.js", "rawBytes": 91885, "gzipBytes": 29044 },
+    "candidate": { "commit": "d23220b", "file": "Controls.CVFWLPJb.js", "rawBytes": 92978, "gzipBytes": 29424 }
+  }
+}

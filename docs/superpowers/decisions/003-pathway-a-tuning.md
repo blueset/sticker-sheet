@@ -368,6 +368,10 @@ Frames, over16 counts, heap and raster work are unchanged within spread.
 
 ### Where the first tap's time goes (control traces, chromium-mobile, 4x CPU, 2 runs)
 
+**Scratch observation.** This table and the timings below it come from an
+uncommitted scratch trace. The trace files were deleted, so these figures
+cannot be reproduced from the repo. Treat them as indicative.
+
 | tap | `focusin` handler | enclosing task | click input delay |
 |---|---|---|---|
 | first tap, zoom-in | 84 ms | 121–128 ms | 131–144 ms |
@@ -421,21 +425,36 @@ The tap still shows its tooltip, as in the baseline.
 | first-render LCP median | 848 ms | 840 ms |
 | first-render CLS | 0 | 0 |
 | critical-path JS (gzip) | 8011 B | 8011 B |
-| Controls island chunk (gzip, not critical) | 29.3 KB | 29.7 KB |
+| Controls island chunk (gzip, not critical)² | 29044 B | 29424 B |
 
 - **Input delay values (candidate):** 85, 54, 69, 55, 44, 44, 56, 55, 47 and
   47 ms. **Control:** 106–139 ms.
 - **Other gestures.** Drag, pinch and wheel input delay, frames and settle
   times are unchanged within spread.
-- **Long tasks.** The warm-up adds none. In a longtask observer the only
-  entries are during page load, in both builds.
+- **Long tasks.** Scratch observation from an uncommitted longtask-observer
+  run, not reproducible from the repo. The warm-up added no long task; the
+  only entries were during page load, in both builds. The committed
+  `longTaskCount` (median 1 in both builds) does not tell warm-up tasks apart
+  from load tasks.
+
+² `bench/results/m2c-trace-summary.json` records the chunk sizes. Rebuild
+d4b1cfa and d23220b with `TARGET=new npm run build`, then gzip each Controls
+chunk with node's `zlib.gzipSync` (the command is in that file). The chunk
+hashes match the benched builds.
 
 ### Still missing
 
-Nothing for this budget. The candidate's spread is wide (76 %). Its slowest
-run (85 ms) was not traced. In the scratch traces of the candidate's first
-tap, `focusin` takes 15–29 ms with at most 1.6 ms of compile (84 ms and 25 ms
-on the control), and click delays are 48–66 ms.
+Nothing for this budget. The candidate's spread is wide (76 %), and its
+slowest run (85 ms) was not traced.
+
+- **Scratch observation, not reproducible from the repo.** In the
+  uncommitted traces of the candidate's first tap, `focusin` took 15–29 ms
+  with at most 1.6 ms of compile (84 ms and 25 ms on the control). Click
+  delays were 48–66 ms.
+- **Limitation.** A tap in roughly the first 0.5–2.5 s after hydration,
+  before the idle warm-up has finished, gets less benefit or none. The
+  slowest candidate run (85 ms) was run 1, which also had the highest
+  `mainBusyMs` (564 ms). That cold first run may be such a case.
 
 ## What to look for on real devices
 
