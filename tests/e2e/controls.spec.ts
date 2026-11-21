@@ -176,6 +176,89 @@ test("invalid saved preferences fall back cleanly", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
+// Task 2.3c. Every tooltip popper the page mounts, as it is added: its text,
+// whether an `aria-hidden` ancestor hides it, and its computed visibility.
+type PopperMount = { text: string; ariaHidden: boolean; visibility: string };
+const recordPopperMounts = () => {
+  const w = window as unknown as { __poppers: PopperMount[] };
+  w.__poppers = [];
+  new MutationObserver((records) => {
+    for (const r of records) {
+      for (const n of r.addedNodes) {
+        if (!(n instanceof Element)) continue;
+        const found = n.matches("[data-radix-popper-content-wrapper]")
+          ? [n]
+          : [...n.querySelectorAll("[data-radix-popper-content-wrapper]")];
+        for (const el of found) {
+          w.__poppers.push({
+            text: el.textContent ?? "",
+            ariaHidden: el.closest('[aria-hidden="true"]') !== null,
+            visibility: getComputedStyle(el).visibility,
+          });
+        }
+      }
+    }
+  }).observe(document, { childList: true, subtree: true });
+};
+const popperMounts = (page: Page) =>
+  page.evaluate(() => (window as unknown as { __poppers: PopperMount[] }).__poppers);
+const poppersInDom = (page: Page) =>
+  page.evaluate(() => document.querySelectorAll("[data-radix-popper-content-wrapper]").length);
+
+test("the tooltip mount path is warmed at idle, invisibly", async ({ page, browserName }) => {
+  const errors = watchErrors(page);
+  await page.addInitScript(recordPopperMounts);
+  await page.addInitScript(() => {
+    const w = window as unknown as { __shifts: number };
+    w.__shifts = 0;
+    if (!PerformanceObserver.supportedEntryTypes.includes("layout-shift")) return;
+    new PerformanceObserver((list) => {
+      for (const e of list.getEntries()) w.__shifts += (e as unknown as { value: number }).value;
+    }).observe({ type: "layout-shift", buffered: true });
+  });
+  await loadFresh(page);
+  await hydrated(page);
+
+  // Before any input, one hidden tooltip mounts and is gone again.
+  await expect.poll(async () => (await popperMounts(page)).length, { timeout: 10_000 }).toBeGreaterThan(0);
+  await expect.poll(() => poppersInDom(page)).toBe(0);
+  for (const m of await popperMounts(page)) {
+    expect(m.ariaHidden, "the warm-up tooltip is hidden from assistive tech").toBe(true);
+    expect(m.visibility, "the warm-up tooltip is never visible").toBe("hidden");
+  }
+  await expect(page.getByRole("tooltip")).toHaveCount(0);
+  expect(await page.evaluate(() => document.activeElement === document.body)).toBe(true);
+  if (browserName === "chromium") {
+    expect(await page.evaluate(() => (window as unknown as { __shifts: number }).__shifts)).toBe(0);
+  }
+  expect(errors).toEqual([]);
+});
+
+test("a touch tap on zoom-in zooms and still shows its tooltip", async ({ page, hasTouch, browserName }) => {
+  test.skip(!hasTouch, "touch projects only");
+  test.skip(browserName === "webkit", "WebKit does not focus a button on tap, so no tooltip opens (as in the baseline)");
+  await page.addInitScript(recordPopperMounts);
+  await loadFresh(page);
+  await hydrated(page);
+  await expect.poll(() => poppersInDom(page)).toBe(0);
+  const warmups = (await popperMounts(page)).length;
+
+  const before = await scaleOf(page);
+  await page.locator(contract.controls.zoomIn).tap();
+  await expect.poll(() => scaleOf(page)).toBeGreaterThan(before);
+  await expect
+    .poll(async () => (await popperMounts(page)).slice(warmups))
+    .toContainEqual({ text: expect.stringContaining("Zoom in"), ariaHidden: false, visibility: "visible" });
+});
+
+test("keyboard focus on a zoom button still opens its tooltip", async ({ page }) => {
+  await loadFresh(page);
+  await hydrated(page);
+  await page.locator(contract.controls.zoomOut).focus();
+  await expect(page.getByRole("tooltip").filter({ hasText: "Zoom out" }).first()).toBeVisible();
+  await expect(page.locator("[data-radix-popper-content-wrapper]").filter({ hasText: "Zoom out" })).toBeVisible();
+});
+
 test("a control tooltip shows localised text", async ({ page, isMobile }) => {
   test.skip(isMobile === true, "hover tooltips need a mouse; the touch projects have none");
   await page.addInitScript(() => localStorage.setItem("language", "ja"));
