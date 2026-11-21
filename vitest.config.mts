@@ -1,7 +1,9 @@
 import { defineConfig } from "vitest/config";
 import path from "node:path";
+import { stickerMdx } from "./src/lib/mdx/vite-plugin.ts";
 
 export default defineConfig({
+  plugins: [stickerMdx()],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
