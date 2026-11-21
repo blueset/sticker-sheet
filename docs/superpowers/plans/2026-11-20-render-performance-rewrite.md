@@ -594,6 +594,28 @@ Inputs the spec implies but the feature tests would not otherwise hit, most like
 
 ---
 
+### Task 1.15: Input readiness under bandwidth contention
+
+Added by controller ruling after the Task 1.14 benchmark. On the mobile profile the page paints at about 0.8 s, but the eager viewer graph (`main` + `appState` + `preload-helper`, about 8 KB gzip, requested at about 270 ms) only finishes at about 2.3 s, because it shares Fast 4G with about 55 sticker images (2.3 MB). Pan, zoom, tooltips and clicks are dead until then, and the islands hydrate at about 2.7 s. The baseline's first sticker appears at 2.04 s and it is interactive on hydration, so the new build is not better than the baseline on time to input. That defeats the point of a fast first render.
+
+**Files:**
+- Create: `docs/superpowers/decisions/002-m1-numbers.md` gains a "Input readiness" section (append; do not rewrite earlier sections)
+- Modify: `bench/first-render.bench.ts` (+ `bench/results.ts`, `bench/summarize.ts`, `bench/metrics.ts` if needed) for the new `inputReadyMs` metric; whichever of `src/pages/index.astro`, `src/components/Sticker.astro`, `src/lib/*`, `scripts/*` the chosen fix needs; `tests/e2e/first-paint.spec.ts`
+
+**Interfaces:**
+- `inputReadyMs`: the first time the viewer can handle input, taken from the earliest signal the build already exposes (`window.__viewer` defined with its controller wired and `data-action` / pointer listeners attached; the implementer picks and documents the exact signal). Recorded per run by the first-render bench, summarised as median/p95 beside LCP, TBT and `allStickersPaintedMs`, and written to the run JSON.
+- Budget: `inputReadyMs` ≤ 1.5 s on the mobile profile (the same line as LCP). LCP stays ≤ 1.38 s, CLS stays 0.
+- Candidate levers, applied and measured one at a time (not all at once), from cheapest to riskiest: (a) `<link rel="modulepreload">` with `fetchpriority="high"` for the eager viewer graph, in the head; (b) `fetchpriority="low"` and `decoding="async"` on sticker `<img>`s that are outside the initial viewport (decide how "outside" is computed at build time, for example by distance from the canvas centre against the smallest supported viewport, and say what happens for a viewport that is larger); (c) `loading="lazy"` for far stickers (risk: pop-in while panning; only keep if a pan test and `allStickersPaintedMs` show none); (d) anything the trace shows, such as font priority. The deep-link path and the Sheet chunk keep their current priority.
+- Decision rule: a lever is adopted if mobile `inputReadyMs` improves by at least 50 % (median of 5 runs) AND LCP does not regress by more than 10 % (and stays ≤ 1.38 s) AND `allStickersPaintedMs` does not regress by more than 15 % AND desktop LCP does not regress by more than 10 % AND the visual `initial` scenes still pass at `VISUAL_MAX_DIFF=0.01`. If no lever meets the rule, record the numbers and the best partial result in 002 and say what Milestone 2 should try.
+
+- [ ] **Step 1: Failing test and metric.** Add `inputReadyMs` to the first-render bench (with a unit test for any new pure helper in `bench/metrics.ts`). Run the mobile bench (5 runs) on the current build to record the 'before' number, and confirm it is at or near the 2.3 s the Task 1.14 report describes. Add a structural e2e test in `tests/e2e/first-paint.spec.ts` for the chosen lever (for example: the built HTML has the modulepreload link with `fetchpriority="high"`, or the far stickers' `<img>` carry `fetchpriority="low"` and the near ones do not). It must fail before the fix.
+- [ ] **Step 2: Isolate the cause.** Run an A/B on the mobile profile (3 to 5 runs per arm, alternating, `BENCH_LABEL`/`BENCH_PROBE_*` style like the baseline's third-party-CSS A/B): sticker image requests fulfilled with empty bodies versus normal. Record the entry's request start, end and `inputReadyMs` per run. This confirms or refutes "images starve the entry" before any fix is written. If refuted, write down the real cause (for example HTTP/1.1 connection queueing in `serve`, or the font fetches) and choose levers accordingly.
+- [ ] **Step 3: Apply levers one at a time** per the decision rule; run the mobile and desktop first-render bench (5 runs) after each; keep the winners only. Re-run the e2e matrix (`chromium-desktop`, `chromium-mobile`, `webkit-mobile`, `firefox-desktop`) and the visual scenes at 0.01.
+- [ ] **Step 4: Record** the per-lever table, the A/B, the winner(s), and the new mobile numbers in the new section of `002-m1-numbers.md`, and update its Milestone-2 ranking (remove or demote the readiness item if it is fixed).
+- [ ] **Step 5: Commit** `perf: prioritise the viewer entry over sticker images`.
+
+---
+
 ## Milestone 2: Pathway A tuned by trace
 
 ### Task 2.1: Variant switches and settle strategies
