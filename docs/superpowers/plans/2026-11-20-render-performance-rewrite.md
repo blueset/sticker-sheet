@@ -712,6 +712,30 @@ Added after Task 2.3 (ruling R15d, R16). No variant won in 2.3, and the settle m
 - [ ] **Step 4: Measure** (`BENCH=1`, chromium-mobile gestures, 5 runs, label `m2b-<name>`; rerun at 10 runs where a margin falls between 10 % and twice the spread; `portable.bench` on webkit-mobile and firefox-desktop against a fresh 2.3-head control run in the same session). Record tables and the remaining misses in the 003 section.
 - [ ] **Step 5: Commit** `perf: settle sooner after a wheel zoom and skip the re-raster after a pan` (tests first, then bench results, then the change and the doc, as separate commits).
 
+### Task 2.3c: First-tap input delay (Controls tooltip)
+
+Added after Task 2.3b (ruling R17). 2.3b measured button-zoom input delay p95 at 140 ms over 10 runs in both the control and the candidate (budget < 100 ms; baseline 96 median / 106 p95; M1 97.5 / 119). Only the first tap is late: its click waits behind a 114 ms task whose `focusin` handler holds a 49 ms React `FunctionCall` plus 10.6 ms of layout. That is the Radix `TooltipTrigger` in `src/islands/Controls.tsx` opening its tooltip on the touch-initiated focus, mounting the portal and running floating-ui for the first time. Later taps wait 5–22 ms.
+
+**Files:**
+- Modify: only what the change needs among `src/islands/Controls.tsx`, `src/components/ui/tooltip.tsx` (and a small new helper beside them if the warm-up needs one)
+- Modify: `tests/e2e/controls.spec.ts`
+- Modify: `docs/superpowers/decisions/003-pathway-a-tuning.md` (append a "Task 2.3c" section and update "What still misses budget")
+- Create: `bench/results/m2c-*.json` (raw results, no traces)
+
+**Interfaces:**
+- **Target** (chromium-mobile, 4× CPU, Fast 4G, 10 runs): button-zoom input delay p95 < 100 ms (2.3b candidate: 140 ms).
+- **Preserve (R8, baseline wins):** the six control tooltips keep their text, placement and delay on mouse hover; a keyboard focus still opens them; the wrapper, classes, `data-action` attributes and aria-labels stay as they are (R4); `main.ts` still handles the `[data-action]` clicks; a touch tap on a zoom button still zooms.
+- **Preferred route:** keep the tooltip that a touch tap shows today, and move the first-mount cost out of the tap's task (for example warm the tooltip's portal and positioning code at idle after hydration, or load it ahead of the tap). The warm-up must be invisible (no flash, no layout shift, no focus or aria change) and must not add a long task or raise `inputReadyMs`, TBT or the critical-path JS.
+- **Fallback, only if the preferred route cannot reach p95 < 100 ms:** do not open a zoom-button tooltip on a touch-initiated focus (mouse hover and keyboard focus unchanged). That is a deliberate UI change: record it in 003 and the README parity notes.
+- **Do not change** anything under `src/viewer/`, any gesture constant, or the bench harness. If the target cannot be met, record the measured floor and the reason, keep the rest, and do not loosen a guard.
+- **Guards:** all unit and e2e tests; visual `initial` at `VISUAL_MAX_DIFF=0.01`; `first-render.bench` (5 runs, mobile) shows no metric more than 5 % worse beyond spread against the 2.3b head, with critical-path JS ≤ 100 KB gzip, LCP ≤ 1.5 s and zero layout shift still met; WebKit and Firefox e2e for `controls.spec.ts` pass.
+
+- [ ] **Step 1: Investigate, no code changes.** Trace the first tap on `[data-action="zoom-in"]` on chromium-mobile (Pixel 7, 4× CPU) and split the 49 ms `FunctionCall` and the 10.6 ms layout into first-time work (code evaluation, portal mount, floating-ui position) and work that repeats on every open. Pick the route in the 003 section with the numbers that justify it.
+- [ ] **Step 2: Tests first.** E2E on the touch projects: a tap on zoom-in still zooms; the tooltip still appears after a touch tap (preferred route) or does not (fallback); keyboard focus still opens it; mouse hover on desktop still opens it (the existing `a control tooltip shows localised text`). Run them; Expected: the new assertions describe the chosen behaviour (a fallback must FAIL on the control).
+- [ ] **Step 3: Implement the smallest change** that meets the target; rerun; Expected: PASS.
+- [ ] **Step 4: Measure** (`BENCH=1`, chromium-mobile gestures, 10 runs, labels `m2c-control` (a fresh build of the 2.3b head) and `m2c-candidate`, same session; `first-render.bench` 5 runs for both). Record the tables and any remaining miss in the 003 section.
+- [ ] **Step 5: Commit** `perf: keep the first tap off the tooltip mount path` (tests first, then bench results, then the change and the doc, as separate commits).
+
 ### Task 2.4: Parity audit and budgets
 
 **Files:**
