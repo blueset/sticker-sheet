@@ -42,3 +42,9 @@ next-env.d.ts
 # Sticker sheet
 public/stickers/fallback
 src/data/stickers.yaml
+
+# test and benchmark toolchain
+/test-results/
+/playwright-report/
+/bench/results/tmp/
+/.baseline-site/
