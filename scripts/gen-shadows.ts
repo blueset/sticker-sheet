@@ -79,9 +79,16 @@ function imageFiles(image: string): string[] {
   return [full, ...(webp !== full && fs.existsSync(webp) ? [webp] : [])];
 }
 
+// Text images may be checked out with CRLF (core.autocrlf); hash them as LF so the
+// manifest does not go stale across platforms.
+function imageBytes(file: string): Buffer {
+  const bytes = fs.readFileSync(file);
+  return /\.svg$/i.test(file) ? Buffer.from(bytes.toString("latin1").replace(/\r\n/g, "\n"), "latin1") : bytes;
+}
+
 export function spriteHash(s: StickerRecord): string {
   const meta = JSON.stringify({ v: GENERATOR_VERSION, image: s.image, clipPath: s.clipPath ?? null, w: s.width, h: s.height });
-  return hashBytes(Buffer.from(meta), ...(s.image ? imageFiles(s.image).map((f) => fs.readFileSync(f)) : []));
+  return hashBytes(Buffer.from(meta), ...(s.image ? imageFiles(s.image).map(imageBytes) : []));
 }
 
 export function boxHash(s: StickerRecord): string {
