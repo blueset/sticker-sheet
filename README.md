@@ -17,7 +17,6 @@
 ### Prerequisites
 
 - Node.js, npm
-- Deno
 
 ### Installation
 
@@ -37,17 +36,16 @@
    npm run dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+4. Open [http://localhost:4321](http://localhost:4321) in your browser to see the result.
 
 ## Adding Your Own Stickers
 
-Stickers are defined in YAML files in the `src/data/stickers` directory.
+Stickers are defined in YAML files in the `src/data/stickers` directory. They are loaded directly at build time; there is no separate compile step.
 
 To add a new sticker:
 
 1. Create a new YAML definition in `src/data/stickers/`
 1. Add your sticker image (if any) to `public/stickers/`
-1. Compile the main YAML with `deno run --allow-read --allow-write --allow-net ./utils/compileYaml.dts`
 
 Example sticker definition:
 

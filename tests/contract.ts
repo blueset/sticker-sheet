@@ -47,7 +47,14 @@ const newContract: Contract = {
   },
 };
 
-export const target: Target = (process.env.TARGET as Target) ?? "new";
+function readTarget(): Target {
+  const raw = process.env.TARGET;
+  if (raw === undefined) return "new";
+  if (raw === "baseline" || raw === "new") return raw;
+  throw new Error(`TARGET must be "baseline" or "new", got ${JSON.stringify(raw)}.`);
+}
+
+export const target: Target = readTarget();
 
 export const contract: Contract =
   target === "baseline" ? baselineContract : newContract;

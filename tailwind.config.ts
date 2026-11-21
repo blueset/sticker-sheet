@@ -4,11 +4,7 @@ import plugin from "tailwindcss/plugin";
 
 export default {
   darkMode: ["class"],
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
@@ -67,8 +63,6 @@ export default {
       addVariant("can-hover", "@media (hover: hover)");
       addVariant("no-hover", "@media (hover: none)");
       addVariant("title", "&[title]");
-      addVariant("panning", "#canvasWrapper.panning &");
-      addVariant("zooming", "#canvasWrapper.zooming &");
     }),
   ],
 } satisfies Config;
