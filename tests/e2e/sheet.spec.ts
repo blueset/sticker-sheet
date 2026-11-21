@@ -479,4 +479,98 @@ test("deep link opens the sheet without waiting for idle", async ({ page }) => {
   await expect(sheet(page)).toBeVisible();
   await expect(title(page)).toHaveText("Dark mode");
   await expect(description(page)).toContainText("Try out dark mode");
+  // The [slug] effect ran with the content mounted: unscrolled, focus inside.
+  expect(await scrollTopOf(page)).toBe(0);
+  await expect.poll(() => page.evaluate(() => Boolean(document.activeElement?.closest("#sheet")))).toBe(true);
 });
+
+test("a failed or stalled Silk stylesheet still lets the sheet open", async ({ page, browserName }) => {
+  test.skip(browserName !== "chromium", "one engine is enough for a network-failure fallback");
+  const errors = watchErrors(page, BLOCKED);
+  const silkCss = "**/_astro/main-unlayered.*.css";
+  await page.route(silkCss, (route) => route.abort());
+  await page.setViewportSize({ width: NARROW[0], height: NARROW[1] });
+  await page.goto("/#dark");
+  await hydrated(page);
+  await expect(title(page)).toHaveText("Dark mode");
+  await sheet(page).getByRole("button", { name: "Close" }).click();
+  await expect.poll(() => selected(page)).toBeNull();
+
+  // A request that never answers: the sheet opens after the timeout.
+  const stalled = await page.context().newPage();
+  const stalledErrors = watchErrors(stalled, BLOCKED);
+  let requested = false;
+  await stalled.route(silkCss, () => void (requested = true));
+  await stalled.setViewportSize({ width: NARROW[0], height: NARROW[1] });
+  await stalled.goto("/#dark");
+  await hydrated(stalled);
+  await expect.poll(() => requested).toBe(true);
+  await expect(title(stalled)).toHaveText("Dark mode", { timeout: 10_000 });
+  expect(errors).toEqual([]);
+  expect(stalledErrors).toEqual([]);
+});
+
+test("a description that failed in one language renders after switching language", async ({ page }) => {
+  // The ja body throws while rendering (the error boundary's path); en loads.
+  const errors = watchErrors(page, /description render failure/);
+  await page.route("**/_astro/*.js", async (route) => {
+    const response = await route.fetch();
+    const body = await response.text();
+    if (body.includes("ダークモードを試す"))
+      // A thrown string, so every engine's console text names it.
+      await route.fulfill({ response, body: 'export default function MDXContent() { throw "description render failure"; }' });
+    else await route.fulfill({ response, body });
+  });
+  await page.addInitScript(() => localStorage.setItem("language", "ja"));
+  await open(page, "dark", [1000, 844]);
+  await expect(title(page)).toHaveText("ダークモード");
+  await expect(description(page)).toHaveAttribute("aria-busy", "false");
+  await expect(description(page)).toHaveText("");
+  await page.getByRole("button", { name: "言語を変更" }).click();
+  await page.getByRole("menuitemradio", { name: "English" }).click();
+  await expect(title(page)).toHaveText("Dark mode");
+  await expect(description(page)).toContainText("Try out dark mode");
+  expect(errors).toEqual([]);
+  await page.unrouteAll({ behavior: "ignoreErrors" });
+});
+
+test("Back and Forward close and reopen the sheet without adding history", async ({ page, isMobile }) => {
+  await page.setViewportSize({ width: NARROW[0], height: NARROW[1] });
+  await page.goto("/");
+  await expect(page.locator(contract.stickers)).toHaveCount(63);
+  await hydrated(page);
+  await settled(page);
+  const s = await pickSticker(page);
+  if (isMobile) await page.touchscreen.tap(s.x, s.y);
+  else await page.mouse.click(s.x, s.y);
+  await expect(sheet(page)).toBeVisible();
+  await expectHeight(page, PEEK);
+  const length = await page.evaluate(() => history.length);
+
+  await page.goBack();
+  await closedFromOutside(page);
+  expect(await selected(page)).toBeNull();
+  expect(await page.evaluate(() => history.length)).toBe(length);
+
+  await page.goForward();
+  await expect(sheet(page)).toBeVisible();
+  expect(await selected(page)).toBe(s.slug);
+  expect(await hashOf(page)).toBe(`#${s.slug}`);
+  await expectHeight(page, PEEK);
+  expect(await page.evaluate(() => history.length)).toBe(length);
+
+  // Clearing the hash closes the sheet; the browser adds that one entry
+  // itself, and closing the sheet must not push another.
+  await page.evaluate(() => (location.hash = ""));
+  await closedFromOutside(page);
+  expect(await selected(page)).toBeNull();
+  expect(await page.evaluate(() => history.length)).toBe(length + 1);
+});
+
+// A close that does not come from Silk (Back, a hash change) slides the sheet
+// out at once, but Silk unmounts it only after about 4 s; history is checked
+// after that, so a late onPresentedChange(false) would have pushed by then.
+async function closedFromOutside(page: Page) {
+  await expect(sheet(page)).not.toBeInViewport();
+  await expect(sheet(page)).toHaveCount(0, { timeout: 10_000 });
+}

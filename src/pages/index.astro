@@ -49,9 +49,6 @@ const [bootHead, bootFonts, bootView] = await Promise.all([
     <script is:inline data-href={cjkFontsCss} set:html={bootFonts}></script>
     <link rel="preload" as="font" type="font/woff2" href={interLatin} crossorigin />
     <style is:inline set:html={variantCss(LANGS)}></style>
-    <script>
-      import "../viewer/deeplink.ts";
-    </script>
   </head>
   <body class="antialiased overflow-hidden h-dvh w-dvw">
     <div class="h-dvh w-dvw overflow-hidden relative">

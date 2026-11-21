@@ -24,7 +24,10 @@ import { t } from "@/lib/ui-strings";
 import { cn } from "@/lib/utils";
 
 // Silk's stylesheet loads with this chunk, never with the render-blocking page
-// CSS; the sheet is not presented before it has loaded (or failed).
+// CSS. The sheet waits for it so it never flashes unstyled, but a failed or
+// stalled stylesheet must not keep it closed: after an error or
+// SILK_CSS_TIMEOUT_MS it opens anyway (unstyled, still closable).
+const SILK_CSS_TIMEOUT_MS = 3000;
 const silkStyles =
   typeof document === "undefined"
     ? Promise.resolve()
@@ -33,6 +36,7 @@ const silkStyles =
         link.rel = "stylesheet";
         link.href = silkCss;
         link.onload = link.onerror = () => resolve();
+        setTimeout(resolve, SILK_CSS_TIMEOUT_MS);
         document.head.append(link);
       });
 
@@ -223,21 +227,23 @@ export default function Sheet() {
                           {sticker.image && <img src={sticker.image} alt={title} className="w-full h-full object-contain" />}
                           {sticker.hasContent && (
                             <div style={{ height: sticker.height, width: sticker.width }}>
-                              <Contained fallback={null}>
-                                <Suspense fallback={null}>
-                                  <Mdx kind="content" slug={slug} lang={lang} />
-                                </Suspense>
-                              </Contained>
+                              <Suspense key={slug} fallback={null}>
+                                <Contained key={`${slug}:${bodyLang}`} fallback={null}>
+                                  <Mdx kind="content" slug={slug} lang={bodyLang} />
+                                </Contained>
+                              </Suspense>
                             </div>
                           )}
                         </div>
-                        <Contained key={slug} fallback={<div id="sheet-description" aria-busy="false" />}>
-                          <Suspense fallback={<div id="sheet-description" aria-busy="true" />}>
+                        {/* Suspense keyed by sticker only: a deferred language
+                            switch keeps the old body until the new one is ready. */}
+                        <Suspense key={slug} fallback={<div id="sheet-description" aria-busy="true" />}>
+                          <Contained key={`${slug}:${bodyLang}`} fallback={<div id="sheet-description" aria-busy="false" />}>
                             <div id="sheet-description" aria-busy="false" className="max-w-none select-text">
                               <Mdx kind="description" slug={slug} lang={bodyLang} />
                             </div>
-                          </Suspense>
-                        </Contained>
+                          </Contained>
+                        </Suspense>
                       </div>
                     )}
                   </main>

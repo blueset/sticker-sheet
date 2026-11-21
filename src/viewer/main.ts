@@ -4,6 +4,9 @@
 import { appStore } from "../lib/appState";
 import { applyTheme } from "../lib/theme";
 import { createController } from "./controller";
+// Runs before the controller is created: a `#slug` deep link starts the Sheet
+// and description chunks now, not at idle.
+import "./deeplink";
 import { initInteractions } from "./interactions";
 import { prefetchVisible, whenIdle } from "./prefetch";
 
