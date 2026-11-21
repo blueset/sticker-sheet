@@ -271,6 +271,75 @@ animation tails and by the wheel settle timer, not by raster. These are timing
 constants, which Task 2.3 does not change; Task 2.3b should tune them and
 re-evaluate settle-retoggle for the drag tail.
 
+## Task 2.3b: settle timing
+
+The crisp budget is measured from the end of motion (`crispAfterMotionMs`,
+R16). The feel constants stay unchanged (R16c): inertia, `ALIGN_MS`,
+`CENTER_MS`, the button animation and `WHEEL_STOP_MS`.
+
+### Where the milliseconds went (control traces, chromium-mobile, 4x CPU)
+
+- **Wheel zoom.** The last wheel event was dispatched at about 960 ms, and the
+  `WHEEL_STOP_MS` timer fired at 1061 ms. That timer then installed the
+  `SETTLE_MS` timer, which fired at 1169 ms, and `data-gesture` was removed.
+  The re-raster ran at 1182–1189 ms. No align ran. The two 100 ms timers were
+  stacked, although the burst had already been idle for 100 ms.
+- **Drag inertia.** The glide ended at 1407 ms, settle followed at 1494 ms,
+  and an 18 ms re-raster ran at 1515 ms at the same scale. A pan cannot blur
+  the layer, so that re-raster, and the wait for it, were not needed.
+- **Button zoom input delay.** Only the first tap is late (click 121 ms). It
+  waits behind a 114 ms task whose `focusin` handler spends 49 ms in React,
+  mounting the Radix tooltip that opens on focus, plus 11 ms of layout. Later
+  taps wait 5–22 ms. This is UI work outside the viewer controller.
+
+### What changed (`src/viewer/controller.ts`)
+
+- **Settle at the wheel stop.** When a wheel burst stops with no pointer down,
+  settle runs at once. If an align tween follows, settle runs on its last
+  frame. The `SETTLE_MS` wait is skipped because the burst has already been
+  idle for `WHEEL_STOP_MS`. Any new input cancels this as before.
+- **Retoggle on scale change (R16b).** The controller remembers the scale the
+  layer was last rastered at. At settle it clears the inline `will-change` only
+  if the scale moved. After a pan it sets `will-change: transform` inline, so
+  the layer stays promoted at rest and the sharp raster is kept.
+- **Constants.**
+  - `SETTLE_MS` stays at 100. The pinch, drag and button paths still wait for
+    it, so the raster does not land just before the next tap.
+  - `WHEEL_STOP_MS`, `ALIGN_MS`, `CENTER_MS` and the inertia constants are
+    untouched.
+
+### Results (5-run medians, same session; spread in brackets)
+
+| gesture (chromium-mobile) | metric | control | candidate |
+|---|---|---|---|
+| wheel-zoom | crispAfterMotionMs | 215 (9 %) | **118** (7 %) |
+| wheel-zoom | crispAfterMs | 261 | 161 |
+| drag-inertia | crispAfterMs | 920 (3 %) | **83** (no settle raster) |
+| pinch | crispAfterMotionMs | 136 (16 %) | 133 (13 %) |
+| button-zoom | crispAfterMotionMs (10 runs) | 120 (21 %) | 119 (18 %) |
+| button-zoom | input delay (10 runs) | 115 (59 %) | 97 (61 %) |
+
+Frames, over16 counts, heap and raster work are unchanged within spread.
+
+- **Portable bench.** Wheel-zoom `settleMs` fell from 231 to 122 ms on
+  WebKit and from 204 to 111 ms on Firefox. Drag-release is unchanged within
+  spread on both engines (WebKit 1320 → 1354 ms, spread 16 %; Firefox over16
+  25 → 27, spread 20 %).
+- **Input delay.** The two input-delay distributions overlap (p95 140 ms in
+  both builds), and the tap path is untouched, so the gap between them is
+  noise.
+
+### Still missing
+
+- **Button-zoom input delay** misses the < 100 ms budget. The floor is the
+  first tap's focus tooltip mount, about 60 ms of main-thread work under 4x
+  CPU. A fix needs a UI ruling, because it changes baseline behaviour. The
+  options are not opening the tooltip on a touch focus, or pre-mounting it at
+  idle.
+- **`crispAfterMs` of animated gestures** (button 456 ms) is dominated by the
+  tween tail, which is part of the gesture (R16). Measured from the end of
+  motion, every gesture now meets the 150 ms budget.
+
 ## What to look for on real devices
 
 - **iOS Safari.**
@@ -281,5 +350,7 @@ re-evaluate settle-retoggle for the drag tail.
   portable probe (drag p95 about 49 ms). Pre-baked shadows (S1) cut that by
   about 66 %, so real-device Firefox jank under pans is the signal that would
   justify revisiting shadows.
-- **Android Chrome, mid-tier.** Check the about-1 s blur-to-crisp delay after a
-  flick (the drag-inertia miss). It is the most user-visible remaining issue.
+- **Android Chrome, mid-tier.** Check that the layer stays sharp after a flick.
+  Since Task 2.3b a pan no longer re-rasters at settle, which removed the
+  about-1 s blur-to-crisp delay. Also check the GPU memory of the layer that
+  now stays promoted.

@@ -161,7 +161,9 @@
 }
 
 /* The viewer sets `data-gesture` while a pan or zoom is running and removes
-   it 100 ms after the transform settles, so the canvas re-rasters at rest. */
+   it at settle. It then clears the layer's inline `will-change` when the
+   scale changed, so the canvas re-rasters at rest, and sets it inline after a
+   pan, whose raster is still sharp. */
 #canvasWrapper[data-gesture] #canvas {
   will-change: transform;
 }

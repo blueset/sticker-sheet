@@ -25,7 +25,7 @@ export interface Controller {
   center(): void;
   onGestureStart(fn: () => void): () => void;
   onChange(fn: (t: Transform) => void): () => void; // at most once per animation frame
-  onSettle(fn: (t: Transform) => void): () => void; // gesture and inertia idle for 100 ms
+  onSettle(fn: (t: Transform) => void): () => void; // gesture and inertia idle for 100 ms (at once after a wheel burst's stop and align)
   resize(): void; // recompute bounds
   dispose(): void;
 }
@@ -203,6 +203,13 @@ export function createController(
   let active = false;
   let userActive = false;
   let settleTimer = 0;
+  // A wheel burst already waited WHEEL_STOP_MS without input: settle as soon
+  // as its align (if any) is done, without a second SETTLE_MS wait.
+  let settleNow = false;
+  // The scale the layer was last rastered at while unpromoted. The promotion
+  // (`will-change`) is dropped at settle only when the scale moved from it;
+  // after a pan the layer stays promoted, as its raster is still sharp.
+  let rasterScale = t.scale;
 
   const local = (e: { clientX: number; clientY: number }): Point => ({
     x: e.clientX - origin.x,
@@ -280,6 +287,7 @@ export function createController(
       clearTimeout(settleTimer);
       settleTimer = 0;
     }
+    settleNow = false;
     active = true;
     if (gesture !== kind) {
       gesture = kind;
@@ -294,15 +302,23 @@ export function createController(
   // Starts the settle countdown once nothing is moving or held.
   function idle(): void {
     if (!active || settleTimer || raf || tween || glide || pinch || safari || wheelTimer || pointers.size) return;
-    settleTimer = window.setTimeout(settle, SETTLE_MS);
+    if (settleNow) settle();
+    else settleTimer = window.setTimeout(settle, SETTLE_MS);
   }
 
   function settle(): void {
     settleTimer = 0;
+    settleNow = false;
     active = false;
     userActive = false;
     gesture = null;
     root.removeAttribute("data-gesture");
+    if (t.scale === rasterScale) {
+      layer.style.willChange = "transform";
+    } else {
+      layer.style.willChange = "";
+      rasterScale = t.scale;
+    }
     emit(settleFns, { x: t.x, y: t.y, scale: t.scale });
   }
 
@@ -453,6 +469,7 @@ export function createController(
     wheelTimer = 0;
     // A drag or pinch in progress aligns when it ends.
     if (!drag && !pinch) align(wheelAt, "zoom");
+    if (!pointers.size && !safari) settleNow = true;
     idle();
   }
 
@@ -753,9 +770,10 @@ export function createController(
       for (const timer of [wheelTimer, doubleClickTimer, swallowTimer, settleTimer]) clearTimeout(timer);
       wheelTimer = doubleClickTimer = swallowTimer = settleTimer = 0;
       swallow = false;
-      active = userActive = false;
+      active = userActive = settleNow = false;
       gesture = null;
       root.removeAttribute("data-gesture");
+      layer.style.willChange = "";
       startFns.clear();
       changeFns.clear();
       settleFns.clear();

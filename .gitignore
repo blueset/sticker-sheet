@@ -16,6 +16,7 @@
 # astro
 /dist/
 /dist-variants/
+/dist-control/
 .astro/
 
 # production
