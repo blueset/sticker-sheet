@@ -200,4 +200,17 @@ describe("initFromHash", () => {
     expect(() => initFromHash(known)).not.toThrow();
     expect(appStore.getState().selectedSlug).toBeNull();
   });
+
+  it("does not notify subscribers when the selection is unchanged", async () => {
+    const { appStore, initFromHash } = await load();
+    history.replaceState(null, "", "/#dark");
+    initFromHash(known);
+    const listener = vi.fn();
+    appStore.subscribe(listener);
+    initFromHash(known);
+    expect(listener).not.toHaveBeenCalled();
+    history.replaceState(null, "", "/#css");
+    initFromHash(known);
+    expect(listener).toHaveBeenCalledTimes(1);
+  });
 });

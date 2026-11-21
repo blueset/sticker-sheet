@@ -75,5 +75,8 @@ export function select(slug: string | null, opts?: { push?: boolean }): void {
 
 export function initFromHash(knownSlugs: ReadonlySet<string>): void {
   const slug = hashSlug();
-  appStore.setState({ selectedSlug: slug !== null && knownSlugs.has(slug) ? slug : null });
+  const selectedSlug = slug !== null && knownSlugs.has(slug) ? slug : null;
+  // Back/forward fires popstate and hashchange for one navigation; the second
+  // call must not notify subscribers again.
+  if (appStore.getState().selectedSlug !== selectedSlug) appStore.setState({ selectedSlug });
 }

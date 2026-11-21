@@ -388,12 +388,14 @@ test("drag of 40px starting on a sticker does not open the sheet; a 3px tap does
     .toBe(true);
 
   // The swallow is one-shot: the next real tap on the same sticker (now under
-  // the pointer) clicks straight away.
-  await page.mouse.click(target.x + 40, target.y);
-  expect(await clicks(), "a tap right after the drag").toBe(1);
-
+  // the pointer) clicks straight away. Selection re-centres the view, so the
+  // pan is checked first.
   await settled(page);
   expectTransform(await readTransform(page), want, "a drag on a sticker pans like one on the canvas");
+
+  await page.mouse.click(target.x + 40, target.y);
+  expect(await clicks(), "a tap right after the drag").toBe(1);
+  await settled(page);
 
   const again = await pickSticker(page);
   const tapClicks = await countClicks(page, again.slug);
@@ -670,8 +672,18 @@ test("dispose() removes the listeners and the resize observer", async ({ page })
   expect(disposed).toEqual({ prevented: false, exposed: false, gesture: false });
 
   const { w, h } = await viewportOf(page);
-  await holdDrag(page, { x: Math.round(w / 2), y: Math.round(h / 3) }, { x: -80, y: -40 });
-  await page.mouse.dblclick(Math.round(w / 2), Math.round(h / 3));
+  // Selection (src/viewer/interactions.ts) is not part of the viewer, so keep
+  // the pointer off the stickers: a click on one re-centres the view.
+  const free = await page.evaluate(() => {
+    const clear = (x: number, y: number) => !document.elementFromPoint(x, y)?.closest("button, #controls");
+    for (let y = 160; y < innerHeight - 100; y += 20) {
+      for (let x = 200; x < innerWidth - 100; x += 20) if (clear(x, y) && clear(x - 80, y - 40)) return { x, y };
+    }
+    return null;
+  });
+  expect(free, "a pointer spot clear of stickers").not.toBeNull();
+  await holdDrag(page, free!, { x: -80, y: -40 });
+  await page.mouse.dblclick(free!.x, free!.y);
   // A live observer would centre the canvas (narrower than 3200 px) here.
   await page.setViewportSize({ width: 3200, height: h });
   await sleep(300);
