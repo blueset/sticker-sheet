@@ -1,0 +1,9 @@
+{
+  "wideLeftPanelWidthPx": 320,
+  "peekHeightPx": 231,
+  "expandedHeightPx": 796,
+  "handleTogglesStops": true,
+  "scrollsAtPeek": false,
+  "scrollsAtExpanded": true,
+  "dragDismisses": true
+}
