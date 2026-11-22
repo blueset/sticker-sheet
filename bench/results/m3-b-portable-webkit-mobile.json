@@ -1,0 +1,1921 @@
+{
+  "label": "m3-b",
+  "project": "webkit-mobile",
+  "meta": {
+    "label": "m3-b",
+    "project": "webkit-mobile",
+    "browserName": "webkit",
+    "browser": "27.2",
+    "runs": 5,
+    "query": "",
+    "recordedAt": "2026-11-22T02:33:02.114Z"
+  },
+  "gestures": {
+    "drag-release": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 18,
+        "p95": 19,
+        "min": 16,
+        "max": 19,
+        "spreadPct": 16.667,
+        "values": [
+          19,
+          16,
+          17,
+          18,
+          18
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 18,
+        "p95": 19,
+        "min": 16,
+        "max": 19,
+        "spreadPct": 16.667,
+        "values": [
+          19,
+          16,
+          17,
+          18,
+          18
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 144,
+        "p95": 165,
+        "min": 127,
+        "max": 165,
+        "spreadPct": 26.389,
+        "values": [
+          127,
+          165,
+          144,
+          144,
+          140
+        ]
+      },
+      "settleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 913,
+        "p95": 945,
+        "min": 884,
+        "max": 945,
+        "spreadPct": 6.681,
+        "values": [
+          884,
+          945,
+          913,
+          895,
+          913
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1647,
+        "p95": 1668,
+        "min": 1635,
+        "max": 1668,
+        "spreadPct": 2.004,
+        "values": [
+          1647,
+          1665,
+          1646,
+          1635,
+          1668
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1,
+        "p95": 1,
+        "min": 1,
+        "max": 1,
+        "spreadPct": 0,
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "maxMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 351.79,
+        "p95": 352.285,
+        "min": 351.529,
+        "max": 352.285,
+        "spreadPct": 0.215,
+        "values": [
+          351.705,
+          352.271,
+          351.529,
+          351.79,
+          352.285
+        ]
+      },
+      "proto": {
+        "dpr": {
+          "n": 5,
+          "nulls": 0,
+          "median": 2,
+          "p95": 2,
+          "min": 2,
+          "max": 2,
+          "spreadPct": 0,
+          "values": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        "gestures": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 1,
+          "min": 1,
+          "max": 1,
+          "spreadPct": 0,
+          "values": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "frames": {
+          "n": 5,
+          "nulls": 0,
+          "median": 20,
+          "p95": 20,
+          "min": 17,
+          "max": 20,
+          "spreadPct": 15,
+          "values": [
+            20,
+            17,
+            18,
+            20,
+            20
+          ]
+        },
+        "exactDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "lodDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 449,
+          "p95": 453,
+          "min": 384,
+          "max": 453,
+          "spreadPct": 15.367,
+          "values": [
+            453,
+            384,
+            406,
+            449,
+            450
+          ]
+        },
+        "fallbackDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 3,
+          "min": 1,
+          "max": 3,
+          "spreadPct": 200,
+          "values": [
+            1,
+            1,
+            3,
+            1,
+            3
+          ]
+        },
+        "fallbackGestures": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 1,
+          "min": 1,
+          "max": 1,
+          "spreadPct": 0,
+          "values": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "rasterDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 38,
+          "p95": 38,
+          "min": 32,
+          "max": 38,
+          "spreadPct": 15.789,
+          "values": [
+            38,
+            32,
+            34,
+            38,
+            38
+          ]
+        },
+        "heldDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "maxDrawMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 2,
+          "min": 1,
+          "max": 2,
+          "spreadPct": 100,
+          "values": [
+            1,
+            2,
+            1,
+            1,
+            1
+          ]
+        },
+        "settles": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 1,
+          "min": 1,
+          "max": 1,
+          "spreadPct": 0,
+          "values": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "settleSinceMotionMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 124,
+          "p95": 127,
+          "min": 107,
+          "max": 127,
+          "spreadPct": 16.129,
+          "values": [
+            127,
+            124,
+            120,
+            126,
+            107
+          ]
+        },
+        "settlePaintMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 15,
+          "p95": 16,
+          "min": 1,
+          "max": 16,
+          "spreadPct": 100,
+          "values": [
+            15,
+            15,
+            16,
+            16,
+            1
+          ]
+        },
+        "settleReadyMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "settleRenderMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "settleJobs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "settleExactDrawn": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "settleLodDrawn": {
+          "n": 5,
+          "nulls": 0,
+          "median": 23,
+          "p95": 23,
+          "min": 23,
+          "max": 23,
+          "spreadPct": 0,
+          "values": [
+            23,
+            23,
+            23,
+            23,
+            23
+          ]
+        },
+        "settleFallbackDrawn": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "lodRenders": {
+          "n": 5,
+          "nulls": 0,
+          "median": 20,
+          "p95": 21,
+          "min": 19,
+          "max": 21,
+          "spreadPct": 10,
+          "values": [
+            21,
+            19,
+            21,
+            20,
+            20
+          ]
+        },
+        "lodRenderMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 7,
+          "p95": 11,
+          "min": 6,
+          "max": 11,
+          "spreadPct": 71.429,
+          "values": [
+            6,
+            11,
+            7,
+            7,
+            6
+          ]
+        },
+        "evictions": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "staleStores": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "hits": {
+          "n": 5,
+          "nulls": 0,
+          "median": 673,
+          "p95": 720,
+          "min": 629,
+          "max": 720,
+          "spreadPct": 13.522,
+          "values": [
+            720,
+            629,
+            652,
+            693,
+            673
+          ]
+        },
+        "misses": {
+          "n": 5,
+          "nulls": 0,
+          "median": 10,
+          "p95": 10,
+          "min": 9,
+          "max": 10,
+          "spreadPct": 10,
+          "values": [
+            10,
+            9,
+            10,
+            10,
+            10
+          ]
+        },
+        "skippedExact": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "lodMaxRenderMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 2,
+          "p95": 3,
+          "min": 1,
+          "max": 3,
+          "spreadPct": 100,
+          "values": [
+            3,
+            2,
+            1,
+            2,
+            1
+          ]
+        },
+        "lodBytes": {
+          "n": 5,
+          "nulls": 0,
+          "median": 10123664,
+          "p95": 10299488,
+          "min": 9844976,
+          "max": 10299488,
+          "spreadPct": 4.49,
+          "values": [
+            10299488,
+            10163664,
+            9844976,
+            10123664,
+            10029164
+          ]
+        },
+        "lodPeakBytes": {
+          "n": 5,
+          "nulls": 0,
+          "median": 10123664,
+          "p95": 10299488,
+          "min": 9844976,
+          "max": 10299488,
+          "spreadPct": 4.49,
+          "values": [
+            10299488,
+            10163664,
+            9844976,
+            10123664,
+            10029164
+          ]
+        },
+        "canvasBytes": {
+          "n": 5,
+          "nulls": 0,
+          "median": 19577120,
+          "p95": 19752944,
+          "min": 19298432,
+          "max": 19752944,
+          "spreadPct": 2.322,
+          "values": [
+            19752944,
+            19617120,
+            19298432,
+            19577120,
+            19482620
+          ]
+        },
+        "canvasPeakBytes": {
+          "n": 5,
+          "nulls": 0,
+          "median": 19577120,
+          "p95": 19752944,
+          "min": 19298432,
+          "max": 19752944,
+          "spreadPct": 2.322,
+          "values": [
+            19752944,
+            19617120,
+            19298432,
+            19577120,
+            19482620
+          ]
+        },
+        "prefetchQueued": {
+          "n": 5,
+          "nulls": 0,
+          "median": 25,
+          "p95": 25,
+          "min": 25,
+          "max": 25,
+          "spreadPct": 0,
+          "values": [
+            25,
+            25,
+            25,
+            25,
+            25
+          ]
+        },
+        "prefetchRendered": {
+          "n": 5,
+          "nulls": 0,
+          "median": 9,
+          "p95": 10,
+          "min": 8,
+          "max": 10,
+          "spreadPct": 22.222,
+          "values": [
+            10,
+            8,
+            10,
+            9,
+            9
+          ]
+        },
+        "prefetchMaxJobMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 1,
+          "min": 1,
+          "max": 1,
+          "spreadPct": 0,
+          "values": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "prefetchFinished": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "errors": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "wheel-zoom": {
+      "frames": {
+        "n": 5,
+        "nulls": 0,
+        "median": 12,
+        "p95": 13,
+        "min": 11,
+        "max": 13,
+        "spreadPct": 16.667,
+        "values": [
+          11,
+          13,
+          12,
+          11,
+          12
+        ]
+      },
+      "over16": {
+        "n": 5,
+        "nulls": 0,
+        "median": 12,
+        "p95": 13,
+        "min": 11,
+        "max": 13,
+        "spreadPct": 16.667,
+        "values": [
+          11,
+          13,
+          12,
+          11,
+          12
+        ]
+      },
+      "p95FrameMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 140,
+        "p95": 152,
+        "min": 114,
+        "max": 152,
+        "spreadPct": 27.143,
+        "values": [
+          114,
+          117,
+          140,
+          143,
+          152
+        ]
+      },
+      "settleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 135,
+        "p95": 157,
+        "min": 111,
+        "max": 157,
+        "spreadPct": 34.074,
+        "values": [
+          157,
+          111,
+          135,
+          136,
+          133
+        ]
+      },
+      "motionMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 1109,
+        "p95": 1150,
+        "min": 1018,
+        "max": 1150,
+        "spreadPct": 11.903,
+        "values": [
+          1116,
+          1150,
+          1109,
+          1018,
+          1072
+        ]
+      },
+      "scaleChange": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3.4,
+        "p95": 3.4,
+        "min": 3.4,
+        "max": 3.4,
+        "spreadPct": 0,
+        "values": [
+          3.4,
+          3.4,
+          3.4,
+          3.4,
+          3.4
+        ]
+      },
+      "maxMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 5091.169,
+        "p95": 5091.169,
+        "min": 5091.169,
+        "max": 5091.169,
+        "spreadPct": 0,
+        "values": [
+          5091.169,
+          5091.169,
+          5091.169,
+          5091.169,
+          5091.169
+        ]
+      },
+      "proto": {
+        "dpr": {
+          "n": 5,
+          "nulls": 0,
+          "median": 2,
+          "p95": 2,
+          "min": 2,
+          "max": 2,
+          "spreadPct": 0,
+          "values": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        "gestures": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 1,
+          "min": 1,
+          "max": 1,
+          "spreadPct": 0,
+          "values": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "frames": {
+          "n": 5,
+          "nulls": 0,
+          "median": 12,
+          "p95": 13,
+          "min": 11,
+          "max": 13,
+          "spreadPct": 16.667,
+          "values": [
+            11,
+            13,
+            13,
+            11,
+            12
+          ]
+        },
+        "exactDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "lodDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 106,
+          "p95": 112,
+          "min": 88,
+          "max": 112,
+          "spreadPct": 22.642,
+          "values": [
+            88,
+            107,
+            112,
+            96,
+            106
+          ]
+        },
+        "fallbackDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "fallbackGestures": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "rasterDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 13,
+          "p95": 14,
+          "min": 12,
+          "max": 14,
+          "spreadPct": 15.385,
+          "values": [
+            12,
+            13,
+            14,
+            12,
+            13
+          ]
+        },
+        "heldDraws": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "maxDrawMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 3,
+          "min": 1,
+          "max": 3,
+          "spreadPct": 200,
+          "values": [
+            1,
+            1,
+            3,
+            1,
+            3
+          ]
+        },
+        "settles": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 1,
+          "min": 1,
+          "max": 1,
+          "spreadPct": 0,
+          "values": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "settleSinceMotionMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 115,
+          "p95": 130,
+          "min": 87,
+          "max": 130,
+          "spreadPct": 37.391,
+          "values": [
+            95,
+            115,
+            87,
+            130,
+            126
+          ]
+        },
+        "settlePaintMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 26,
+          "p95": 48,
+          "min": 24,
+          "max": 48,
+          "spreadPct": 92.308,
+          "values": [
+            48,
+            31,
+            25,
+            26,
+            24
+          ]
+        },
+        "settleReadyMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 25,
+          "p95": 48,
+          "min": 24,
+          "max": 48,
+          "spreadPct": 96,
+          "values": [
+            48,
+            30,
+            24,
+            25,
+            24
+          ]
+        },
+        "settleRenderMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 2,
+          "min": 0,
+          "max": 2,
+          "spreadPct": 200,
+          "values": [
+            2,
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        "settleJobs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 2,
+          "p95": 2,
+          "min": 2,
+          "max": 2,
+          "spreadPct": 0,
+          "values": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        "settleExactDrawn": {
+          "n": 5,
+          "nulls": 0,
+          "median": 2,
+          "p95": 2,
+          "min": 2,
+          "max": 2,
+          "spreadPct": 0,
+          "values": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        "settleLodDrawn": {
+          "n": 5,
+          "nulls": 0,
+          "median": 2,
+          "p95": 2,
+          "min": 2,
+          "max": 2,
+          "spreadPct": 0,
+          "values": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ]
+        },
+        "settleFallbackDrawn": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "lodRenders": {
+          "n": 5,
+          "nulls": 0,
+          "median": 39,
+          "p95": 40,
+          "min": 37,
+          "max": 40,
+          "spreadPct": 7.692,
+          "values": [
+            40,
+            37,
+            40,
+            39,
+            38
+          ]
+        },
+        "lodRenderMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 13,
+          "p95": 16,
+          "min": 8,
+          "max": 16,
+          "spreadPct": 61.538,
+          "values": [
+            13,
+            16,
+            13,
+            13,
+            8
+          ]
+        },
+        "evictions": {
+          "n": 5,
+          "nulls": 0,
+          "median": 21,
+          "p95": 21,
+          "min": 20,
+          "max": 21,
+          "spreadPct": 4.762,
+          "values": [
+            21,
+            20,
+            21,
+            21,
+            21
+          ]
+        },
+        "staleStores": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "hits": {
+          "n": 5,
+          "nulls": 0,
+          "median": 115,
+          "p95": 130,
+          "min": 94,
+          "max": 130,
+          "spreadPct": 31.304,
+          "values": [
+            116,
+            97,
+            130,
+            115,
+            94
+          ]
+        },
+        "misses": {
+          "n": 5,
+          "nulls": 0,
+          "median": 50,
+          "p95": 53,
+          "min": 40,
+          "max": 53,
+          "spreadPct": 26,
+          "values": [
+            40,
+            53,
+            50,
+            47,
+            53
+          ]
+        },
+        "skippedExact": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "lodMaxRenderMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 2,
+          "p95": 4,
+          "min": 1,
+          "max": 4,
+          "spreadPct": 150,
+          "values": [
+            4,
+            2,
+            3,
+            1,
+            1
+          ]
+        },
+        "lodBytes": {
+          "n": 5,
+          "nulls": 0,
+          "median": 39165056,
+          "p95": 39316056,
+          "min": 38784132,
+          "max": 39316056,
+          "spreadPct": 1.358,
+          "values": [
+            39298632,
+            38784132,
+            39316056,
+            39025632,
+            39165056
+          ]
+        },
+        "lodPeakBytes": {
+          "n": 5,
+          "nulls": 0,
+          "median": 61314316,
+          "p95": 61331740,
+          "min": 60387616,
+          "max": 61331740,
+          "spreadPct": 1.54,
+          "values": [
+            61314316,
+            60387616,
+            61331740,
+            61152316,
+            61331740
+          ]
+        },
+        "canvasBytes": {
+          "n": 5,
+          "nulls": 0,
+          "median": 48618512,
+          "p95": 48769512,
+          "min": 48237588,
+          "max": 48769512,
+          "spreadPct": 1.094,
+          "values": [
+            48752088,
+            48237588,
+            48769512,
+            48479088,
+            48618512
+          ]
+        },
+        "canvasPeakBytes": {
+          "n": 5,
+          "nulls": 0,
+          "median": 70767772,
+          "p95": 70785196,
+          "min": 69841072,
+          "max": 70785196,
+          "spreadPct": 1.334,
+          "values": [
+            70767772,
+            69841072,
+            70785196,
+            70605772,
+            70785196
+          ]
+        },
+        "prefetchQueued": {
+          "n": 5,
+          "nulls": 0,
+          "median": 46,
+          "p95": 46,
+          "min": 46,
+          "max": 46,
+          "spreadPct": 0,
+          "values": [
+            46,
+            46,
+            46,
+            46,
+            46
+          ]
+        },
+        "prefetchRendered": {
+          "n": 5,
+          "nulls": 0,
+          "median": 9,
+          "p95": 10,
+          "min": 8,
+          "max": 10,
+          "spreadPct": 22.222,
+          "values": [
+            10,
+            8,
+            10,
+            9,
+            8
+          ]
+        },
+        "prefetchMaxJobMs": {
+          "n": 5,
+          "nulls": 0,
+          "median": 1,
+          "p95": 1,
+          "min": 0,
+          "max": 1,
+          "spreadPct": 100,
+          "values": [
+            1,
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        "prefetchFinished": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "errors": {
+          "n": 5,
+          "nulls": 0,
+          "median": 0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "spreadPct": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  },
+  "raw": [
+    {
+      "name": "drag-release",
+      "input": "real",
+      "frames": 19,
+      "over16": 19,
+      "p95FrameMs": 127,
+      "settleMs": 884,
+      "motionMs": 1647,
+      "scaleChange": 1,
+      "maxMove": 351.70508760611466,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 20,
+        "exactDraws": 0,
+        "lodDraws": 453,
+        "fallbackDraws": 1,
+        "fallbackGestures": 1,
+        "rasterDraws": 38,
+        "heldDraws": 0,
+        "maxDrawMs": 1,
+        "settles": 1,
+        "settleSinceMotionMs": 127,
+        "settlePaintMs": 15,
+        "settleReadyMs": 0,
+        "settleRenderMs": 0,
+        "settleJobs": 0,
+        "settleExactDrawn": 0,
+        "settleLodDrawn": 23,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 21,
+        "lodRenderMs": 6,
+        "evictions": 0,
+        "staleStores": 0,
+        "hits": 720,
+        "misses": 10,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 3,
+        "lodBytes": 10299488,
+        "lodPeakBytes": 10299488,
+        "canvasBytes": 19752944,
+        "canvasPeakBytes": 19752944,
+        "prefetchQueued": 25,
+        "prefetchRendered": 10,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "drag-release",
+      "input": "real",
+      "frames": 16,
+      "over16": 16,
+      "p95FrameMs": 165,
+      "settleMs": 945,
+      "motionMs": 1665,
+      "scaleChange": 1,
+      "maxMove": 352.27103011195874,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 17,
+        "exactDraws": 0,
+        "lodDraws": 384,
+        "fallbackDraws": 1,
+        "fallbackGestures": 1,
+        "rasterDraws": 32,
+        "heldDraws": 0,
+        "maxDrawMs": 2,
+        "settles": 1,
+        "settleSinceMotionMs": 124,
+        "settlePaintMs": 15,
+        "settleReadyMs": 0,
+        "settleRenderMs": 0,
+        "settleJobs": 0,
+        "settleExactDrawn": 0,
+        "settleLodDrawn": 23,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 19,
+        "lodRenderMs": 11,
+        "evictions": 0,
+        "staleStores": 0,
+        "hits": 629,
+        "misses": 9,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 2,
+        "lodBytes": 10163664,
+        "lodPeakBytes": 10163664,
+        "canvasBytes": 19617120,
+        "canvasPeakBytes": 19617120,
+        "prefetchQueued": 25,
+        "prefetchRendered": 8,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "drag-release",
+      "input": "real",
+      "frames": 17,
+      "over16": 17,
+      "p95FrameMs": 144,
+      "settleMs": 913,
+      "motionMs": 1646,
+      "scaleChange": 1,
+      "maxMove": 351.5289271367443,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 18,
+        "exactDraws": 0,
+        "lodDraws": 406,
+        "fallbackDraws": 3,
+        "fallbackGestures": 1,
+        "rasterDraws": 34,
+        "heldDraws": 0,
+        "maxDrawMs": 1,
+        "settles": 1,
+        "settleSinceMotionMs": 120,
+        "settlePaintMs": 16,
+        "settleReadyMs": 0,
+        "settleRenderMs": 0,
+        "settleJobs": 0,
+        "settleExactDrawn": 0,
+        "settleLodDrawn": 23,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 21,
+        "lodRenderMs": 7,
+        "evictions": 0,
+        "staleStores": 0,
+        "hits": 652,
+        "misses": 10,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 1,
+        "lodBytes": 9844976,
+        "lodPeakBytes": 9844976,
+        "canvasBytes": 19298432,
+        "canvasPeakBytes": 19298432,
+        "prefetchQueued": 25,
+        "prefetchRendered": 10,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "drag-release",
+      "input": "real",
+      "frames": 18,
+      "over16": 18,
+      "p95FrameMs": 144,
+      "settleMs": 895,
+      "motionMs": 1635,
+      "scaleChange": 1,
+      "maxMove": 351.7899323150039,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 20,
+        "exactDraws": 0,
+        "lodDraws": 449,
+        "fallbackDraws": 1,
+        "fallbackGestures": 1,
+        "rasterDraws": 38,
+        "heldDraws": 0,
+        "maxDrawMs": 1,
+        "settles": 1,
+        "settleSinceMotionMs": 126,
+        "settlePaintMs": 16,
+        "settleReadyMs": 0,
+        "settleRenderMs": 0,
+        "settleJobs": 0,
+        "settleExactDrawn": 0,
+        "settleLodDrawn": 23,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 20,
+        "lodRenderMs": 7,
+        "evictions": 0,
+        "staleStores": 0,
+        "hits": 693,
+        "misses": 10,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 2,
+        "lodBytes": 10123664,
+        "lodPeakBytes": 10123664,
+        "canvasBytes": 19577120,
+        "canvasPeakBytes": 19577120,
+        "prefetchQueued": 25,
+        "prefetchRendered": 9,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "drag-release",
+      "input": "real",
+      "frames": 18,
+      "over16": 18,
+      "p95FrameMs": 140,
+      "settleMs": 913,
+      "motionMs": 1668,
+      "scaleChange": 1,
+      "maxMove": 352.28539121797485,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 20,
+        "exactDraws": 0,
+        "lodDraws": 450,
+        "fallbackDraws": 3,
+        "fallbackGestures": 1,
+        "rasterDraws": 38,
+        "heldDraws": 0,
+        "maxDrawMs": 1,
+        "settles": 1,
+        "settleSinceMotionMs": 107,
+        "settlePaintMs": 1,
+        "settleReadyMs": 0,
+        "settleRenderMs": 0,
+        "settleJobs": 0,
+        "settleExactDrawn": 0,
+        "settleLodDrawn": 23,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 20,
+        "lodRenderMs": 6,
+        "evictions": 0,
+        "staleStores": 0,
+        "hits": 673,
+        "misses": 10,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 1,
+        "lodBytes": 10029164,
+        "lodPeakBytes": 10029164,
+        "canvasBytes": 19482620,
+        "canvasPeakBytes": 19482620,
+        "prefetchQueued": 25,
+        "prefetchRendered": 9,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "wheel-zoom",
+      "input": "synthetic",
+      "frames": 11,
+      "over16": 11,
+      "p95FrameMs": 114,
+      "settleMs": 157,
+      "motionMs": 1116,
+      "scaleChange": 3.4,
+      "maxMove": 5091.168824543142,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 11,
+        "exactDraws": 0,
+        "lodDraws": 88,
+        "fallbackDraws": 0,
+        "fallbackGestures": 0,
+        "rasterDraws": 12,
+        "heldDraws": 0,
+        "maxDrawMs": 1,
+        "settles": 1,
+        "settleSinceMotionMs": 95,
+        "settlePaintMs": 48,
+        "settleReadyMs": 48,
+        "settleRenderMs": 2,
+        "settleJobs": 2,
+        "settleExactDrawn": 2,
+        "settleLodDrawn": 2,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 40,
+        "lodRenderMs": 13,
+        "evictions": 21,
+        "staleStores": 0,
+        "hits": 116,
+        "misses": 40,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 4,
+        "lodBytes": 39298632,
+        "lodPeakBytes": 61314316,
+        "canvasBytes": 48752088,
+        "canvasPeakBytes": 70767772,
+        "prefetchQueued": 46,
+        "prefetchRendered": 10,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "wheel-zoom",
+      "input": "synthetic",
+      "frames": 13,
+      "over16": 13,
+      "p95FrameMs": 117,
+      "settleMs": 111,
+      "motionMs": 1150,
+      "scaleChange": 3.4,
+      "maxMove": 5091.168824543142,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 13,
+        "exactDraws": 0,
+        "lodDraws": 107,
+        "fallbackDraws": 0,
+        "fallbackGestures": 0,
+        "rasterDraws": 13,
+        "heldDraws": 0,
+        "maxDrawMs": 1,
+        "settles": 1,
+        "settleSinceMotionMs": 115,
+        "settlePaintMs": 31,
+        "settleReadyMs": 30,
+        "settleRenderMs": 1,
+        "settleJobs": 2,
+        "settleExactDrawn": 2,
+        "settleLodDrawn": 2,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 37,
+        "lodRenderMs": 16,
+        "evictions": 20,
+        "staleStores": 0,
+        "hits": 97,
+        "misses": 53,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 2,
+        "lodBytes": 38784132,
+        "lodPeakBytes": 60387616,
+        "canvasBytes": 48237588,
+        "canvasPeakBytes": 69841072,
+        "prefetchQueued": 46,
+        "prefetchRendered": 8,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "wheel-zoom",
+      "input": "synthetic",
+      "frames": 12,
+      "over16": 12,
+      "p95FrameMs": 140,
+      "settleMs": 135,
+      "motionMs": 1109,
+      "scaleChange": 3.4,
+      "maxMove": 5091.168824543142,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 13,
+        "exactDraws": 0,
+        "lodDraws": 112,
+        "fallbackDraws": 0,
+        "fallbackGestures": 0,
+        "rasterDraws": 14,
+        "heldDraws": 0,
+        "maxDrawMs": 3,
+        "settles": 1,
+        "settleSinceMotionMs": 87,
+        "settlePaintMs": 25,
+        "settleReadyMs": 24,
+        "settleRenderMs": 0,
+        "settleJobs": 2,
+        "settleExactDrawn": 2,
+        "settleLodDrawn": 2,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 40,
+        "lodRenderMs": 13,
+        "evictions": 21,
+        "staleStores": 0,
+        "hits": 130,
+        "misses": 50,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 3,
+        "lodBytes": 39316056,
+        "lodPeakBytes": 61331740,
+        "canvasBytes": 48769512,
+        "canvasPeakBytes": 70785196,
+        "prefetchQueued": 46,
+        "prefetchRendered": 10,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "wheel-zoom",
+      "input": "synthetic",
+      "frames": 11,
+      "over16": 11,
+      "p95FrameMs": 143,
+      "settleMs": 136,
+      "motionMs": 1018,
+      "scaleChange": 3.4,
+      "maxMove": 5091.168824543142,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 11,
+        "exactDraws": 0,
+        "lodDraws": 96,
+        "fallbackDraws": 0,
+        "fallbackGestures": 0,
+        "rasterDraws": 12,
+        "heldDraws": 0,
+        "maxDrawMs": 1,
+        "settles": 1,
+        "settleSinceMotionMs": 130,
+        "settlePaintMs": 26,
+        "settleReadyMs": 25,
+        "settleRenderMs": 0,
+        "settleJobs": 2,
+        "settleExactDrawn": 2,
+        "settleLodDrawn": 2,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 39,
+        "lodRenderMs": 13,
+        "evictions": 21,
+        "staleStores": 0,
+        "hits": 115,
+        "misses": 47,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 1,
+        "lodBytes": 39025632,
+        "lodPeakBytes": 61152316,
+        "canvasBytes": 48479088,
+        "canvasPeakBytes": 70605772,
+        "prefetchQueued": 46,
+        "prefetchRendered": 9,
+        "prefetchMaxJobMs": 1,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    },
+    {
+      "name": "wheel-zoom",
+      "input": "synthetic",
+      "frames": 12,
+      "over16": 12,
+      "p95FrameMs": 152,
+      "settleMs": 133,
+      "motionMs": 1072,
+      "scaleChange": 3.4,
+      "maxMove": 5091.168824543142,
+      "servedBuild": "proto",
+      "proto": {
+        "lodPath": "main",
+        "mainVia": "canvas+createImageBitmap",
+        "dpr": 2,
+        "gestures": 1,
+        "frames": 12,
+        "exactDraws": 0,
+        "lodDraws": 106,
+        "fallbackDraws": 0,
+        "fallbackGestures": 0,
+        "rasterDraws": 13,
+        "heldDraws": 0,
+        "maxDrawMs": 3,
+        "settles": 1,
+        "settleSinceMotionMs": 126,
+        "settlePaintMs": 24,
+        "settleReadyMs": 24,
+        "settleRenderMs": 1,
+        "settleJobs": 2,
+        "settleExactDrawn": 2,
+        "settleLodDrawn": 2,
+        "settleFallbackDrawn": 0,
+        "lodRenders": 38,
+        "lodRenderMs": 8,
+        "evictions": 21,
+        "staleStores": 0,
+        "hits": 94,
+        "misses": 53,
+        "skippedExact": 0,
+        "lodMaxRenderMs": 1,
+        "lodBytes": 39165056,
+        "lodPeakBytes": 61331740,
+        "canvasBytes": 48618512,
+        "canvasPeakBytes": 70785196,
+        "prefetchQueued": 46,
+        "prefetchRendered": 8,
+        "prefetchMaxJobMs": 0,
+        "prefetchFinished": 0,
+        "errors": 0
+      }
+    }
+  ]
+}

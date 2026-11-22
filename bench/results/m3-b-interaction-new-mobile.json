@@ -1,0 +1,294 @@
+{
+  "label": "m3-b",
+  "target": "new",
+  "profile": "mobile",
+  "meta": {
+    "label": "m3-b",
+    "profile": "mobile",
+    "chromium": "159.0.8154.6",
+    "node": "v26.12.1",
+    "os": "Windows_NT 10.0.26300 (x64)",
+    "cpu": "AMD Ryzen 9 9950X 16-Core Processor            ",
+    "cores": 32,
+    "memGb": 94,
+    "cpuSlowdown": 4,
+    "network": {
+      "offline": false,
+      "latency": 165,
+      "downloadThroughput": 1012500,
+      "uploadThroughput": 168750
+    },
+    "runs": 5,
+    "recordedAt": "2026-11-22T02:30:46.119Z",
+    "query": "",
+    "gpuFeatures": {
+      "2d_canvas": "unavailable_software",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "disabled_software",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "disabled_off",
+      "rasterization": "disabled_software",
+      "skia_graphite": "disabled_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "disabled_software",
+      "video_encode": "disabled_software",
+      "webgl": "unavailable_software",
+      "webgpu": "unavailable_software",
+      "webnn": "unavailable_software"
+    },
+    "target": "new"
+  },
+  "scenarios": {
+    "sheet-open": {
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 33.3,
+        "p95": 300.5,
+        "min": 23.1,
+        "max": 300.5,
+        "spreadPct": 833.033,
+        "values": [
+          33.3,
+          164.1,
+          300.5,
+          30.5,
+          23.1
+        ]
+      },
+      "clickDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 33.3,
+        "p95": 300.5,
+        "min": 23.1,
+        "max": 300.5,
+        "spreadPct": 833.033,
+        "values": [
+          33.3,
+          164.1,
+          300.5,
+          30.5,
+          23.1
+        ]
+      },
+      "sheetVisibleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 908.2,
+        "p95": 947.9,
+        "min": 763.7,
+        "max": 947.9,
+        "spreadPct": 20.282,
+        "values": [
+          763.7,
+          908.2,
+          947.9,
+          915.7,
+          907.8
+        ]
+      },
+      "delays": {
+        "pointerdown": {
+          "n": 5,
+          "nulls": 0,
+          "median": 24.3,
+          "p95": 291.3,
+          "min": 15.5,
+          "max": 291.3,
+          "spreadPct": 1134.979,
+          "values": [
+            24.3,
+            154.5,
+            291.3,
+            21.2,
+            15.5
+          ]
+        },
+        "touchstart": {
+          "n": 5,
+          "nulls": 0,
+          "median": 25.4,
+          "p95": 292.4,
+          "min": 16.6,
+          "max": 292.4,
+          "spreadPct": 1085.827,
+          "values": [
+            25.4,
+            155.5,
+            292.4,
+            22,
+            16.6
+          ]
+        },
+        "pointerup": {
+          "n": 5,
+          "nulls": 0,
+          "median": 26.4,
+          "p95": 293.1,
+          "min": 17.1,
+          "max": 293.1,
+          "spreadPct": 1045.455,
+          "values": [
+            26.4,
+            156.5,
+            293.1,
+            23.1,
+            17.1
+          ]
+        },
+        "touchend": {
+          "n": 5,
+          "nulls": 0,
+          "median": 27.6,
+          "p95": 294.1,
+          "min": 18.8,
+          "max": 294.1,
+          "spreadPct": 997.464,
+          "values": [
+            27.6,
+            158.1,
+            294.1,
+            25.1,
+            18.8
+          ]
+        },
+        "mousedown": {
+          "n": 5,
+          "nulls": 0,
+          "median": 31.8,
+          "p95": 298.9,
+          "min": 21.8,
+          "max": 298.9,
+          "spreadPct": 871.384,
+          "values": [
+            31.8,
+            162.5,
+            298.9,
+            29.1,
+            21.8
+          ]
+        },
+        "mouseup": {
+          "n": 5,
+          "nulls": 0,
+          "median": 33,
+          "p95": 300,
+          "min": 22.7,
+          "max": 300,
+          "spreadPct": 840.303,
+          "values": [
+            33,
+            163.5,
+            300,
+            30.2,
+            22.7
+          ]
+        },
+        "click": {
+          "n": 5,
+          "nulls": 0,
+          "median": 33.3,
+          "p95": 300.5,
+          "min": 23.1,
+          "max": 300.5,
+          "spreadPct": 833.033,
+          "values": [
+            33.3,
+            164.1,
+            300.5,
+            30.5,
+            23.1
+          ]
+        }
+      }
+    }
+  },
+  "raw": [
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 33.3,
+      "clickDelayMs": 33.3,
+      "sheetVisibleMs": 763.7,
+      "delays": {
+        "pointerdown": 24.299999952316284,
+        "touchstart": 25.399999976158142,
+        "pointerup": 26.399999976158142,
+        "touchend": 27.59999990463257,
+        "mousedown": 31.799999952316284,
+        "mouseup": 33,
+        "click": 33.299999952316284
+      },
+      "servedBuild": "proto"
+    },
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 164.1,
+      "clickDelayMs": 164.1,
+      "sheetVisibleMs": 908.2,
+      "delays": {
+        "pointerdown": 154.5,
+        "touchstart": 155.5,
+        "pointerup": 156.5,
+        "touchend": 158.10000002384186,
+        "mousedown": 162.5,
+        "mouseup": 163.5,
+        "click": 164.10000002384186
+      },
+      "servedBuild": "proto"
+    },
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 300.5,
+      "clickDelayMs": 300.5,
+      "sheetVisibleMs": 947.9,
+      "delays": {
+        "pointerdown": 291.2999999523163,
+        "touchstart": 292.39999997615814,
+        "pointerup": 293.10000002384186,
+        "touchend": 294.10000002384186,
+        "mousedown": 298.90000009536743,
+        "mouseup": 300,
+        "click": 300.5
+      },
+      "servedBuild": "proto"
+    },
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 30.5,
+      "clickDelayMs": 30.5,
+      "sheetVisibleMs": 915.7,
+      "delays": {
+        "pointerdown": 21.200000047683716,
+        "touchstart": 22,
+        "pointerup": 23.09999990463257,
+        "touchend": 25.09999990463257,
+        "mousedown": 29.09999990463257,
+        "mouseup": 30.199999928474426,
+        "click": 30.5
+      },
+      "servedBuild": "proto"
+    },
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 23.1,
+      "clickDelayMs": 23.1,
+      "sheetVisibleMs": 907.8,
+      "delays": {
+        "pointerdown": 15.5,
+        "touchstart": 16.600000023841858,
+        "pointerup": 17.100000023841858,
+        "touchend": 18.799999952316284,
+        "mousedown": 21.799999952316284,
+        "mouseup": 22.699999928474426,
+        "click": 23.100000023841858
+      },
+      "servedBuild": "proto"
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "label": "m3-b",
+  "target": "new",
+  "profile": "desktop",
+  "meta": {
+    "label": "m3-b",
+    "profile": "desktop",
+    "chromium": "159.0.8154.6",
+    "node": "v26.12.1",
+    "os": "Windows_NT 10.0.26300 (x64)",
+    "cpu": "AMD Ryzen 9 9950X 16-Core Processor            ",
+    "cores": 32,
+    "memGb": 94,
+    "cpuSlowdown": 4,
+    "network": null,
+    "runs": 5,
+    "recordedAt": "2026-11-22T02:28:51.347Z",
+    "query": "",
+    "gpuFeatures": {
+      "2d_canvas": "unavailable_software",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "disabled_software",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "disabled_off",
+      "rasterization": "disabled_software",
+      "skia_graphite": "disabled_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "disabled_software",
+      "video_encode": "disabled_software",
+      "webgl": "unavailable_software",
+      "webgpu": "unavailable_software",
+      "webnn": "unavailable_software"
+    },
+    "target": "new"
+  },
+  "scenarios": {
+    "hover": {
+      "taskMsPerMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 6.744,
+        "p95": 6.999,
+        "min": 5.963,
+        "max": 6.999,
+        "spreadPct": 15.362,
+        "values": [
+          6.744,
+          6.912,
+          5.963,
+          6.66,
+          6.999
+        ]
+      },
+      "scriptMsPerMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0.552,
+        "p95": 0.664,
+        "min": 0.5,
+        "max": 0.664,
+        "spreadPct": 29.71,
+        "values": [
+          0.513,
+          0.56,
+          0.5,
+          0.552,
+          0.664
+        ]
+      },
+      "reactCommitsPerMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "styleRecalcsPerMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0.994,
+        "p95": 0.994,
+        "min": 0.994,
+        "max": 0.994,
+        "spreadPct": 0,
+        "values": [
+          0.994,
+          0.994,
+          0.994,
+          0.994,
+          0.994
+        ]
+      },
+      "layoutsPerMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "emptyTaskMsPerMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 3.448,
+        "p95": 3.599,
+        "min": 3.272,
+        "max": 3.599,
+        "spreadPct": 9.484,
+        "values": [
+          3.448,
+          3.272,
+          3.304,
+          3.599,
+          3.45
+        ]
+      },
+      "emptyReactCommitsPerMove": {
+        "n": 5,
+        "nulls": 0,
+        "median": 0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "spreadPct": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "raw": [
+    {
+      "name": "hover",
+      "stickerSlug": "xkjd27c",
+      "taskMsPerMove": 6.744,
+      "scriptMsPerMove": 0.513,
+      "reactCommitsPerMove": 0,
+      "styleRecalcsPerMove": 0.994,
+      "layoutsPerMove": 0,
+      "emptyTaskMsPerMove": 3.448,
+      "emptyReactCommitsPerMove": 0,
+      "trials": [
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 7.345031250000001,
+            "scriptMs": 0.6599062499999989,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.4478624999999985,
+            "scriptMs": 0.24536249999999873,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.305368750000001,
+            "scriptMs": 0.5134562500000023,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.2186562500000013,
+            "scriptMs": 0.15500625000000046,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.743506249999998,
+            "scriptMs": 0.4687562499999992,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.7015437500000026,
+            "scriptMs": 0.1660624999999999,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        }
+      ],
+      "servedBuild": "proto"
+    },
+    {
+      "name": "hover",
+      "stickerSlug": "xkjd27c",
+      "taskMsPerMove": 6.912,
+      "scriptMsPerMove": 0.56,
+      "reactCommitsPerMove": 0,
+      "styleRecalcsPerMove": 0.994,
+      "layoutsPerMove": 0,
+      "emptyTaskMsPerMove": 3.272,
+      "emptyReactCommitsPerMove": 0,
+      "trials": [
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 8.334406249999997,
+            "scriptMs": 1.0825875000000011,
+            "reactCommits": 0.10625,
+            "styleRecalcs": 1.1375,
+            "layouts": 0.0375
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.9013999999999998,
+            "scriptMs": 0.2533187499999978,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.911518750000001,
+            "scriptMs": 0.5599187500000047,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.2509750000000004,
+            "scriptMs": 0.16162499999999858,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.449337499999996,
+            "scriptMs": 0.45771250000000147,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.271749999999996,
+            "scriptMs": 0.16534999999999744,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        }
+      ],
+      "servedBuild": "proto"
+    },
+    {
+      "name": "hover",
+      "stickerSlug": "xkjd27c",
+      "taskMsPerMove": 5.963,
+      "scriptMsPerMove": 0.5,
+      "reactCommitsPerMove": 0,
+      "styleRecalcsPerMove": 0.994,
+      "layoutsPerMove": 0,
+      "emptyTaskMsPerMove": 3.304,
+      "emptyReactCommitsPerMove": 0,
+      "trials": [
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.3046312500000035,
+            "scriptMs": 0.5764500000000006,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.5384187499999995,
+            "scriptMs": 0.24817500000000048,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 5.963418750000004,
+            "scriptMs": 0.500368750000002,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.3037999999999896,
+            "scriptMs": 0.16768749999999943,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 5.902018750000004,
+            "scriptMs": 0.4288374999999983,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.1415187500000052,
+            "scriptMs": 0.145287500000002,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        }
+      ],
+      "servedBuild": "proto"
+    },
+    {
+      "name": "hover",
+      "stickerSlug": "xkjd27c",
+      "taskMsPerMove": 6.66,
+      "scriptMsPerMove": 0.552,
+      "reactCommitsPerMove": 0,
+      "styleRecalcsPerMove": 0.994,
+      "layoutsPerMove": 0,
+      "emptyTaskMsPerMove": 3.599,
+      "emptyReactCommitsPerMove": 0,
+      "trials": [
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.414356249999997,
+            "scriptMs": 0.5523062500000009,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.6862749999999997,
+            "scriptMs": 0.27064375000000196,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.660300000000002,
+            "scriptMs": 0.5765374999999989,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.5988875000000027,
+            "scriptMs": 0.18129375000000003,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.801662499999995,
+            "scriptMs": 0.5238937499999985,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.5095062500000056,
+            "scriptMs": 0.1738562499999985,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        }
+      ],
+      "servedBuild": "proto"
+    },
+    {
+      "name": "hover",
+      "stickerSlug": "xkjd27c",
+      "taskMsPerMove": 6.999,
+      "scriptMsPerMove": 0.664,
+      "reactCommitsPerMove": 0,
+      "styleRecalcsPerMove": 0.994,
+      "layoutsPerMove": 0,
+      "emptyTaskMsPerMove": 3.45,
+      "emptyReactCommitsPerMove": 0,
+      "trials": [
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.7577,
+            "scriptMs": 0.6650875,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.449975,
+            "scriptMs": 0.26034375,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 7.140574999999998,
+            "scriptMs": 0.6640625000000011,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.4097374999999985,
+            "scriptMs": 0.18698750000000208,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "sticker",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 6.999081250000006,
+            "scriptMs": 0.5305812500000007,
+            "reactCommits": 0,
+            "styleRecalcs": 0.99375,
+            "layouts": 0
+          }
+        },
+        {
+          "target": "empty",
+          "moves": 160,
+          "perMove": {
+            "taskMs": 3.684537500000007,
+            "scriptMs": 0.1625187499999986,
+            "reactCommits": 0,
+            "styleRecalcs": 0,
+            "layouts": 0
+          }
+        }
+      ],
+      "servedBuild": "proto"
+    }
+  ]
+}
