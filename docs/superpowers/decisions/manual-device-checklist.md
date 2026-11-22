@@ -96,7 +96,8 @@ in `docs/superpowers/decisions/004-parity.md` (Parity table, "manual" rows).
   click the handle to expand, scroll the description with the mouse wheel,
   then click the handle again within about a second. Pass: every click
   toggles the stop. A dropped click (the sheet stays expanded) is the gap
-  recorded in 004-parity.md; the baseline drops it only within about 0.1 s.
+  recorded in 004-parity.md. In a scratch probe (uncommitted), the baseline
+  dropped it only within about 0.1 s.
 - [ ] **Android flick blur-to-crisp.** On a mid-tier Android, zoom to about
   3×, flick, and watch the stickers as the glide ends. Pass: they are sharp
   when the glide stops, with no blurry phase of about a second (removed in

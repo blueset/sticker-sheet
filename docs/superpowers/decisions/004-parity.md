@@ -40,26 +40,34 @@ target the baseline site only.
 
 ### Firefox failures
 
+All of the evidence in notes 1–3 and in the probe table is an **uncommitted
+scratch observation, not reproducible from the repo**. The scratch specs and
+probes were deleted after use. Only the three failures in the full run are
+reproducible, with the command in §1.
+
 | test | verdict | evidence |
 |---|---|---|
 | `settle.spec.ts:57` "a wheel notch after settle re-promotes the layer" | **flake (test timing)** | See note 1. |
 | `interactions.spec.ts:456` "keyboard: focus a sticker, Enter and Space each select it" | **flake (load)** | See note 2. |
 | `sheet.spec.ts:209` "handle toggles to expanded and back" | **gap (Firefox only, intermittent)** | See note 3. |
 
-1. **`settle.spec.ts:57`.**
-   - A MutationObserver timeline shows the correct behaviour: the wheel sets
+1. **`settle.spec.ts:57`.** (Uncommitted scratch observation, not
+   reproducible from the repo.)
+   - A scratch MutationObserver timeline shows the correct behaviour: the wheel sets
      `data-gesture=zoom` with `will-change: transform`, and both clear after
      about 107 ms.
    - Firefox's zoom window is shorter than one `expect.poll` round trip under
      parallel load, so the poll misses it.
    - It passed 9 of 10 serial runs and failed 3 of 5 runs with the default
      workers.
-2. **`interactions.spec.ts:456`.**
+2. **`interactions.spec.ts:456`.** (Uncommitted scratch observation, not
+   reproducible from the repo.)
    - It passed 10 of 10 runs with `--workers=1` and failed 1 of 5 runs under
      parallel load.
    - The failing run selected `08n` instead of `bad-translations`: focus
      landed on the neighbouring sticker while the page was still busy.
-3. **`sheet.spec.ts:209`.**
+3. **`sheet.spec.ts:209`.** (Uncommitted scratch observation, not
+   reproducible from the repo, apart from the failure in the full run.)
    - After a wheel scroll of the expanded content, the next handle click is
      sometimes dropped. The sheet stays expanded at 552 px (600 − 48 at
      390×600).
@@ -68,7 +76,9 @@ target the baseline site only.
      content wheel. The baseline's dead window is about 100–250 ms. The new
      build's is intermittently up to about 1 s.
 
-Probe: `/#kagami` at 390×600 on firefox-desktop with `--workers=1`. Expand the
+Scratch probe (uncommitted scratch observation, not reproducible from the
+repo; small samples): `/#kagami` at 390×600 on firefox-desktop with
+`--workers=1`. Expand the
 sheet, wheel 300 px over the content, wait GAP, click the handle, then check
 that the sheet is back at peek.
 
@@ -123,11 +133,11 @@ Key:
 | Vectors re-render sharp after settle | `settle-crisp.spec.ts` "vector sticker is crisp after a zoom settles", "… stays crisp after a pan at the zoomed scale" (diff 0.0000 against a fresh reference); `settle.spec.ts` will-change suite | cd cm wk ff (ff: settle.spec:57 timing flake, above) | proven |
 | Dynamic stickers with variable content on first render | `first-paint.spec.ts` "live nodes never show a stale value"; `boot.test.ts` fill tests; `live.test.ts` | all four, unit | proven; real clock across midnight **manual** |
 | Drop shadows follow the clipped silhouette | `settle.spec.ts` "every sticker keeps the live drop-shadow filter"; visual scenes `initial`, `desktop-light-en-hover-clip` | cd (visual), all four (filter) | proven |
-| Hover clips to the shape, scales 1.1× with shadow, pointer cursor, hover-capable only | `interactions.spec.ts` "hover only inside the clipped region scales the sticker", "coarse pointer shows no tooltip"; visual `desktop-light-en-hover-clip` | cd ff (hover), cm wk (coarse) | proven |
+| Hover clips to the shape, scales 1.1× with shadow, pointer cursor, hover-capable only | `interactions.spec.ts` "hover only inside the clipped region scales the sticker" (clip, 1.1× scale); "pointer cursor on hover-capable devices; no hover scale without (hover: hover)" (added in fix round 1: `cursor: pointer` on `.clip` where `(hover: hover)` matches; on a `(hover: none)` device a tap leaves the scale at `none`); visual `desktop-light-en-hover-clip` (shadow) | hover: cd ff; cursor: cd; hover gating: cm | proven. The cursor is `pointer` on every device: Tailwind's preflight `button{cursor:pointer}` applies to the sticker button. A cursor is not visible on touch, so the hover-only part of the cursor is not observable and is not tested. |
 | Bottom sheet | see "Sheet spec" below | | |
 | Content by language with `en` fallback, persisted | `controls.spec.ts` "language menu switches stickers, UI strings and persists", "invalid saved preferences fall back cleanly"; `first-paint.spec.ts` "language fallback with no JS framework"; `sheet.spec.ts` "language change while open updates title and description"; `localize.test.ts`, `lang-css.test.ts`, `ui-strings.test.ts` | all four, unit | proven |
 | Light, dark, system theme; background has light and dark variants | `controls.spec.ts` "theme menu sets class and color-scheme and persists"; `first-paint.spec.ts` "first frame uses the saved theme", "a saved system theme follows the OS scheme without a reload"; `theme.test.ts`, `boot.test.ts` "system theme follows prefers-color-scheme" | all four, unit | proven |
-| Hover tooltips follow the cursor, hidden on coarse pointers | `interactions.spec.ts` tooltip suite (lines 201–389): "follows the cursor and shows the localised title…", "is clamped inside the viewport", "rapid hover across two stickers…", "never intercepts pointer events", "hides on mouseout…", "coarse pointer shows no tooltip"; visual `desktop-light-en-tooltip` | cd ff, cm wk (coarse) | proven |
+| Hover tooltips follow the cursor, hidden on coarse pointers | `interactions.spec.ts` tooltip suite (lines 201–389): "follows the cursor and shows the localised title…", "is clamped inside the viewport", "rapid hover across two stickers…", "never intercepts pointer events", "hides on mouseout…", "coarse pointer shows no tooltip"; visual `desktop-light-en-tooltip` | cd ff; coarse: cm only (skipped elsewhere: only chromium-mobile emulates `(pointer: coarse)`) | proven |
 | Hash anchors: select and centre on load and `hashchange`, select pushes `#slug`, close clears it | `interactions.spec.ts` "click selects, #slug is pushed and going back clears it", "a hash change selects and re-centres…", "back and forward walk the selection history", "#dark selects without pushing…"; `first-paint.spec.ts` "the canvas stays hidden until the hashed view is applied"; `appState.test.ts` hash tests | all four, unit | proven |
 | Sheet content: MDX with the full component set | `compile.test.ts` "compiles every description and content in every language", "renders dark/en including <Button> inside an exported function", "lets authored functions use React from the provider". A scratch browser check in this task (not committed) passed 16 of 16 on all four projects: `#map` renders a `.leaflet-container`; `#css` renders `<baseline-status>` and the CanIUse `iframe`; `#dark` renders its `<style>` block and the exported-function `<button>`; `#xkjd27c` renders its exported function | unit; all four (scratch) | proven; no committed e2e for Leaflet/CanIUse |
 | Keyboard and a11y: focusable sticker buttons open the sheet on Enter/Space; controls keyboard-operable | `interactions.spec.ts` "keyboard: focus a sticker, Enter and Space each select it", "focusing an off-screen sticker does not scroll the viewer"; `controls.spec.ts` "menus work from the keyboard", "keyboard focus on a zoom button still opens its tooltip"; `first-paint.spec.ts` "zero-area sticker is out of the tab order" | all four (ff: :456 load flake) | proven; Safari Tab-to-button **manual** |
@@ -194,7 +204,7 @@ All are in `bench/results/`.
 | CLS | 0 | 0 | **0** (both) | met | both |
 | No JS for first paint of non-live stickers | stickers in the HTML | 0 at FCP, first sticker 2,044 ms | **63 at FCP**, first sticker 535 ms; `first-paint.spec` "no-JS: all 63 stickers painted at baseline positions" | met | audit-mobile |
 | TBT (mobile) | no regression | 726 | **0** | met | audit-mobile |
-| Input readiness (mobile) | — (no spec figure) | not measured | 527 ms (549) | recorded | audit-mobile |
+| Input readiness (mobile) | ≤ 1.5 s (plan, Global Constraints; added in Task 1.15) | not measured | **527 ms** (549) | met | audit-mobile (`firstRender.inputReadyMs`) |
 | All stickers painted (mobile) | — | 5,659 | 2,641 | recorded | audit-mobile |
 | Live value current (mobile) | — | 2,529 | 676 | recorded | audit-mobile |
 | **Deep-link LCP** (`/#riddler`, mobile) | ≤ 1,380 ms (ruling) | 3,572 (same scenario, this task) | **1,652** (1,680) | **missed** (also over the original 1.5 s; met 2× vs its baseline, ≤ 1,786) | audit-deeplink(-baseline)-mobile |
@@ -301,7 +311,8 @@ a test, with these exceptions:
 
 Budgets met:
 
-- first render (mobile and desktop LCP, JS, CLS, no-JS paint);
+- first render (mobile and desktop LCP, JS, CLS, no-JS paint, input
+  readiness 527 ms against 1.5 s);
 - p95 frame;
 - crisp after motion on every mobile gesture;
 - hover cost;
