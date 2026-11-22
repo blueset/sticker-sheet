@@ -118,6 +118,29 @@ export class ByteLru<V> {
   }
 }
 
+// Store acceptance: a job is stamped when queued; a result that lands after
+// clear() (any job) or after an exact drop/cancel (exact jobs) is stale.
+export interface Stamp {
+  clear: number;
+  exact: number | null;
+}
+export class Generations {
+  private c = 0;
+  private e = 0;
+  stamp(exact = false): Stamp {
+    return { clear: this.c, exact: exact ? this.e : null };
+  }
+  fresh(s: Stamp): boolean {
+    return s.clear === this.c && (s.exact === null || s.exact === this.e);
+  }
+  bumpClear(): void {
+    this.c++;
+  }
+  bumpExact(): void {
+    this.e++;
+  }
+}
+
 // Settle-time cull: a LOD key (`slug|src@level`) above `keepLevel` is dropped
 // unless its sticker is visible; exact keys are handled by dropExact.
 export const CULL_KEEP_LEVEL = 2;
@@ -193,6 +216,8 @@ export interface LodStats {
   maxRenderMs: number;
   evictions: number;
   skippedExact: number;
+  // Results rejected by store() as stale (generation / source changed).
+  staleStores: number;
   errors: string[];
 }
 
@@ -203,6 +228,7 @@ interface Job {
   rect: Rect;
   exact: boolean;
   seq: number;
+  stamp: Stamp;
   done?: () => void;
 }
 
@@ -244,7 +270,7 @@ function exactKey(s: LodSource): string {
 export function createLodCache(onReady: () => void): LodCache {
   const forced = new URLSearchParams(location.search).get("lod") ?? "";
   const stats: LodStats = {
-    path: "probing",
+    path: forced === "worker" || forced === "worker-all" ? "probing" : "main",
     workerError: "",
     mainVia: "",
     forced,
@@ -265,6 +291,7 @@ export function createLodCache(onReady: () => void): LodCache {
     maxRenderMs: 0,
     evictions: 0,
     skippedExact: 0,
+    staleStores: 0,
     errors: [],
   };
   const lru = new ByteLru<Cached>(CACHE_BYTES, (_key, v) => {
@@ -275,7 +302,9 @@ export function createLodCache(onReady: () => void): LodCache {
   // Levels cached per slug (keys of `lru` carry them too; this avoids a scan).
   const levels = new Map<string, Set<number>>();
   const queue: Job[] = [];
-  const queued = new Set<string>();
+  // Key -> the job currently responsible for it (queued or in flight).
+  const queued = new Map<string, Job>();
+  const gens = new Generations();
   const pending = new Map<number, Job>();
   let nextId = 1;
   let inMain = 0;
@@ -303,8 +332,10 @@ export function createLodCache(onReady: () => void): LodCache {
     stats.lastRenderMs = ms;
     stats.maxRenderMs = Math.max(stats.maxRenderMs, ms);
     const src = sources.get(job.src.slug);
-    // Stale: the image source changed while the job ran.
-    if (!src || src.img.currentSrc !== job.src.img.currentSrc || disposed) {
+    // Stale: the image source changed while the job ran, or the cache was
+    // cleared / exact bitmaps dropped after the job was queued.
+    if (!src || src.img.currentSrc !== job.src.img.currentSrc || disposed || !gens.fresh(job.stamp)) {
+      stats.staleStores++;
       bitmap.close();
       return;
     }
@@ -318,7 +349,7 @@ export function createLodCache(onReady: () => void): LodCache {
   }
 
   function finish(job: Job): void {
-    queued.delete(job.key);
+    if (queued.get(job.key) === job) queued.delete(job.key);
     job.done?.();
     sync();
     onReady();
@@ -339,6 +370,9 @@ export function createLodCache(onReady: () => void): LodCache {
   }
 
   function renderMain(job: Job): void {
+    // A themed SVG is only rasterized from its scheme-resolved copy (the raw
+    // `<img>` draws the wrong scheme in Firefox).
+    if (job.src.themed && !job.src.resolved) return finish(job);
     const t0 = performance.now();
     const g = geometry(job);
     const paint = (c: OffscreenCanvasRenderingContext2D | CanvasRenderingContext2D) => {
@@ -417,6 +451,11 @@ export function createLodCache(onReady: () => void): LodCache {
     queue.sort((a, b) => Number(b.exact) - Number(a.exact));
     for (let i = 0; i < queue.length; ) {
       const job = queue[i];
+      if (!gens.fresh(job.stamp)) {
+        queue.splice(i, 1);
+        finish(job);
+        continue;
+      }
       if (useWorker(job.src)) {
         if (pending.size >= WORKER_INFLIGHT) {
           i++;
@@ -439,10 +478,18 @@ export function createLodCache(onReady: () => void): LodCache {
   }
 
   function enqueue(job: Job): void {
-    if (queued.has(job.key)) {
+    const prev = queued.get(job.key);
+    const same =
+      prev &&
+      gens.fresh(prev.stamp) &&
+      prev.scale === job.scale &&
+      prev.rect.x === job.rect.x &&
+      prev.rect.y === job.rect.y &&
+      prev.rect.w === job.rect.w &&
+      prev.rect.h === job.rect.h;
+    if (prev && same) {
       // Keep the newest callback chain (a settle waiting on an in-flight LOD).
-      const prev = queue.find((j) => j.key === job.key) ?? [...pending.values()].find((j) => j.key === job.key);
-      if (prev && job.done) {
+      if (job.done) {
         const a = prev.done;
         const b = job.done;
         prev.done = () => {
@@ -453,7 +500,12 @@ export function createLodCache(onReady: () => void): LodCache {
       }
       return;
     }
-    queued.add(job.key);
+    if (prev) {
+      // Stale or different request for the same key: replace it.
+      const i = queue.indexOf(prev);
+      if (i >= 0) queue.splice(i, 1);
+    }
+    queued.set(job.key, job);
     queue.push(job);
     sync();
     kick();
@@ -462,14 +514,19 @@ export function createLodCache(onReady: () => void): LodCache {
   // Probe: one small worker render of the first SVG registered. The path is
   // decided once per page load.
   function probe(src: LodSource): void {
-    if (forced === "main" || typeof Worker === "undefined" || typeof OffscreenCanvas === "undefined") {
+    // All three engines reject SVG blobs in createImageBitmap (task-3.2
+    // report §3), so the worker is opt-in (`?lod=worker` / `?lod=worker-all`):
+    // the default skips the up-to-3 s probe window entirely.
+    const optIn = forced === "worker" || forced === "worker-all";
+    if (!optIn || typeof Worker === "undefined" || typeof OffscreenCanvas === "undefined") {
       stats.path = "main";
-      stats.workerError =
-        forced === "main"
+      stats.workerError = !optIn
+        ? forced === "main"
           ? "forced ?lod=main"
-          : typeof Worker === "undefined"
-            ? "no Worker"
-            : "no OffscreenCanvas (the worker could not crop or transfer)";
+          : "not probed (opt in with ?lod=worker)"
+        : typeof Worker === "undefined"
+          ? "no Worker"
+          : "no OffscreenCanvas (the worker could not crop or transfer)";
       kick();
       return;
     }
@@ -520,7 +577,7 @@ export function createLodCache(onReady: () => void): LodCache {
       const key = lodKey(src, level);
       const hit = lru.get(key);
       if (hit) return hit.bitmap;
-      enqueue({ key, src, scale: level, rect: src.rect, exact: false, seq: 0 });
+      enqueue({ key, src, scale: level, rect: src.rect, exact: false, seq: 0, stamp: gens.stamp() });
       return null;
     },
     nearest(slug, scale) {
@@ -545,7 +602,7 @@ export function createLodCache(onReady: () => void): LodCache {
         stats.skippedExact++;
         return done();
       }
-      enqueue({ key: exactKey(src), src, scale, rect, exact: true, seq, done });
+      enqueue({ key: exactKey(src), src, scale, rect, exact: true, seq, done, stamp: gens.stamp(true) });
     },
     ensureLod(slug, scale, done) {
       const src = sources.get(slug);
@@ -553,20 +610,23 @@ export function createLodCache(onReady: () => void): LodCache {
       const level = lodLevel(scale, src.rect.w, src.rect.h, LOD_MAX_SIDE);
       const key = lodKey(src, level);
       if (lru.peek(key)) return false;
-      enqueue({ key, src, scale: level, rect: src.rect, exact: false, seq: 0, done });
+      enqueue({ key, src, scale: level, rect: src.rect, exact: false, seq: 0, done, stamp: gens.stamp() });
       return true;
     },
     cancel(seqBelow) {
+      // In-flight exact jobs (incl. WebKit's async createImageBitmap) go stale too.
+      gens.bumpExact();
       for (let i = queue.length - 1; i >= 0; i--) {
         const j = queue[i];
         if (j.exact && j.seq < seqBelow) {
           queue.splice(i, 1);
-          queued.delete(j.key);
+          if (queued.get(j.key) === j) queued.delete(j.key);
         }
       }
       sync();
     },
     dropExact(keep) {
+      gens.bumpExact();
       lru.deleteWhere((key) => key.endsWith("@exact") && !(keep && keep(key.slice(0, key.indexOf("|")))));
       sync();
     },
@@ -575,12 +635,11 @@ export function createLodCache(onReady: () => void): LodCache {
       sync();
     },
     clear() {
+      // Anything still in flight (worker or async main) is rejected by store().
+      gens.bumpClear();
       queue.length = 0;
       queued.clear();
-      for (const [id, j] of pending) {
-        queued.delete(j.key);
-        pending.delete(id);
-      }
+      for (const id of [...pending.keys()]) pending.delete(id);
       lru.deleteWhere(() => true);
       levels.clear();
       sync();

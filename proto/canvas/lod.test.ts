@@ -1,5 +1,30 @@
 import { describe, expect, it } from "vitest";
-import { ByteLru, lodCullable, lodLevel, nearestLevel, resolveScheme, snapScale } from "./lod";
+import { ByteLru, Generations, lodCullable, lodLevel, nearestLevel, resolveScheme, snapScale } from "./lod";
+
+describe("Generations (store acceptance)", () => {
+  it("accepts a job stamped in the current generation", () => {
+    const g = new Generations();
+    expect(g.fresh(g.stamp())).toBe(true);
+    expect(g.fresh(g.stamp(true))).toBe(true);
+  });
+  it("rejects every job stamped before a clear", () => {
+    const g = new Generations();
+    const lod = g.stamp();
+    const exact = g.stamp(true);
+    g.bumpClear();
+    expect(g.fresh(lod)).toBe(false);
+    expect(g.fresh(exact)).toBe(false);
+    expect(g.fresh(g.stamp(true))).toBe(true);
+  });
+  it("rejects only exact jobs after an exact drop", () => {
+    const g = new Generations();
+    const lod = g.stamp();
+    const exact = g.stamp(true);
+    g.bumpExact();
+    expect(g.fresh(lod)).toBe(true);
+    expect(g.fresh(exact)).toBe(false);
+  });
+});
 
 describe("lodCullable", () => {
   const vis = new Set(["a"]);

@@ -33,6 +33,9 @@ const SHADOWS = [
 const HOVER_SCALE = 1.1;
 const HOVER_MS = 100;
 const OFFSCREEN = 100000;
+// Device px per CSS px of the base LOD pre-rendered for off-screen SVGs
+// (<= CULL_KEEP_LEVEL, so settle culls keep it).
+const BASE_LOD = 1;
 
 interface Item {
   slug: string;
@@ -53,6 +56,23 @@ interface Item {
   // SVG stickers go through the LOD cache once decoded (`rect` set).
   svg: boolean;
   rect: Rect | null;
+  // Set for SVGs once registered with the LOD cache.
+  src: LodSource | null;
+}
+
+// Image draws accumulated over one gesture: first transform change after a
+// settle -> the next onSettle. `fallback` counts synchronous SVG rasterization
+// (direct drawImage of an SVG with no cached bitmap).
+export interface GestureStat {
+  startedAt: number;
+  endedAt: number;
+  frames: number;
+  exact: number;
+  lod: number;
+  fallback: number;
+  raster: number;
+  held: number;
+  maxDrawMs: number;
 }
 
 // One settle: from the controller's onSettle (or load / resize / OS scheme
@@ -101,6 +121,9 @@ export interface ProtoStats {
   lodDraws: number;
   fallbackDraws: number;
   rasterDraws: number;
+  // The current (live) or last gesture, and the last 20 finished gestures.
+  gesture: GestureStat | null;
+  gestures: GestureStat[];
   settle: SettleStat | null;
   settles: SettleStat[];
   themed: string[];
@@ -230,6 +253,8 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     lodDraws: 0,
     fallbackDraws: 0,
     rasterDraws: 0,
+    gesture: null,
+    gestures: [],
     settle: null,
     settles: [],
     themed: [],
@@ -293,6 +318,7 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
       hover: { from: 1, to: 1, start: 0 },
       svg: /\.svg(?:[?#]|$)/i.test(img.currentSrc || img.src),
       rect: null,
+      src: null,
     });
   }
   const bySlug = new Map(items.map((it) => [it.slug, it]));
@@ -327,49 +353,56 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
   let settled = 0;
-  // Themed SVGs get a scheme-resolved copy (see LodSource.resolved).
-  const themedSrcs: { src: LodSource; text: string }[] = [];
+  // Themed SVGs: both scheme-resolved copies (see LodSource.resolved) are
+  // decoded up front, so a scheme change swaps copies synchronously.
+  const themedSrcs: { src: LodSource; copies: { light?: HTMLImageElement; dark?: HTMLImageElement } }[] = [];
   const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  function resolveInto(src: LodSource, text: string): Promise<void> {
-    const url = URL.createObjectURL(
-      new Blob([resolveScheme(text, darkQuery.matches)], { type: "image/svg+xml" }),
-    );
+  function decodeCopy(slug: string, text: string, dark: boolean): Promise<HTMLImageElement | undefined> {
+    const url = URL.createObjectURL(new Blob([resolveScheme(text, dark)], { type: "image/svg+xml" }));
     const img = new Image();
     img.src = url;
     return img
       .decode()
-      .then(() => {
-        src.resolved = img;
-      })
+      .then(() => img)
       .catch((e) => {
-        src.resolved = undefined;
-        stats.errors.push(`resolve ${src.slug}: ${e}`);
+        stats.errors.push(`resolve ${slug} ${dark ? "dark" : "light"}: ${e}`);
+        return undefined;
       })
       .finally(() => URL.revokeObjectURL(url));
+  }
+  function pickCopies(): void {
+    for (const t of themedSrcs) t.src.resolved = darkQuery.matches ? t.copies.dark : t.copies.light;
   }
   for (const it of items) {
     const text = it.svg ? fetch(it.img.currentSrc || it.img.src).then((r) => r.text()) : Promise.resolve("");
     it.img
       .decode()
-      .then(() => {
+      .then(() => (it.svg ? text : ""))
+      .then(async (svgText) => {
+        if (it.svg) {
+          const [x, y, w, h] = containRect(it.img, it.w, it.h);
+          it.rect = { x, y, w, h };
+          const themed = svgText.includes("prefers-color-scheme");
+          const src: LodSource = { slug: it.slug, img: it.img, rect: it.rect, themed };
+          if (themed) {
+            stats.themed.push(it.slug);
+            const [light, dark] = await Promise.all([
+              decodeCopy(it.slug, svgText, false),
+              decodeCopy(it.slug, svgText, true),
+            ]);
+            const entry = { src, copies: { light, dark } };
+            themedSrcs.push(entry);
+            src.resolved = darkQuery.matches ? dark : light;
+          }
+          lod.register(src);
+          it.src = src;
+        }
+        // SVGs hand off only once registered (and themed copies decoded):
+        // until then the DOM `<img>` keeps showing, in the right scheme.
         it.sprite = buildSprite(it);
         stats.spriteBytes += it.sprite.width * it.sprite.height * 4;
         it.ready = true;
         schedule();
-        return it.svg ? text : "";
-      })
-      .then((svgText) => {
-        if (!it.svg) return;
-        const [x, y, w, h] = containRect(it.img, it.w, it.h);
-        it.rect = { x, y, w, h };
-        const themed = svgText.includes("prefers-color-scheme");
-        const src: LodSource = { slug: it.slug, img: it.img, rect: it.rect, themed };
-        if (themed) {
-          stats.themed.push(it.slug);
-          themedSrcs.push({ src, text: svgText });
-          return resolveInto(src, svgText).then(() => lod.register(src));
-        }
-        lod.register(src);
       })
       .catch((e) => stats.errors.push(`${it.slug}: ${e}`))
       .finally(() => {
@@ -439,7 +472,7 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
   // Paints the sticker's image in sticker-local CSS px (clip already set).
   // SVGs: the exact-scale bitmap if it matches and covers the visible part,
   // else the nearest cached LOD, else (no bitmap yet) the `<img>` directly.
-  let frame = { exact: 0, lod: 0, fallback: 0, raster: 0 };
+  let frame = { exact: 0, lod: 0, fallback: 0, raster: 0, held: 0 };
   function paintImage(it: Item, t: Transform, hs: number): void {
     if (it.svg && it.rect) {
       const eff = effScale(t);
@@ -458,12 +491,18 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
         frame.lod++;
         return;
       }
+      if (it.src?.themed && !it.src.resolved) {
+        // No copy in the current scheme (decode failed): draw nothing rather
+        // than the raw `<img>`, which some engines rasterize in the wrong scheme.
+        frame.held++;
+        return;
+      }
       frame.fallback++;
     } else {
       frame.raster++;
     }
-    const fb = (it.svg && themedSrcs.find((s) => s.src.slug === it.slug)?.src.resolved) || it.img;
-    ctx.drawImage(fb, ...containRect(it.img, it.w, it.h));
+    // Synchronous rasterization for SVGs (no bitmap cached yet).
+    ctx.drawImage(it.src?.resolved || it.img, ...containRect(it.img, it.w, it.h));
   }
 
   // ---- settle: exact-scale bitmaps for the visible SVG stickers ----
@@ -530,6 +569,10 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
       s.jobs++;
       lod.renderExact(it.slug, eff, visibleLocal(it, t, 1, margin)!, seq, done);
     }
+    // A small base LOD (kept by cullLod) for every off-screen SVG, so a
+    // sticker entering view mid-gesture draws a bitmap, not a sync raster.
+    const base = Math.min(eff, BASE_LOD);
+    for (const it of items) if (it.svg && it.rect && !keep.has(it.slug)) lod.ensureLod(it.slug, base, () => {});
     done();
   }
 
@@ -563,7 +606,7 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     const t0 = performance.now();
     const t: Transform = viewer.transform;
     const dpr = stats.dpr;
-    frame = { exact: 0, lod: 0, fallback: 0, raster: 0 };
+    frame = { exact: 0, lod: 0, fallback: 0, raster: 0, held: 0 };
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, cv.width, cv.height);
     // Downscaled rasters: closest to the DOM's mipmapped image filtering.
@@ -630,6 +673,16 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     stats.draws++;
     stats.lastDrawMs = performance.now() - t0;
     stats.maxDrawMs = Math.max(stats.maxDrawMs, stats.lastDrawMs);
+    const g = stats.gesture;
+    if (g && !g.endedAt) {
+      g.frames++;
+      g.exact += frame.exact;
+      g.lod += frame.lod;
+      g.fallback += frame.fallback;
+      g.raster += frame.raster;
+      g.held += frame.held;
+      g.maxDrawMs = Math.max(g.maxDrawMs, stats.lastDrawMs);
+    }
     if (animating) schedule();
   }
 
@@ -644,6 +697,19 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
 
   const offChange = viewer.onChange((t) => {
     lastChangeAt = performance.now();
+    if (!stats.gesture || stats.gesture.endedAt) {
+      stats.gesture = {
+        startedAt: lastChangeAt,
+        endedAt: 0,
+        frames: 0,
+        exact: 0,
+        lod: 0,
+        fallback: 0,
+        raster: 0,
+        held: 0,
+        maxDrawMs: 0,
+      };
+    }
     // Motion resumed: abandon the pending settle; a new scale invalidates
     // every exact bitmap (a pan keeps them for the covered area).
     if (settling) {
@@ -660,7 +726,15 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     }
     draw();
   });
-  const offSettle = viewer.onSettle(() => settlePass("settle"));
+  const offSettle = viewer.onSettle(() => {
+    const g = stats.gesture;
+    if (g && !g.endedAt) {
+      g.endedAt = performance.now();
+      stats.gestures.push(g);
+      if (stats.gestures.length > 20) stats.gestures.shift();
+    }
+    settlePass("settle");
+  });
 
   const resizeObserver = new ResizeObserver(() => {
     size();
@@ -669,17 +743,15 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
   });
   resizeObserver.observe(root);
 
-  // SVG `<img>`s follow the OS colour scheme: cached rasters go stale.
+  // SVG `<img>`s follow the OS colour scheme: cached rasters go stale. Swap
+  // themed copies synchronously, so the next frame never shows the old
+  // scheme; in-flight renders from the old copies are rejected by store().
   const scheme = darkQuery;
   const onScheme = () => {
+    pickCopies();
     lod.clear();
+    settlePass("scheme");
     schedule();
-    // Re-resolve themed copies, then drop anything rendered from stale ones.
-    Promise.all(themedSrcs.map((t) => resolveInto(t.src, t.text))).then(() => {
-      lod.clear();
-      settlePass("scheme");
-      schedule();
-    });
   };
   scheme.addEventListener("change", onScheme);
 
