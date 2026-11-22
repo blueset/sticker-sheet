@@ -4,7 +4,12 @@ import plugin from "tailwindcss/plugin";
 
 export default {
   darkMode: ["class"],
-  content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,mdx}"],
+  // src/dev holds dev-only tools (served by `astro dev` only); production must
+  // not get utilities that only they use.
+  content: [
+    "./src/**/*.{astro,html,js,jsx,ts,tsx,mdx}",
+    ...(process.env.NODE_ENV === "production" ? ["!./src/dev/**"] : []),
+  ],
   theme: {
     extend: {
       colors: {

@@ -1,0 +1,19 @@
+---
+// Dev-only route: ./integration.ts injects it at /dev/svg-shape under `astro dev`.
+import "../styles/global.css";
+import SvgShapeWorkbench from "./SvgShapeWorkbench";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>SVG path → CSS shape() · dev</title>
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="antialiased">
+    <SvgShapeWorkbench client:only="react" />
+  </body>
+</html>
