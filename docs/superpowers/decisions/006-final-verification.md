@@ -66,14 +66,71 @@ counts were taken; it runs on every project).
   build of HEAD are byte-identical (516 files, 0 SHA-256 differences in the
   same checkout path). The test file and the snapshot are unchanged since
   the audit commit `3c1b300`.
-- Not verified: why 004 §1 recorded 0 failures on chromium-mobile. 004
-  documents `VISUAL_MAX_DIFF=0.01` for chromium-desktop only; the
-  chromium-mobile run either matched exactly then or ran with a tolerance
-  that was not recorded. The browser is probably not the cause: the audit
-  bench files record Chromium 159.0.8154.6, the same as now.
-- Classification: **real, deterministic visual difference (handle focus
-  ring), within the R12 comparison tolerance**. It is not one of the known
-  three. Nothing was changed; the controller decides.
+- Follow-up (R33). These runs are uncommitted scratch; the commands and
+  outputs are in the task-4.3 report.
+  - **Deterministic.** HEAD failed 3 out of 3 single runs (`-g "mobile sheet"
+    --project=chromium-mobile`) and 3 out of 3 with
+    `--workers=1 --repeat-each=3`. Every run had exactly 811 px different.
+  - **No commit passes.** I built `d5b2b9e` (audit) and `3c1b300` (the 004
+    record) in a temporary worktree after `npm ci`, and ran the test with each
+    commit's own spec and config. Both failed with 811 px. Those two builds
+    are byte-identical to each other (516 files). They match HEAD's `dist`
+    apart from the astro-island uids, which depend on the checkout path.
+    The browser is the same (Playwright 1.65.1 from the same lockfile,
+    Chromium 159.0.8154.6 per the audit bench JSONs). So the "0 failed" in
+    004 §1 is not reproducible from any build.
+  - Not verified: the env of the 004 chromium-mobile run. Neither 004 nor
+    the task-2.4 report records `VISUAL_MAX_DIFF` for it. The most likely
+    explanation is that it ran at `0.01`: earlier tasks ran this mobile scene
+    at 0.01 (Task 1.14 in `progress.md`), and the test passes at 0.01.
+  - **What holds focus.** I diagnosed this with a scratch Playwright script:
+    Pixel 7 context, 390×844, `/#dark`, light, en.
+    - Before the click, in both the rewrite and the baseline Next site
+      (`.baseline-site` on :4190), the handle `<button aria-label="Toggle panel
+      size">` is `document.activeElement` and matches `:focus-visible`. The
+      focus is programmatic and arrives when the sheet opens. So the peek
+      snapshot has the same ring on both sides, which is why it matches.
+    - After `handle.click()` on HEAD, the handle (`data-silk="a16"`) still
+      holds focus and still matches `:focus-visible`. Its computed outline is
+      `auto 1px rgb(16,16,16)` and its box-shadow is `none`.
+    - After the same click on the baseline, focus has moved to the Silk view
+      `<div data-silk="a1 …" aria-labelledby aria-describedby>`. The handle
+      is not focus-visible and has `outline-style: none`.
+  - **Which rule draws the ring.** No author stylesheet rule with a focus
+    selector matches the handle; I scanned every same-origin `cssRules`,
+    including the rules nested in `@layer`. The ring is Chromium's UA default
+    `:focus-visible { outline: auto 1px -webkit-focus-ring-color }`. It is
+    not from Silk, Tailwind or `src/` CSS.
+  - **Why focus differs.** This is inferred from the source; I did not trace
+    it at runtime.
+    - The baseline `Panel.tsx` (`a929f5b^`) toggles the stop with a plain
+      `onClick` → `setActiveSnap`. The controlled detent therefore becomes 2
+      before the travel, and its `onTravel` handler (active only when
+      `activeSnap === 2`) calls `viewRef.focus()` while `progress < 0.999`
+      during the expand travel.
+    - The rewrite (`src/islands/Sheet.tsx`, since `5e193e0`) uses
+      `<Silk.Trigger action="step">`. Its `onTravel` guard `detent === 2` is
+      the same, but `detent` only becomes 2 through `onActiveDetentChange`,
+      evidently too late for the handler to fire during this travel. Focus
+      stays on the handle.
+  - **Real touch.** With a `hasTouch` context and `page.touchscreen.tap` on
+    the handle, HEAD behaves exactly like the click: the handle keeps focus,
+    `:focus-visible` is true and the ring is visible. The baseline moves
+    focus to the view with no ring. The tap does not re-focus an
+    already-focused element, so the focus-visible state from the
+    programmatic focus persists. Scratch screenshots confirmed both. No real
+    device was tested.
+- Classification: **repo-caused, not environmental**. It is a deterministic
+  focus-handling difference from the baseline, introduced with the sheet
+  island in `5e193e0` and present in every build since, including the 004
+  build. 004's "0 failed" most likely came from an unrecorded
+  `VISUAL_MAX_DIFF=0.01` (not verified).
+  - As a product matter it is a minor parity regression, not a functional
+    defect. After expanding with a tap, the UA focus ring stays on the
+    handle, where the baseline moves focus into the sheet. The ring also
+    shows at peek on both sides, which is pre-existing behaviour.
+  - It is within the R12 comparison tolerance. It is not one of the known
+    three. Nothing was changed; the controller decides.
 
 ### firefox-desktop
 
