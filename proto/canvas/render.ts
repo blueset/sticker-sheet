@@ -7,6 +7,16 @@
 import type { Transform } from "../../src/lib/geometry";
 import type { Controller } from "../../src/viewer/controller";
 import { clipToCommands, type PathCmd } from "./clip";
+import {
+  createLodCache,
+  LOD_MAX_SIDE,
+  lodLevel,
+  resolveScheme,
+  type LodCache,
+  type LodSource,
+  type LodStats,
+  type Rect,
+} from "./lod";
 
 // Backing-store density cap: DPR 3 phones draw at 2 (iOS canvas memory).
 export const DPR_CAP = 2;
@@ -40,6 +50,33 @@ interface Item {
   ready: boolean;
   handedOff: boolean;
   hover: { from: number; to: number; start: number };
+  // SVG stickers go through the LOD cache once decoded (`rect` set).
+  svg: boolean;
+  rect: Rect | null;
+}
+
+// One settle: from the controller's onSettle (or load / resize / OS scheme
+// change) until the draw that paints the exact-scale bitmaps.
+export interface SettleStat {
+  seq: number;
+  reason: string;
+  scale: number;
+  // Device px per CSS px the bitmaps were rendered at (scale x dpr).
+  eff: number;
+  visibleSvg: number;
+  jobs: number;
+  // Rasterization time spent between settle and ready (all jobs, worker or main).
+  renderMs: number;
+  // onSettle -> all bitmaps cached.
+  readyMs: number;
+  // onSettle -> the draw that painted them.
+  paintMs: number;
+  // Last transform change -> that draw (includes the controller's 100 ms settle wait).
+  sinceMotionMs: number;
+  exactDrawn: number;
+  lodDrawn: number;
+  fallbackDrawn: number;
+  bytes: number;
 }
 
 export interface ProtoStats {
@@ -58,10 +95,21 @@ export interface ProtoStats {
   lastVisible: number;
   unclipped: string[];
   errors: string[];
+  lod: LodStats;
+  // Per-draw counts of how image stickers were painted (the last draw).
+  exactDraws: number;
+  lodDraws: number;
+  fallbackDraws: number;
+  rasterDraws: number;
+  settle: SettleStat | null;
+  settles: SettleStat[];
+  themed: string[];
 }
 
 export interface Renderer {
   readonly stats: ProtoStats;
+  readonly lod: LodCache;
+  getBitmap(slug: string, scale: number): ImageBitmap | null;
   hoverScale(slug: string): number;
   draw(): void;
   dispose(): void;
@@ -177,7 +225,17 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     lastVisible: 0,
     unclipped: [],
     errors: [],
+    lod: undefined as unknown as LodStats,
+    exactDraws: 0,
+    lodDraws: 0,
+    fallbackDraws: 0,
+    rasterDraws: 0,
+    settle: null,
+    settles: [],
+    themed: [],
   };
+  const lod = createLodCache(() => schedule());
+  stats.lod = lod.stats;
 
   const style = document.createElement("style");
   style.textContent = STYLE;
@@ -233,6 +291,8 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
       ready: false,
       handedOff: false,
       hover: { from: 1, to: 1, start: 0 },
+      svg: /\.svg(?:[?#]|$)/i.test(img.currentSrc || img.src),
+      rect: null,
     });
   }
   const bySlug = new Map(items.map((it) => [it.slug, it]));
@@ -266,7 +326,29 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
   const themeObserver = new MutationObserver(loadBg);
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
+  let settled = 0;
+  // Themed SVGs get a scheme-resolved copy (see LodSource.resolved).
+  const themedSrcs: { src: LodSource; text: string }[] = [];
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  function resolveInto(src: LodSource, text: string): Promise<void> {
+    const url = URL.createObjectURL(
+      new Blob([resolveScheme(text, darkQuery.matches)], { type: "image/svg+xml" }),
+    );
+    const img = new Image();
+    img.src = url;
+    return img
+      .decode()
+      .then(() => {
+        src.resolved = img;
+      })
+      .catch((e) => {
+        src.resolved = undefined;
+        stats.errors.push(`resolve ${src.slug}: ${e}`);
+      })
+      .finally(() => URL.revokeObjectURL(url));
+  }
   for (const it of items) {
+    const text = it.svg ? fetch(it.img.currentSrc || it.img.src).then((r) => r.text()) : Promise.resolve("");
     it.img
       .decode()
       .then(() => {
@@ -274,8 +356,25 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
         stats.spriteBytes += it.sprite.width * it.sprite.height * 4;
         it.ready = true;
         schedule();
+        return it.svg ? text : "";
       })
-      .catch((e) => stats.errors.push(`${it.slug}: ${e}`));
+      .then((svgText) => {
+        if (!it.svg) return;
+        const [x, y, w, h] = containRect(it.img, it.w, it.h);
+        it.rect = { x, y, w, h };
+        const themed = svgText.includes("prefers-color-scheme");
+        const src: LodSource = { slug: it.slug, img: it.img, rect: it.rect, themed };
+        if (themed) {
+          stats.themed.push(it.slug);
+          themedSrcs.push({ src, text: svgText });
+          return resolveInto(src, svgText).then(() => lod.register(src));
+        }
+        lod.register(src);
+      })
+      .catch((e) => stats.errors.push(`${it.slug}: ${e}`))
+      .finally(() => {
+        if (++settled === items.length) settlePass("initial");
+      });
   }
 
   function hoverScale(it: Item, now: number): number {
@@ -292,10 +391,179 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     return from + (to - from) * ease(t);
   }
 
+  // The part of the sticker box (local, unrotated CSS px) inside the viewport,
+  // as an axis-aligned box; null when none of it is.
+  function visibleLocal(it: Item, t: Transform, hs: number, margin = 0): Rect | null {
+    const left = -t.x / t.scale - margin;
+    const top = -t.y / t.scale - margin;
+    const right = left + vw / t.scale + 2 * margin;
+    const bottom = top + vh / t.scale + 2 * margin;
+    const cos = Math.cos(-it.rot);
+    const sin = Math.sin(-it.rot);
+    let x0 = Infinity;
+    let y0 = Infinity;
+    let x1 = -Infinity;
+    let y1 = -Infinity;
+    for (const [px, py] of [
+      [left, top],
+      [right, top],
+      [right, bottom],
+      [left, bottom],
+    ]) {
+      const dx = px - it.cx;
+      const dy = py - it.cy;
+      const lx = (dx * cos - dy * sin) / hs + it.w / 2;
+      const ly = (dx * sin + dy * cos) / hs + it.h / 2;
+      x0 = Math.min(x0, lx);
+      y0 = Math.min(y0, ly);
+      x1 = Math.max(x1, lx);
+      y1 = Math.max(y1, ly);
+    }
+    // Clamp to the sticker box.
+    x0 = Math.max(0, x0);
+    y0 = Math.max(0, y0);
+    x1 = Math.min(it.w, x1);
+    y1 = Math.min(it.h, y1);
+    if (x1 <= x0 || y1 <= y0) return null;
+    return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
+  }
+
+  const covers = (outer: Rect, inner: Rect) =>
+    inner.x >= outer.x - 0.01 &&
+    inner.y >= outer.y - 0.01 &&
+    inner.x + inner.w <= outer.x + outer.w + 0.01 &&
+    inner.y + inner.h <= outer.y + outer.h + 0.01;
+
+  const effScale = (t: Transform) => t.scale * stats.dpr;
+
+  // Paints the sticker's image in sticker-local CSS px (clip already set).
+  // SVGs: the exact-scale bitmap if it matches and covers the visible part,
+  // else the nearest cached LOD, else (no bitmap yet) the `<img>` directly.
+  let frame = { exact: 0, lod: 0, fallback: 0, raster: 0 };
+  function paintImage(it: Item, t: Transform, hs: number): void {
+    if (it.svg && it.rect) {
+      const eff = effScale(t);
+      const ex = lod.exact(it.slug);
+      if (ex && ex.scale === eff) {
+        const vis = visibleLocal(it, t, hs);
+        if (!vis || covers(ex.rect, vis)) {
+          ctx.drawImage(ex.bitmap, ex.rect.x, ex.rect.y, ex.bitmap.width / ex.scale, ex.bitmap.height / ex.scale);
+          frame.exact++;
+          return;
+        }
+      }
+      const l = lod.nearest(it.slug, eff);
+      if (l) {
+        ctx.drawImage(l.bitmap, l.rect.x, l.rect.y, l.bitmap.width / l.scale, l.bitmap.height / l.scale);
+        frame.lod++;
+        return;
+      }
+      frame.fallback++;
+    } else {
+      frame.raster++;
+    }
+    const fb = (it.svg && themedSrcs.find((s) => s.src.slug === it.slug)?.src.resolved) || it.img;
+    ctx.drawImage(fb, ...containRect(it.img, it.w, it.h));
+  }
+
+  // ---- settle: exact-scale bitmaps for the visible SVG stickers ----
+  let settleSeq = 0;
+  let lastChangeAt = performance.now();
+  let lastScale = viewer.transform.scale;
+  let settling: {
+    seq: number;
+    reason: string;
+    at: number;
+    scale: number;
+    eff: number;
+    visibleSvg: number;
+    jobs: number;
+    left: number;
+    renderMs0: number;
+    readyAt: number;
+  } | null = null;
+
+  function settlePass(reason: string): void {
+    const seq = ++settleSeq;
+    lod.cancel(seq);
+    const t = viewer.transform;
+    const eff = effScale(t);
+    const margin = (0.1 * Math.max(vw, vh)) / t.scale;
+    const visible = items.filter((it) => it.svg && it.rect && visibleLocal(it, t, 1));
+    const keep = new Set(visible.map((it) => it.slug));
+    // Never keep exact bitmaps of off-screen stickers or of another scale.
+    lod.dropExact((slug) => keep.has(slug) && lod.exact(slug)?.scale === eff);
+    // Large LODs requested mid-tween for stickers now off-screen.
+    lod.cullLod(keep);
+    const s = {
+      seq,
+      reason,
+      at: performance.now(),
+      scale: t.scale,
+      eff,
+      visibleSvg: visible.length,
+      jobs: 0,
+      left: 1,
+      renderMs0: lod.stats.renderMsTotal,
+      readyAt: 0,
+    };
+    settling = s;
+    const done = () => {
+      if (settling !== s || --s.left > 0) return;
+      s.readyAt = performance.now();
+      schedule();
+    };
+    for (const it of visible) {
+      const r = it.rect!;
+      if (lodLevel(eff, r.w, r.h, LOD_MAX_SIDE) === eff) {
+        // A power-of-two scale: the LOD bitmap is the exact render.
+        if (lod.ensureLod(it.slug, eff, done)) {
+          s.left++;
+          s.jobs++;
+        }
+        continue;
+      }
+      const need = visibleLocal(it, t, 1)!;
+      const ex = lod.exact(it.slug);
+      if (ex && ex.scale === eff && covers(ex.rect, need)) continue;
+      s.left++;
+      s.jobs++;
+      lod.renderExact(it.slug, eff, visibleLocal(it, t, 1, margin)!, seq, done);
+    }
+    done();
+  }
+
+  function settlePainted(): void {
+    const s = settling;
+    if (!s || !s.readyAt) return;
+    settling = null;
+    const now = performance.now();
+    const entry: SettleStat = {
+      seq: s.seq,
+      reason: s.reason,
+      scale: s.scale,
+      eff: s.eff,
+      visibleSvg: s.visibleSvg,
+      jobs: s.jobs,
+      renderMs: lod.stats.renderMsTotal - s.renderMs0,
+      readyMs: s.readyAt - s.at,
+      paintMs: now - s.at,
+      sinceMotionMs: now - lastChangeAt,
+      exactDrawn: frame.exact,
+      lodDrawn: frame.lod,
+      fallbackDrawn: frame.fallback,
+      bytes: lod.stats.bytes,
+    };
+    stats.settle = entry;
+    stats.settles.push(entry);
+    if (stats.settles.length > 20) stats.settles.shift();
+  }
+
   function draw(): void {
     const t0 = performance.now();
     const t: Transform = viewer.transform;
     const dpr = stats.dpr;
+    frame = { exact: 0, lod: 0, fallback: 0, raster: 0 };
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, cv.width, cv.height);
     // Downscaled rasters: closest to the DOM's mipmapped image filtering.
@@ -336,10 +604,10 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
       if (it.clip) {
         ctx.save();
         ctx.clip(it.clip);
-        ctx.drawImage(it.img, ...containRect(it.img, it.w, it.h));
+        paintImage(it, t, hs);
         ctx.restore();
       } else {
-        ctx.drawImage(it.img, ...containRect(it.img, it.w, it.h));
+        paintImage(it, t, hs);
       }
     }
     // Hand off in the same task as the draw, so no frame shows both or neither.
@@ -354,6 +622,11 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     }
     if (handed === items.length && !stats.allStickersAt) stats.allStickersAt = performance.now();
     stats.lastVisible = visible;
+    stats.exactDraws = frame.exact;
+    stats.lodDraws = frame.lod;
+    stats.fallbackDraws = frame.fallback;
+    stats.rasterDraws = frame.raster;
+    settlePainted();
     stats.draws++;
     stats.lastDrawMs = performance.now() - t0;
     stats.maxDrawMs = Math.max(stats.maxDrawMs, stats.lastDrawMs);
@@ -369,19 +642,46 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     });
   }
 
-  const offChange = viewer.onChange(() => {
+  const offChange = viewer.onChange((t) => {
+    lastChangeAt = performance.now();
+    // Motion resumed: abandon the pending settle; a new scale invalidates
+    // every exact bitmap (a pan keeps them for the covered area).
+    if (settling) {
+      settling = null;
+      lod.cancel(++settleSeq);
+    }
+    if (t.scale !== lastScale) {
+      lastScale = t.scale;
+      lod.dropExact();
+    }
     if (raf) {
       cancelAnimationFrame(raf);
       raf = 0;
     }
     draw();
   });
+  const offSettle = viewer.onSettle(() => settlePass("settle"));
 
   const resizeObserver = new ResizeObserver(() => {
     size();
     draw();
+    if (settled === items.length) settlePass("resize");
   });
   resizeObserver.observe(root);
+
+  // SVG `<img>`s follow the OS colour scheme: cached rasters go stale.
+  const scheme = darkQuery;
+  const onScheme = () => {
+    lod.clear();
+    schedule();
+    // Re-resolve themed copies, then drop anything rendered from stale ones.
+    Promise.all(themedSrcs.map((t) => resolveInto(t.src, t.text))).then(() => {
+      lod.clear();
+      settlePass("scheme");
+      schedule();
+    });
+  };
+  scheme.addEventListener("change", onScheme);
 
   const canHover = window.matchMedia("(hover: hover)");
   function setHover(it: Item | undefined, on: boolean): void {
@@ -412,6 +712,8 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
 
   return {
     stats,
+    lod,
+    getBitmap: (slug, scale) => lod.getBitmap(slug, scale),
     hoverScale: (slug) => {
       const it = bySlug.get(slug);
       return it ? hoverScale(it, performance.now()) : 1;
@@ -419,6 +721,9 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     draw,
     dispose() {
       offChange();
+      offSettle();
+      scheme.removeEventListener("change", onScheme);
+      lod.dispose();
       resizeObserver.disconnect();
       themeObserver.disconnect();
       listeners.abort();

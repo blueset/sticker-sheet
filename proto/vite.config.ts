@@ -8,6 +8,8 @@ const here = import.meta.dirname;
 
 export default defineConfig({
   root: here,
+  // Relative to import.meta.url, so the worker chunk resolves under /_proto/.
+  base: "./",
   publicDir: false,
   build: {
     outDir: path.resolve(here, "../dist-proto/_proto"),
