@@ -33,6 +33,7 @@ import { BENCH_RUNS, STICKER_COUNT, applyProfile, benchEnabled, benchUrl, profil
 import { percentile } from "./metrics.ts";
 import { benchLabel, resultsDir, type ProfileName } from "./results.ts";
 import { statsOf } from "./summarize.ts";
+import { readProtoStats, servedBuild } from "./proto.ts";
 
 const HOVER_CPU_SLOWDOWN = 4;
 const HOVER_MOVES = 160;
@@ -299,7 +300,12 @@ test.describe("interaction", () => {
       await loadIdle(page, profile);
 
       const result = profile === "desktop" ? await hoverRun(page, cdp) : await sheetOpenRun(page);
-      fs.writeFileSync(path.join(dir, `${result.name}-${String(run).padStart(2, "0")}.json`), JSON.stringify(result, null, 2));
+      // Task 3.3: which build answered ("proto" = Pathway B's canvas prototype).
+      const served = servedBuild(await page.evaluate(readProtoStats));
+      fs.writeFileSync(
+        path.join(dir, `${result.name}-${String(run).padStart(2, "0")}.json`),
+        JSON.stringify({ ...result, servedBuild: served }, null, 2),
+      );
     });
   }
 

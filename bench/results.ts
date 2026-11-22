@@ -2,6 +2,7 @@
 // No Playwright imports here: `summarize.ts` runs as a plain Node CLI.
 import fs from "node:fs";
 import path from "node:path";
+import type { ProtoGestureSummary, ProtoLoadSummary } from "./proto.ts";
 
 export type ProfileName = "mobile" | "desktop";
 
@@ -40,6 +41,14 @@ export interface FirstRenderResult {
   // evidence that CPU throttling is in effect (about cpuSlowdown x slower).
   cpuProbeMs?: number;
   detail?: FirstRenderDetail;
+  // Task 3.3 (absent in older runs). "proto" when Pathway B's canvas
+  // prototype attached (`window.__proto`), else "dom" (Pathway A).
+  servedBuild?: "proto" | "dom";
+  // Finished requests over the observation window, by resource type (same
+  // buckets as `bytes`).
+  requests?: ByteBreakdown;
+  // Pathway B only (bench/proto.ts protoLoadSummary).
+  proto?: ProtoLoadSummary;
 }
 
 export interface ByteBreakdown {
@@ -122,6 +131,14 @@ export interface GestureResult {
   motionAfterInputMs?: number;
   settleAfterMotionMs?: number | null;
   rasterAfterSettleMs?: number | null;
+  // Task 3.3 (absent in older runs).
+  // - mainBusyAfterMotionMs: main-thread RunTask time from the last motion
+  //   frame to the end of the trace (post-motion settle work, e.g. B's
+  //   main-thread exact SVG renders).
+  servedBuild?: "proto" | "dom";
+  mainBusyAfterMotionMs?: number;
+  // Pathway B only (bench/proto.ts protoGestureSummary).
+  proto?: ProtoGestureSummary;
 }
 
 export interface RunMeta {

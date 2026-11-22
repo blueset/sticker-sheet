@@ -34,6 +34,13 @@ import { percentile } from "./metrics.ts";
 import { benchLabel, resultsDir } from "./results.ts";
 import { statsOf } from "./summarize.ts";
 import { FRAME_OVER_16_MS } from "./trace.ts";
+import {
+  protoGestureSummary,
+  readProtoStats,
+  servedBuild,
+  type ProtoGestureSummary,
+  type ProtoStatsLike,
+} from "./proto.ts";
 
 const VSYNC_MS = 1000 / 60;
 const RAF_TOLERANCE_MS = 0.4;
@@ -50,6 +57,9 @@ export interface PortableResult {
   motionMs: number;
   scaleChange: number;
   maxMove: number;
+  // Task 3.3 (absent in older runs): see bench/proto.ts.
+  servedBuild?: "proto" | "dom";
+  proto?: ProtoGestureSummary;
 }
 
 interface ProbeState {
@@ -247,6 +257,7 @@ test.describe("portable", () => {
         const box = await page.locator(contract.viewer).boundingBox();
         if (!box) throw new Error("viewer has no box");
 
+        const protoBefore = (await page.evaluate(readProtoStats)) as ProtoStatsLike | null;
         await page.evaluate(startProbe, { layer: contract.layer, viewer: contract.viewer });
         await scenario.run(page, box);
 
@@ -257,6 +268,7 @@ test.describe("portable", () => {
           await sleep(100);
         }
         const g = await page.evaluate(readProbe);
+        const protoAfter = (await page.evaluate(readProtoStats)) as ProtoStatsLike | null;
         await page.evaluate(() => {
           (window as unknown as { __p: ProbeState }).__p.stop = true;
         });
@@ -280,12 +292,20 @@ test.describe("portable", () => {
           motionMs: g.lastMotionAt - g.firstInputAt,
           scaleChange: g.scaleMax / g.scaleMin,
           maxMove: g.maxMove,
+          servedBuild: servedBuild(protoAfter),
+          ...(protoBefore && protoAfter
+            ? { proto: protoGestureSummary(protoBefore, protoAfter, g.firstInputAt) }
+            : {}),
         };
         fs.writeFileSync(path.join(dir, `${scenario.name}-${run}.json`), JSON.stringify(result, null, 2));
         console.log(
           `[${label}/${project}] ${scenario.name} run ${run}: frames ${result.frames} p95 ${result.p95FrameMs.toFixed(1)} ` +
             `over16 ${result.over16} settle ${result.settleMs?.toFixed(0) ?? "null"} motion ${result.motionMs.toFixed(0)} ` +
-            `scale x${result.scaleChange.toFixed(2)} move ${result.maxMove.toFixed(0)}`,
+            `scale x${result.scaleChange.toFixed(2)} move ${result.maxMove.toFixed(0)}` +
+            (result.proto
+              ? ` | proto ${result.proto.lodPath}/${result.proto.mainVia} settle+${result.proto.settleSinceMotionMs?.toFixed(0) ?? "null"} ` +
+                `fallback ${result.proto.fallbackDraws}`
+              : ` | ${result.servedBuild}`),
         );
         if (scenario.name === "wheel-zoom") expect(result.scaleChange).toBeGreaterThan(1.05);
         else expect(result.maxMove).toBeGreaterThan(30);

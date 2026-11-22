@@ -89,6 +89,7 @@ import {
   type ProfileName,
 } from "./results.ts";
 import { writeSummary } from "./summarize.ts";
+import { protoLoadSummary, readProtoStats, servedBuild, type ProtoStatsLike } from "./proto.ts";
 
 interface RecorderState {
   fcp: number | null;
@@ -412,6 +413,7 @@ test.describe("first render", () => {
         );
       }
       const final = await page.evaluate(snapshot);
+      const protoStats = (await page.evaluate(readProtoStats)) as ProtoStatsLike | null;
       const timings = await page.evaluate(resourceTimings);
       const cpuProbeMs = await page.evaluate(() => {
         const t = performance.now();
@@ -426,6 +428,7 @@ test.describe("first render", () => {
       const timingByUrl = new Map(timings.map((t) => [t.url, t]));
 
       const bytes = emptyBytes();
+      const requests = emptyBytes();
       const bytesBeforeLcp = emptyBytes();
       let imageCount = 0;
       const scripts: FirstRenderDetail["scripts"] = [];
@@ -435,6 +438,7 @@ test.describe("first render", () => {
         if (!r.finished) continue;
         const bucket = bucketOf(r.type);
         bytes[bucket] += r.encoded;
+        requests[bucket]++;
         if (r.type === "Image") imageCount++;
         const timing = timingByUrl.get(r.url);
         if (timing && timing.end <= lcp.time) {
@@ -518,6 +522,9 @@ test.describe("first render", () => {
             ([s, d]) => [Math.round(s), Math.round(d)] as [number, number]
           ),
         },
+        servedBuild: servedBuild(protoStats),
+        requests,
+        ...(protoStats ? { proto: protoLoadSummary(protoStats, fcp) } : {}),
       };
       writeRaw(label, profileName, `first-render-${run}.json`, result);
       console.log(
@@ -526,7 +533,10 @@ test.describe("first render", () => {
           `live ${result.liveCurrentMs?.toFixed(0) ?? "null"} ` +
           `input ${result.inputReadyMs?.toFixed(0) ?? "null"} entry ${result.entryStartMs ?? "-"}/${result.entryEndMs ?? "-"} ` +
           `critJS ${criticalJs} ` +
-          `markers [${result.criticalPathMarkers?.join(",")}]`
+          `markers [${result.criticalPathMarkers?.join(",")}]` +
+          (result.proto
+            ? ` | proto ${result.proto.lodPath} handoff ${result.proto.handoffAllMs?.toFixed(0) ?? "null"}`
+            : ` | ${result.servedBuild}`)
       );
       // Payload gate (Milestone 1 exit), checked after the run is recorded so a
       // failure keeps its data (metrics.ts criticalJsGateValue). Mobile, the

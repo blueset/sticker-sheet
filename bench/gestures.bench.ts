@@ -87,6 +87,7 @@ import {
   type ProfileName,
 } from "./results.ts";
 import { writeSummary } from "./summarize.ts";
+import { protoGestureSummary, readProtoStats, servedBuild, type ProtoStatsLike } from "./proto.ts";
 
 const VSYNC_MS = 1000 / 60;
 // rAF timestamps are coarsened to 0.1 ms, so a healthy 16.667 ms frame reads
@@ -384,6 +385,7 @@ test.describe("gestures", () => {
         })();
 
         await browser.startTracing(page, { categories: TRACE_CATEGORIES });
+        const protoBefore = (await page.evaluate(readProtoStats)) as ProtoStatsLike | null;
         const markerPage = await page.evaluate(startRecorder, {
           layer: contract.layer,
           viewer: contract.viewer,
@@ -402,6 +404,7 @@ test.describe("gestures", () => {
         await sleep(profile === "mobile" ? 2500 : 1500);
         const g = await page.evaluate(readGesture);
         await page.evaluate(stopRecorder);
+        const protoAfter = (await page.evaluate(readProtoStats)) as ProtoStatsLike | null;
         sampling = false;
         await sampler;
         const after = await readMetrics(cdp);
@@ -502,6 +505,14 @@ test.describe("gestures", () => {
           motionAfterInputMs: g.lastMotionAt - g.lastInputAt,
           settleAfterMotionMs,
           rasterAfterSettleMs,
+          servedBuild: servedBuild(protoAfter),
+          mainBusyAfterMotionMs: analyzeTrace(events, {
+            startMs: motionEndTrace,
+            endMs: traceEnd,
+          }).mainBusyMs,
+          ...(protoBefore && protoAfter
+            ? { proto: protoGestureSummary(protoBefore, protoAfter, markerPage) }
+            : {}),
         };
         writeRaw(label, profile, `gesture-${scenario.name}-${run}.json`, result);
         console.log(
@@ -510,7 +521,11 @@ test.describe("gestures", () => {
             `crisp ${crispAfterMs?.toFixed(0) ?? "null"} (motion+${crispAfterMotionMs?.toFixed(0) ?? "null"}, ` +
             `tail ${result.motionAfterInputMs!.toFixed(0)} settle ${settleAfterMotionMs?.toFixed(0) ?? "null"} ` +
             `raster ${rasterAfterSettleMs?.toFixed(0) ?? "null"}) heap ${peakHeapMb.toFixed(1)} ` +
-            `scale x${scaleChange.toFixed(2)} move ${g.maxMove.toFixed(0)}`
+            `scale x${scaleChange.toFixed(2)} move ${g.maxMove.toFixed(0)}` +
+            (result.proto
+              ? ` | proto ${result.proto.lodPath} settle+${result.proto.settleSinceMotionMs?.toFixed(0) ?? "null"} ` +
+                `fallback ${result.proto.fallbackDraws} evict ${result.proto.evictions}`
+              : ` | ${result.servedBuild}`)
         );
         expect(result.frames).toBeGreaterThan(0);
       });
