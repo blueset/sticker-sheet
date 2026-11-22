@@ -56,6 +56,59 @@ Measured in Chromium with mobile emulation (Pixel 7, 4× CPU throttle, "Fast 4G"
 - Interaction: sticker hover feedback and sheet-open input delay **under 100 ms**, and at least 2× lower than the baseline mobile medians for the benchmarked inputs: wheel-zoom ≤ 21 ms (baseline 42), drag-inertia ≤ 17 ms (35), pinch ≤ 17 ms (35), button-zoom ≤ 48 ms (baseline 96 ms, p95 106 ms: the one gesture input delay that sits at the 100 ms line today). Hover cost per `mousemove` over a sticker (desktop at 4× CPU): ≤ 7 ms of main-thread task time (baseline 13.9 ms, 4 React commits per move). Sheet-open input delay is not part of the Milestone 0 bench, so it keeps the 100 ms budget and gets its baseline when the rewrite's bench adds it.
 - Relative: at least 2× better than baseline on every one of the above, whichever is stricter. Desktop baseline medians for the same rule: LCP 324 ms (≤ 162 ms), crisp 470–524 ms (≤ 150 ms), p95 frame 16.667 ms (kept), CLS 0 (kept). Where a 2× target falls below the harness resolution (about 2 ms of input delay), the rule is "no regression".
 
+#### Final status (Milestone 4)
+
+Added after Milestone 4; the budgets above are unchanged. Values are 5-run medians, p95 in brackets where the source gives one. Baseline and audit values are copied from `docs/superpowers/decisions/004-parity.md` §3 (`bench/results/baseline-*.json`, `audit-*.json`). First-render values marked "final" are the re-run in `docs/superpowers/decisions/006-final-verification.md` §3 (`bench/results/final-*.json`). Gesture, settle, interaction and deep-link values are from the audit only; they were not re-run (R32).
+
+| budget | target | baseline | final | status |
+|---|---|---|---|---|
+| Mobile LCP | ≤ 1,380 ms | 2,772 | 836 (896), final | met |
+| Desktop LCP | ≤ 162 ms | 324 | 136 (152), final | met |
+| Critical-path JS (gzip) | ≤ 100 KB | 473,458 B | mobile 8,011 B; desktop median 80,421 B (p95 147,389), final | met on median (desktop p95 over: an island chunk can finish before LCP, 004 §3 ¹, 006 §3) |
+| CLS | 0 | 0 | 0 (both), final | met |
+| No JS for first paint of non-live stickers | stickers in the HTML | 0 at FCP, first sticker 2,044 ms | 63 at FCP (final); first sticker 545.3 ms, final (audit 535) | met |
+| TBT (mobile) | no regression | 726 | 0 (14), final | met |
+| Input readiness (mobile) | ≤ 1.5 s | not measured | 546.3 ms (568.8), final | met |
+| Deep-link LCP (`/#riddler`, mobile) | ≤ 1,380 ms | 3,572 | 1,652 (1,680), audit | missed |
+| p95 frame time, every scenario | ≤ 16.7 ms | 16.667 | 16.667 in all 4, audit | met |
+| wheel-zoom `RunTask` busy (mobile) | ≤ 174 ms | 348 | 342 (380), audit | missed |
+| drag-inertia busy (mobile) | ≤ 137 ms | 275 | 348 (367), audit | missed (worse than baseline) |
+| pinch busy (mobile) | ≤ 150 ms | 301 | 243 (252), audit | missed |
+| button-zoom busy (mobile) | ≤ 259 ms | 518 | 471 (502), audit | missed |
+| Settle, mobile wheel (`crispAfterMotionMs`) | ≤ 150 ms | 477 | 118.5 (141.9), audit | met |
+| Settle, mobile drag-inertia | ≤ 150 ms | 541 | 0, audit | met |
+| Settle, mobile pinch | ≤ 150 ms | 351 | 135.1 (153.1), audit | met on median (p95 over) |
+| Settle, mobile button | ≤ 150 ms | 455 | 119.7 (122.9), audit | met |
+| Settle, desktop wheel | ≤ 150 ms | 496 | 155.9 (167.2), audit | missed |
+| Settle, desktop drag-inertia | ≤ 150 ms | 524 | 0, audit | met |
+| Settle, desktop button | ≤ 150 ms | 470 | 149.6 (156.8), audit | met on median (no margin; p95 over) |
+| Hover cost per `mousemove` (desktop, 4× CPU) | ≤ 7 ms (2×: ≤ 6.5) | 12.93 (M0 13.9) | 4.06, audit | met |
+| Sheet-open input delay (mobile) | < 100 ms; 2× rule ≤ 17 | 34.4 (measured in the audit) | 30.9 (47.6), audit | met < 100; 2× missed |
+| wheel-zoom input delay (mobile) | < 100; ≤ 21 | 42.4 | 38.3 (43.3), audit | met < 100; 2× missed |
+| drag-inertia input delay (mobile) | < 100; ≤ 17 | 34.8 | 33.9 (35.3), audit | met < 100; 2× missed |
+| pinch input delay (mobile) | < 100; ≤ 17 | 34.9 | 42.0 (44.3), audit | met < 100; 2× missed (worse than baseline) |
+| button-zoom input delay (mobile) | < 100; ≤ 48 | 96.4 (106.3) | 59.0 (72.1), audit | met < 100; 2× missed |
+| Desktop wheel input delay (no spec row; 004 lists it) | no regression | 48.0 | 70.3 (75.6), audit | missed (004: "regression (+46 %)") |
+| Pinch frame count (carry-forward) | no regression | 93 | 64, audit | missed |
+| Desktop raster time (carry-forward) | — (004: "≈ 2× the baseline") | wheel 121, button 47, drag 33 ms | wheel 218, button 106, drag 135 ms, audit | missed |
+| Modulepreload cost (carry-forward) | — | — | +64 ms LCP, +166 ms all-painted (002; not re-measured) | missed (004: "accepted trade-off") |
+| English aria-labels before hydration (carry-forward) | none for non-English users | — | open, no test | missed |
+| Real-device measurement | owner's real devices | not measured | not measured | not measured |
+
+Missed: deep-link LCP; mobile `RunTask` busy in all four gestures (drag-inertia worse than the baseline); desktop wheel settle; the 2× input-delay rule for sheet-open and all four gestures (pinch worse than the baseline); desktop wheel input delay (+46 %); pinch frame count; desktop raster time; the modulepreload cost; English aria-labels before hydration. Per R19/R32 these are recorded, not tuned.
+
+Known parity difference (R34): after the sheet handle is clicked, the handle keeps its focus outline, because `Silk.Trigger action="step"` leaves focus on the button while the baseline moves it to the sheet view. The chromium-mobile visual scene "mobile sheet: peek and expanded" differs by 811 px at the exact-match default and passes at `VISUAL_MAX_DIFF=0.01` (006 §2). Accepted, not fixed.
+
+Unresolved:
+
+- No real-device run; every number above is Chromium emulation (`manual-device-checklist.md`).
+- Screenshot sharpness at a settled 5× zoom against the baseline: not attempted (004 §2).
+- The MDX component set (Leaflet, CanIUse, `<baseline-status>`, exported functions) was checked in a browser only by an uncommitted scratch test (16 of 16, 004 §2); there is no committed e2e.
+- Firefox: after a wheel over the expanded sheet content, the next handle click is sometimes dropped (R20, 004 §1 note 3); intermittent, Firefox only. It passed in the final run (006 §2).
+- The mobile TTI proxy rose from 696 to 2,832 ms between the audit and the final run (a second long task in 3 of 5 runs; not investigated, 006 §3).
+
+Details: `docs/superpowers/decisions/004-parity.md` (§3 budgets, §4 summary), `005-pathway.md` (Pathway A vs B), `006-final-verification.md`.
+
 ### Feature parity checklist
 
 - Pan and zoom the canvas: wheel zoom to cursor, pinch, drag with inertia (`smooth`), double-click zoom, zoom range 0.1–5, bounded panning with centring when smaller than the viewport, `+`/`−`/centre buttons, animated programmatic moves. The exact `react-zoom-pan-pinch` defaults are captured in Milestone 0 and matched.
