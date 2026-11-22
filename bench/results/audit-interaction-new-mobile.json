@@ -1,0 +1,274 @@
+{
+  "label": "audit",
+  "target": "new",
+  "profile": "mobile",
+  "meta": {
+    "label": "audit",
+    "profile": "mobile",
+    "chromium": "159.0.8154.6",
+    "node": "v26.12.1",
+    "os": "Windows_NT 10.0.26300 (x64)",
+    "cpu": "AMD Ryzen 9 9950X 16-Core Processor            ",
+    "cores": 32,
+    "memGb": 94,
+    "cpuSlowdown": 4,
+    "network": {
+      "offline": false,
+      "latency": 165,
+      "downloadThroughput": 1012500,
+      "uploadThroughput": 168750
+    },
+    "runs": 5,
+    "recordedAt": "2026-11-22T00:00:12.401Z",
+    "query": "",
+    "target": "new"
+  },
+  "scenarios": {
+    "sheet-open": {
+      "inputDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 30.9,
+        "p95": 47.6,
+        "min": 26.1,
+        "max": 47.6,
+        "spreadPct": 69.579,
+        "values": [
+          30.9,
+          47.6,
+          29.7,
+          26.1,
+          33.3
+        ]
+      },
+      "clickDelayMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 30.9,
+        "p95": 47.6,
+        "min": 26.1,
+        "max": 47.6,
+        "spreadPct": 69.579,
+        "values": [
+          30.9,
+          47.6,
+          29.7,
+          26.1,
+          33.3
+        ]
+      },
+      "sheetVisibleMs": {
+        "n": 5,
+        "nulls": 0,
+        "median": 293.1,
+        "p95": 414,
+        "min": 274.5,
+        "max": 414,
+        "spreadPct": 47.595,
+        "values": [
+          291,
+          414,
+          344.9,
+          274.5,
+          293.1
+        ]
+      },
+      "delays": {
+        "pointerdown": {
+          "n": 5,
+          "nulls": 0,
+          "median": 19,
+          "p95": 26.7,
+          "min": 16.3,
+          "max": 26.7,
+          "spreadPct": 54.737,
+          "values": [
+            19,
+            26.7,
+            18.2,
+            16.3,
+            20.8
+          ]
+        },
+        "touchstart": {
+          "n": 5,
+          "nulls": 0,
+          "median": 20.4,
+          "p95": 28.4,
+          "min": 17.3,
+          "max": 28.4,
+          "spreadPct": 54.412,
+          "values": [
+            20.4,
+            28.4,
+            19.3,
+            17.3,
+            22.2
+          ]
+        },
+        "pointerup": {
+          "n": 5,
+          "nulls": 0,
+          "median": 21.3,
+          "p95": 29.7,
+          "min": 18.2,
+          "max": 29.7,
+          "spreadPct": 53.991,
+          "values": [
+            21.3,
+            29.7,
+            20.2,
+            18.2,
+            23.3
+          ]
+        },
+        "touchend": {
+          "n": 5,
+          "nulls": 0,
+          "median": 23.2,
+          "p95": 32.5,
+          "min": 19.5,
+          "max": 32.5,
+          "spreadPct": 56.034,
+          "values": [
+            23.2,
+            32.5,
+            21.4,
+            19.5,
+            25.3
+          ]
+        },
+        "mousedown": {
+          "n": 5,
+          "nulls": 0,
+          "median": 28.9,
+          "p95": 43.9,
+          "min": 23.9,
+          "max": 43.9,
+          "spreadPct": 69.204,
+          "values": [
+            28.9,
+            43.9,
+            27.3,
+            23.9,
+            30.9
+          ]
+        },
+        "mouseup": {
+          "n": 5,
+          "nulls": 0,
+          "median": 30.5,
+          "p95": 46.8,
+          "min": 25.1,
+          "max": 46.8,
+          "spreadPct": 71.148,
+          "values": [
+            30.5,
+            46.8,
+            28.9,
+            25.1,
+            32.4
+          ]
+        },
+        "click": {
+          "n": 5,
+          "nulls": 0,
+          "median": 30.9,
+          "p95": 47.6,
+          "min": 26.1,
+          "max": 47.6,
+          "spreadPct": 69.579,
+          "values": [
+            30.9,
+            47.6,
+            29.7,
+            26.1,
+            33.3
+          ]
+        }
+      }
+    }
+  },
+  "raw": [
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 30.9,
+      "clickDelayMs": 30.9,
+      "sheetVisibleMs": 291,
+      "delays": {
+        "pointerdown": 19,
+        "touchstart": 20.399999976158142,
+        "pointerup": 21.299999952316284,
+        "touchend": 23.199999928474426,
+        "mousedown": 28.899999976158142,
+        "mouseup": 30.5,
+        "click": 30.899999976158142
+      }
+    },
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 47.6,
+      "clickDelayMs": 47.6,
+      "sheetVisibleMs": 414,
+      "delays": {
+        "pointerdown": 26.700000047683716,
+        "touchstart": 28.40000009536743,
+        "pointerup": 29.700000047683716,
+        "touchend": 32.5,
+        "mousedown": 43.90000009536743,
+        "mouseup": 46.800000071525574,
+        "click": 47.60000002384186
+      }
+    },
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 29.7,
+      "clickDelayMs": 29.7,
+      "sheetVisibleMs": 344.9,
+      "delays": {
+        "pointerdown": 18.200000047683716,
+        "touchstart": 19.299999952316284,
+        "pointerup": 20.199999928474426,
+        "touchend": 21.399999976158142,
+        "mousedown": 27.299999952316284,
+        "mouseup": 28.899999976158142,
+        "click": 29.699999928474426
+      }
+    },
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 26.1,
+      "clickDelayMs": 26.1,
+      "sheetVisibleMs": 274.5,
+      "delays": {
+        "pointerdown": 16.300000071525574,
+        "touchstart": 17.300000071525574,
+        "pointerup": 18.200000047683716,
+        "touchend": 19.5,
+        "mousedown": 23.899999976158142,
+        "mouseup": 25.100000023841858,
+        "click": 26.100000023841858
+      }
+    },
+    {
+      "name": "sheet-open",
+      "stickerSlug": "eana",
+      "inputDelayMs": 33.3,
+      "clickDelayMs": 33.3,
+      "sheetVisibleMs": 293.1,
+      "delays": {
+        "pointerdown": 20.800000071525574,
+        "touchstart": 22.200000047683716,
+        "pointerup": 23.300000071525574,
+        "touchend": 25.300000071525574,
+        "mousedown": 30.90000009536743,
+        "mouseup": 32.40000009536743,
+        "click": 33.300000071525574
+      }
+    }
+  ]
+}
