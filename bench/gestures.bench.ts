@@ -64,6 +64,7 @@ import {
   applyProfile,
   benchEnabled,
   benchUrl,
+  gpuFeatures,
   probeCss,
   profileOf,
   runMeta,
@@ -344,7 +345,10 @@ test.describe("gestures", () => {
         if (scenario.name === scenarios[0].name && run === 1) {
           clearRaw(label, profile, "gesture-");
         }
-        writeRaw(label, profile, "meta.json", runMeta(label, profile, browser));
+        writeRaw(label, profile, "meta.json", {
+        ...runMeta(label, profile, browser),
+        gpuFeatures: await gpuFeatures(browser),
+      });
 
         const cdp = await context.newCDPSession(page);
         await applyProfile(cdp, PROFILES[profile]);

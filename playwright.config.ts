@@ -1,6 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
+import { BENCH_GPU_ARGS, benchGpu } from "./bench/harness.ts";
 
 const STATIC_DIR = process.env.STATIC_DIR ?? "dist";
+// BENCH_GPU=1: hardware GPU for the chromium projects (see bench/harness.ts).
+const chromiumGpu = benchGpu() ? { launchOptions: { args: BENCH_GPU_ARGS } } : {};
 
 export default defineConfig({
   testDir: ".",
@@ -27,11 +30,12 @@ export default defineConfig({
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 1280, height: 800 },
+        ...chromiumGpu,
       },
     },
     {
       name: "chromium-mobile",
-      use: { ...devices["Pixel 7"] },
+      use: { ...devices["Pixel 7"], ...chromiumGpu },
     },
     {
       name: "webkit-mobile",

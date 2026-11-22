@@ -52,6 +52,27 @@ export const probeCss = (selectors: { stickers: string; layer: string }) =>
 export const benchQuery = () => process.env.BENCH_QUERY ?? "";
 export const benchUrl = () => `/${benchQuery()}`;
 
+// Opt-in hardware GPU for the chromium projects (Task 3.3, see
+// playwright.config.ts). Playwright's headless chromium otherwise runs
+// SwiftShader: software rasterisation and an unaccelerated 2D canvas.
+export const BENCH_GPU_ARGS = ["--enable-gpu", "--use-angle=d3d11", "--ignore-gpu-blocklist"];
+export const benchGpu = () => process.env.BENCH_GPU === "1";
+
+// The browser's graphics feature status (CDP SystemInfo), e.g.
+// { "2d_canvas": "unavailable_software", rasterization: "disabled_software" }.
+export async function gpuFeatures(browser: Browser): Promise<Record<string, string> | null> {
+  try {
+    const cdp = await browser.newBrowserCDPSession();
+    const info = (await cdp.send("SystemInfo.getInfo")) as {
+      gpu: { featureStatus: Record<string, string> };
+    };
+    await cdp.detach();
+    return info.gpu.featureStatus;
+  } catch {
+    return null;
+  }
+}
+
 export function runMeta(
   label: string,
   name: ProfileName,
@@ -78,5 +99,6 @@ export function runMeta(
       ? { probeImages: process.env.BENCH_PROBE_IMAGES }
       : {}),
     query: benchQuery(),
+    ...(benchGpu() ? { gpu: BENCH_GPU_ARGS.join(" ") } : {}),
   };
 }

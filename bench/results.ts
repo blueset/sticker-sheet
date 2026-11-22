@@ -161,6 +161,10 @@ export interface RunMeta {
   // BENCH_QUERY appended to the page URL ("" for the plain page). Absent in
   // runs recorded before it existed.
   query?: string;
+  // Task 3.3: BENCH_GPU launch args (absent = Playwright's default headless
+  // chromium, SwiftShader) and the browser's graphics feature status.
+  gpu?: string;
+  gpuFeatures?: Record<string, string> | null;
 }
 
 // Playwright, vitest and the CLI are all run from the repository root.

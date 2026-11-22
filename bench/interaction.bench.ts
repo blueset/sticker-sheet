@@ -29,7 +29,7 @@ import type { CDPSession, Page } from "@playwright/test";
 import { contract, target } from "../tests/contract.ts";
 import { settled } from "../tests/parity/replay.ts";
 import { PROFILES } from "./profiles.ts";
-import { BENCH_RUNS, STICKER_COUNT, applyProfile, benchEnabled, benchUrl, profileOf, runMeta, sleep } from "./harness.ts";
+import { BENCH_RUNS, STICKER_COUNT, applyProfile, benchEnabled, benchUrl, gpuFeatures, profileOf, runMeta, sleep } from "./harness.ts";
 import { percentile } from "./metrics.ts";
 import { benchLabel, resultsDir, type ProfileName } from "./results.ts";
 import { statsOf } from "./summarize.ts";
@@ -289,7 +289,7 @@ test.describe("interaction", () => {
       const dir = rawDir(label, profile);
       if (run === 1) fs.rmSync(dir, { recursive: true, force: true });
       fs.mkdirSync(dir, { recursive: true });
-      const meta = runMeta(label, profile, browser);
+      const meta = { ...runMeta(label, profile, browser), gpuFeatures: await gpuFeatures(browser) };
       if (profile === "desktop") meta.cpuSlowdown = HOVER_CPU_SLOWDOWN;
       fs.writeFileSync(path.join(dir, "meta.json"), JSON.stringify({ ...meta, target }, null, 2));
 

@@ -64,6 +64,7 @@ import {
   applyProfile,
   benchEnabled,
   benchUrl,
+  gpuFeatures,
   profileOf,
   runMeta,
   sleep,
@@ -355,7 +356,10 @@ test.describe("first render", () => {
       const deadline = deadlineMs(profileName);
       test.setTimeout(deadline + 120_000);
       if (run === 1) clearRaw(label, profileName, "first-render-");
-      writeRaw(label, profileName, "meta.json", runMeta(label, profileName, browser));
+      writeRaw(label, profileName, "meta.json", {
+        ...runMeta(label, profileName, browser),
+        gpuFeatures: await gpuFeatures(browser),
+      });
 
       await page.addInitScript(installRecorder, {
         stickers: contract.stickers,
