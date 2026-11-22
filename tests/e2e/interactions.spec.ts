@@ -402,6 +402,24 @@ test("coarse pointer shows no tooltip", async ({ page, hasTouch, browserName, is
   expect(await page.evaluate(() => document.getElementById("tip")?.hidden ?? true)).toBe(true);
 });
 
+test("pointer cursor on hover-capable devices; no hover scale without (hover: hover)", async ({ page, hasTouch }) => {
+  await loadFresh(page);
+  const canHover = await page.evaluate(() => matchMedia("(hover: hover)").matches);
+  test.info().annotations.push({ type: "hover", description: String(canHover) });
+  const sticker = page.locator('button.sticker[data-slug="dark"]');
+  if (canHover) {
+    // The scale on hover is covered by "hover only inside the clipped region…".
+    expect(await sticker.locator(".clip").evaluate((el) => getComputedStyle(el).cursor)).toBe("pointer");
+    return;
+  }
+  // A tap leaves the emulated touch pointer "hovering" the sticker; it must not scale.
+  const p = await pointInside(page, "dark");
+  if (hasTouch) await page.touchscreen.tap(p.x, p.y);
+  else await page.mouse.click(p.x, p.y);
+  await sleep(250);
+  expect(await sticker.evaluate((el) => getComputedStyle(el).scale), "no hover scale without (hover: hover)").toBe("none");
+});
+
 test.describe("selection", () => {
   test("click selects, #slug is pushed and going back clears it", async ({ page, hasTouch }) => {
     // The close button arrives with the Sheet (Task 1.13), which adds the e2e
