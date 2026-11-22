@@ -1,16 +1,20 @@
-// Pathway B (canvas-hybrid prototype, `proto/`) capture for the benches.
+// Pathway B (canvas-hybrid prototype) capture for the benches.
 //
-// The prototype is a post-process of Pathway A's build (`node proto/build.mjs`
-// writes `dist-proto/`) and exposes `window.__proto.stats` (proto/canvas/
-// render.ts `ProtoStats`). On Pathway A `window.__proto` is undefined, the
-// readers below return null and nothing is added to the result, so A's
-// numbers are measured exactly as before. Everything here is additive.
+// The prototype's sources are no longer in the tree; they are archived at the
+// local git tag `pathway-b-m3` (e.g. `git show pathway-b-m3:proto/build.mjs`).
+// It was a post-process of Pathway A's build (`node proto/build.mjs` wrote
+// `dist-proto/`) and exposed `window.__proto.stats` (`ProtoStats` in
+// `pathway-b-m3:proto/canvas/render.ts`). This module stays so the committed
+// `bench/results/m3-*.json` can be read and reproduced from that tag. On
+// Pathway A `window.__proto` is undefined, the readers below return null and
+// nothing is added to the result, so A's numbers are measured exactly as
+// before. Everything here is additive.
 //
 // The summaries are flat numbers (plus the LOD path strings) so that
 // `summarize.ts statsOf` aggregates them like any other result field.
 
-// The subset of proto/canvas/render.ts ProtoStats read here. Kept structural
-// so bench/ does not import the throwaway prototype.
+// The subset of `pathway-b-m3:proto/canvas/render.ts` ProtoStats read here.
+// Kept structural so bench/ does not import the archived prototype.
 export interface ProtoStatsLike {
   dpr: number;
   backingBytes: number;
