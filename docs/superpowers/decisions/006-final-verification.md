@@ -75,10 +75,11 @@ counts were taken; it runs on every project).
     record) in a temporary worktree after `npm ci`, and ran the test with each
     commit's own spec and config. Both failed with 811 px. Those two builds
     are byte-identical to each other (516 files). They match HEAD's `dist`
-    apart from the astro-island uids, which depend on the checkout path.
+    apart from the astro-island uids, which differ between the checkouts
+    (the cause was not traced).
     The browser is the same (Playwright 1.65.1 from the same lockfile,
     Chromium 159.0.8154.6 per the audit bench JSONs). So the "0 failed" in
-    004 §1 is not reproducible from any build.
+    004 §1 is not reproducible from any of the three builds tested.
   - Not verified: the env of the 004 chromium-mobile run. Neither 004 nor
     the task-2.4 report records `VISUAL_MAX_DIFF` for it. The most likely
     explanation is that it ran at `0.01`: earlier tasks ran this mobile scene
@@ -88,8 +89,9 @@ counts were taken; it runs on every project).
     - Before the click, in both the rewrite and the baseline Next site
       (`.baseline-site` on :4190), the handle `<button aria-label="Toggle panel
       size">` is `document.activeElement` and matches `:focus-visible`. The
-      focus is programmatic and arrives when the sheet opens. So the peek
-      snapshot has the same ring on both sides, which is why it matches.
+      sources suggest the focus is programmatic and set when the sheet opens
+      (inferred, not traced). The peek snapshot has the same ring on both
+      sides, which is consistent with it matching.
     - After `handle.click()` on HEAD, the handle (`data-silk="a16"`) still
       holds focus and still matches `:focus-visible`. Its computed outline is
       `auto 1px rgb(16,16,16)` and its box-shadow is `none`.
@@ -98,16 +100,20 @@ counts were taken; it runs on every project).
       is not focus-visible and has `outline-style: none`.
   - **Which rule draws the ring.** No author stylesheet rule with a focus
     selector matches the handle; I scanned every same-origin `cssRules`,
-    including the rules nested in `@layer`. The ring is Chromium's UA default
-    `:focus-visible { outline: auto 1px -webkit-focus-ring-color }`. It is
-    not from Silk, Tailwind or `src/` CSS.
+    including the rules nested in `@layer`. Together with the computed
+    `auto 1px` value, this points to Chromium's UA default
+    `:focus-visible { outline: auto 1px -webkit-focus-ring-color }` rather
+    than Silk, Tailwind or `src/` CSS. This is an inference; the UA
+    stylesheet was not inspected directly.
   - **Why focus differs.** This is inferred from the source; I did not trace
     it at runtime.
-    - The baseline `Panel.tsx` (`a929f5b^`) toggles the stop with a plain
-      `onClick` → `setActiveSnap`. The controlled detent therefore becomes 2
-      before the travel, and its `onTravel` handler (active only when
-      `activeSnap === 2`) calls `viewRef.focus()` while `progress < 0.999`
-      during the expand travel.
+    - The baseline `Panel.tsx` (`baseline-m0:src/app/components/Panel.tsx`,
+      identical to the copy at `a929f5b^`: the lines quoted here are
+      unchanged, and `git diff a929f5b^ baseline-m0` on the file is empty)
+      toggles the stop with a plain `onClick` → `setActiveSnap`. The
+      controlled detent therefore becomes 2 before the travel, and its
+      `onTravel` handler (active only when `activeSnap === 2`) calls
+      `viewRef.focus()` while `progress < 0.999` during the expand travel.
     - The rewrite (`src/islands/Sheet.tsx`, since `5e193e0`) uses
       `<Silk.Trigger action="step">`. Its `onTravel` guard `detent === 2` is
       the same, but `detent` only becomes 2 through `onActiveDetentChange`,
@@ -116,15 +122,16 @@ counts were taken; it runs on every project).
   - **Real touch.** With a `hasTouch` context and `page.touchscreen.tap` on
     the handle, HEAD behaves exactly like the click: the handle keeps focus,
     `:focus-visible` is true and the ring is visible. The baseline moves
-    focus to the view with no ring. The tap does not re-focus an
-    already-focused element, so the focus-visible state from the
-    programmatic focus persists. Scratch screenshots confirmed both. No real
-    device was tested.
+    focus to the view with no ring. A likely explanation, not traced, is
+    that the tap does not re-focus an already-focused element, so the
+    focus-visible state persists. Scratch screenshots confirmed both. No
+    real device was tested.
 - Classification: **repo-caused, not environmental**. It is a deterministic
-  focus-handling difference from the baseline, introduced with the sheet
-  island in `5e193e0` and present in every build since, including the 004
-  build. 004's "0 failed" most likely came from an unrecorded
-  `VISUAL_MAX_DIFF=0.01` (not verified).
+  focus-handling difference from the baseline. It is present in the three
+  builds tested (`d5b2b9e`, `3c1b300`, HEAD). Its origin in the sheet island
+  (`5e193e0`) is inferred from the source; that commit was not built. 004's
+  "0 failed" most likely came from an unrecorded `VISUAL_MAX_DIFF=0.01`
+  (not verified).
   - As a product matter it is a minor parity regression, not a functional
     defect. After expanding with a tap, the UA focus ring stays on the
     handle, where the baseline moves focus into the sheet. The ring also
@@ -191,14 +198,23 @@ Drift commentary:
   per run. Audit runs: 8,011 / 11,758 / 147,389 / 147,389 / 41,139; final:
   8,011 / 147,389 / 80,421 / 147,389 / 8,011. The median is still under the
   100 KB gate.
-- **Mobile TTI proxy** (696 → 2,832, outside the drift): in 3 of 5 final
-  runs a second long task of about 50–64 ms appeared at about 2.8 s (run 3:
-  long tasks `[554 ms, 160 ms]` and `[2789 ms, 64 ms]`; uncommitted scratch
-    from the gitignored raw run, deleted after use), just after all stickers finished painting (2.6 s). The TTI proxy
-  jumps to its end; TBT medians stay 0 (p95 14 ms). The audit runs had only
-  the first task. The build bytes are unchanged, so this is machine state or
-  timing; it was not investigated (R19). Input readiness, the plan's
-  readiness budget, is unaffected (546 ms ≤ 1.5 s).
+- **Mobile TTI proxy** (696 → 2,832, outside the drift).
+  - In final runs 3, 4 and 5, a second long task appeared at about 2.8 s,
+    just after all stickers finished painting (2.6 s). The entries are
+    `[start ms, duration ms]`:
+    - run 3: `[2789, 64]`
+    - run 4: `[2778, 54]`
+    - run 5: `[2804, 50]`
+  - Final runs 1 and 2 and all five audit runs have only the first task, at
+    about 530–580 ms.
+  - Source: the committed `bench/results/final-mobile.json` and
+    `audit-mobile.json`, at `raw.firstRender[i].detail.longTasks`.
+  - The TTI proxy jumps to the end of the late task. The TBT median stays 0
+    (p95 14 ms).
+  - The build bytes are unchanged. The cause was not investigated (R19);
+    machine state or timing is likely but not verified.
+  - Input readiness, the plan's readiness budget, is unaffected
+    (546 ms ≤ 1.5 s).
 - Budget status from 004 §3 is unchanged: mobile LCP ≤ 1,380 ms, desktop
   LCP ≤ 162 ms, CLS 0, TBT no regression, input readiness ≤ 1.5 s all still
   met; critical-path JS met on the mobile runs and on the desktop median.
@@ -224,9 +240,11 @@ equal. `TARGET` has no effect on the build: nothing in the build reads it
 (only `tests/contract.ts` and `bench/results.ts` do), and rebuilding the
 temporary worktree with `TARGET=new`, then without it, gave the same uids
 (`1fPHTP`, `ZlgBUF`) and a byte-identical `dist` each time. So the island
-uid depends on the checkout location, not on `TARGET` or on time; Astro's
-derivation of the uid was not traced. The difference has no effect on
-behaviour (the uids pair each island with its own children).
+uids differ between the two checkouts and are stable across rebuilds in
+the same checkout and across `TARGET` values. The cause was not traced:
+Astro's derivation of the uid was not examined. The difference is not
+expected to affect behaviour, since the uids only pair each island with its
+own children; this was not tested on the dry-run build beyond §4's checks.
 
 **Serving.** `npx serve dist -l 4180 --no-clipboard` from the temporary
 worktree (listener PID 16732; `GET /` → 200, 69,810 bytes).
