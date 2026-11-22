@@ -75,6 +75,7 @@ Added after Milestone 4; the budgets above are unchanged. Values are 5-run media
 | drag-inertia busy (mobile) | ≤ 137 ms | 275 | 348 (367), audit | missed (worse than baseline) |
 | pinch busy (mobile) | ≤ 150 ms | 301 | 243 (252), audit | missed |
 | button-zoom busy (mobile) | ≤ 259 ms | 518 | 471 (502), audit | missed |
+| drag-inertia busy (desktop; no spec row, 004 lists it "for reference") | no regression | 57 | 90, audit | missed (004: "worse than baseline") |
 | Settle, mobile wheel (`crispAfterMotionMs`) | ≤ 150 ms | 477 | 118.5 (141.9), audit | met |
 | Settle, mobile drag-inertia | ≤ 150 ms | 541 | 0, audit | met |
 | Settle, mobile pinch | ≤ 150 ms | 351 | 135.1 (153.1), audit | met on median (p95 over) |
@@ -95,9 +96,9 @@ Added after Milestone 4; the budgets above are unchanged. Values are 5-run media
 | English aria-labels before hydration (carry-forward) | none for non-English users | — | open, no test | missed |
 | Real-device measurement | owner's real devices | not measured | not measured | not measured |
 
-Missed: deep-link LCP; mobile `RunTask` busy in all four gestures (drag-inertia worse than the baseline); desktop wheel settle; the 2× input-delay rule for sheet-open and all four gestures (pinch worse than the baseline); desktop wheel input delay (+46 %); pinch frame count; desktop raster time; the modulepreload cost; English aria-labels before hydration. Per R19/R32 these are recorded, not tuned.
+Missed: deep-link LCP; mobile `RunTask` busy in all four gestures (drag-inertia worse than the baseline); desktop drag-inertia busy (90 vs 57 ms, worse than the baseline); desktop wheel settle; the 2× input-delay rule for sheet-open and all four gestures (pinch worse than the baseline); desktop wheel input delay (+46 %); pinch frame count; desktop raster time; the modulepreload cost; English aria-labels before hydration. Per R19/R32 these are recorded, not tuned.
 
-Known parity difference (R34): after the sheet handle is clicked, the handle keeps its focus outline, because `Silk.Trigger action="step"` leaves focus on the button while the baseline moves it to the sheet view. The chromium-mobile visual scene "mobile sheet: peek and expanded" differs by 811 px at the exact-match default and passes at `VISUAL_MAX_DIFF=0.01` (006 §2). Accepted, not fixed.
+Known parity difference (R34): after the sheet handle is clicked, the handle keeps its focus outline. The likely cause is that `Silk.Trigger action="step"` leaves focus on the button while the baseline moves it to the sheet view (inferred from source, not traced at runtime; 006 §2). The chromium-mobile visual scene "mobile sheet: peek and expanded" differs by 811 px at the exact-match default and passes at `VISUAL_MAX_DIFF=0.01` (006 §2). Accepted, not fixed.
 
 Unresolved:
 

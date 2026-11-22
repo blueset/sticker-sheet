@@ -16,7 +16,8 @@
 
 ### Prerequisites
 
-- Node.js, npm
+- Node.js 22.18 or later (`npm run optimize-assets` runs `scripts/optimize-assets.ts` with Node's built-in type stripping; CI uses Node 22), npm
+- [Deno](https://deno.com), only to rebuild the baseline app (see "Baseline vs new")
 
 ### Installation
 
@@ -77,10 +78,11 @@ Design and numbers: `docs/superpowers/specs/2026-11-20-render-performance-design
 | `npm run test:e2e` | Playwright e2e on all four projects (`chromium-desktop`, `chromium-mobile`, `webkit-mobile`, `firefox-desktop`); build first. It serves `STATIC_DIR` (default `dist`) on port 4173 |
 | `npm run optimize-assets` | Asset pipeline for `public/stickers/` (see "Adding Your Own Stickers") |
 
-Playwright reads three environment variables:
-- `TARGET` (`new`, the default, or `baseline`) picks the selector contract.
-- `STATIC_DIR` picks the directory to serve.
-- `VISUAL_MAX_DIFF` sets the screenshot tolerance (default 0, an exact match).
+The tests and benches read these environment variables:
+- `TARGET` (`new`, the default, or `baseline`) picks the selector contract (`tests/contract.ts`).
+- `STATIC_DIR` picks the directory to serve (`playwright.config.ts`).
+- `VISUAL_MAX_DIFF` sets the screenshot tolerance (default 0, an exact match; `playwright.config.ts`).
+- `BENCH` and `BENCH_GPU` are read by `playwright.config.ts` too; see "Benchmarks".
 
 Playwright reuses a server that is already listening on port 4173 (`reuseExistingServer`). When you switch `STATIC_DIR`, stop the old server first, or you test the wrong build.
 
@@ -163,6 +165,7 @@ Results:
     git worktree add ..\baseline baseline-m0   # or: git worktree add ..\baseline c4ab84c
     Push-Location ..\baseline; npm ci; npm run yaml -- --once; npm run build; Pop-Location
     Copy-Item -Recurse ..\baseline\out .baseline-site
+    git worktree remove --force ..\baseline   # clean up; .baseline-site is all you need
     ```
 
   - Serve and test it with `TARGET=baseline` and `STATIC_DIR=.baseline-site`. For the first-render bench also set `BENCH_PAYLOAD_GATE=0`, because the baseline fails the payload gate by design. Example: `$env:BENCH='1'; $env:TARGET='baseline'; $env:STATIC_DIR='.baseline-site'; $env:BENCH_PAYLOAD_GATE='0'; $env:BENCH_LABEL='baseline-rerun'`.
@@ -194,7 +197,9 @@ These are 5-run medians in Chromium. "Mobile" is Pixel 7 emulation with 4× CPU 
 Gesture, settle and interaction numbers come from the Milestone 2 audit (004 §3) and were not re-run. Several budgets were missed:
 
 - mobile main-thread time per gesture;
+- desktop drag-inertia main-thread time (90 vs 57 ms, worse than the baseline);
 - the 2× input-delay targets;
+- desktop wheel input delay (70.3 vs 48.0 ms, worse than the baseline);
 - desktop wheel crisp;
 - deep-link LCP;
 - desktop raster time;

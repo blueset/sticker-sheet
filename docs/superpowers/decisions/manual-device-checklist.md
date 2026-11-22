@@ -115,5 +115,6 @@ in `docs/superpowers/decisions/004-parity.md` (Parity table, "manual" rows).
   expand. Pass: no focus outline remains on the handle after the sheet
   expands, as in the baseline, which moves focus into the sheet. A ring on the
   handle is the known, accepted difference recorded in
-  006-final-verification.md §2 (the new build leaves focus on the handle);
-  note whether it shows on a real touch tap.
+  006-final-verification.md §2 (the new build appears to leave focus on the
+  handle; inferred from source, not traced at runtime); note whether it
+  shows on a real touch tap.
