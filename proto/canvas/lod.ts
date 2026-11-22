@@ -143,6 +143,27 @@ export class Generations {
 
 // Settle-time cull: a LOD key (`slug|src@level`) above `keepLevel` is dropped
 // unless its sticker is visible; exact keys are handled by dropExact.
+// A run of deferred work handed out one item at a time; starting a new run
+// or stopping invalidates the previous run's handle.
+export class Trickle<T> {
+  private list: T[] = [];
+  private run = 0;
+  start(list: readonly T[]): number {
+    this.list = [...list];
+    return ++this.run;
+  }
+  stop(): void {
+    this.list = [];
+    this.run++;
+  }
+  next(run: number): T | undefined {
+    return run === this.run ? this.list.shift() : undefined;
+  }
+  get pending(): number {
+    return this.list.length;
+  }
+}
+
 export const CULL_KEEP_LEVEL = 2;
 export function lodCullable(key: string, visible: ReadonlySet<string>, keepLevel = CULL_KEEP_LEVEL): boolean {
   const at = key.lastIndexOf("@");
@@ -447,6 +468,7 @@ export function createLodCache(onReady: () => void): LodCache {
     pumpTimer = 0;
     if (disposed || stats.path === "probing") return;
     const t0 = performance.now();
+    let yieldFrame = false;
     // Exact (settle) jobs first.
     queue.sort((a, b) => Number(b.exact) - Number(a.exact));
     for (let i = 0; i < queue.length; ) {
@@ -468,9 +490,27 @@ export function createLodCache(onReady: () => void): LodCache {
       if (performance.now() - t0 > MAIN_BUDGET_MS) break;
       queue.splice(i, 1);
       renderMain(job);
+      if (job.exact && !queue.some((j) => j.exact)) {
+        // The settle's exact bitmaps are done: let the frame that paints
+        // them run before any LOD work (draw-time requests, prefetch).
+        yieldFrame = true;
+        break;
+      }
     }
     sync();
-    if (queue.some((j) => !useWorker(j.src))) kick();
+    if (queue.some((j) => !useWorker(j.src))) {
+      if (yieldFrame) kickAfterFrame();
+      else kick();
+    }
+  }
+
+  function kickAfterFrame(): void {
+    if (pumpTimer || disposed) return;
+    pumpTimer = -1;
+    requestAnimationFrame(() => {
+      pumpTimer = 0;
+      kick();
+    });
   }
 
   function kick(): void {

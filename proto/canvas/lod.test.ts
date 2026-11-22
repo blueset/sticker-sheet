@@ -1,5 +1,27 @@
 import { describe, expect, it } from "vitest";
-import { ByteLru, Generations, lodCullable, lodLevel, nearestLevel, resolveScheme, snapScale } from "./lod";
+import { ByteLru, Generations, Trickle, lodCullable, lodLevel, nearestLevel, resolveScheme, snapScale } from "./lod";
+
+describe("Trickle (deferred base-LOD prefetch)", () => {
+  it("hands out one item per call, in order, for the current run", () => {
+    const t = new Trickle<string>();
+    const run = t.start(["a", "b"]);
+    expect(t.pending).toBe(2);
+    expect(t.next(run)).toBe("a");
+    expect(t.next(run)).toBe("b");
+    expect(t.next(run)).toBeUndefined();
+  });
+  it("gives a superseded or stopped run nothing", () => {
+    const t = new Trickle<string>();
+    const first = t.start(["a", "b"]);
+    const second = t.start(["c"]);
+    expect(t.next(first)).toBeUndefined();
+    expect(t.next(second)).toBe("c");
+    const third = t.start(["d"]);
+    t.stop();
+    expect(t.pending).toBe(0);
+    expect(t.next(third)).toBeUndefined();
+  });
+});
 
 describe("Generations (store acceptance)", () => {
   it("accepts a job stamped in the current generation", () => {

@@ -12,6 +12,7 @@ import {
   LOD_MAX_SIDE,
   lodLevel,
   resolveScheme,
+  Trickle,
   type LodCache,
   type LodSource,
   type LodStats,
@@ -75,6 +76,15 @@ export interface GestureStat {
   maxDrawMs: number;
 }
 
+// Deferred base-LOD prefetch of off-screen SVGs, started after a settle paints.
+export interface PrefetchStat {
+  queued: number;
+  rendered: number;
+  maxJobMs: number;
+  startedAt: number;
+  finishedAt: number;
+}
+
 // One settle: from the controller's onSettle (or load / resize / OS scheme
 // change) until the draw that paints the exact-scale bitmaps.
 export interface SettleStat {
@@ -124,6 +134,7 @@ export interface ProtoStats {
   // The current (live) or last gesture, and the last 20 finished gestures.
   gesture: GestureStat | null;
   gestures: GestureStat[];
+  prefetch: PrefetchStat | null;
   settle: SettleStat | null;
   settles: SettleStat[];
   themed: string[];
@@ -255,6 +266,7 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     rasterDraws: 0,
     gesture: null,
     gestures: [],
+    prefetch: null,
     settle: null,
     settles: [],
     themed: [],
@@ -571,9 +583,40 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     }
     // A small base LOD (kept by cullLod) for every off-screen SVG, so a
     // sticker entering view mid-gesture draws a bitmap, not a sync raster.
-    const base = Math.min(eff, BASE_LOD);
-    for (const it of items) if (it.svg && it.rect && !keep.has(it.slug)) lod.ensureLod(it.slug, base, () => {});
+    // Deferred until this settle has painted, then one render per idle slot
+    // (settlePainted -> prefetchStep), so it never delays the visible bitmaps.
+    prefetchTrickle.stop();
+    prefetchScale = Math.min(eff, BASE_LOD);
+    prefetchList = items.filter((it) => it.svg && it.rect && !keep.has(it.slug)).map((it) => it.slug);
     done();
+  }
+
+  const prefetchTrickle = new Trickle<string>();
+  let prefetchList: string[] = [];
+  let prefetchScale = BASE_LOD;
+  const idle: (fn: () => void) => void =
+    typeof requestIdleCallback === "function"
+      ? (fn) => requestIdleCallback(fn, { timeout: 250 })
+      : (fn) => requestAnimationFrame(() => setTimeout(fn, 0));
+  let prefetchRun = 0;
+  function startPrefetch(): void {
+    const run = prefetchTrickle.start(prefetchList);
+    prefetchRun = run;
+    prefetchList = [];
+    const p = { queued: prefetchTrickle.pending, rendered: 0, maxJobMs: 0, startedAt: performance.now(), finishedAt: 0 };
+    stats.prefetch = p;
+    idle(() => prefetchStep(run, p));
+  }
+  function prefetchStep(run: number, p: PrefetchStat): void {
+    for (let slug = prefetchTrickle.next(run); slug !== undefined; slug = prefetchTrickle.next(run)) {
+      const issued = lod.ensureLod(slug, prefetchScale, () => {
+        p.rendered++;
+        p.maxJobMs = Math.max(p.maxJobMs, lod.stats.lastRenderMs);
+        idle(() => prefetchStep(run, p));
+      });
+      if (issued) return;
+    }
+    if (run === prefetchRun && !p.finishedAt) p.finishedAt = performance.now();
   }
 
   function settlePainted(): void {
@@ -600,6 +643,7 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
     stats.settle = entry;
     stats.settles.push(entry);
     if (stats.settles.length > 20) stats.settles.shift();
+    startPrefetch();
   }
 
   function draw(): void {
@@ -697,6 +741,7 @@ export function createRenderer(root: HTMLElement, layer: HTMLElement, viewer: Co
 
   const offChange = viewer.onChange((t) => {
     lastChangeAt = performance.now();
+    prefetchTrickle.stop();
     if (!stats.gesture || stats.gesture.endedAt) {
       stats.gesture = {
         startedAt: lastChangeAt,
