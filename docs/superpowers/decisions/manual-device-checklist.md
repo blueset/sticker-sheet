@@ -82,6 +82,10 @@ in `docs/superpowers/decisions/004-parity.md` (Parity table, "manual" rows).
   highlight each item" on, or Option-Tab), Tab through the stickers and the
   controls. Pass: each sticker and control gets a visible focus ring, Enter
   or Space opens the sheet, and the menus work from the keyboard.
+- [ ] **Keyboard focus on an off-screen sticker (R36).** With a hardware
+  keyboard, Tab to a sticker that is off-screen. Pass: focus is invisible and
+  the canvas does not pan, as in the baseline (a pre-existing gap, not a
+  regression).
 - [ ] **GPU memory on a low-end Android with the layer left promoted.** Pan
   once and leave the page at rest for a minute; then switch apps and come
   back. Pass: no reload, no blank canvas, no stuttering in other apps. Note

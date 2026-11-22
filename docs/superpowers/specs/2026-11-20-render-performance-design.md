@@ -94,12 +94,15 @@ Added after Milestone 4; the budgets above are unchanged. Values are 5-run media
 | Desktop raster time (carry-forward) | — (004: "≈ 2× the baseline") | wheel 121, button 47, drag 33 ms | wheel 218, button 106, drag 135 ms, audit | missed |
 | Modulepreload cost (carry-forward) | — | — | +64 ms LCP, +166 ms all-painted (002; not re-measured) | missed (004: "accepted trade-off") |
 | English aria-labels before hydration (carry-forward) | none for non-English users | — | open, no test | missed |
+| Interactive (hook/timer) live stickers | live on a visible sticker (§5 "interactive" tier) | rendered live | not built; build-time guard instead (R35) | not built; build-time guard instead (R35) |
+| Keyboard focus on an off-screen sticker | — | focus leaves the sticker off-screen and invisible (uncommitted scratch, Chromium 1280×800, not reproducible from the repo) | same; pinned by `tests/e2e/interactions.spec.ts` "focusing an off-screen sticker does not scroll the viewer" | parity (pre-existing gap) |
 | Real-device measurement | owner's real devices | not measured | not measured | not measured |
 
 Missed: deep-link LCP; mobile `RunTask` busy in all four gestures (drag-inertia worse than the baseline); desktop drag-inertia busy (90 vs 57 ms, worse than the baseline); desktop wheel settle; the 2× input-delay rule for sheet-open and all four gestures (pinch worse than the baseline); desktop wheel input delay (+46 %); pinch frame count; desktop raster time; the modulepreload cost; English aria-labels before hydration. Per R19/R32 these are recorded, not tuned.
 
 Known parity difference (R34): after the sheet handle is clicked, the handle keeps its focus outline. The likely cause is that `Silk.Trigger action="step"` leaves focus on the button while the baseline moves it to the sheet view (inferred from source, not traced at runtime; 006 §2). The chromium-mobile visual scene "mobile sheet: peek and expanded" differs by 811 px at the exact-match default and passes at `VISUAL_MAX_DIFF=0.01` (006 §2). Accepted, not fixed.
 
+Known pre-existing gap (R36): keyboard focus on an off-screen sticker does not pan, so the focused sticker stays invisible (`#canvasWrapper` uses `overflow: clip`). The unchanged baseline build behaves the same: in an uncommitted scratch Playwright run (Chromium, 1280×800, not reproducible from the repo), `.focus()` left the transform at `matrix(1, 0, 0, 1, -860, -1100)`, `scrollLeft`/`scrollTop` at 0, and the sticker off-screen (rect left 423, top -151, 134×112). Not a regression; not fixed.
 Unresolved:
 
 - No real-device run; every number above is Chromium emulation (`manual-device-checklist.md`).

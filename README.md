@@ -209,6 +209,8 @@ Gesture, settle and interaction numbers come from the Milestone 2 audit (004 §3
 
 The full table is in the spec's "Final status (Milestone 4)" section and in 004 §3. Nothing has been measured on a real device; see `docs/superpowers/decisions/manual-device-checklist.md`.
 
+Known pre-existing gap (R36, same in the baseline; measured with an uncommitted scratch script, not reproducible from the repo): keyboard focus on an off-screen sticker does not pan, so the focused sticker stays invisible. Fixing it would be a pan-on-`focusin` in the controller plus flipping the e2e test "focusing an off-screen sticker does not scroll the viewer" in `tests/e2e/interactions.spec.ts`.
+
 ## Adding Your Own Stickers
 
 Stickers are defined in YAML files in the `src/data/stickers` directory. They are loaded directly at build time; there is no separate compile step.
@@ -231,6 +233,8 @@ To add a new sticker:
 Details: `docs/superpowers/decisions/assets.md`.
 
 The parity tests pin the 63 baseline stickers (`src/lib/stickers.test.ts` against `tests/fixtures/stickers.baseline.json`, and the sticker count in the e2e specs and `bench/harness.ts`). Adding a sticker makes them fail until they are updated.
+
+Sticker `content` may use `new Date()` (date-derived values are filled in at load), but must not rely on React hooks or timers on a visible sticker: there is no hydration runtime, so the build fails with a message (R35). Hidden 0×0 fixtures such as `test-1` are exempt.
 
 Example `src/data/stickers/my-sticker.yaml`:
 
