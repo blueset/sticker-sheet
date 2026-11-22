@@ -110,9 +110,16 @@ rule") to these numbers.
 8. **Drift of the A re-run from `audit-*`.** This is machine-state drift,
    which is why A was re-run beside B (R23).
    - Mobile busy: wheel 404 vs 342 (+18 %), pinch 315 vs 243 (+30 %).
+   - Mobile gesture input delay (A re-run vs audit A): default wheel 50.1 vs
+     38.3 (+31 %), pinch 36.1 vs 42.0 (−14 %), button 63.8 vs 59.0 (+8 %),
+     drag 33.8 vs 33.9 (0 %); GPU wheel 34.1 (−11 %), pinch 35.7 (−15 %),
+     button 74.8 [60.3–88.4] (+27 %), drag 34.0 (0 %). **A's own run-to-run
+     drift on mobile input delay is about the size of the 30 % threshold.**
    - Desktop hover: 5.14 vs 4.06 ms (one 10.9 ms outlier run).
    - Firefox wheel p95: 83.3 vs 67.6.
    - LCP, TBT, input readiness and crisp are within a few %.
+   - The pan-and-zoom tables carry an "audit A" column so this drift is
+     visible beside each delta.
 
 ## Full budget table: chromium-mobile (Pixel 7, 4× CPU, Fast 4G)
 
@@ -166,25 +173,47 @@ figure, not the mobile profile.
 
 Columns are A / B, with Δ. `busy` is main-thread `RunTask` from the first
 input to motion end. Crisp is A's `crispAfterMotionMs` ≠ B's
-`proto.settleSinceMotionMs` (note 4).
+`proto.settleSinceMotionMs` (note 4). "audit A" is the `audit-mobile.json`
+median for p95 / busy / input delay / crisp, from an earlier session (note 8);
+it applies to both tables.
 
 **Default (software canvas)**
 
-| gesture | p95 frame (≤ 16.7) | busy **(A missed: ≤174/137/150/259)** | busy after motion | input delay (< 100; 2×: ≤21/17/17/48) **(A missed 2×)** | crisp from motion end (≤ 150) | frames |
-|---|---|---|---|---|---|---|
-| wheel-zoom | 16.7 / **200.1** [200–233] (+1,101 %) | 404 / 4,771 (+1,082 %) | 373 / 3,382 | 50.1 / **3,617** (+7,119 %) | 119.9 ≠ 626 [586–646] (+422 %) | 60 / 30 |
-| drag-inertia | 16.7 / 166.6 [133–183] (+900 %) | 346 / 4,404 (+1,174 %) | 334 / 3,016 | 33.8 / 307.6 (+810 %) | 0 ≠ 216 [123–277] | 82 / 52 |
-| pinch | 16.7 / 200.0 [200–217] (+1,100 %) | 315 / 6,237 (+1,882 %) | 411 / 3,116 | 36.1 / 415.0 (+1,050 %) | 150.4 ≠ 386 [338–479] (+157 %) | 66 / 72 |
-| button-zoom | 16.7 / 166.6 [150–183] (+900 %) | 465 / 2,219 (+377 %) | 358 / 3,239 | 63.8 / 267.6 (+319 %) | 120.3 ≠ 320 [250–353] (+166 %) | 90 / 23 |
+| gesture | p95 frame (≤ 16.7) | busy **(A missed: ≤174/137/150/259)** | busy after motion | input delay (< 100; 2×: ≤21/17/17/48) **(A missed 2×)** | crisp from motion end (≤ 150) | frames | audit A: p95 / busy / input delay / crisp |
+|---|---|---|---|---|---|---|---|
+| wheel-zoom | 16.7 / **200.1** [200–233] (+1,101 %) | 404 / 4,771 (+1,082 %) | 373 / 3,382 | 50.1 [34.0–52.2] / **3,617** (+7,119 %) | 119.9 ≠ 626 [586–646] (+422 %) | 60 / 30 | 16.7 / 342 / 38.3 / 118.5 |
+| drag-inertia | 16.7 / 166.6 [133–183] (+900 %) | 346 / 4,404 (+1,174 %) | 334 / 3,016 | 33.8 [32.5–35.4] / 307.6 (+810 %) | 0 ≠ 216 [123–277] | 82 / 52 | 16.7 / 348 / 33.9 / 0 |
+| pinch | 16.7 / 200.0 [200–217] (+1,100 %) | 315 / 6,237 (+1,882 %) | 411 / 3,116 | 36.1 [34.8–41.0] / 415.0 (+1,050 %) | 150.4 ≠ 386 [338–479] (+157 %) | 66 / 72 | 16.7 / 243 / 42.0 / 135.1 |
+| button-zoom | 16.7 / 166.6 [150–183] (+900 %) | 465 / 2,219 (+377 %) | 358 / 3,239 | 63.8 [44.4–81.9] / 267.6 (+319 %) | 120.3 ≠ 320 [250–353] (+166 %) | 90 / 23 | 16.7 / 471 / 59.0 / 119.7 |
 
 **GPU mode**
 
-| gesture | p95 frame | busy | busy after motion | input delay | crisp from motion end | frames |
-|---|---|---|---|---|---|---|
-| wheel-zoom | 16.7 [16.7–83.3] / 50.1 [50–67] (+201 %) | 291 / 1,008 (+246 %) | 294 / 1,190 | 34.1 / 119.2 (+250 %) | 106.5 ≠ 153 [147–178] (+44 %) | 60 / 27 |
-| drag-inertia | 16.7 / 50.0 [33–50] (+200 %) | 303 / 1,514 (+400 %) | 278 / 767 | 34.0 / 70.7 (+108 %) | 0 ≠ 178 [170–188] | 82 / 57 |
-| pinch | 16.7 / 66.7 [50–83] (+300 %) | 225 / 1,529 (+580 %) | 406 / 1,313 | 35.7 / 114.4 (+220 %) | 123.9 ≠ 208 [200–228] (+68 %) | 63 / 61 |
-| button-zoom | 16.7 / 66.7 [50–67] (+300 %) | 589 / 1,551 (+164 %) | 437 / 1,247 | 74.8 / 59.0 [51–115] (−21 %) | 107.0 ≠ 191 [183–202] (+79 %) | 90 / 44 |
+| gesture | p95 frame | busy | busy after motion | input delay | crisp from motion end | frames | audit A: p95 / busy / input delay / crisp |
+|---|---|---|---|---|---|---|---|
+| wheel-zoom | 16.7 [16.7–83.3] / 50.1 [50–67] (+201 %) | 291 / 1,008 (+246 %) | 294 / 1,190 | 34.1 [33.4–194.9] / 119.2 (+250 %) | 106.5 ≠ 153 [147–178] (+44 %) | 60 / 27 | 16.7 / 342 / 38.3 / 118.5 |
+| drag-inertia | 16.7 / 50.0 [33–50] (+200 %) | 303 / 1,514 (+400 %) | 278 / 767 | 34.0 [33.2–35.0] / 70.7 (+108 %) | 0 ≠ 178 [170–188] | 82 / 57 | 16.7 / 348 / 33.9 / 0 |
+| pinch | 16.7 / 66.7 [50–83] (+300 %) | 225 / 1,529 (+580 %) | 406 / 1,313 | 35.7 [34.3–43.9] / 114.4 (+220 %) | 123.9 ≠ 208 [200–228] (+68 %) | 63 / 61 | 16.7 / 243 / 42.0 / 135.1 |
+| button-zoom | 16.7 / 66.7 [50–67] (+300 %) | 589 / 1,551 (+164 %) | 437 / 1,247 | 74.8 [60.3–88.4] / 59.0 [50.7–114.6] (−21 % vs re-run A; 0 % vs audit A 59.0) ‡ | 107.0 ≠ 191 [183–202] (+79 %) | 90 / 44 | 16.7 / 471 / 59.0 / 119.7 |
+
+‡ **GPU button-zoom input delay is inside A's drift/noise band.** The −21 %
+is against this session's A re-run (74.8, +27 % above audit A). Against audit
+A (59.0) the delta is 0 %, and the A and B ranges ([60.3–88.4] vs
+[50.7–114.6]) overlap. A's own drift on mobile input delay is −15 % to +31 %
+(note 8), the same size as the 30 % threshold. Do not read this row as a
+robust B improvement.
+
+**Raster time ≈ 2× baseline (A missed on mobile, 004: "mobile 94–117 vs
+70–85").** Trace `RasterTask` ms per gesture. **Not comparable between A and
+B (note 6):** B's sticker raster is Canvas 2D on the main thread and is not
+in B's `rasterMs`; it is inside `mainBusyMs` and `proto.lodRenderMs`. The Δ is
+shown only so it is not mistaken for a win.
+
+| gesture | A default | B default | Δ (not comparable, note 6) | A gpu | B gpu | Δ gpu (not comparable, note 6) | audit A |
+|---|---|---|---|---|---|---|---|
+| wheel-zoom | 104.3 [95.1–116.8] | 8.1 [6.9–14.3] | −92 % | 14.3 | 0.9 | −94 % | 107.3 |
+| drag-inertia | 88.4 [80.4–105.9] | 6.8 [5.4–7.8] | −92 % | 2.3 | 0.8 | −64 % | 116.8 |
+| pinch | 105.7 [77.1–122.1] | 6.5 [6.3–11.9] | −94 % | 1.8 | 0.7 | −61 % | 93.8 |
+| button-zoom | 96.9 [80.2–114.0] | 9.0 [8.0–9.8] | −91 % | 2.1 | 1.0 | −54 % | 109.0 |
 
 A's literal `crispAfterMs` (last input → last raster), mobile default:
 wheel 164, drag 84, pinch 152, button 464. B's figures for the same metric
@@ -257,6 +286,16 @@ paint time (`proto.settleSinceMotionMs`) is listed beside it.
 | firefox-desktop drag-release | settleMs | 1,144 | 1,140 | 0 % | 1,137 |
 | firefox-desktop | B `proto.settleSinceMotionMs` wheel / drag | — | 126 / 121 | | |
 
+**WebKit rows are not a robust win or regression.** This is headless
+Playwright WebKit, whose rAF cadence in this bench is about 6 Hz, so its
+timing is not representative of a device. The wheel +25 % has overlapping A/B
+ranges ([107–124] vs [111–157]) and is treated as inside the noise band. The
+drag-release −32 % (1,340 vs 913, non-overlapping ranges) is **unexplained**:
+both builds use A's viewer to drive `data-gesture`, and no mechanism for B
+ending the drag inertia sooner was identified. Neither row should be read as
+a WebKit win or regression for B without a real-device or headed-WebKit
+check.
+
 ### Which LOD path each engine took (carry-in 4)
 
 `createImageBitmap(svgBlob)` is rejected in all three engines, so SVG
@@ -289,10 +328,20 @@ the `proto` fields of the results).
 | webkit-mobile wheel / drag | 39 / 20 | 13 / 7 | 21 / 0 | 0 | 0 / 1 | 50 / 10 | 9 / 9 |
 | firefox-desktop wheel / drag | 75 / 0 | 107 / 0 | 13 / 0 | 0 | 0 | 272 / 0 | 0 |
 
-Intermediate LOD levels during tweens cause the evictions. In default mode
-the single largest JS draw is small (`maxDrawMs` 3.5–5.6 ms on mobile). The
-frame cost is dominated by software canvas raster and LOD renders on the
-throttled main thread (notes 1 and 6).
+Intermediate LOD levels during tweens cause the evictions.
+
+- **Default mode:** the single largest JS draw is small (`proto.maxDrawMs`
+  3.5–5.6 ms per mobile gesture, 6.0 on first render).
+- **GPU mode:** `proto.maxDrawMs` is 41–56 ms on every mobile gesture (wheel
+  52.3, drag 41.4, pinch 55.6, button 51.3) and 50.1 on first render. This is
+  **unexplained**; a GPU flush or readback inside the timed draw is a
+  possibility, not a finding.
+- **Where frame cost goes (reasoned, not proven).** In default mode the frame
+  cost appears to be dominated by software canvas raster and LOD renders on
+  the throttled main thread (notes 1 and 6). The default→GPU contrast supports
+  this (mobile wheel `proto.lodRenderMs` 428 → 64, B busy 4,771 → 1,008), but
+  no per-task attribution was captured, so it is an explanation, not a
+  measurement.
 
 ## Memory (carry-in 5)
 
