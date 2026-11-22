@@ -16,7 +16,6 @@ export default defineConfig({
       "src/**/*.test.ts",
       "bench/**/*.test.ts",
       "scripts/**/*.test.ts",
-      "proto/**/*.test.ts",
     ],
   },
 });

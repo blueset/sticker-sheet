@@ -209,8 +209,8 @@ the outcome.
     decoded twice (48 extra `fetch` requests, +4 image requests).
 - **DPR cap.** B paints its canvas at DPR ≤ 2 (`proto.dpr` = 2 on both mobile
   profiles), so on the DPR 2.625 and DPR 3 profiles it paints fewer pixels
-  than A and looks softer. Its mobile figures are therefore flattered, not
-  penalised, by the cap.
+  than A. B paints fewer pixels; the effect on perceived sharpness was not
+  measured.
 - **Memory and the iOS canvas limit: UNMEASURED real-device concern.** Only
   the JS heap was measured (A 6.2–6.3 MB, B 6.2–7.1 MB per mobile gesture).
   B's canvas memory is **computed** from its own stats: 19.8 MB after load on
@@ -236,14 +236,28 @@ without a WebKit/Firefox regression. B has none:
 2. The only favourable deltas are either not comparable (`rasterMs`), inside
    A's own drift (GPU button input delay: −21 % vs re-run, 0 % vs audit), or
    contradicted by the other set (pinch frames).
-3. Its non-numeric costs (correctness gaps, softer DPR-capped output, a
+3. Its non-numeric costs (correctness gaps, DPR-capped output, a
    multi-second mobile handoff, a heavy load and an unmeasured iOS memory
    risk) add complexity rather than offset it.
 
 The real-device checklist in 005a (a mid-range Android with a GPU canvas)
 could narrow the default-vs-GPU gap, but even B's GPU set, run on a desktop
-GPU, is +164 % to +580 % on mobile busy. No plausible device result turns
-that into a ≥ 30 % gain. The decision does not wait on it.
+GPU, is +164 % to +580 % on mobile busy. The measured gap is large enough
+that this is unlikely to flip. The decision does not wait on it.
+
+**Limitation: the decision rests on emulation.** Every figure comes from
+Playwright on one desktop machine. The "mobile" profile is Pixel 7 emulation
+with a 4× CPU throttle, and its canvas is either headless Chromium's software
+canvas (default set) or a desktop GPU (GPU set). Neither is a phone. WebKit
+is headless Playwright WebKit, not iOS Safari. Real data that could change
+the decision includes:
+
+- B's frame time, busy and input delay on a real Android phone with a GPU
+  canvas;
+- B on real iOS Safari, including its canvas memory and canvas size limits
+  (B's canvas memory is computed, not measured);
+- A's own figures on the same devices, since A's missed budgets were also
+  measured only in emulation.
 
 A's missed budgets remain missed. They are recorded in
 [`004-parity.md`](004-parity.md) and stay open against A; this record does
