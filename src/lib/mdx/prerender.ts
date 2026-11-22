@@ -103,5 +103,18 @@ export async function prerenderContent(slug: string, lang: Lang): Promise<Preren
     const why = sticker ? `it has no content for ${lang}` : "there is no such sticker";
     throw new Error(`Cannot prerender the content of sticker "${slug}" (${lang}): ${why}.`);
   }
-  return prerenderContentFrom(source, { slug, lang });
+  const result = await prerenderContentFrom(source, { slug, lang });
+  assertInteractiveAllowed(result.kind, sticker.width, sticker.height, { slug, lang });
+  return result;
+}
+
+// No hydration runtime exists, so a visible hook/timer sticker would ship a frozen value.
+// Zero-area stickers (hidden fixtures) are exempt; a missing/non-numeric size counts as 0.
+export function assertInteractiveAllowed(kind: LiveKind, width: number, height: number, label: StickerLabel): void {
+  if (kind !== "interactive") return;
+  if ((Number(width) || 0) * (Number(height) || 0) > 0) {
+    throw new Error(
+      `Cannot prerender the content of sticker "${label.slug}" (${label.lang}): it uses a React hook or timer, which is not hydrated, so its value would be frozen at build time. Remove the hook, or make the sticker 0×0 if it is a hidden fixture.`,
+    );
+  }
 }

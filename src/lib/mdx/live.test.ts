@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { LANGS } from "../localize";
 import { loadStickers } from "../stickers";
 import { compileMdx } from "./compile";
-import { prerenderContent, prerenderContentFrom, type LiveKind } from "./prerender";
+import { assertInteractiveAllowed, prerenderContent, prerenderContentFrom, type LiveKind } from "./prerender";
 
 describe("prerenderContentFrom", () => {
   it("static content has no live nodes", async () => {
@@ -70,6 +70,20 @@ describe("prerenderContentFrom", () => {
     );
     expect(r.kind).toBe("interactive");
     expect(r.html).toBe("<b>2020</b>");
+  });
+});
+
+describe("assertInteractiveAllowed", () => {
+  it("rejects an interactive sticker that has area", () => {
+    expect(() => assertInteractiveAllowed("interactive", 100, 50, { slug: "clock", lang: "en" })).toThrow(
+      /Cannot prerender the content of sticker "clock" \(en\): it uses a React hook or timer, which is not hydrated/,
+    );
+  });
+
+  it("allows a zero-area interactive sticker and non-interactive kinds", async () => {
+    expect(() => assertInteractiveAllowed("interactive", 0, 0, { slug: "x", lang: "en" })).not.toThrow();
+    expect(() => assertInteractiveAllowed("static", 100, 50, { slug: "x", lang: "en" })).not.toThrow();
+    expect((await prerenderContent("test-1", "en")).kind).toBe("interactive");
   });
 });
 
